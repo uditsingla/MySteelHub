@@ -1,0 +1,552 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CE1CAF01C000A8F3DC /* BaseViewController.m */; };
+		461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7D11CAF01FA00A8F3DC /* Home.m */; };
+		461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7D31CAF01FA00A8F3DC /* Login.m */; };
+		461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7D81CAF024000A8F3DC /* LeftSlider.m */; };
+		461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7DA1CAF024000A8F3DC /* LeftSliderCell.m */; };
+		461BE7DF1CAF042300A8F3DC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 461BE7DD1CAF042300A8F3DC /* Login.storyboard */; };
+		461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E21CAF074300A8F3DC /* LoginManager.m */; };
+		461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E51CAF074300A8F3DC /* ModelManager.m */; };
+		461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E81CAF074300A8F3DC /* RequestManager.m */; };
+		461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */; };
+		46F62CA81C908FDC00A61B47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F62CA71C908FDC00A61B47 /* main.m */; };
+		46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F62CAA1C908FDC00A61B47 /* AppDelegate.m */; };
+		46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F62CAD1C908FDC00A61B47 /* ViewController.m */; };
+		46F62CB11C908FDC00A61B47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CAF1C908FDC00A61B47 /* Main.storyboard */; };
+		46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46F62CB21C908FDC00A61B47 /* MySteelHub.xcdatamodeld */; };
+		46F62CB61C908FDC00A61B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB51C908FDC00A61B47 /* Assets.xcassets */; };
+		46F62CB91C908FDC00A61B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */; };
+		6B14A10B3B9DBC3A71A7E428 /* libPods-MySteelHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C989E1936B874FE611734BF /* libPods-MySteelHub.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2C989E1936B874FE611734BF /* libPods-MySteelHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySteelHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.release.xcconfig"; sourceTree = "<group>"; };
+		461BE7CA1CAF014C00A8F3DC /* LabeledActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabeledActivityIndicatorView.h; sourceTree = "<group>"; };
+		461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabeledActivityIndicatorView.m; sourceTree = "<group>"; };
+		461BE7CD1CAF01C000A8F3DC /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		461BE7CE1CAF01C000A8F3DC /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		461BE7D01CAF01FA00A8F3DC /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		461BE7D11CAF01FA00A8F3DC /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		461BE7D21CAF01FA00A8F3DC /* Login.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
+		461BE7D31CAF01FA00A8F3DC /* Login.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Login.m; sourceTree = "<group>"; };
+		461BE7D71CAF024000A8F3DC /* LeftSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSlider.h; sourceTree = "<group>"; };
+		461BE7D81CAF024000A8F3DC /* LeftSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSlider.m; sourceTree = "<group>"; };
+		461BE7D91CAF024000A8F3DC /* LeftSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSliderCell.h; sourceTree = "<group>"; };
+		461BE7DA1CAF024000A8F3DC /* LeftSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSliderCell.m; sourceTree = "<group>"; };
+		461BE7DE1CAF042300A8F3DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		461BE7E11CAF074300A8F3DC /* LoginManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginManager.h; sourceTree = "<group>"; };
+		461BE7E21CAF074300A8F3DC /* LoginManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginManager.m; sourceTree = "<group>"; };
+		461BE7E41CAF074300A8F3DC /* ModelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelManager.h; sourceTree = "<group>"; };
+		461BE7E51CAF074300A8F3DC /* ModelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelManager.m; sourceTree = "<group>"; };
+		461BE7E71CAF074300A8F3DC /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
+		461BE7E81CAF074300A8F3DC /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		461BE7EC1CAF0B7E00A8F3DC /* SignUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUP.h; sourceTree = "<group>"; };
+		461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUP.m; sourceTree = "<group>"; };
+		46F62CA31C908FDC00A61B47 /* MySteelHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySteelHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46F62CA71C908FDC00A61B47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46F62CA91C908FDC00A61B47 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		46F62CAA1C908FDC00A61B47 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		46F62CAC1C908FDC00A61B47 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		46F62CAD1C908FDC00A61B47 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		46F62CB01C908FDC00A61B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		46F62CB31C908FDC00A61B47 /* MySteelHub.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MySteelHub.xcdatamodel; sourceTree = "<group>"; };
+		46F62CB51C908FDC00A61B47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		46F62CB81C908FDC00A61B47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		46F62CBA1C908FDC00A61B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46F62D451C9363D100A61B47 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		46F62D531C95472900A61B47 /* MySteelHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySteelHub-Prefix.pch"; sourceTree = "<group>"; };
+		EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46F62CA01C908FDC00A61B47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B14A10B3B9DBC3A71A7E428 /* libPods-MySteelHub.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		461BE7C91CAF014C00A8F3DC /* Custom Loader */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7CA1CAF014C00A8F3DC /* LabeledActivityIndicatorView.h */,
+				461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */,
+			);
+			path = "Custom Loader";
+			sourceTree = "<group>";
+		};
+		461BE7D61CAF024000A8F3DC /* Slider */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7D71CAF024000A8F3DC /* LeftSlider.h */,
+				461BE7D81CAF024000A8F3DC /* LeftSlider.m */,
+				461BE7D91CAF024000A8F3DC /* LeftSliderCell.h */,
+				461BE7DA1CAF024000A8F3DC /* LeftSliderCell.m */,
+			);
+			path = Slider;
+			sourceTree = "<group>";
+		};
+		461BE7E01CAF074300A8F3DC /* Login Manager */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7E11CAF074300A8F3DC /* LoginManager.h */,
+				461BE7E21CAF074300A8F3DC /* LoginManager.m */,
+			);
+			path = "Login Manager";
+			sourceTree = "<group>";
+		};
+		461BE7E31CAF074300A8F3DC /* ModelManager */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7E41CAF074300A8F3DC /* ModelManager.h */,
+				461BE7E51CAF074300A8F3DC /* ModelManager.m */,
+			);
+			path = ModelManager;
+			sourceTree = "<group>";
+		};
+		461BE7E61CAF074300A8F3DC /* RequestManager */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7E71CAF074300A8F3DC /* RequestManager.h */,
+				461BE7E81CAF074300A8F3DC /* RequestManager.m */,
+			);
+			path = RequestManager;
+			sourceTree = "<group>";
+		};
+		46F62C9A1C908FDC00A61B47 = {
+			isa = PBXGroup;
+			children = (
+				46F62CA51C908FDC00A61B47 /* MySteelHub */,
+				46F62CA41C908FDC00A61B47 /* Products */,
+				CA947B5EBAC5A09731B55613 /* Pods */,
+				D856835EDA49992E1E818FAA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		46F62CA41C908FDC00A61B47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46F62CA31C908FDC00A61B47 /* MySteelHub.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46F62CA51C908FDC00A61B47 /* MySteelHub */ = {
+			isa = PBXGroup;
+			children = (
+				46F62CEC1C90AC5000A61B47 /* 3rdPartyLib */,
+				46F62CED1C90AC5000A61B47 /* Model */,
+				46F62CEE1C90AC5000A61B47 /* Utilities */,
+				46F62CEF1C90AC5000A61B47 /* ViewControllers */,
+				46F62CA91C908FDC00A61B47 /* AppDelegate.h */,
+				46F62CAA1C908FDC00A61B47 /* AppDelegate.m */,
+				46F62CAC1C908FDC00A61B47 /* ViewController.h */,
+				46F62CAD1C908FDC00A61B47 /* ViewController.m */,
+				461BE7DD1CAF042300A8F3DC /* Login.storyboard */,
+				46F62CAF1C908FDC00A61B47 /* Main.storyboard */,
+				46F62CB51C908FDC00A61B47 /* Assets.xcassets */,
+				46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */,
+				46F62CBA1C908FDC00A61B47 /* Info.plist */,
+				46F62CB21C908FDC00A61B47 /* MySteelHub.xcdatamodeld */,
+				46F62CA61C908FDC00A61B47 /* Supporting Files */,
+			);
+			path = MySteelHub;
+			sourceTree = "<group>";
+		};
+		46F62CA61C908FDC00A61B47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46F62CA71C908FDC00A61B47 /* main.m */,
+				46F62D531C95472900A61B47 /* MySteelHub-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46F62CEC1C90AC5000A61B47 /* 3rdPartyLib */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7C91CAF014C00A8F3DC /* Custom Loader */,
+			);
+			path = 3rdPartyLib;
+			sourceTree = "<group>";
+		};
+		46F62CED1C90AC5000A61B47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7E01CAF074300A8F3DC /* Login Manager */,
+				461BE7E31CAF074300A8F3DC /* ModelManager */,
+				461BE7E61CAF074300A8F3DC /* RequestManager */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46F62CEE1C90AC5000A61B47 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7D61CAF024000A8F3DC /* Slider */,
+				461BE7CD1CAF01C000A8F3DC /* BaseViewController.h */,
+				461BE7CE1CAF01C000A8F3DC /* BaseViewController.m */,
+				46F62D451C9363D100A61B47 /* Constants.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		46F62CEF1C90AC5000A61B47 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				461BE7D01CAF01FA00A8F3DC /* Home.h */,
+				461BE7D11CAF01FA00A8F3DC /* Home.m */,
+				461BE7D21CAF01FA00A8F3DC /* Login.h */,
+				461BE7D31CAF01FA00A8F3DC /* Login.m */,
+				461BE7EC1CAF0B7E00A8F3DC /* SignUP.h */,
+				461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		CA947B5EBAC5A09731B55613 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */,
+				39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D856835EDA49992E1E818FAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C989E1936B874FE611734BF /* libPods-MySteelHub.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46F62CA21C908FDC00A61B47 /* MySteelHub */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46F62CBD1C908FDC00A61B47 /* Build configuration list for PBXNativeTarget "MySteelHub" */;
+			buildPhases = (
+				50B8799220F9DADC6B080A49 /* Check Pods Manifest.lock */,
+				46F62C9F1C908FDC00A61B47 /* Sources */,
+				46F62CA01C908FDC00A61B47 /* Frameworks */,
+				46F62CA11C908FDC00A61B47 /* Resources */,
+				81013797BBF9436D7011FE32 /* Embed Pods Frameworks */,
+				B9DE0DD0021856940A40334C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MySteelHub;
+			productName = MySteelHub;
+			productReference = 46F62CA31C908FDC00A61B47 /* MySteelHub.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46F62C9B1C908FDC00A61B47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = MySteelHub;
+				TargetAttributes = {
+					46F62CA21C908FDC00A61B47 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 46F62C9E1C908FDC00A61B47 /* Build configuration list for PBXProject "MySteelHub" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 46F62C9A1C908FDC00A61B47;
+			productRefGroup = 46F62CA41C908FDC00A61B47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46F62CA21C908FDC00A61B47 /* MySteelHub */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46F62CA11C908FDC00A61B47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				461BE7DF1CAF042300A8F3DC /* Login.storyboard in Resources */,
+				46F62CB91C908FDC00A61B47 /* LaunchScreen.storyboard in Resources */,
+				46F62CB61C908FDC00A61B47 /* Assets.xcassets in Resources */,
+				46F62CB11C908FDC00A61B47 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		50B8799220F9DADC6B080A49 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		81013797BBF9436D7011FE32 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9DE0DD0021856940A40334C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46F62C9F1C908FDC00A61B47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */,
+				461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */,
+				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
+				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
+				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
+				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
+				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
+				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
+				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
+				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
+				461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */,
+				46F62CA81C908FDC00A61B47 /* main.m in Sources */,
+				461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */,
+				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		461BE7DD1CAF042300A8F3DC /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				461BE7DE1CAF042300A8F3DC /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		46F62CAF1C908FDC00A61B47 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46F62CB01C908FDC00A61B47 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46F62CB81C908FDC00A61B47 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46F62CBB1C908FDC00A61B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		46F62CBC1C908FDC00A61B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		46F62CBE1C908FDC00A61B47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
+				INFOPLIST_FILE = MySteelHub/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		46F62CBF1C908FDC00A61B47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
+				INFOPLIST_FILE = MySteelHub/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46F62C9E1C908FDC00A61B47 /* Build configuration list for PBXProject "MySteelHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46F62CBB1C908FDC00A61B47 /* Debug */,
+				46F62CBC1C908FDC00A61B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46F62CBD1C908FDC00A61B47 /* Build configuration list for PBXNativeTarget "MySteelHub" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46F62CBE1C908FDC00A61B47 /* Debug */,
+				46F62CBF1C908FDC00A61B47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46F62CB21C908FDC00A61B47 /* MySteelHub.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46F62CB31C908FDC00A61B47 /* MySteelHub.xcdatamodel */,
+			);
+			currentVersion = 46F62CB31C908FDC00A61B47 /* MySteelHub.xcdatamodel */;
+			path = MySteelHub.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 46F62C9B1C908FDC00A61B47 /* Project object */;
+}
