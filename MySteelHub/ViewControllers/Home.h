@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
-@interface Home : BaseViewController 
+
+@interface Home : UIViewController <UITextFieldDelegate,CLLocationManagerDelegate>
 
 -(IBAction)btnClicked:(id)sender;
 @end

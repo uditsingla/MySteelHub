@@ -20,7 +20,7 @@
     
     [self initializeNavBar];
     [self setbarButtonItems];
-    
+   
     // Do any additional setup after loading the view.
 }
 
@@ -38,6 +38,7 @@
 
 -(void)setbarButtonItems
 {
+   
     UIBarButtonItem *btnLeftMenu = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clk_btnLeftMenu:)];
     btnLeftMenu.image = [UIImage imageNamed:@"settings.png"];
     

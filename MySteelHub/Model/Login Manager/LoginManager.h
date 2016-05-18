@@ -31,6 +31,7 @@
 
 
 - (void)userLogin:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock;
+-(void)userSignUp:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock;
 
 
 
