@@ -31,10 +31,21 @@
 
 - (void)userLogin:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"" requestType:RequestTypePOST params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
-        NSLog(@"Here comes the json %@",json);
+    [RequestManager asynchronousRequestWithPath:@"auth/securelogin" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+               if (statusCode==200) {
+            NSLog(@"Here comes the json %@",json);
+            NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
+            completionBlock(arr,nil);
+        }
+        else{
+            NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
+            NSError *error=[json objectForKey:@"error"];
+            completionBlock(arr,error);
+        }
+       
     } ];
 }
+
 
     /*
     [rm asynchronousRequestWithPath:(NSString *) requestType:<#(RequestType)#> params:<#(NSDictionary *)#> timeOut:<#(NSInteger)#> includeHeaders:(BOOL) onCompletion:^(long statusCode, NSDictionary *json)
@@ -71,11 +82,29 @@
 
 -(void)validateUsername:(NSString*)username
 {
-    
+    [RequestManager asynchronousRequestWithPath:@"auth/register" requestType:RequestTypePOST params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"data"];
+     //   completionBlock(arr,nil);
+    } ];
 }
 
--(void)userSignUp:(NSDictionary *)dictParam
+- (void)userSignUp:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock
 {
+    [RequestManager asynchronousRequestWithPath:@"auth/register" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
+            completionBlock(arr,nil);
+
+        }
+        else{
+            
+            //show error
+        }
+        
+    } ];
+
     
 }
 

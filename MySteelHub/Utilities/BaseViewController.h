@@ -13,4 +13,6 @@
 
 -(void) initializeNavBar;
 
+-(UITextField*)customtxtfield:(UITextField*)txtField withrightIcon:(UIImage*)image borderLeft:(BOOL)l borderRight:(BOOL)r borderBottom:(BOOL)b borderTop:(BOOL)t;
+
 @end

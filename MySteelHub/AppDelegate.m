@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
+{
+    
+    BOOL autologin;
+}
 
 @end
 
@@ -18,19 +22,59 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    UIViewController *viewController;
-    viewController = [kLoginStoryboard instantiateViewControllerWithIdentifier: @"login"];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+   
     
-    UIViewController *leftSlider = [kMainStoryboard instantiateViewControllerWithIdentifier: @"leftslider"];
+   
+    UIViewController *viewController;
+    viewController = [kLoginStoryboard instantiateViewControllerWithIdentifier:@"login"];
+    
+//    UIViewController *viewController;
+//    viewController = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Requirements"];
+    
+     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    autologin=false;
+    
+    if (autologin) {
+        UIViewController *HomeviewController;
+        HomeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
+        
+         UIViewController *leftSlider = [kMainStoryboard instantiateViewControllerWithIdentifier: @"leftslider"];
+       
+
+        container = [MFSideMenuContainerViewController
+                     containerWithCenterViewController:navController
+                     leftMenuViewController:leftSlider
+                     rightMenuViewController:nil];
+        [container.centerViewController pushViewController:HomeviewController animated:NO];
+    }
+    else{
+   
     container = [MFSideMenuContainerViewController
                  containerWithCenterViewController:navController
-                 leftMenuViewController:leftSlider
+                 leftMenuViewController:nil
                  rightMenuViewController:nil];
+    }
+    
+    
     self.window.rootViewController = container;
+
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeNone | UIUserNotificationTypeBadge | UIUserNotificationTypeAlert)];
+    }
+
 
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -135,5 +179,51 @@
         }
     }
 }
+
+#pragma mark push notification work
+- (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
+{
+    NSLog(@"My token is: %@", deviceToken);
+    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet: [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
+    NSLog(@"token---%@",token);
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:@"DeviceToken"];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"Failed to register with error: %@", error);
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSLog(@"received notification%@",userInfo.description);
+    
+    NSString *push_msg = [[userInfo objectForKey:@"aps"]objectForKey:@"alert"];
+    
+    UIApplicationState state = [[UIApplication sharedApplication] applicationState];
+    
+    
+    if(state == UIApplicationStateActive)
+    {
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationPushReceived object:@"success" userInfo:@{@"appointmentId":appointment_id}];
+        //[self showNotificationAlert:push_msg];
+    }
+    else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
+    {
+        //        if(slideContainer)
+        //        {
+        if([push_msg isEqualToString:@"Order Received"])
+        {
+            
+            
+            
+        }
+    }
+}
+
+
 
 @end

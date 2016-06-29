@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
     
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
-                    @"Appointments",
+                    @"Requirements",
                     @"History",
                     @"Logout",nil];
     
