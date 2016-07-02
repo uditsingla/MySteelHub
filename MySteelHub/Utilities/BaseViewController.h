@@ -10,8 +10,9 @@
 
 @interface BaseViewController : UIViewController
 
-
--(void) initializeNavBar;
+-(void)setTitleLabel:(NSString*)title;
+-(void)setBackButton;
+-(void)setMenuButton;
 
 -(UITextField*)customtxtfield:(UITextField*)txtField withrightIcon:(UIImage*)image borderLeft:(BOOL)l borderRight:(BOOL)r borderBottom:(BOOL)b borderTop:(BOOL)t;
 

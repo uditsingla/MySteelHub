@@ -18,10 +18,7 @@
 {
     [super viewDidLoad];
     
-    [self initializeNavBar];
-    [self setbarButtonItems];
     self.navigationController.navigationBarHidden = YES;
-    
     // Do any additional setup after loading the view.
 }
 
@@ -30,61 +27,52 @@
     // Dispose of any resources that can be recreated.
 }
 
-
--(void)initializeNavBar
+-(void)setTitleLabel:(NSString*)title
 {
-    self.navigationController.navigationBar.barTintColor = BlueColor;
+    UILabel *label = [[UILabel alloc] init];
+    label.text = title;
+    label.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
+    label.textColor=[UIColor whiteColor];
+    label.backgroundColor = [UIColor grayColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
 }
 
-
--(void)setbarButtonItems
+-(void)setBackButton
 {
-    
-    UIBarButtonItem *btnLeftMenu = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clk_btnLeftMenu:)];
-    btnLeftMenu.image = [UIImage imageNamed:@"settings.png"];
-    
-    self.navigationItem.leftBarButtonItems = @[btnLeftMenu];
-    
-    /* Image in navigationBar */
-    UIImage * logoInNavigationBar = [UIImage imageNamed:@"01_logo.png"];
-    UIImageView * logoView = [[UIImageView alloc] init];
-    [logoView setImage:logoInNavigationBar];
-    self.navigationController.navigationItem.titleView = logoView;
-    
-    /* Right Bar Buttons */
-    UIBarButtonItem *btnMessage = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clk_btnMessage:)];
-    btnMessage.image = [UIImage imageNamed:@"settings.png"];
-    
-    
-    self.navigationItem.rightBarButtonItems = @[btnMessage];
-    
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, 50, 70);
+    [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:backButton];
+}
+
+-(void)setMenuButton
+{
+    UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    menuButton.frame = CGRectMake(self.view.frame.size.width-50, 0, 50, 70);
+    [menuButton setImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
+    [menuButton addTarget:self action:@selector(rightMenuAction) forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:menuButton];
 }
 
 
 
 #pragma mark - Clk Actions
--(void)clk_btnLeftMenu:(id)sender
+
+-(void)backButtonAction
 {
-    NSLog(@"clk_btnLeftMenu");
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)rightMenuAction
+{
+    NSLog(@"right menu pressed");
+    [self.menuContainerViewController toggleRightSideMenuCompletion:^{}];
     
 }
 
--(void)clk_btnQRCode:(id)sender
-{
-    NSLog(@"clk_btnQRCode");
-    
-}
--(void)clk_btnMessage:(id)sender
-{
-    NSLog(@"clk_btnMessage");
-    
-}
--(void)clk_btnSearch:(id)sender
-{
-    NSLog(@"clk_btnSearch");
-    
-}
 
 #pragma mark - custom textfield
 

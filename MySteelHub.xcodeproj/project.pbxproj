@@ -72,6 +72,11 @@
 		46F62CB61C908FDC00A61B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB51C908FDC00A61B47 /* Assets.xcassets */; };
 		46F62CB91C908FDC00A61B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */; };
 		6B14A10B3B9DBC3A71A7E428 /* libPods-MySteelHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C989E1936B874FE611734BF /* libPods-MySteelHub.a */; };
+		7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AEA1D284B86003159F9 /* SVIndefiniteAnimatedView.m */; };
+		7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AEC1D284B86003159F9 /* SVProgressAnimatedView.m */; };
+		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
+		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
+		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -159,6 +164,16 @@
 		46F62CBA1C908FDC00A61B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F62D451C9363D100A61B47 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		46F62D531C95472900A61B47 /* MySteelHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySteelHub-Prefix.pch"; sourceTree = "<group>"; };
+		7C183AE91D284B86003159F9 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		7C183AEA1D284B86003159F9 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		7C183AEB1D284B86003159F9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		7C183AEC1D284B86003159F9 /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		7C183AED1D284B86003159F9 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		7C183AEF1D284B86003159F9 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		7C183AF01D284B86003159F9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -325,6 +340,7 @@
 		46F62CEC1C90AC5000A61B47 /* 3rdPartyLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C183AE81D284B86003159F9 /* SVProgressHUD */,
 				461BE7C91CAF014C00A8F3DC /* Custom Loader */,
 			);
 			path = 3rdPartyLib;
@@ -366,6 +382,23 @@
 				1885057A1CDF770100086EC8 /* RequirementDetail.m */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		7C183AE81D284B86003159F9 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7C183AE91D284B86003159F9 /* SVIndefiniteAnimatedView.h */,
+				7C183AEA1D284B86003159F9 /* SVIndefiniteAnimatedView.m */,
+				7C183AEB1D284B86003159F9 /* SVProgressAnimatedView.h */,
+				7C183AEC1D284B86003159F9 /* SVProgressAnimatedView.m */,
+				7C183AED1D284B86003159F9 /* SVProgressHUD-Prefix.pch */,
+				7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */,
+				7C183AEF1D284B86003159F9 /* SVProgressHUD.h */,
+				7C183AF01D284B86003159F9 /* SVProgressHUD.m */,
+				7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */,
+				7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		CA947B5EBAC5A09731B55613 /* Pods */ = {
@@ -445,6 +478,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */,
 				1885054D1CDDE45100086EC8 /* date@2x.png in Resources */,
 				188505471CDDE45100086EC8 /* brand@2x.png in Resources */,
 				188505691CDDE45100086EC8 /* zip@2x.png in Resources */,
@@ -556,7 +590,10 @@
 				1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */,
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
 				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
+				7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
+				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
+				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
@@ -567,6 +604,7 @@
 				46F62CA81C908FDC00A61B47 /* main.m in Sources */,
 				461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */,
 				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,
+				7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +655,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -639,6 +678,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -660,7 +700,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -675,6 +716,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -685,12 +727,14 @@
 			baseConfigurationReference = EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -700,12 +744,14 @@
 			baseConfigurationReference = 39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
