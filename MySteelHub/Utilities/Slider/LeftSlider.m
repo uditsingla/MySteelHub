@@ -31,16 +31,22 @@
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
                     @"Requirements",
                     @"History",
+                    @"Change Password",
+                    @"Contact Us",
                     @"Logout",nil];
     
-    arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
-                          @"ads.png",
-                          @"special.png",
-                          @"item.png",
+    arrMenuItemsImages = [NSArray arrayWithObjects:@"company.png",
+                          @"img.png",
+                          @"mm.png",
+                          @"password.png",
+                          @"pin.png",
+                          @"user.png",
                           nil];
     
     
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
+    
+    self.view.backgroundColor = [UIColor grayColor];
 
 }
 
@@ -81,9 +87,7 @@
     }
     
     //Menu lable
-    //UILabel *lblMenu = (UILabel*)[cell.contentView viewWithTag:klblMenuItem];
-   // NSLog(@"lbl text : %@",[arrMenuItems objectAtIndex:indexPath.row]);
-    cell.lblMenuItem.backgroundColor = GreenColor;
+//    cell.lblMenuItem.backgroundColor = GreenColor;
     cell.lblMenuItem.textColor = LightGreyColor;
     cell.lblMenuItem.text = [arrMenuItems objectAtIndex:indexPath.row] ;
     
@@ -94,7 +98,7 @@
     //NSString *imgBundlePath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[]];
     cell.imgMenuItem.image = [UIImage imageNamed:[arrMenuItemsImages objectAtIndex:indexPath.row]];
     
-    cell.backgroundColor = BlackBackground;
+    cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
@@ -129,7 +133,15 @@
     if([keyName caseInsensitiveCompare:@"Home"] == NSOrderedSame){
         NSLog(@"Home");
         
-        [appdelegate.container.centerViewController pushViewController:[self goToController:@"home"] animated:NO];
+//        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+//        
+//        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
+//        while (controllers.count>2)
+//        {
+//            [controllers removeLastObject];
+//        }
+//        navigationController.viewControllers = controllers;
+
     }
     else if ([keyName caseInsensitiveCompare:@"Appointments"] == NSOrderedSame){
         

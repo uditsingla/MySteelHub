@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Requirements : UIViewController
+@interface Requirements : BaseViewController
 
 @end

@@ -297,7 +297,7 @@
                                                 </attributedString>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-ig-8Gz">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DY9-ig-8Gz">
                                                 <rect key="frame" x="38" y="301" width="244" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -310,7 +310,7 @@
                                                     <outlet property="delegate" destination="vG0-JI-E47" id="T1B-EO-uJx"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bpu-EO-3gP">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bpu-EO-3gP">
                                                 <rect key="frame" x="38" y="336" width="244" height="30"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -328,8 +328,10 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="27" id="DEa-H7-Wpa"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <state key="normal" title="Forgot Password?Change It"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                <state key="normal" title="Forgot Password?Change It">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="forgotPassword:" destination="vG0-JI-E47" eventType="touchUpInside" id="pCE-8X-Txi"/>
                                                 </connections>
@@ -409,7 +411,8 @@
                     </view>
                     <connections>
                         <outlet property="scrollview" destination="zXo-7S-Ckf" id="cux-5S-lcA"/>
-                        <outlet property="txtUsername" destination="DY9-ig-8Gz" id="XKw-ua-Akr"/>
+                        <outlet property="txtEmail" destination="DY9-ig-8Gz" id="RBg-yB-q4W"/>
+                        <outlet property="txtPassword" destination="Bpu-EO-3gP" id="kF3-hB-FQ7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9q-FD-M7o" userLabel="First Responder" sceneMemberID="firstResponder"/>

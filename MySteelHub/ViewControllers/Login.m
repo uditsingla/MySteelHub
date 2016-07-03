@@ -27,8 +27,11 @@
 {
     [super viewDidLoad];
     
-    txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Username"withIcon:[UIImage imageNamed:@"user.png"]];
+    txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
+    
+    txtEmail.text = @"xyz@gmail.com";
+    txtPassword.text = @"aaaaaaaa";
     
     //[txtUsername setValue:[UIColor blueColor] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -94,30 +97,33 @@
 {
     if ([self validEmail:txtEmail.text] != 0 && [[txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] != 0 )
     {
+        [SVProgressHUD show];
         
-        dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"DeviceID",nil];
+        dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
+        
+        //dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  @"1234567890",@"device_token",nil];
+
         
         
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
         
         [model_manager.loginManager userLogin:dictLoginParams completion:^(NSArray *addresses, NSError *error){
             NSLog(@"Login Response");
+            [SVProgressHUD dismiss];
             [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            if (addresses.count>0) {
-                if (error) {
-                    
-                    [self appError:@"" jsonerror:[addresses objectAtIndex:0]];
-                    return ;
-                    //
-                }
+            if (error) {
                 
-                UIViewController *Requirements = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
-                [self.navigationController pushViewController:Requirements animated:YES];
+                [self appError:@"" jsonerror:[addresses objectAtIndex:0]];
+                return ;
+            }
+            else
+            {
+                
+                //                UIViewController *Requirements = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
+                //                [self.navigationController pushViewController:Requirements animated:YES];
                 [self callSlideMenu];
                 
-                
             }
-            
             
             
         }];
@@ -143,8 +149,8 @@
     
     MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
                                                     containerWithCenterViewController:HomeviewController
-                                                    leftMenuViewController:leftSlider
-                                                    rightMenuViewController:nil];
+                                                    leftMenuViewController:nil
+                                                    rightMenuViewController:leftSlider];
     // ((AppDelegate*)[[UIApplication sharedApplication] delegate]).slideContainer=container;
     
     [self.navigationController pushViewController:container animated:YES];
@@ -259,21 +265,23 @@
 
 -(UITextField*)customtxtfield:(UITextField*)txtField withplaceholder:(NSString*)placeholder withIcon:(UIImage*)image
 {
+    txtField.backgroundColor = [UIColor clearColor];
     txtField.attributedPlaceholder = [[NSAttributedString alloc]
                                       initWithString:placeholder
                                       attributes:@{NSForegroundColorAttributeName:
-                                                       [UIColor whiteColor]}];
+                                                       [UIColor lightGrayColor]}];
     
     
     
-    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, txtField.frame.size.width/2-25, 41)];
+    UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     paddingView.backgroundColor=[UIColor clearColor];
-    UIImageView*icon=[[UIImageView alloc]initWithFrame:CGRectMake(paddingView.frame.size.width-22, paddingView.frame.size.height/2-8, 16, 16)];
+    UIImageView*icon=[[UIImageView alloc]initWithFrame:CGRectMake(12, paddingView.frame.size.height/2-8, 16, 16)];
     icon.image=image;
     [paddingView addSubview:icon];
     txtField.leftView = paddingView;
     txtField.leftViewMode = UITextFieldViewModeAlways;
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, txtField.frame.size.height-2, txtField.frame.size.width, 2)];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, txtField.frame.size.height-2, self.view.frame.size.width - 76, 2)];
     lineView.backgroundColor = [UIColor whiteColor];
     [txtField addSubview:lineView];
     

@@ -11,11 +11,9 @@
 
 @interface Login : UIViewController<UITextFieldDelegate>
 {
-    __weak IBOutlet UITextField *txtUsername;
     __weak IBOutlet UIButton *btnLogin;
     __weak IBOutlet UIButton *btnSignUp;
     __weak IBOutlet UITextField *txtEmail;
-    __weak IBOutlet UITextField *txtOptionalEmail;
     __weak IBOutlet UITextField *txtPassword;
     __weak IBOutlet UIButton *btnCheckBox;
     __weak IBOutlet UILabel *lblTerms;

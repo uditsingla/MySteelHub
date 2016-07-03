@@ -9,6 +9,8 @@
 #ifndef Constants_h
 #define Constants_h
 
+#import "SVProgressHUD.h"
+
 #define kMainStoryboard [UIStoryboard storyboardWithName:@"Main" bundle: nil]
 #define kLoginStoryboard [UIStoryboard storyboardWithName:@"Login" bundle: nil]
 
