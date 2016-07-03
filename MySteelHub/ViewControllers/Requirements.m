@@ -24,7 +24,6 @@
     // Do any additional setup after loading the view.
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
-    [self setBackButton];
     
 //    self.navigationController.navigationBar.barTintColor=BlackBackground;
 //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];

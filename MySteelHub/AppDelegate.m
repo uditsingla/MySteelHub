@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
    
-    
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
    
     UIViewController *viewController;
     viewController = [kLoginStoryboard instantiateViewControllerWithIdentifier:@"login"];

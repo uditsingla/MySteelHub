@@ -133,14 +133,14 @@
     if([keyName caseInsensitiveCompare:@"Home"] == NSOrderedSame){
         NSLog(@"Home");
         
-//        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-//        
-//        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
-//        while (controllers.count>2)
-//        {
-//            [controllers removeLastObject];
-//        }
-//        navigationController.viewControllers = controllers;
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
+        while (controllers.count>1)
+        {
+            [controllers removeLastObject];
+        }
+        navigationController.viewControllers = controllers;
 
     }
     else if ([keyName caseInsensitiveCompare:@"Appointments"] == NSOrderedSame){
@@ -152,8 +152,7 @@
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
         
-         [appdelegate.container.centerViewController pushViewController:[self goToController:@"history"] animated:NO];
-        
+         
     }
     
     else if ([keyName caseInsensitiveCompare:@"Logout"] == NSOrderedSame)
@@ -167,7 +166,7 @@
         
     }
     
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
+    [self.menuContainerViewController toggleRightSideMenuCompletion:^{}];
     
     
 }

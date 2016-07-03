@@ -140,15 +140,16 @@
 
 -(void)callSlideMenu
 {
-    UIViewController *HomeviewController;
-    HomeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
+    UIViewController *homeviewController;
+    homeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
     
     UIViewController *leftSlider = [kMainStoryboard instantiateViewControllerWithIdentifier: @"leftslider"];
     
-    
+    UINavigationController *centerNavigationController=[[UINavigationController alloc]initWithRootViewController:homeviewController];
+    centerNavigationController.navigationBarHidden=YES;
     
     MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController:HomeviewController
+                                                    containerWithCenterViewController:centerNavigationController
                                                     leftMenuViewController:nil
                                                     rightMenuViewController:leftSlider];
     // ((AppDelegate*)[[UIApplication sharedApplication] delegate]).slideContainer=container;
