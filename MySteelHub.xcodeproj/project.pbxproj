@@ -689,7 +689,7 @@
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
@@ -704,7 +704,7 @@
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = MySteelHub.MySteelHub;
+				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 			};
