@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vG0-JI-E47">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="xFI-5A-9H6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTe-HF-fTu">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="55" width="320" height="513"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-jH-rE0" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="533"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyB-kK-lRT">
                                                 <rect key="frame" x="10" y="0.0" width="300" height="40"/>
@@ -231,7 +231,7 @@
                             <constraint firstItem="iTe-HF-fTu" firstAttribute="leading" secondItem="Aeb-gd-Lfe" secondAttribute="leading" id="Rwt-Qc-53Y"/>
                             <constraint firstItem="XKP-jH-rE0" firstAttribute="width" secondItem="Aeb-gd-Lfe" secondAttribute="width" id="SYt-KK-dkx"/>
                             <constraint firstAttribute="trailing" secondItem="iTe-HF-fTu" secondAttribute="trailing" id="Y6i-3I-Yt4"/>
-                            <constraint firstItem="iTe-HF-fTu" firstAttribute="top" secondItem="Aeb-gd-Lfe" secondAttribute="top" constant="20" id="auU-Yn-D8z"/>
+                            <constraint firstItem="iTe-HF-fTu" firstAttribute="top" secondItem="Aeb-gd-Lfe" secondAttribute="top" constant="55" id="auU-Yn-D8z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8TB-Ug-c47"/>
@@ -255,6 +255,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXo-rQ-Jqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1187" y="-445"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JMl-wV-9ny">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="xFI-5A-9H6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CJL-Iq-fR6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vG0-JI-E47" kind="relationship" relationship="rootViewController" id="wry-bA-SKg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSe-sW-HTC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-82" y="-419"/>
         </scene>
         <!--Login-->
         <scene sceneID="aWG-E3-xsU">
@@ -409,6 +425,7 @@
                             <constraint firstItem="zXo-7S-Ckf" firstAttribute="top" secondItem="v64-Sw-02q" secondAttribute="top" id="r8Q-Cv-5un"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GiL-r1-DR8"/>
                     <connections>
                         <outlet property="scrollview" destination="zXo-7S-Ckf" id="cux-5S-lcA"/>
                         <outlet property="txtEmail" destination="DY9-ig-8Gz" id="RBg-yB-q4W"/>

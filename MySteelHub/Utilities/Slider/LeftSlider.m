@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
     
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
-                    @"Requirements",
+                    @"New Requirement",
                     @"History",
                     @"Change Password",
                     @"Contact Us",
@@ -143,10 +143,10 @@
         navigationController.viewControllers = controllers;
 
     }
-    else if ([keyName caseInsensitiveCompare:@"Appointments"] == NSOrderedSame){
+    else if ([keyName caseInsensitiveCompare:@"New Requirement"] == NSOrderedSame){
         
         
-        [appdelegate.container.centerViewController pushViewController:[self goToController:@"appointments"] animated:NO];
+        [self.menuContainerViewController.centerViewController pushViewController:[self goToController:@"Home"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
@@ -158,11 +158,12 @@
     else if ([keyName caseInsensitiveCompare:@"Logout"] == NSOrderedSame)
     {
         NSLog(@"Logout");
-        [appdelegate.container.centerViewController popToRootViewControllerAnimated:YES];
+        UINavigationController *navController = (UINavigationController*)appdelegate.window.rootViewController;
+        [navController popToRootViewControllerAnimated:YES];
 
     }
     else {
-        NSLog(@"Logout clicked");
+        NSLog(@"else clicked");
         
     }
     

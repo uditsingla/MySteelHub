@@ -17,10 +17,8 @@
 
 @implementation SignUP
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.hidden=NO;
 }
 -(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor=BlueColor;
     
 }
 
@@ -31,25 +29,9 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
-    self.navigationController.navigationBar.barTintColor=BlackBackground;
-    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(Back)];
     
-    self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    self.navigationController.navigationBar.topItem.title=@"";
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"COMPLETE YOUR PROFILE";
-    label.frame = CGRectMake(0, 0, 100, 30);
-    label.textColor=[UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
-    self.navigationItem.titleView = customLabel.customView;
+    [self setTitleLabel:@"SIGN UP"];
+    [self setBackButton];
     
     
     [self setupTextFields];

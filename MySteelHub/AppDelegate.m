@@ -24,40 +24,7 @@
     // Override point for customization after application launch.
    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-   
-    UIViewController *viewController;
-    viewController = [kLoginStoryboard instantiateViewControllerWithIdentifier:@"login"];
     
-//    UIViewController *viewController;
-//    viewController = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Requirements"];
-    
-     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    autologin=false;
-    
-    if (autologin) {
-        UIViewController *HomeviewController;
-        HomeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
-        
-         UIViewController *leftSlider = [kMainStoryboard instantiateViewControllerWithIdentifier: @"leftslider"];
-       
-
-        container = [MFSideMenuContainerViewController
-                     containerWithCenterViewController:navController
-                     leftMenuViewController:leftSlider
-                     rightMenuViewController:nil];
-        [container.centerViewController pushViewController:HomeviewController animated:NO];
-    }
-    else{
-   
-    container = [MFSideMenuContainerViewController
-                 containerWithCenterViewController:navController
-                 leftMenuViewController:nil
-                 rightMenuViewController:nil];
-    }
-    
-    
-    self.window.rootViewController = container;
-
     
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
     {

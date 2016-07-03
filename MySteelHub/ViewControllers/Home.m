@@ -25,7 +25,6 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden=NO;
     
 }
 
@@ -38,31 +37,13 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
-    self.navigationController.navigationBar.barTintColor=BlackBackground;
-    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-   
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(Back)];
     
-    self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = nil;
-
-    self.navigationController.navigationBar.topItem.title=@"";
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"NEW REQUIREMENT";
-    label.frame = CGRectMake(0, 0, 100, 30);
-    label.textColor=[UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
-    self.navigationItem.titleView = customLabel.customView;
-    
-
+    [self setTitleLabel:@"NEW REQUIREMENT"];
+    [self setMenuButton];
+    [self setBackButton];
     
     
-    [self getUserLocation];
+    //[self getUserLocation];
     /*
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
                                                             longitude:151.2086

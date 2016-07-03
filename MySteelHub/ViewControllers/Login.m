@@ -152,7 +152,7 @@
                                                     containerWithCenterViewController:centerNavigationController
                                                     leftMenuViewController:nil
                                                     rightMenuViewController:leftSlider];
-    // ((AppDelegate*)[[UIApplication sharedApplication] delegate]).slideContainer=container;
+     appdelegate.container = container;
     
     [self.navigationController pushViewController:container animated:YES];
 }

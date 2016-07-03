@@ -10,7 +10,7 @@
 @import CoreLocation;
 
 
-@interface Home : UIViewController <UITextFieldDelegate,CLLocationManagerDelegate>
+@interface Home : BaseViewController <UITextFieldDelegate,CLLocationManagerDelegate>
 
 -(IBAction)btnClicked:(id)sender;
 @end
