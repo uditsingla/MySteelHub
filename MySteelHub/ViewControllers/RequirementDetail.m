@@ -33,31 +33,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.hidden=NO;
-    self.navigationController.navigationBar.barTintColor=BlackBackground;
-    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(Back)];
-    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"]
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(settings)];
-    
-    self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = settingsButton;
-    
-    self.navigationController.navigationBar.topItem.title=@"";
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"REQUIREMENTS";
-    label.frame = CGRectMake(0, 0, 100, 30);
-    label.textColor=[UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
-    self.navigationItem.titleView = customLabel.customView;
-    
+    [self setTitleLabel:@"REQUIREMENT DETAILS"];
+    [self setMenuButton];
+    [self setBackButton];
+
     chemical.layer.borderWidth=1;
     chemical.layer.borderColor=[UIColor blackColor].CGColor ;
     physical.layer.borderWidth=1;

@@ -694,7 +694,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h4G-1H-g01" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="800"/>
+                                        <rect key="frame" x="0.0" y="50" width="320" height="800"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="img.png" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-pf-UXn">
                                                 <rect key="frame" x="35" y="36" width="122" height="122"/>
@@ -886,7 +886,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="h4G-1H-g01" firstAttribute="top" secondItem="wyi-iD-cAU" secondAttribute="top" id="ImK-mM-MIP"/>
+                                    <constraint firstItem="h4G-1H-g01" firstAttribute="top" secondItem="wyi-iD-cAU" secondAttribute="top" constant="50" id="ImK-mM-MIP"/>
                                     <constraint firstItem="h4G-1H-g01" firstAttribute="leading" secondItem="wyi-iD-cAU" secondAttribute="leading" id="Kkn-h4-Qkk"/>
                                     <constraint firstAttribute="trailing" secondItem="h4G-1H-g01" secondAttribute="trailing" id="MOM-8J-7u8"/>
                                     <constraint firstAttribute="bottom" secondItem="h4G-1H-g01" secondAttribute="bottom" id="sAX-oz-GUh"/>

@@ -125,9 +125,19 @@
     
     UILabel *lbl=(UILabel*)[view viewWithTag:2];
     lbl.text=@"hahah";
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
+    [self.navigationController pushViewController:detailVC animated:YES];
+
+}
+
 - (IBAction)btnNewRequirement:(id)sender {
     
     UIViewController *homeVC = [kMainStoryboard instantiateInitialViewController];
