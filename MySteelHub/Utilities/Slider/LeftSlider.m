@@ -145,8 +145,9 @@
     }
     else if ([keyName caseInsensitiveCompare:@"New Requirement"] == NSOrderedSame){
         
-        
-        [self.menuContainerViewController.centerViewController pushViewController:[self goToController:@"Home"] animated:NO];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+
+        [navigationController pushViewController:[self goToController:@"home"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){

@@ -140,7 +140,7 @@
 
 - (IBAction)btnNewRequirement:(id)sender {
     
-    UIViewController *homeVC = [kMainStoryboard instantiateInitialViewController];
+    UIViewController *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
         [self.navigationController pushViewController:homeVC animated:YES];
 }
 

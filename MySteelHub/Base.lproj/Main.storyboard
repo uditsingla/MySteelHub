@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="gLa-JB-vmS">
             <objects>
-                <viewController storyboardIdentifier="home" id="lCf-nS-kb8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="view" id="lCf-nS-kb8" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HwQ-dh-3je"/>
                         <viewControllerLayoutGuide type="bottom" id="LVC-v7-NbY"/>
@@ -301,7 +301,7 @@
         <!--Home-->
         <scene sceneID="BKG-kj-Vo6">
             <objects>
-                <viewController storyboardIdentifier="Home" id="P12-dO-A8K" customClass="Home" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="home" id="P12-dO-A8K" customClass="Home" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CBo-DS-qLr"/>
                         <viewControllerLayoutGuide type="bottom" id="dDG-2u-OWJ"/>
