@@ -183,7 +183,7 @@
     
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
@@ -191,15 +191,13 @@
 }
 -(void)hideKeyboard:(NSNotification*)notification
 {
-    NSLog(@"Keyboard hidden");
-    NSDictionary *info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, 0, 0);
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
-    
 }
+
 -(void)Closekeyboard:(NSNotification*)notification
 {
     NSLog(@"Keyboard hidden");

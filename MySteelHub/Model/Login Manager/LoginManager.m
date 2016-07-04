@@ -99,7 +99,7 @@
 
         }
         else{
-            
+            completionBlock(nil,nil);
             //show error
         }
         

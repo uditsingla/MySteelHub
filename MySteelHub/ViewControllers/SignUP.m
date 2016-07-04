@@ -30,7 +30,7 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
-    [self setTitleLabel:@"SIGN UP"];
+    [self setTitleLabel:@"COMPLETE YOUR PROFILE"];
     [self setBackButton];
     
     
@@ -77,7 +77,7 @@
     
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height,0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
@@ -86,7 +86,7 @@
 -(void)hideKeyboard:(NSNotification*)notification
 {
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height,0,0, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
@@ -99,6 +99,7 @@
     
     return YES;
 }
+
 - (IBAction)btnSubmit:(id)sender {
     
     if ([_txtFieldUsername.text isEqual:@""]) {
@@ -187,22 +188,25 @@
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
         [SVProgressHUD dismiss];
 
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@""
-                                              message:[addresses objectAtIndex:0]
-                                              preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction
-                                   actionWithTitle:@"Ok"
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       [self dismissViewControllerAnimated:YES completion:nil];
-                                       [self.navigationController popViewControllerAnimated:YES];
-                                       NSLog(@"OK action");
-                                   }];
-        
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        if(addresses)
+        {
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle:@""
+                                                  message:[addresses objectAtIndex:0]
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                           [self.navigationController popViewControllerAnimated:YES];
+                                           NSLog(@"OK action");
+                                       }];
+            
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
         //
         //        NSLog(@"Login Response");
         //

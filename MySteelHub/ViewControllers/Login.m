@@ -30,8 +30,8 @@
     txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
     
-    txtEmail.text = @"xyz@gmail.com";
-    txtPassword.text = @"aaaaaaaa";
+//    txtEmail.text = @"xyz@gmail.com";
+//    txtPassword.text = @"aaaaaaaa";
     
     //[txtUsername setValue:[UIColor blueColor] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -199,48 +199,29 @@
 }
 
 
-
-- (void)keyboardWillShow:(NSNotification *)notification
+-(void)keyboardWillShow:(NSNotification*)notification
 {
-    //    NSDictionary *info = [notification userInfo];
-    //    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    //    
-    //    UIEdgeInsets contentInset = scrollview.contentInset;
-    //    contentInset.bottom = keyboardRect.size.height;
-    //    scrollview.contentInset = contentInset;
+    NSLog(@"Keyboard shown");
     
-    //    NSDictionary *info = [notification userInfo];
-    //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.view.frame.origin.y, 0.0, kbSize.height, 0);
-    //    scrollview.contentInset = contentInsets;
-    //    scrollview.scrollIndicatorInsets = contentInsets;
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y,0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
     scrollview.contentInset = contentInsets;
     scrollview.scrollIndicatorInsets = contentInsets;
     
+    
 }
 
-
-- (void)keyboardWillHide:(NSNotification *)notification
+-(void)keyboardWillHide:(NSNotification*)notification
 {
-    //    NSDictionary *info = [notification userInfo];
-    //    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    //     UIEdgeInsets contentInsets =UIEdgeInsetsMake(self.view.frame.origin.y, 0,0, 0);
-    //  //  UIEdgeInsets contentInset = scrollview.contentInset;
-    //    contentInsets.bottom = keyboardRect.size.height;
-    //    scrollview.contentInset = contentInsets;
-    //     scrollview.scrollIndicatorInsets = contentInsets;
     
-    //    CGPoint bottomOffset = CGPointMake(0, scrollview.contentSize.height - scrollview.bounds.size.height);
-    //    [UIScrollView setContentOffset:bottomOffset animated:YES];
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y,0,0, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     scrollview.contentInset = contentInsets;
     scrollview.scrollIndicatorInsets = contentInsets;
+    
+    
 }
+
 
 -(IBAction)signUpUser:(id)sender
 {

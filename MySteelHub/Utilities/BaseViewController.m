@@ -180,6 +180,8 @@
     icon.image=image;
     [txtField addSubview:icon];
     
+    txtField.delegate = self;
+    
     return txtField;
 }
 
