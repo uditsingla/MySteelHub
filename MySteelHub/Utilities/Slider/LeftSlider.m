@@ -46,7 +46,7 @@
     
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
     
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
 
 }
 
@@ -88,7 +88,7 @@
     
     //Menu lable
 //    cell.lblMenuItem.backgroundColor = GreenColor;
-    cell.lblMenuItem.textColor = LightGreyColor;
+    cell.lblMenuItem.textColor = [UIColor whiteColor];
     cell.lblMenuItem.text = [arrMenuItems objectAtIndex:indexPath.row] ;
     
     
