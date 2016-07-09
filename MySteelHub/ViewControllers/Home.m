@@ -7,9 +7,10 @@
 //
 
 #import "Home.h"
+#import "HomeCell.h"
 //#import <GoogleMaps/GoogleMaps.h>
 
-@interface Home ()
+@interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
 {
     __weak IBOutlet UIButton *btnChemical;
     __weak IBOutlet UIButton *btnCertReq;
@@ -18,6 +19,12 @@
     
     __weak IBOutlet UIScrollView *_scrollView;
     
+    __weak IBOutlet UITableView *tblViewSizes;
+    
+    int rowCountSizesTable;
+    
+    UIView *pickerToolBarView;
+    NSMutableArray *arraySteelSizes;
 }
 @end
 
@@ -42,6 +49,9 @@
     [self setMenuButton];
     [self setBackButton];
     
+    tblViewSizes.dataSource = self;
+    tblViewSizes.delegate = self;
+    rowCountSizesTable = 1;
     
     //[self getUserLocation];
     /*
@@ -56,12 +66,109 @@
     marker.map = mapView;
     self.view = mapView;
      */
+    
+    arraySteelSizes = [NSMutableArray arrayWithObjects:@"8mm",@"10mm",@"12mm",@"14mm",@"16mm", nil];
+    
+    // initiaize picker view
+    pickerToolBarView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [pickerToolBarView setBackgroundColor:[UIColor whiteColor]];
+
+    
+    UIPickerView *pickerView=[[UIPickerView alloc]init];
+    pickerView.frame=CGRectMake(0,0,self.view.frame.size.width, 216);
+    pickerView.showsSelectionIndicator = YES;
+    [pickerView setDataSource: self];
+    [pickerView setDelegate: self];
+    pickerView.backgroundColor = [UIColor whiteColor];
+
+
+    [pickerToolBarView addSubview:pickerView];
+    
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar sizeToFit];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDoneButtonPressed)];
+    
+    
+    [pickerToolbar setItems:@[flexSpace, doneBtn] animated:YES];
+    
+    [pickerToolBarView addSubview:pickerToolbar];
+    [self.view addSubview:pickerToolBarView];
+    pickerToolBarView.hidden = YES;
+}
+
+#pragma mark - UIPickerView delgates
+
+// Number of components.
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+// Total rows in our component.
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [arraySteelSizes count];
+}
+
+// Display each row's data.
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    return [arraySteelSizes objectAtIndex: row];
+}
+
+// Do something with the selected row.
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSLog(@"You selected this: %@", [arraySteelSizes objectAtIndex: row]);
 }
 
 
+-(void)pickerDoneButtonPressed
+{
+    pickerToolBarView.hidden = YES;
+}
 
+#pragma mark table view data sources and delegates
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return rowCountSizesTable+1;
+    
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if(indexPath.row==rowCountSizesTable)
+    {
+        cell.btnAdd.hidden = NO;
+        cell.txtFieldDiameter.hidden = YES;
+        cell.txtFieldQuantity.hidden = YES;
+    }
+    else
+    {
+        cell.txtFieldDiameter.hidden = NO;
+        cell.txtFieldQuantity.hidden = NO;
+        cell.btnAdd.hidden = YES;
+    }
+    return cell;
+    
+}
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
+- (IBAction)btnAddAction:(UIButton *)sender {
+    
+    rowCountSizesTable++;
+    [tblViewSizes reloadData];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -128,11 +235,23 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
-}-(BOOL)textFieldShouldReturn:(UITextField *)textField
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(textField.tag==777)
+    {
+        pickerToolBarView.hidden = NO;
+        [self.view bringSubviewToFront:pickerToolBarView];
+        [textField resignFirstResponder];
+    }
 }
 
 

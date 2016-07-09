@@ -77,6 +77,7 @@
 		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
 		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
 		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
+		7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C712C601D2C26CF00E64FF9 /* HomeCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -174,6 +175,8 @@
 		7C183AF01D284B86003159F9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		7C712C601D2C26CF00E64FF9 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -372,6 +375,8 @@
 			children = (
 				461BE7D01CAF01FA00A8F3DC /* Home.h */,
 				461BE7D11CAF01FA00A8F3DC /* Home.m */,
+				7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */,
+				7C712C601D2C26CF00E64FF9 /* HomeCell.m */,
 				461BE7D21CAF01FA00A8F3DC /* Login.h */,
 				461BE7D31CAF01FA00A8F3DC /* Login.m */,
 				461BE7EC1CAF0B7E00A8F3DC /* SignUP.h */,
@@ -597,6 +602,7 @@
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
+				7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */,
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
 				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
 				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
