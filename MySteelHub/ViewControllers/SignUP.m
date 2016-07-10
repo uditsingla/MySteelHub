@@ -17,10 +17,8 @@
 
 @implementation SignUP
 -(void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.hidden=NO;
 }
 -(void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.barTintColor=BlueColor;
     
 }
 
@@ -31,25 +29,9 @@
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
-    self.navigationController.navigationBar.barTintColor=BlackBackground;
-    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
-                                                                   style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(Back)];
     
-    self.navigationItem.leftBarButtonItem = backButton;
-    self.navigationItem.rightBarButtonItem = nil;
-    
-    self.navigationController.navigationBar.topItem.title=@"";
-    
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"COMPLETE YOUR PROFILE";
-    label.frame = CGRectMake(0, 0, 100, 30);
-    label.textColor=[UIColor whiteColor];
-    label.textAlignment = NSTextAlignmentCenter;
-    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
-    self.navigationItem.titleView = customLabel.customView;
+    [self setTitleLabel:@"COMPLETE YOUR PROFILE"];
+    [self setBackButton];
     
     
     [self setupTextFields];
@@ -95,7 +77,7 @@
     
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height,0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
@@ -104,7 +86,7 @@
 -(void)hideKeyboard:(NSNotification*)notification
 {
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y+self.navigationController.navigationBar.frame.size.height,0,0, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
@@ -117,6 +99,7 @@
     
     return YES;
 }
+
 - (IBAction)btnSubmit:(id)sender {
     
     if ([_txtFieldUsername.text isEqual:@""]) {
@@ -196,30 +179,34 @@
         return;
     }
     
+    [SVProgressHUD show];
+
     //    NSLog(@"hit service");
     NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",@"73.1234",@"latitude",@"68.3212",@"longitude",nil];
     //   NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:@"abcd@gmail.com",@"email",@"aa",@"password",@"aa",@"name",@"987555",@"contact",@"aa",@"address",@"aa",@"state",@"aa",@"city",@"aa",@"zip",@"aa",@"tin",@"bla",@"brand",@"aa",@"company_name",@"blabla",@"role",@"123456",@"pan", nil];
-    [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-    //    
+    //
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
-        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        
-        UIAlertController *alertController = [UIAlertController
-                                              alertControllerWithTitle:@""
-                                              message:[addresses objectAtIndex:0]
-                                              preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *okAction = [UIAlertAction
-                                   actionWithTitle:@"Ok"
-                                   style:UIAlertActionStyleCancel
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       [self dismissViewControllerAnimated:YES completion:nil];
-                                       [self.navigationController popViewControllerAnimated:YES];
-                                       NSLog(@"OK action");
-                                   }];
-        
-        [alertController addAction:okAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        [SVProgressHUD dismiss];
+
+        if(addresses)
+        {
+            UIAlertController *alertController = [UIAlertController
+                                                  alertControllerWithTitle:@""
+                                                  message:[addresses objectAtIndex:0]
+                                                  preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *okAction = [UIAlertAction
+                                       actionWithTitle:@"Ok"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                           [self.navigationController popViewControllerAnimated:YES];
+                                           NSLog(@"OK action");
+                                       }];
+            
+            [alertController addAction:okAction];
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
         //
         //        NSLog(@"Login Response");
         //

@@ -15,24 +15,15 @@
     
 }
 
-//user signup with email
--(void)userSignUp:(NSDictionary *)dictParam;
-
-//signin
--(void)authorizeUser:(NSDictionary *)dictParam;
-
--(void)validateUsername:(NSString*)username;
-
--(void)verifyCode:(NSDictionary *)dictParam;
-
--(void)resendVerificationCode:(NSDictionary *)dictParam;
-
--(void)logout;
-
-
 - (void)userLogin:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock;
 -(void)userSignUp:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock;
 
+-(void)recoverPassword:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)changePassword:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+
+-(void)logoutWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 
 @end

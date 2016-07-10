@@ -19,6 +19,12 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBarHidden = YES;
+    
+    UIView *topView = [[UIView alloc] init];
+    topView.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
+    topView.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
+    [self.view addSubview:topView];
+
     // Do any additional setup after loading the view.
 }
 
@@ -31,9 +37,8 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.text = title;
-    label.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
+    label.frame = CGRectMake(0, 20, self.view.frame.size.width, 50);
     label.textColor=[UIColor whiteColor];
-    label.backgroundColor = [UIColor grayColor];
     label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:label];
 }
@@ -41,7 +46,7 @@
 -(void)setBackButton
 {
     UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    backButton.frame = CGRectMake(0, 0, 50, 70);
+    backButton.frame = CGRectMake(0, 20, 50, 50);
     [backButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:backButton];
@@ -50,7 +55,7 @@
 -(void)setMenuButton
 {
     UIButton *menuButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    menuButton.frame = CGRectMake(self.view.frame.size.width-50, 0, 50, 70);
+    menuButton.frame = CGRectMake(self.view.frame.size.width-50, 20, 50, 50);
     [menuButton setImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(rightMenuAction) forControlEvents:UIControlEventTouchUpInside];
 
@@ -174,6 +179,8 @@
     UIImageView*icon=[[UIImageView alloc]initWithFrame:CGRectMake(custWidth-25, custHeight/2-6, 16, 16)];
     icon.image=image;
     [txtField addSubview:icon];
+    
+    txtField.delegate = self;
     
     return txtField;
 }

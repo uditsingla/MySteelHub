@@ -24,7 +24,6 @@
     // Do any additional setup after loading the view.
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
-    [self setBackButton];
     
 //    self.navigationController.navigationBar.barTintColor=BlackBackground;
 //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
@@ -114,7 +113,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 4;
+    return 5;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -126,12 +125,22 @@
     
     UILabel *lbl=(UILabel*)[view viewWithTag:2];
     lbl.text=@"hahah";
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
+    [self.navigationController pushViewController:detailVC animated:YES];
+
+}
+
 - (IBAction)btnNewRequirement:(id)sender {
     
-    UIViewController *homeVC = [kMainStoryboard instantiateInitialViewController];
+    UIViewController *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
         [self.navigationController pushViewController:homeVC animated:YES];
 }
 

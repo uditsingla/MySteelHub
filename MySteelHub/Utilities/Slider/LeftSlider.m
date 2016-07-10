@@ -29,7 +29,7 @@
     // Do any additional setup after loading the view.
     
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
-                    @"Requirements",
+                    @"New Requirement",
                     @"History",
                     @"Change Password",
                     @"Contact Us",
@@ -46,7 +46,7 @@
     
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
     
-    self.view.backgroundColor = [UIColor grayColor];
+    self.view.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
 
 }
 
@@ -88,7 +88,7 @@
     
     //Menu lable
 //    cell.lblMenuItem.backgroundColor = GreenColor;
-    cell.lblMenuItem.textColor = LightGreyColor;
+    cell.lblMenuItem.textColor = [UIColor whiteColor];
     cell.lblMenuItem.text = [arrMenuItems objectAtIndex:indexPath.row] ;
     
     
@@ -133,41 +133,42 @@
     if([keyName caseInsensitiveCompare:@"Home"] == NSOrderedSame){
         NSLog(@"Home");
         
-//        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-//        
-//        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
-//        while (controllers.count>2)
-//        {
-//            [controllers removeLastObject];
-//        }
-//        navigationController.viewControllers = controllers;
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
+        while (controllers.count>1)
+        {
+            [controllers removeLastObject];
+        }
+        navigationController.viewControllers = controllers;
 
     }
-    else if ([keyName caseInsensitiveCompare:@"Appointments"] == NSOrderedSame){
+    else if ([keyName caseInsensitiveCompare:@"New Requirement"] == NSOrderedSame){
         
-        
-        [appdelegate.container.centerViewController pushViewController:[self goToController:@"appointments"] animated:NO];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+
+        [navigationController pushViewController:[self goToController:@"home"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
         
-         [appdelegate.container.centerViewController pushViewController:[self goToController:@"history"] animated:NO];
-        
+         
     }
     
     else if ([keyName caseInsensitiveCompare:@"Logout"] == NSOrderedSame)
     {
         NSLog(@"Logout");
-        [appdelegate.container.centerViewController popToRootViewControllerAnimated:YES];
+        UINavigationController *navController = (UINavigationController*)appdelegate.window.rootViewController;
+        [navController popToRootViewControllerAnimated:YES];
 
     }
     else {
-        NSLog(@"Logout clicked");
+        NSLog(@"else clicked");
         
     }
     
-    [self.menuContainerViewController toggleLeftSideMenuCompletion:^{}];
+    [self.menuContainerViewController toggleRightSideMenuCompletion:^{}];
     
     
 }

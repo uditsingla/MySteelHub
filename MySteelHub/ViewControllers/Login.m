@@ -140,18 +140,19 @@
 
 -(void)callSlideMenu
 {
-    UIViewController *HomeviewController;
-    HomeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
+    UIViewController *homeviewController;
+    homeviewController = [kMainStoryboard instantiateViewControllerWithIdentifier: @"Requirements"];
     
     UIViewController *leftSlider = [kMainStoryboard instantiateViewControllerWithIdentifier: @"leftslider"];
     
-    
+    UINavigationController *centerNavigationController=[[UINavigationController alloc]initWithRootViewController:homeviewController];
+    centerNavigationController.navigationBarHidden=YES;
     
     MFSideMenuContainerViewController *container = [MFSideMenuContainerViewController
-                                                    containerWithCenterViewController:HomeviewController
+                                                    containerWithCenterViewController:centerNavigationController
                                                     leftMenuViewController:nil
                                                     rightMenuViewController:leftSlider];
-    // ((AppDelegate*)[[UIApplication sharedApplication] delegate]).slideContainer=container;
+     appdelegate.container = container;
     
     [self.navigationController pushViewController:container animated:YES];
 }
@@ -198,48 +199,29 @@
 }
 
 
-
-- (void)keyboardWillShow:(NSNotification *)notification
+-(void)keyboardWillShow:(NSNotification*)notification
 {
-    //    NSDictionary *info = [notification userInfo];
-    //    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    //    
-    //    UIEdgeInsets contentInset = scrollview.contentInset;
-    //    contentInset.bottom = keyboardRect.size.height;
-    //    scrollview.contentInset = contentInset;
+    NSLog(@"Keyboard shown");
     
-    //    NSDictionary *info = [notification userInfo];
-    //    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.view.frame.origin.y, 0.0, kbSize.height, 0);
-    //    scrollview.contentInset = contentInsets;
-    //    scrollview.scrollIndicatorInsets = contentInsets;
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y,0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
     scrollview.contentInset = contentInsets;
     scrollview.scrollIndicatorInsets = contentInsets;
     
+    
 }
 
-
-- (void)keyboardWillHide:(NSNotification *)notification
+-(void)keyboardWillHide:(NSNotification*)notification
 {
-    //    NSDictionary *info = [notification userInfo];
-    //    CGRect keyboardRect = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    //    keyboardRect = [self.view convertRect:keyboardRect fromView:nil];
-    //     UIEdgeInsets contentInsets =UIEdgeInsetsMake(self.view.frame.origin.y, 0,0, 0);
-    //  //  UIEdgeInsets contentInset = scrollview.contentInset;
-    //    contentInsets.bottom = keyboardRect.size.height;
-    //    scrollview.contentInset = contentInsets;
-    //     scrollview.scrollIndicatorInsets = contentInsets;
     
-    //    CGPoint bottomOffset = CGPointMake(0, scrollview.contentSize.height - scrollview.bounds.size.height);
-    //    [UIScrollView setContentOffset:bottomOffset animated:YES];
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.navigationController.navigationBar.frame.origin.y,0,0, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     scrollview.contentInset = contentInsets;
     scrollview.scrollIndicatorInsets = contentInsets;
+    
+    
 }
+
 
 -(IBAction)signUpUser:(id)sender
 {
