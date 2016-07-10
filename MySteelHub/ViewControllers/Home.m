@@ -12,9 +12,10 @@
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
 {
-    __weak IBOutlet UIButton *btnChemical;
-    __weak IBOutlet UIButton *btnCertReq;
-    __weak IBOutlet UIButton *btnPhysical;
+    __weak IBOutlet UISwitch *switchPhysical;
+    __weak IBOutlet UISwitch *switchChemical;
+    __weak IBOutlet UISwitch *switchCertReq;
+    
     CLLocationManager *locationManager;
     
     __weak IBOutlet UIScrollView *_scrollView;
@@ -40,6 +41,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    //switch controlls reframe
+    switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    switchPhysical.onTintColor = kBlueColor
+    
+    switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    switchChemical.onTintColor = kBlueColor
+
+    switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
+    switchCertReq.onTintColor = kBlueColor
+
+    
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
     
     
@@ -55,16 +69,16 @@
     
     //[self getUserLocation];
     /*
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
-                                                            longitude:151.2086
-                                                                 zoom:6];
-    //mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = camera.target;
-    marker.snippet = @"Hello World";
-    marker.appearAnimation = kGMSMarkerAnimationPop;
-    marker.map = mapView;
-    self.view = mapView;
+     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
+     longitude:151.2086
+     zoom:6];
+     //mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+     GMSMarker *marker = [[GMSMarker alloc] init];
+     marker.position = camera.target;
+     marker.snippet = @"Hello World";
+     marker.appearAnimation = kGMSMarkerAnimationPop;
+     marker.map = mapView;
+     self.view = mapView;
      */
     
     arraySteelSizes = [NSMutableArray arrayWithObjects:@"8mm",@"10mm",@"12mm",@"14mm",@"16mm", nil];
@@ -72,7 +86,7 @@
     // initiaize picker view
     pickerToolBarView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerToolBarView setBackgroundColor:[UIColor whiteColor]];
-
+    
     
     UIPickerView *pickerView=[[UIPickerView alloc]init];
     pickerView.frame=CGRectMake(0,0,self.view.frame.size.width, 216);
@@ -80,8 +94,8 @@
     [pickerView setDataSource: self];
     [pickerView setDelegate: self];
     pickerView.backgroundColor = [UIColor whiteColor];
-
-
+    
+    
     [pickerToolBarView addSubview:pickerView];
     
     
@@ -196,38 +210,38 @@
 -(IBAction)btnClicked:(id)sender
 {
     [RequestManager asynchronousRequestWithPath:@"" requestType:RequestTypePOST params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
-    NSLog(@"Here comes the json %@",json);
+        NSLog(@"Here comes the json %@",json);
     }];
 }
 
 
-- (IBAction)btnPhysical:(id)sender {
-    if (btnPhysical.selected==NO) {
-        btnPhysical.selected=YES;
-    }
-    else{
-        btnPhysical.selected=NO;
-    }
-     }
-
-- (IBAction)btnChemical:(id)sender {
-    if (btnChemical.selected==NO) {
-        btnChemical.selected=YES;
-    }
-    else{
-        btnChemical.selected=NO;
-    }
-
-}
-- (IBAction)btnCertReq:(id)sender {
-    if (btnCertReq.selected==NO) {
-        btnCertReq.selected=YES;
-    }
-    else{
-        btnCertReq.selected=NO;
-    }
-
-}
+//- (IBAction)btnPhysical:(id)sender {
+//    if (btnPhysical.selected==NO) {
+//        btnPhysical.selected=YES;
+//    }
+//    else{
+//        btnPhysical.selected=NO;
+//    }
+//}
+//
+//- (IBAction)btnChemical:(id)sender {
+//    if (btnChemical.selected==NO) {
+//        btnChemical.selected=YES;
+//    }
+//    else{
+//        btnChemical.selected=NO;
+//    }
+//    
+//}
+//- (IBAction)btnCertReq:(id)sender {
+//    if (btnCertReq.selected==NO) {
+//        btnCertReq.selected=YES;
+//    }
+//    else{
+//        btnCertReq.selected=NO;
+//    }
+//    
+//}
 
 
 -(void)Back
@@ -326,13 +340,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

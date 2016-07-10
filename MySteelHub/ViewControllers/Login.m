@@ -30,8 +30,8 @@
     txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
     
-    txtEmail.text = @"xyz@gmail.com";
-    txtPassword.text = @"aaaaaaaa";
+    txtEmail.text = @"ram@gmail.com";
+    txtPassword.text = @"12345678";
     
     //[txtUsername setValue:[UIColor blueColor] forKeyPath:@"_placeholderLabel.textColor"];
     
@@ -102,7 +102,7 @@
         dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
         
         //dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  @"1234567890",@"device_token",nil];
-
+        
         
         
         [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
@@ -152,7 +152,7 @@
                                                     containerWithCenterViewController:centerNavigationController
                                                     leftMenuViewController:nil
                                                     rightMenuViewController:leftSlider];
-     appdelegate.container = container;
+    appdelegate.container = container;
     
     [self.navigationController pushViewController:container animated:YES];
 }

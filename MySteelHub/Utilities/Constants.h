@@ -19,7 +19,7 @@
 
 #define kBaseUrl [NSURL URLWithString:kBaseUrlPath]
 
-#define BlueColor  [UIColor colorWithRed:16/255.00 green:124/255.00 blue:213/255.00 alpha:1];
+#define kBlueColor  [UIColor colorWithRed:40/255.00 green:175/255.00 blue:197/255.00 alpha:1];
 
 #define LightGreyColor  [UIColor colorWithRed:234/255.00 green:234/255.00 blue:234/255.00 alpha:1];
 
