@@ -78,6 +78,8 @@
 		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
 		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
 		7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C712C601D2C26CF00E64FF9 /* HomeCell.m */; };
+		7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */; };
+		7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9E01D32AD0D00D44467 /* RequirementI.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -177,6 +179,10 @@
 		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		7C712C601D2C26CF00E64FF9 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		7CE0C9DC1D32ACDC00D44467 /* RequirementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementManager.h; sourceTree = "<group>"; };
+		7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementManager.m; sourceTree = "<group>"; };
+		7CE0C9DF1D32AD0D00D44467 /* RequirementI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementI.h; sourceTree = "<group>"; };
+		7CE0C9E01D32AD0D00D44467 /* RequirementI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementI.m; sourceTree = "<group>"; };
 		EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -352,6 +358,7 @@
 		46F62CED1C90AC5000A61B47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CE0C9DB1D32ACAC00D44467 /* RequirementManager */,
 				461BE7E01CAF074300A8F3DC /* Login Manager */,
 				461BE7E31CAF074300A8F3DC /* ModelManager */,
 				461BE7E61CAF074300A8F3DC /* RequestManager */,
@@ -404,6 +411,17 @@
 				7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		7CE0C9DB1D32ACAC00D44467 /* RequirementManager */ = {
+			isa = PBXGroup;
+			children = (
+				7CE0C9DC1D32ACDC00D44467 /* RequirementManager.h */,
+				7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */,
+				7CE0C9DF1D32AD0D00D44467 /* RequirementI.h */,
+				7CE0C9E01D32AD0D00D44467 /* RequirementI.m */,
+			);
+			path = RequirementManager;
 			sourceTree = "<group>";
 		};
 		CA947B5EBAC5A09731B55613 /* Pods */ = {
@@ -591,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */,
+				7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */,
 				461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */,
 				1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */,
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
@@ -599,6 +618,7 @@
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
 				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
+				7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */,
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,

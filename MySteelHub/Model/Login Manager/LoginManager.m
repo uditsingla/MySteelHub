@@ -108,6 +108,62 @@
     
 }
 
+-(void)recoverPassword:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"recoverpassword" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+
+}
+
+-(void)changePassword:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"auth/changepassword" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+
+}
+
+
+-(void)logoutWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    NSDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
+
+    
+    [RequestManager asynchronousRequestWithPath:@"auth/logout" requestType:RequestTypeDELETE params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+
+}
+
+
 /*
 -(void)userSignUp:(NSDictionary *)dictParam
 {

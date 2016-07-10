@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "LoginManager.h"
+#import "RequirementManager.h"
 
 @interface ModelManager : NSObject
 
@@ -15,4 +16,6 @@
 
 @property(strong,nonatomic) LoginManager *loginManager;
 @property(strong,nonatomic) RequestManager *requestManager;
+@property(strong,nonatomic) RequirementManager *requirementManager;
+
 @end
