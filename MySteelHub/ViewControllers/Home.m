@@ -10,7 +10,7 @@
 #import "HomeCell.h"
 //#import <GoogleMaps/GoogleMaps.h>
 
-@interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
+@interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
     __weak IBOutlet UISwitch *switchPhysical;
     __weak IBOutlet UISwitch *switchChemical;
@@ -22,10 +22,13 @@
     
     __weak IBOutlet UITableView *tblViewSizes;
     
-    int rowCountSizesTable;
+    NSMutableArray *arrayTblDict;
     
     UIView *pickerToolBarView;
     NSMutableArray *arraySteelSizes;
+    
+    __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
+    __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
 }
 @end
 
@@ -63,10 +66,14 @@
     [self setMenuButton];
     [self setBackButton];
     
+    arrayTblDict = [NSMutableArray new];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"diameter",@"",@"quantity", nil];
+    [arrayTblDict addObject:dict];
+    
     tblViewSizes.dataSource = self;
     tblViewSizes.delegate = self;
-    rowCountSizesTable = 1;
-    
+    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+    [tblViewSizes reloadData];
     //[self getUserLocation];
     /*
      GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
@@ -147,7 +154,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return rowCountSizesTable+1;
+    return arrayTblDict.count+1;
     
 }
 
@@ -157,17 +164,25 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    if(indexPath.row==rowCountSizesTable)
+    if(indexPath.row==arrayTblDict.count)
     {
         cell.btnAdd.hidden = NO;
         cell.txtFieldDiameter.hidden = YES;
         cell.txtFieldQuantity.hidden = YES;
+        [cell setRightUtilityButtons:nil WithButtonWidth:0];
+        [cell setDelegate:nil];
+
     }
     else
     {
         cell.txtFieldDiameter.hidden = NO;
         cell.txtFieldQuantity.hidden = NO;
         cell.btnAdd.hidden = YES;
+        
+        NSArray *arrayRightBtns = [self rightButtons];
+        [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+        [cell setDelegate:self];
+        
     }
     return cell;
     
@@ -180,9 +195,53 @@
 
 - (IBAction)btnAddAction:(UIButton *)sender {
     
-    rowCountSizesTable++;
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"diameter",@"",@"quantity", nil];
+    [arrayTblDict addObject:dict];
+    
+    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
     [tblViewSizes reloadData];
 }
+
+#pragma mark - Swipe Cell Delegate
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
+}
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    UIButton *btn_accept = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn_accept setFrame:CGRectMake(0, 0, 40, 50)];
+    [btn_accept setBackgroundColor:[UIColor redColor]];
+    [btn_accept setTitle:NSLocalizedString(@"Delete",nil) forState:UIControlStateNormal];
+    [btn_accept setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightUtilityButtons addObject:btn_accept];
+    
+    
+    return rightUtilityButtons;
+}
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+            
+        case 0:
+        {
+            // accept button is pressed
+            NSIndexPath *indexPath;
+            indexPath = [tblViewSizes indexPathForCell:cell];
+
+            [arrayTblDict removeObjectAtIndex:indexPath.row];
+            tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+            [tblViewSizes reloadData]; // tell table to refresh now
+            break;
+        }
+        
+        default: break;
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

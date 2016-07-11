@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@interface HomeCell : UITableViewCell
+@interface HomeCell : SWTableViewCell
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldDiameter;
 @property (weak, nonatomic) IBOutlet UITextField *txtFieldQuantity;
 @property (weak, nonatomic) IBOutlet UIButton *btnAdd;

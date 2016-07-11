@@ -152,6 +152,8 @@
                                                     containerWithCenterViewController:centerNavigationController
                                                     leftMenuViewController:nil
                                                     rightMenuViewController:leftSlider];
+    
+    [container setPanMode:MFSideMenuPanModeNone];
     appdelegate.container = container;
     
     [self.navigationController pushViewController:container animated:YES];
