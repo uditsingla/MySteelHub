@@ -12,5 +12,4 @@
 
 @interface Home : BaseViewController <UITextFieldDelegate,CLLocationManagerDelegate>
 
--(IBAction)btnClicked:(id)sender;
 @end
