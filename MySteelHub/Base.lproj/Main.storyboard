@@ -314,7 +314,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5V-Wu-urZ" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="600"/>
+                                        <rect key="frame" x="0.0" y="40" width="320" height="696"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uST-c4-0Wc">
                                                 <rect key="frame" x="37" y="30" width="136" height="21"/>
@@ -327,10 +327,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUp-W4-aNe">
-                                                <rect key="frame" x="26" y="53" width="268" height="74"/>
+                                                <rect key="frame" x="26" y="53" width="268" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="yUp-W4-aNe" secondAttribute="height" multiplier="134:37" id="3vR-oJ-Yt2"/>
+                                                    <constraint firstAttribute="height" constant="150" id="uQz-xI-GwR"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCell" id="pOY-bJ-1Bh" customClass="HomeCell">
@@ -395,7 +395,7 @@
                                                 </prototypes>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQj-cG-ZsR" userLabel="CustomSubViews">
-                                                <rect key="frame" x="22" y="127" width="276" height="405"/>
+                                                <rect key="frame" x="22" y="223" width="276" height="405"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Physical" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upq-LD-SXm">
                                                         <rect key="frame" x="14" y="15" width="88" height="21"/>
@@ -595,13 +595,13 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="yUp-W4-aNe" secondAttribute="trailing" constant="26" id="2kJ-Ae-zsI"/>
                                             <constraint firstItem="uST-c4-0Wc" firstAttribute="leading" secondItem="x5V-Wu-urZ" secondAttribute="leading" constant="37" id="4ER-UQ-pf9"/>
                                             <constraint firstItem="SQj-cG-ZsR" firstAttribute="leading" secondItem="x5V-Wu-urZ" secondAttribute="leading" constant="22" id="4nW-y6-GaH"/>
                                             <constraint firstAttribute="trailing" secondItem="SQj-cG-ZsR" secondAttribute="trailing" constant="22" id="Cua-RP-94J"/>
-                                            <constraint firstItem="yUp-W4-aNe" firstAttribute="leading" secondItem="x5V-Wu-urZ" secondAttribute="leading" constant="26" id="Ni9-AG-pYP"/>
-                                            <constraint firstItem="SQj-cG-ZsR" firstAttribute="top" secondItem="yUp-W4-aNe" secondAttribute="bottom" id="aJX-fW-pcN"/>
-                                            <constraint firstItem="yUp-W4-aNe" firstAttribute="top" secondItem="uST-c4-0Wc" secondAttribute="bottom" constant="2" id="jdq-b9-7XX"/>
+                                            <constraint firstAttribute="trailing" secondItem="yUp-W4-aNe" secondAttribute="trailing" constant="26" id="GfL-Q9-2aP"/>
+                                            <constraint firstItem="yUp-W4-aNe" firstAttribute="top" secondItem="uST-c4-0Wc" secondAttribute="bottom" constant="2" id="Jae-ra-yX9"/>
+                                            <constraint firstItem="yUp-W4-aNe" firstAttribute="leading" secondItem="x5V-Wu-urZ" secondAttribute="leading" constant="26" id="O96-EV-zEB"/>
+                                            <constraint firstItem="SQj-cG-ZsR" firstAttribute="top" secondItem="yUp-W4-aNe" secondAttribute="bottom" constant="20" id="lgP-24-lxE"/>
                                             <constraint firstAttribute="bottom" secondItem="SQj-cG-ZsR" secondAttribute="bottom" constant="68" id="nvZ-EU-mNk"/>
                                             <constraint firstItem="uST-c4-0Wc" firstAttribute="top" secondItem="x5V-Wu-urZ" secondAttribute="top" constant="30" id="pt4-Th-0kw"/>
                                         </constraints>
@@ -640,9 +640,11 @@
                     </view>
                     <connections>
                         <outlet property="_scrollView" destination="Exc-Wa-j9O" id="y34-NI-CO1"/>
+                        <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
                         <outlet property="switchCertReq" destination="Zhw-hp-BnO" id="nT7-2K-GoQ"/>
                         <outlet property="switchChemical" destination="cOb-ir-1lC" id="Oua-Pf-KMg"/>
                         <outlet property="switchPhysical" destination="xbI-NC-698" id="3DQ-NL-aJt"/>
+                        <outlet property="tblViewHeightConstraint" destination="uQz-xI-GwR" id="pKA-Al-srz"/>
                         <outlet property="tblViewSizes" destination="yUp-W4-aNe" id="hig-oY-t2Y"/>
                     </connections>
                 </viewController>

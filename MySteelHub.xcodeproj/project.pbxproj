@@ -77,6 +77,12 @@
 		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
 		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
 		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
+		7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0471D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m */; };
+		7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0491D34024800B7DD43 /* SWCellScrollView.m */; };
+		7C53E0541D34024800B7DD43 /* SWLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E04B1D34024800B7DD43 /* SWLongPressGestureRecognizer.m */; };
+		7C53E0551D34024800B7DD43 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E04D1D34024800B7DD43 /* SWTableViewCell.m */; };
+		7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E04F1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m */; };
+		7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */; };
 		7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C712C601D2C26CF00E64FF9 /* HomeCell.m */; };
 		7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */; };
 		7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9E01D32AD0D00D44467 /* RequirementI.m */; };
@@ -177,6 +183,18 @@
 		7C183AF01D284B86003159F9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		7C53E0461D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
+		7C53E0471D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+SWUtilityButtons.m"; sourceTree = "<group>"; };
+		7C53E0481D34024800B7DD43 /* SWCellScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWCellScrollView.h; sourceTree = "<group>"; };
+		7C53E0491D34024800B7DD43 /* SWCellScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWCellScrollView.m; sourceTree = "<group>"; };
+		7C53E04A1D34024800B7DD43 /* SWLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		7C53E04B1D34024800B7DD43 /* SWLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWLongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		7C53E04C1D34024800B7DD43 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWTableViewCell.h; sourceTree = "<group>"; };
+		7C53E04D1D34024800B7DD43 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWTableViewCell.m; sourceTree = "<group>"; };
+		7C53E04E1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonTapGestureRecognizer.h; sourceTree = "<group>"; };
+		7C53E04F1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonTapGestureRecognizer.m; sourceTree = "<group>"; };
+		7C53E0501D34024800B7DD43 /* SWUtilityButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWUtilityButtonView.h; sourceTree = "<group>"; };
+		7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		7C712C601D2C26CF00E64FF9 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
 		7CE0C9DC1D32ACDC00D44467 /* RequirementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementManager.h; sourceTree = "<group>"; };
@@ -349,6 +367,7 @@
 		46F62CEC1C90AC5000A61B47 /* 3rdPartyLib */ = {
 			isa = PBXGroup;
 			children = (
+				7C53E0451D34024800B7DD43 /* SwipeTableViewCell */,
 				7C183AE81D284B86003159F9 /* SVProgressHUD */,
 				461BE7C91CAF014C00A8F3DC /* Custom Loader */,
 			);
@@ -411,6 +430,25 @@
 				7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		7C53E0451D34024800B7DD43 /* SwipeTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7C53E0461D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.h */,
+				7C53E0471D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m */,
+				7C53E0481D34024800B7DD43 /* SWCellScrollView.h */,
+				7C53E0491D34024800B7DD43 /* SWCellScrollView.m */,
+				7C53E04A1D34024800B7DD43 /* SWLongPressGestureRecognizer.h */,
+				7C53E04B1D34024800B7DD43 /* SWLongPressGestureRecognizer.m */,
+				7C53E04C1D34024800B7DD43 /* SWTableViewCell.h */,
+				7C53E04D1D34024800B7DD43 /* SWTableViewCell.m */,
+				7C53E04E1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.h */,
+				7C53E04F1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m */,
+				7C53E0501D34024800B7DD43 /* SWUtilityButtonView.h */,
+				7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */,
+			);
+			path = SwipeTableViewCell;
 			sourceTree = "<group>";
 		};
 		7CE0C9DB1D32ACAC00D44467 /* RequirementManager */ = {
@@ -610,8 +648,12 @@
 			files = (
 				46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */,
 				7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */,
+				7C53E0551D34024800B7DD43 /* SWTableViewCell.m in Sources */,
+				7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */,
+				7C53E0541D34024800B7DD43 /* SWLongPressGestureRecognizer.m in Sources */,
 				461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */,
 				1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */,
+				7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */,
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
 				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
 				7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */,
@@ -627,8 +669,10 @@
 				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
 				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
 				461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */,
+				7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				46F62CA81C908FDC00A61B47 /* main.m in Sources */,
 				461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */,
+				7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */,
 				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,
 				7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */,
 			);
