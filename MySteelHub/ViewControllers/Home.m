@@ -99,7 +99,7 @@
     [self setBackButton];
     
     arrayTblDict = [NSMutableArray new];
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"diameter",@"",@"quantity", nil];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
     tblViewSizes.dataSource = self;
@@ -415,7 +415,7 @@
 
 - (IBAction)btnAddAction:(UIButton *)sender {
     
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"diameter",@"",@"quantity", nil];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
@@ -653,21 +653,81 @@
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
-    RequirementI *newRequirement = [RequirementI new];
-    newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
-    newRequirement.arraySpecifications = arraySteelSizes;
-    newRequirement.isChemical = switchChemical.isSelected;
-    newRequirement.isPhysical = switchPhysical.isSelected;
-    newRequirement.isTestCertificateRequired = switchCertReq.isSelected;
-    newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
-    newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
-    newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
-    newRequirement.budget = txtFieldBudget.text;
-    newRequirement.city = txtFieldCity.text;
-    newRequirement.state = txtFieldState.text;
+//    if(arrayTblDict.count==1)
+//    {
+//        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+//        {
+//            [self showAlert:@"Please enter diameter size"];
+//            return;
+//        }
+//        
+//        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+//        {
+//            [self showAlert:@"Please enter quantity"];
+//            return;
+//        }
+//    }
     
-    [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
+    if(arrayTblDict.count==0)
+    {
+        [self showAlert:@"Please enter specification"];
+    }
+    else if(arraySelectedGradeRequired.count==0)
+    {
+        [self showAlert:@"Please select grade"];
+    }
+    else if([[txtFieldCity.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter city"];
+    }
+    else if([[txtFieldState.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter state"];
+    }
+    else
+    {
+        RequirementI *newRequirement = [RequirementI new];
+        newRequirement.userID = @"31";//[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
+        newRequirement.arraySpecifications = arrayTblDict;
+        newRequirement.isChemical = switchChemical.isOn;
+        newRequirement.isPhysical = switchPhysical.isOn;
+        newRequirement.isTestCertificateRequired = switchCertReq.isOn;
+        newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
+        newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
+        newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
+        newRequirement.budget = txtFieldBudget.text;
+        newRequirement.city = txtFieldCity.text;
+        newRequirement.state = txtFieldState.text;
         
-    }];
+        [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
+            
+        }];
+    }
 }
+
+-(void)showAlert:(NSString *)errorMsg
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@""
+                                  message:errorMsg
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleCancel
+                         handler:^(UIAlertAction * action)
+                         {
+                             //Do some thing here
+                             //   [view dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    
+}
+
+
 @end

@@ -16,6 +16,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
+        
+    }];
 
 }
 
