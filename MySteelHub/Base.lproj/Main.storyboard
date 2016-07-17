@@ -496,7 +496,7 @@
                                                         </segments>
                                                         <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                     </segmentedControl>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-1r-3hu">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-1r-3hu">
                                                         <rect key="frame" x="0.0" y="175" width="276" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="1d0-G5-0Kt"/>
@@ -506,8 +506,11 @@
                                                         <state key="normal" title="Prefered Brands">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="preferedBrandsBtnAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="WtO-Zi-zS4"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPs-Vc-fBO">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPs-Vc-fBO">
                                                         <rect key="frame" x="0.0" y="206" width="276" height="25"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="25" id="qix-6b-oix"/>
@@ -517,6 +520,9 @@
                                                         <state key="normal" title="Grade Required">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="gradeRequiredBtnAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="E5I-AJ-T09"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q1r-wB-BrQ">
                                                         <rect key="frame" x="0.0" y="246" width="276" height="30"/>
@@ -623,6 +629,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitBtnAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="C5M-5i-0D9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -640,12 +649,19 @@
                     </view>
                     <connections>
                         <outlet property="_scrollView" destination="Exc-Wa-j9O" id="y34-NI-CO1"/>
+                        <outlet property="btnGradeRequired" destination="xPs-Vc-fBO" id="hQh-7K-Ehc"/>
+                        <outlet property="btnPreferedBrands" destination="dcl-1r-3hu" id="Gjg-n6-AxP"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
+                        <outlet property="sgmtControlLenghtRequired" destination="5ph-Uk-Meq" id="Pet-DF-KWz"/>
+                        <outlet property="sgmtControlTypeRequired" destination="YvB-A2-dEB" id="ayS-Nx-ZZW"/>
                         <outlet property="switchCertReq" destination="Zhw-hp-BnO" id="nT7-2K-GoQ"/>
                         <outlet property="switchChemical" destination="cOb-ir-1lC" id="Oua-Pf-KMg"/>
                         <outlet property="switchPhysical" destination="xbI-NC-698" id="3DQ-NL-aJt"/>
                         <outlet property="tblViewHeightConstraint" destination="uQz-xI-GwR" id="pKA-Al-srz"/>
                         <outlet property="tblViewSizes" destination="yUp-W4-aNe" id="hig-oY-t2Y"/>
+                        <outlet property="txtFieldBudget" destination="Jbg-rI-kCG" id="v1o-HM-Ciq"/>
+                        <outlet property="txtFieldCity" destination="q1r-wB-BrQ" id="rWy-uc-9N5"/>
+                        <outlet property="txtFieldState" destination="kOq-AE-sj2" id="OEx-He-QvT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6CW-6l-HY4" userLabel="First Responder" sceneMemberID="firstResponder"/>

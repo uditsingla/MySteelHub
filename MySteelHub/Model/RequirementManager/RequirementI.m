@@ -10,18 +10,21 @@
 
 @implementation RequirementI
 
-@synthesize userID,quantity,length,type,rate,deliveryAddress;
+@synthesize userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,arrayGradesRequired,arrayPreferedBrands,arraySpecifications;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         userID=@"";
-        quantity=@"";
         length=@"";
         type=@"";
-        rate=@"";
-        deliveryAddress=@"";
+        budget=@"";
+        city=@"";
+        state=@"";
+        arraySpecifications = [NSMutableArray new];
+        arrayPreferedBrands = [NSMutableArray new];
+        arrayGradesRequired = [NSMutableArray new];
 
     }
     return self;
