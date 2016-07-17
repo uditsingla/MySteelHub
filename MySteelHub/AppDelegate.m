@@ -18,11 +18,22 @@
 
 @implementation AppDelegate
 
-@synthesize container ;
+@synthesize container ,currentLocation;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-   
+    
+    
+    ///Font name
+    
+    for (NSString *fontFamilyName in [UIFont familyNames]) {
+        for (NSString *fontName in [UIFont fontNamesForFamilyName:fontFamilyName]) {
+            NSLog(@"Family: %@    Font: %@", fontFamilyName, fontName);
+        }
+    }
+    //
+    
+    
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
     
     
@@ -36,8 +47,19 @@
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
          (UIUserNotificationTypeNone | UIUserNotificationTypeBadge | UIUserNotificationTypeAlert)];
     }
-
-
+    
+    
+    //Location Manager
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    [self.locationManager startUpdatingLocation];
+    
+    
     return YES;
 }
 
@@ -66,6 +88,87 @@
     // Saves changes in the application's managed object context before the application terminates.
     [self saveContext];
 }
+
+
+#pragma mark - Location services
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"didUpdateToLocation: %@", [locations lastObject]);
+    currentLocation = [locations lastObject];
+    
+    NSLog(@"latitudeee : %f",currentLocation.coordinate.latitude);
+    NSLog(@"longitudeeee : %f",currentLocation.coordinate.longitude);
+    
+    if (currentLocation != nil)
+    {
+        currentLocation = [locations objectAtIndex:0];
+        [_locationManager stopUpdatingLocation];
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+         {
+             if (!(error))
+             {
+                 CLPlacemark *placemark = [placemarks objectAtIndex:0];
+                 NSLog(@"\nCurrent Location Detected\n");
+                 NSLog(@"placemark %@",placemark);
+                 NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+                 NSString *Address = [[NSString alloc]initWithString:locatedAt];
+                 NSString *Area = [[NSString alloc]initWithString:placemark.locality];
+                 NSString *Country = [[NSString alloc]initWithString:placemark.country];
+                 NSString *CountryArea = [NSString stringWithFormat:@"%@, %@", Area,Country];
+                 NSLog(@"%@",CountryArea);
+             }
+             else
+             {
+                 NSLog(@"Geocode failed with error %@", error);
+                 NSLog(@"\nCurrent Location Not Detected\n");
+                 //return;
+             }
+             //        [[NSUserDefaults standardUserDefaults]setObject:@"no" forKey:@"isFirstTime"];
+             //        model_manager.profileManager.currentLatitude = [NSString stringWithFormat:@"%f",currentLocation.coordinate.latitude];
+             //        model_manager.profileManager.currentLongitude =[NSString stringWithFormat:@"%f",currentLocation.coordinate.longitude];
+         }];
+    }
+    
+    // Stop Location Manager
+    [self.locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error
+{
+    NSLog(@"Error while getting core location : %@",[error localizedFailureReason]);
+    if ([error code] == kCLErrorDenied) {
+        //you had denied
+    }
+    [manager stopUpdatingLocation];
+}
+
+
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    
+    switch([CLLocationManager authorizationStatus])
+    {
+        case kCLAuthorizationStatusAuthorized:
+            NSLog(@"Location services authorised by user");
+            break;
+            
+        case kCLAuthorizationStatusDenied:
+            NSLog(@"Location services denied by user");
+            break;
+            
+        case kCLAuthorizationStatusRestricted:
+            NSLog(@"Parental controls restrict location services");
+            break;
+            
+        case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"Unable to determine, possibly not available");
+            break;
+    }
+}
+
 
 #pragma mark - Core Data stack
 
@@ -175,7 +278,7 @@
     
     if(state == UIApplicationStateActive)
     {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationPushReceived object:@"success" userInfo:@{@"appointmentId":appointment_id}];
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationPushReceived object:@"success" userInfo:@{@"appointmentId":appointment_id}];
         //[self showNotificationAlert:push_msg];
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)

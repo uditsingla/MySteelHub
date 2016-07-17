@@ -180,14 +180,20 @@
     }
     
     [SVProgressHUD show];
-
+    
     //    NSLog(@"hit service");
-    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",@"73.1234",@"latitude",@"68.3212",@"longitude",nil];
-    //   NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:@"abcd@gmail.com",@"email",@"aa",@"password",@"aa",@"name",@"987555",@"contact",@"aa",@"address",@"aa",@"state",@"aa",@"city",@"aa",@"zip",@"aa",@"tin",@"bla",@"brand",@"aa",@"company_name",@"blabla",@"role",@"123456",@"pan", nil];
-    //
+    
+    //NSLog(appdelegate.currentLocation.coordinate.latitude)
+    
+    NSString *strLat = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.latitude];
+    NSString *strLong = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.longitude];
+    
+    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",strLat,@"latitude",strLong,@"longitude",nil];
+    
+    
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
         [SVProgressHUD dismiss];
-
+        
         if(addresses)
         {
             UIAlertController *alertController = [UIAlertController
