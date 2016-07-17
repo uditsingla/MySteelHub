@@ -11,6 +11,12 @@
 
 @interface RequirementManager : NSObject
 
+@property(strong,nonatomic) NSMutableArray *arrayPostedRequirements;
+
+
 -(void)postRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)getPostedRequirements:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
 
 @end

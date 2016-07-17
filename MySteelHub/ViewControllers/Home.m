@@ -9,6 +9,7 @@
 #import "Home.h"
 #import "HomeCell.h"
 //#import <GoogleMaps/GoogleMaps.h>
+#import "RequirementI.h"
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
@@ -651,5 +652,22 @@
 }
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
+    
+    RequirementI *newRequirement = [RequirementI new];
+    newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
+    newRequirement.arraySpecifications = arraySteelSizes;
+    newRequirement.isChemical = switchChemical.isSelected;
+    newRequirement.isPhysical = switchPhysical.isSelected;
+    newRequirement.isTestCertificateRequired = switchCertReq.isSelected;
+    newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
+    newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
+    newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
+    newRequirement.budget = txtFieldBudget.text;
+    newRequirement.city = txtFieldCity.text;
+    newRequirement.state = txtFieldState.text;
+    
+    [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
+        
+    }];
 }
 @end

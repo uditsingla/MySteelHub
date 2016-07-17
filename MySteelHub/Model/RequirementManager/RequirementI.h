@@ -10,17 +10,19 @@
 
 @interface RequirementI : NSObject
 
+@property(strong,nonatomic) NSString *requirementID;
 @property(strong,nonatomic) NSString *userID;
-@property(assign,nonatomic) BOOL *isPhysical;
-@property(assign,nonatomic) BOOL *isChemical;
-@property(assign,nonatomic) BOOL *isTestCertificateRequired;
+@property(assign,nonatomic) BOOL isPhysical;
+@property(assign,nonatomic) BOOL isChemical;
+@property(assign,nonatomic) BOOL isTestCertificateRequired;
 @property(strong,nonatomic) NSString *length;
 @property(strong,nonatomic) NSString *type;
 @property(strong,nonatomic) NSString *budget;
 @property(strong,nonatomic) NSString *city;
 @property(strong,nonatomic) NSString *state;
 @property(strong,nonatomic) NSDate *requiredByDate;
-
+@property(strong,nonatomic) NSDate *createdDate;
+@property(strong,nonatomic) NSDate *modifiedDate;
 
 
 @property(strong,nonatomic) NSMutableArray *arraySpecifications;
