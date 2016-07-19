@@ -30,8 +30,8 @@
     txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
     
-    txtEmail.text = @"ram@gmail.com";
-    txtPassword.text = @"12345678";
+    txtEmail.text = @"xyz@gmail.com";
+    txtPassword.text = @"aaaaaaaa";
     
     //[txtUsername setValue:[UIColor blueColor] forKeyPath:@"_placeholderLabel.textColor"];
     
