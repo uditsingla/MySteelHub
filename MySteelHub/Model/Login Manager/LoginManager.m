@@ -43,7 +43,7 @@
         else{
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
 //            NSError *error=[json objectForKey:@"error"];
-            completionBlock(arr,[NSError new]);
+            completionBlock(arr,nil);
         }
        
     } ];

@@ -45,13 +45,12 @@
 -(void)getPostedRequirements:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 {
     //create dictParam with requirement object
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"24",@"user_id",nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"],@"user_id",nil];
     
     
     [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
-            completionBlock(json,nil);
             
             [arrayPostedRequirements removeAllObjects];
             NSArray *array = [json valueForKey:@"data"];
@@ -59,8 +58,37 @@
                 RequirementI *requirement = [RequirementI new];
                 requirement.userID = [NSString stringWithFormat:@"%i", [[[array objectAtIndex:i] valueForKey:@"user_id"] intValue]];
                 
+                requirement.requirementID = [NSString stringWithFormat:@"%i", [[[array objectAtIndex:i] valueForKey:@"requirement_id"] intValue]];
+                
+                requirement.isPhysical = [[[array objectAtIndex:i] valueForKey:@"physical"] boolValue];
+                
+                requirement.isChemical = [[[array objectAtIndex:i] valueForKey:@"chemical"] boolValue];
+
+                requirement.isTestCertificateRequired = [[[array objectAtIndex:i] valueForKey:@"test_certificate_required"] boolValue];
+
+                requirement.length = [[array objectAtIndex:i] valueForKey:@"length"];
+                
+                requirement.type = [[array objectAtIndex:i] valueForKey:@"type"];
+
+                requirement.budget = [[array objectAtIndex:i] valueForKey:@"budget"];
+
+                requirement.city = [[array objectAtIndex:i] valueForKey:@"city"];
+
+                requirement.state = [[array objectAtIndex:i] valueForKey:@"state"];
+
+                requirement.arraySpecifications = [[array objectAtIndex:i] valueForKey:@"quantity"];
+                
+                requirement.gradeRequired = [[array objectAtIndex:i] valueForKey:@"grade_required"];
+
+                requirement.arrayPreferedBrands = [[array objectAtIndex:i] valueForKey:@"preffered_brands"];
+
+                [arrayPostedRequirements addObject:requirement];
+                
+
             }
             
+            completionBlock(json,nil);
+
         }
         else{
             completionBlock(nil,nil);

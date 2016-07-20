@@ -35,12 +35,12 @@
                     @"Contact Us",
                     @"Logout",nil];
     
-    arrMenuItemsImages = [NSArray arrayWithObjects:@"company.png",
-                          @"img.png",
-                          @"mm.png",
+    arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
+                          @"history.png",
+                          @"history.png",
                           @"password.png",
-                          @"pin.png",
-                          @"user.png",
+                          @"contact.png",
+                          @"logout.png",
                           nil];
     
     
