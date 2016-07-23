@@ -18,9 +18,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
-        [_tblView reloadData];
-    }];
+//    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
+//        [_tblView reloadData];
+//    }];
 
 }
 
@@ -29,6 +29,8 @@
     // Do any additional setup after loading the view.
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
+    
+
     
 //    self.navigationController.navigationBar.barTintColor=BlackBackground;
 //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
