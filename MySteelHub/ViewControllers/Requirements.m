@@ -30,6 +30,8 @@
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
     
+
+    
 //    self.navigationController.navigationBar.barTintColor=BlackBackground;
 //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
 //    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]

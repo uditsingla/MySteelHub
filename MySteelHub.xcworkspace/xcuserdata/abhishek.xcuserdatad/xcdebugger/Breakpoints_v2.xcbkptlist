@@ -105,6 +105,38 @@
             endingLineNumber = "97"
             landmarkName = "-userSignUp:completion:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginManager userSignUp:completion:]"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "490974038.587518"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "98">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__38-[LoginManager userSignUp:completion:]_block_invoke"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "490974038.587746"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "58">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -130,22 +162,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/AppDelegate.m"
-            timestampString = "489234283.486228"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-application:didFinishLaunchingWithOptions:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MySteelHub/AppDelegate.m"
             timestampString = "490470832.49917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -156,19 +172,13 @@
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MySteelHub/AppDelegate.m"
-            timestampString = "490470832.49917"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "149"
-            endingLineNumber = "149"
-            landmarkName = "-locationManager:didChangeAuthorizationStatus:"
-            landmarkType = "5">
+            scope = "0"
+            stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

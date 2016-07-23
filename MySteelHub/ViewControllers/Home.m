@@ -47,12 +47,12 @@
     UIView *pickerPreferredBrandsView;
     NSMutableArray *arrayPreferredBrands;
     NSMutableArray *arraySelectedPreferredBrands;
-
-
+    
+    
     UIView *pickerGradeRequiredView;
     NSMutableArray *arrayGradeRequired;
     NSString *selectedGradeRequired;
-
+    
     
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
@@ -83,10 +83,10 @@
     
     switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
     switchChemical.onTintColor = kBlueColor
-
+    
     switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
     switchCertReq.onTintColor = kBlueColor
-
+    
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
@@ -97,6 +97,14 @@
     [self setTitleLabel:@"NEW REQUIREMENT"];
     [self setMenuButton];
     [self setBackButton];
+    
+    
+    //Custom UI for TextFilds
+    [self customtxtfield:txtFieldCity withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
+    
+    [self customtxtfield:txtFieldState withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
+    
+    [self customtxtfield:txtFieldBudget withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
     
     arrayTblDict = [NSMutableArray new];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
@@ -150,7 +158,7 @@
     pickerPreferredBrandsView.hidden = YES;
     
     arrayGradeRequired = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5", nil];
-
+    
     // initiaize picker view
     pickerGradeRequiredView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerGradeRequiredView setBackgroundColor:[UIColor whiteColor]];
@@ -249,7 +257,7 @@
         return [arrayGradeRequired count];
     else
         return 0;
-
+    
 }
 
 // Display each row's data.
@@ -312,7 +320,7 @@
     {
         
         [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[arraySelectedPreferredBrands componentsJoinedByString:@", "]] forState:UIControlStateNormal];
-
+        
     }
     
 }
@@ -343,7 +351,7 @@
         }
         
         cell.textLabel.text = [arrayPreferredBrands objectAtIndex:indexPath.row];
-
+        
         
         if ([arraySelectedPreferredBrands containsObject:[arrayPreferredBrands objectAtIndex:indexPath.row]])
         {
@@ -417,7 +425,7 @@
         }
         [tableView reloadData];
     }
-
+    
     else
     {
         
@@ -471,7 +479,7 @@
             }
             break;
         }
-        
+            
         default: break;
     }
 }
@@ -567,18 +575,18 @@
     {
         pickerToolBarView.hidden = NO;
         [self.view bringSubviewToFront:pickerToolBarView];
-//        if(textField.text.length>0)
-//        {
-//            selectedDiameter = textField.text;
-//        }
-//        else
-            selectedDiameter = [arraySteelSizes objectAtIndex:0];
+        //        if(textField.text.length>0)
+        //        {
+        //            selectedDiameter = textField.text;
+        //        }
+        //        else
+        selectedDiameter = [arraySteelSizes objectAtIndex:0];
         
         UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
         
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
-
+        
         
         selectedDiameterTextfield = textField;
         [textField resignFirstResponder];
@@ -684,20 +692,20 @@
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
-//    if(arrayTblDict.count==1)
-//    {
-//        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-//        {
-//            [self showAlert:@"Please enter diameter size"];
-//            return;
-//        }
-//        
-//        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-//        {
-//            [self showAlert:@"Please enter quantity"];
-//            return;
-//        }
-//    }
+    //    if(arrayTblDict.count==1)
+    //    {
+    //        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+    //        {
+    //            [self showAlert:@"Please enter diameter size"];
+    //            return;
+    //        }
+    //        
+    //        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+    //        {
+    //            [self showAlert:@"Please enter quantity"];
+    //            return;
+    //        }
+    //    }
     
     if(arrayTblDict.count==0)
     {
