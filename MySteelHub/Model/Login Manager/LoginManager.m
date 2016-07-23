@@ -38,6 +38,10 @@
             if([json objectForKey:@"user_id"])
                 [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]] forKey:@"userID"];
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
+                   
+            [model_manager.requirementManager getSteelBrands:nil];
+            [model_manager.requirementManager getSteelSizes:nil];
+
             completionBlock(arr,nil);
         }
         else{

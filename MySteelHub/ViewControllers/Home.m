@@ -120,7 +120,11 @@
      self.view = mapView;
      */
     
-    arraySteelSizes = [NSMutableArray arrayWithObjects:@"8mm",@"10mm",@"12mm",@"14mm",@"16mm", nil];
+    
+    if(model_manager.requirementManager.arraySteelSizes.count>0)
+        arraySteelSizes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelSizes];
+    else
+        arraySteelSizes = [NSMutableArray new];
     
     // initiaize picker view
     pickerToolBarView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
@@ -129,7 +133,13 @@
     [self.view addSubview:pickerToolBarView];
     pickerToolBarView.hidden = YES;
     
-    arrayPreferredBrands = [NSMutableArray arrayWithObjects:@"Birla",@"Binani",@"Jindal",@"Reliance",@"Tata", nil];
+    //arrayPreferredBrands = [NSMutableArray arrayWithObjects:@"Birla",@"Binani",@"Jindal",@"Reliance",@"Tata", nil];
+    if(model_manager.requirementManager.arraySteelBrands.count>0)
+        arrayPreferredBrands = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelBrands];
+    else
+        arrayPreferredBrands = [NSMutableArray new];
+
+    
     arraySelectedPreferredBrands = [NSMutableArray new];
     
     // initiaize picker view
@@ -147,6 +157,26 @@
     [self createPickerWithTag:333 inView:pickerGradeRequiredView];
     [self.view addSubview:pickerGradeRequiredView];
     pickerGradeRequiredView.hidden = YES;
+    
+    [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arraySteelBrands.count>0)
+        {
+            arrayPreferredBrands = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelBrands];
+            UITableView *tblView = [pickerPreferredBrandsView viewWithTag:222];
+            [tblView reloadData];
+            
+        }
+    }];
+    
+    [model_manager.requirementManager getSteelSizes:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arraySteelSizes.count>0)
+        {
+            arraySteelSizes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelSizes];
+            UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
+            [pickerView reloadAllComponents];
+        }
+    }];
+
 }
 
 -(void)createPickerWithTag:(int)tag inView:(UIView*)parentview
@@ -253,6 +283,14 @@
     if(selectedDiameter.length>0)
     {
         selectedDiameterTextfield.text = selectedDiameter;
+        
+        // getting indexpath from selected button
+        CGPoint center= selectedDiameterTextfield.center;
+        CGPoint rootViewPoint = [selectedDiameterTextfield.superview convertPoint:center toView:tblViewSizes];
+        NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
+
+        [[arrayTblDict objectAtIndex:indexPath.row] setValue:selectedDiameter forKey:@"size"];
+        
         selectedDiameter = @"";
     }
     
@@ -330,6 +368,8 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        
+        
         if(indexPath.row==arrayTblDict.count)
         {
             cell.btnAdd.hidden = NO;
@@ -348,6 +388,11 @@
             NSArray *arrayRightBtns = [self rightButtons];
             [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
             [cell setDelegate:self];
+            
+            cell.txtFieldDiameter.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"size"];
+            cell.txtFieldQuantity.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"quantity"];
+
+            
             
         }
         return cell;
@@ -414,13 +459,16 @@
             
         case 0:
         {
-            // accept button is pressed
-            NSIndexPath *indexPath;
-            indexPath = [tblViewSizes indexPathForCell:cell];
+            // delete button is pressed
+            if(arrayTblDict.count>1)
+            {
+                NSIndexPath *indexPath;
+                indexPath = [tblViewSizes indexPathForCell:cell];
 
-            [arrayTblDict removeObjectAtIndex:indexPath.row];
-            tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
-            [tblViewSizes reloadData]; // tell table to refresh now
+                [arrayTblDict removeObjectAtIndex:indexPath.row];
+                tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+                [tblViewSizes reloadData]; // tell table to refresh now
+            }
             break;
         }
         
@@ -498,6 +546,16 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    if(textField.tag==786)
+    {
+        // getting indexpath from selected textfield
+        CGPoint center= textField.center;
+        CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblViewSizes];
+        NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
+        
+        [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
+    }
+    
     [textField resignFirstResponder];
     
     return YES;
@@ -517,6 +575,7 @@
             selectedDiameter = [arraySteelSizes objectAtIndex:0];
         
         UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
+        
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
 

@@ -10,13 +10,15 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes;
 
 - (id)init
 {
     self = [super init];
     if (self) {
         arrayPostedRequirements = [NSMutableArray new];
+        arraySteelBrands = [NSMutableArray new];
+        arraySteelSizes = [NSMutableArray new];
     }
     return self;
 }
@@ -97,6 +99,54 @@
         
     } ];
     
+}
+
+-(void)getSteelBrands:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"brands" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arraySteelBrands removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arraySteelBrands addObject:[array objectAtIndex:i]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+}
+
+-(void)getSteelSizes:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"steelsizes" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arraySteelSizes removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arraySteelSizes addObject:[NSString stringWithFormat:@"%@ mm", [array objectAtIndex:i]]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
 }
 
 @end

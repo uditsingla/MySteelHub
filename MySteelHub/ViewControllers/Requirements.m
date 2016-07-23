@@ -18,9 +18,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
-        [_tblView reloadData];
-    }];
+//    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
+//        [_tblView reloadData];
+//    }];
 
 }
 
