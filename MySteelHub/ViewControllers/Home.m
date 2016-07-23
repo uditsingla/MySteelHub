@@ -51,7 +51,7 @@
 
     UIView *pickerGradeRequiredView;
     NSMutableArray *arrayGradeRequired;
-    NSMutableArray *arraySelectedGradeRequired;
+    NSString *selectedGradeRequired;
 
     
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
@@ -140,12 +140,11 @@
     pickerPreferredBrandsView.hidden = YES;
     
     arrayGradeRequired = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5", nil];
-    arraySelectedGradeRequired = [NSMutableArray new];
 
     // initiaize picker view
     pickerGradeRequiredView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerGradeRequiredView setBackgroundColor:[UIColor whiteColor]];
-    [self createTableViewWithTag:333 inView:pickerGradeRequiredView];
+    [self createPickerWithTag:333 inView:pickerGradeRequiredView];
     [self.view addSubview:pickerGradeRequiredView];
     pickerGradeRequiredView.hidden = YES;
 }
@@ -216,6 +215,8 @@
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if(pickerView.tag==111)
         return [arraySteelSizes count];
+    else if(pickerView.tag==333)
+        return [arrayGradeRequired count];
     else
         return 0;
 
@@ -225,6 +226,8 @@
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     if(pickerView.tag==111)
         return [arraySteelSizes objectAtIndex: row];
+    else if(pickerView.tag==333)
+        return [arrayGradeRequired objectAtIndex: row];
     else
         return @"";
 }
@@ -236,14 +239,29 @@
         NSLog(@"You selected this: %@", [arraySteelSizes objectAtIndex: row]);
         selectedDiameter = [arraySteelSizes objectAtIndex: row];
     }
+    else if(pickerView.tag==333)
+    {
+        NSLog(@"You selected this: %@", [arrayGradeRequired objectAtIndex: row]);
+        selectedGradeRequired = [arrayGradeRequired objectAtIndex: row];
+    }
     
 }
 
 -(void)pickerDoneButtonPressed
 {
     pickerToolBarView.hidden = YES;
-    selectedDiameterTextfield.text = selectedDiameter;
-    selectedDiameter = @"";
+    if(selectedDiameter.length>0)
+    {
+        selectedDiameterTextfield.text = selectedDiameter;
+        selectedDiameter = @"";
+    }
+    
+    pickerGradeRequiredView.hidden = YES;
+    if(selectedGradeRequired.length>0)
+    {
+        [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired] forState:UIControlStateNormal];
+        //selectedGradeRequired = @"";
+    }
 }
 
 -(void)tableDoneButtonPressed
@@ -259,12 +277,6 @@
 
     }
     
-    if(arraySelectedGradeRequired.count>0)
-    {
-        
-        [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",[arraySelectedGradeRequired componentsJoinedByString:@", "]] forState:UIControlStateNormal];
-
-    }
 }
 
 
@@ -273,8 +285,6 @@
 {
     if(tableView.tag==222)
         return arrayPreferredBrands.count;
-    else if(tableView.tag==333)
-        return arrayGradeRequired.count;
     return arrayTblDict.count+1;
     
 }
@@ -313,36 +323,6 @@
         return cell;
     }
     
-    else if(tableView.tag==333)
-    {
-        static NSString *_simpleTableIdentifier = @"CellIdentifier";
-        
-        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
-        
-        // Configure the cell...
-        if(cell==nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
-            
-        }
-        
-        cell.textLabel.text = [arrayGradeRequired objectAtIndex:indexPath.row];
-        
-        if ([arraySelectedGradeRequired containsObject:[arrayGradeRequired objectAtIndex:indexPath.row]])
-        {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            
-        }
-        
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    }
     
     else
     {
@@ -392,21 +372,7 @@
         }
         [tableView reloadData];
     }
-    else if(tableView.tag==333)
-    {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        //the below code will allow multiple selection
-        if ([arraySelectedGradeRequired containsObject:[arrayGradeRequired objectAtIndex:indexPath.row]])
-        {
-            [arraySelectedGradeRequired removeObject:[arrayGradeRequired objectAtIndex:indexPath.row]];
-        }
-        else
-        {
-            [arraySelectedGradeRequired addObject:[arrayGradeRequired objectAtIndex:indexPath.row]];
-        }
-        [tableView reloadData];
-    }
+
     else
     {
         
@@ -649,6 +615,12 @@
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender {
     pickerGradeRequiredView.hidden = NO;
     [self.view bringSubviewToFront:pickerGradeRequiredView];
+    selectedGradeRequired = [arrayGradeRequired objectAtIndex:0];
+    
+    UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
+    
 }
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
@@ -672,7 +644,7 @@
     {
         [self showAlert:@"Please enter specification"];
     }
-    else if(arraySelectedGradeRequired.count==0)
+    else if(selectedGradeRequired.length==0)
     {
         [self showAlert:@"Please select grade"];
     }
@@ -687,7 +659,7 @@
     else
     {
         RequirementI *newRequirement = [RequirementI new];
-        newRequirement.userID = @"31";//[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
+        newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
         newRequirement.arraySpecifications = arrayTblDict;
         newRequirement.isChemical = switchChemical.isOn;
         newRequirement.isPhysical = switchPhysical.isOn;
@@ -695,6 +667,7 @@
         newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
         newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
         newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
+        newRequirement.gradeRequired = selectedGradeRequired;
         newRequirement.budget = txtFieldBudget.text;
         newRequirement.city = txtFieldCity.text;
         newRequirement.state = txtFieldState.text;

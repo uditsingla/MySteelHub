@@ -26,7 +26,7 @@
 
 
 @property(strong,nonatomic) NSMutableArray *arraySpecifications;
-@property(strong,nonatomic) NSMutableArray *arrayGradesRequired;
+@property(strong,nonatomic) NSString *gradeRequired;
 @property(strong,nonatomic) NSMutableArray *arrayPreferedBrands;
 
 

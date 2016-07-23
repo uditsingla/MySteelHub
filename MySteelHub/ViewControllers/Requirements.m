@@ -8,7 +8,9 @@
 
 #import "Requirements.h"
 
-@interface Requirements ()
+@interface Requirements ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tblView;
 
 @end
 
@@ -17,7 +19,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
-        
+        [_tblView reloadData];
     }];
 
 }
@@ -116,7 +118,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 5;
+    return model_manager.requirementManager.arrayPostedRequirements.count;
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -126,8 +128,11 @@
     [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [view.layer setBorderWidth:1.0f];
     
+    RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
+    
     UILabel *lbl=(UILabel*)[view viewWithTag:2];
-    lbl.text=@"hahah";
+    lbl.text=requirement.state;
+    
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

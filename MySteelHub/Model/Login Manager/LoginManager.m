@@ -34,13 +34,16 @@
     [RequestManager asynchronousRequestWithPath:@"auth/securelogin" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
                if (statusCode==200) {
             NSLog(@"Here comes the json %@",json);
+                   
+            if([json objectForKey:@"user_id"])
+                [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]] forKey:@"userID"];
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
             completionBlock(arr,nil);
         }
         else{
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
-            NSError *error=[json objectForKey:@"error"];
-            completionBlock(arr,error);
+//            NSError *error=[json objectForKey:@"error"];
+            completionBlock(arr,nil);
         }
        
     } ];
@@ -152,7 +155,7 @@
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             completionBlock(json,nil);
-            
+            [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userID"];
         }
         else{
             completionBlock(nil,nil);

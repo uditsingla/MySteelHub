@@ -307,6 +307,9 @@
                             <constraint firstItem="oqA-6f-XXL" firstAttribute="leading" secondItem="6ja-iS-3sf" secondAttribute="leading" constant="10" id="uss-7G-A9q"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tblView" destination="oqA-6f-XXL" id="9HI-PN-yDq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xm3-Dj-xfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
