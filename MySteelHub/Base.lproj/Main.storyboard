@@ -378,7 +378,7 @@
                                                                         <outlet property="delegate" destination="P12-dO-A8K" id="JTt-9j-2ay"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity in Tonne" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-NV-COM">
+                                                                <textField opaque="NO" clipsSubviews="YES" tag="786" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity in Tonne" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e2w-NV-COM">
                                                                     <rect key="frame" x="143" y="7" width="125" height="30"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="89q-3E-ChN"/>
@@ -569,6 +569,9 @@
                                                         <state key="normal" title="Required by Date">
                                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="requiredByDateBtnAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="ksW-du-CEk"/>
+                                                        </connections>
                                                     </button>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="City" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="q1r-wB-BrQ">
                                                         <rect key="frame" x="6" y="264" width="270" height="21"/>
@@ -708,6 +711,7 @@
                         <outlet property="_scrollView" destination="Exc-Wa-j9O" id="y34-NI-CO1"/>
                         <outlet property="btnGradeRequired" destination="xPs-Vc-fBO" id="hQh-7K-Ehc"/>
                         <outlet property="btnPreferedBrands" destination="dcl-1r-3hu" id="Gjg-n6-AxP"/>
+                        <outlet property="btnRequiredByDate" destination="F9N-Fi-K4K" id="aDN-fJ-v1N"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
                         <outlet property="sgmtControlLenghtRequired" destination="5ph-Uk-Meq" id="Pet-DF-KWz"/>
                         <outlet property="sgmtControlTypeRequired" destination="YvB-A2-dEB" id="ayS-Nx-ZZW"/>

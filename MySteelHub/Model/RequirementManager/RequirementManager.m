@@ -26,12 +26,20 @@
 -(void)postRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam with requirement object
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",@"",@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",requirement.requiredByDate,@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",nil];
 
     
     [RequestManager asynchronousRequestWithPath:@"buyer/post" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
+            
+            if([[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"])
+            {
+                requirement.requirementID = [NSString stringWithFormat:@"%i",[[[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"] intValue]];
+                
+                [model_manager.requirementManager.arrayPostedRequirements addObject:requirement];
+            }
+            
             completionBlock(json,nil);
             
         }
@@ -77,6 +85,8 @@
                 requirement.city = [[array objectAtIndex:i] valueForKey:@"city"];
 
                 requirement.state = [[array objectAtIndex:i] valueForKey:@"state"];
+                
+                requirement.requiredByDate = [[array objectAtIndex:i] valueForKey:@"required_by_date"];
 
                 requirement.arraySpecifications = [[array objectAtIndex:i] valueForKey:@"quantity"];
                 
@@ -134,7 +144,7 @@
             [arraySteelSizes removeAllObjects];
             NSArray *array = [json valueForKey:@"data"];
             for (int i=0; i < array.count; i++) {
-                [arraySteelSizes addObject:[NSString stringWithFormat:@"%@ mm", [array objectAtIndex:i]]];
+                [arraySteelSizes addObject:[array objectAtIndex:i]];
             }
             
             if(completionBlock)

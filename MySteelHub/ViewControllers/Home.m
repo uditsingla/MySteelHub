@@ -31,6 +31,9 @@
     
     __weak IBOutlet UITextField *txtFieldBudget;
     
+    __weak IBOutlet UIButton *btnRequiredByDate;
+    
+    
     CLLocationManager *locationManager;
     
     __weak IBOutlet UIScrollView *_scrollView;
@@ -53,6 +56,9 @@
     NSMutableArray *arrayGradeRequired;
     NSString *selectedGradeRequired;
     
+    UIView *datePickerView;
+    NSString *selectedDate;
+    
     
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
@@ -61,6 +67,7 @@
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender;
 - (IBAction)submitBtnAction:(UIButton *)sender;
+- (IBAction)requiredByDateBtnAction:(UIButton *)sender;
 
 @end
 
@@ -157,7 +164,7 @@
     [self.view addSubview:pickerPreferredBrandsView];
     pickerPreferredBrandsView.hidden = YES;
     
-    arrayGradeRequired = [NSMutableArray arrayWithObjects:@"1",@"2",@"3",@"4",@"5", nil];
+    arrayGradeRequired = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D", nil];
     
     // initiaize picker view
     pickerGradeRequiredView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
@@ -165,6 +172,13 @@
     [self createPickerWithTag:333 inView:pickerGradeRequiredView];
     [self.view addSubview:pickerGradeRequiredView];
     pickerGradeRequiredView.hidden = YES;
+    
+    //initialize date picker
+    datePickerView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [datePickerView setBackgroundColor:[UIColor whiteColor]];
+    [self createDatePickerWithTag:444 inView:datePickerView];
+    [self.view addSubview:datePickerView];
+    datePickerView.hidden = YES;
     
     [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arraySteelBrands.count>0)
@@ -186,6 +200,7 @@
     }];
 
 }
+
 
 -(void)createPickerWithTag:(int)tag inView:(UIView*)parentview
 {
@@ -242,6 +257,47 @@
     [parentview addSubview:pickerToolbar];
 }
 
+-(void)createDatePickerWithTag:(int)tag inView:(UIView*)parentview
+{
+    UIDatePicker *datePicker=[[UIDatePicker alloc]init];
+    [datePicker setFrame:CGRectMake(0,0, self.view.frame.size.width,216)];
+    datePicker.datePickerMode=UIDatePickerModeDate;
+    datePicker.timeZone = [NSTimeZone localTimeZone];
+    datePicker.backgroundColor = [UIColor whiteColor];
+    datePicker.tag = tag;
+    
+    
+    [parentview addSubview:datePicker];
+    
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar sizeToFit];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(datePickerDoneButtonPressed)];
+    
+    
+    [pickerToolbar setItems:@[flexSpace, doneBtn] animated:YES];
+    
+    [parentview addSubview:pickerToolbar];
+}
+
+-(void)datePickerDoneButtonPressed
+{
+    datePickerView.hidden = YES;
+    UIDatePicker *datePicker = [datePickerView viewWithTag:444];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd/MM/yyyy"];
+    selectedDate = [NSString stringWithFormat:@"%@",
+                          [df stringFromDate:datePicker.date]];
+    df = nil;
+
+    [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",selectedDate] forState:UIControlStateNormal];
+}
+
+
 #pragma mark - UIPickerView delgates
 
 // Number of components.
@@ -263,7 +319,7 @@
 // Display each row's data.
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     if(pickerView.tag==111)
-        return [arraySteelSizes objectAtIndex: row];
+        return [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]];
     else if(pickerView.tag==333)
         return [arrayGradeRequired objectAtIndex: row];
     else
@@ -274,8 +330,8 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(pickerView.tag==111)
     {
-        NSLog(@"You selected this: %@", [arraySteelSizes objectAtIndex: row]);
-        selectedDiameter = [arraySteelSizes objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]);
+        selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]];
     }
     else if(pickerView.tag==333)
     {
@@ -350,10 +406,10 @@
             
         }
         
-        cell.textLabel.text = [arrayPreferredBrands objectAtIndex:indexPath.row];
+        cell.textLabel.text = [[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"];
         
         
-        if ([arraySelectedPreferredBrands containsObject:[arrayPreferredBrands objectAtIndex:indexPath.row]])
+        if ([arraySelectedPreferredBrands containsObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]])
         {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
@@ -415,13 +471,13 @@
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
         //the below code will allow multiple selection
-        if ([arraySelectedPreferredBrands containsObject:[arrayPreferredBrands objectAtIndex:indexPath.row]])
+        if ([arraySelectedPreferredBrands containsObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]])
         {
-            [arraySelectedPreferredBrands removeObject:[arrayPreferredBrands objectAtIndex:indexPath.row]];
+            [arraySelectedPreferredBrands removeObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]];
         }
         else
         {
-            [arraySelectedPreferredBrands addObject:[arrayPreferredBrands objectAtIndex:indexPath.row]];
+            [arraySelectedPreferredBrands addObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]];
         }
         [tableView reloadData];
     }
@@ -580,7 +636,8 @@
         //            selectedDiameter = textField.text;
         //        }
         //        else
-        selectedDiameter = [arraySteelSizes objectAtIndex:0];
+        
+        selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
         
         UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
         
@@ -692,20 +749,20 @@
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
-    //    if(arrayTblDict.count==1)
-    //    {
-    //        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-    //        {
-    //            [self showAlert:@"Please enter diameter size"];
-    //            return;
-    //        }
-    //        
-    //        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-    //        {
-    //            [self showAlert:@"Please enter quantity"];
-    //            return;
-    //        }
-    //    }
+        if(arrayTblDict.count==1)
+        {
+            if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+            {
+                [self showAlert:@"Please enter diameter size"];
+                return;
+            }
+            
+            else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+            {
+                [self showAlert:@"Please enter quantity"];
+                return;
+            }
+        }
     
     if(arrayTblDict.count==0)
     {
@@ -723,6 +780,14 @@
     {
         [self showAlert:@"Please enter state"];
     }
+    else if([[txtFieldBudget.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter budget"];
+    }
+    else if([[selectedDate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter required by date"];
+    }
     else
     {
         RequirementI *newRequirement = [RequirementI new];
@@ -738,11 +803,25 @@
         newRequirement.budget = txtFieldBudget.text;
         newRequirement.city = txtFieldCity.text;
         newRequirement.state = txtFieldState.text;
+        newRequirement.requiredByDate = selectedDate;
         
         [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
             
+            if(json)
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else
+            {
+                [self showAlert:@"Some error occured. Please try again"];
+            }
         }];
     }
+}
+
+- (IBAction)requiredByDateBtnAction:(UIButton *)sender {
+    datePickerView.hidden = NO;
+    [self.view bringSubviewToFront:datePickerView];
 }
 
 -(void)showAlert:(NSString *)errorMsg
