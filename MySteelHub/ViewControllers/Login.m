@@ -95,6 +95,7 @@
 #pragma mark - Custom Methods -
 -(IBAction)loginUser:(id)sender
 {
+    
     if ([self validEmail:txtEmail.text] != 0 && [[txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] != 0 )
     {
         [SVProgressHUD show];

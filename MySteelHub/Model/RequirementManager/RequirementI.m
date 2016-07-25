@@ -23,6 +23,7 @@
         budget=@"";
         city=@"";
         state=@"";
+        requiredByDate = @"";
         arraySpecifications = [NSMutableArray new];
         arrayPreferedBrands = [NSMutableArray new];
         gradeRequired = @"";

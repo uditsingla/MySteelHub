@@ -18,9 +18,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    //    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
-    //        [_tblView reloadData];
-    //    }];
+    [_tblView reloadData];
+    
+    [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
+        [_tblView reloadData];
+    }];
     
 }
 
@@ -132,8 +134,12 @@
     
     RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
     
-    UILabel *lbl=(UILabel*)[view viewWithTag:2];
-    lbl.text=requirement.state;
+    UILabel *lblName=(UILabel*)[view viewWithTag:2];
+    lblName.text=[requirement.state capitalizedString];
+    
+    UILabel *lblDate=(UILabel*)[view viewWithTag:3];
+    lblDate.text=[requirement.requiredByDate capitalizedString];
+    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -12,11 +12,20 @@
 @interface RequirementManager : NSObject
 
 @property(strong,nonatomic) NSMutableArray *arrayPostedRequirements;
+@property(strong,nonatomic) NSMutableArray *arraySteelBrands;
+@property(strong,nonatomic) NSMutableArray *arraySteelSizes;
+
 
 
 -(void)postRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 -(void)getPostedRequirements:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+
+-(void)getSteelBrands:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)getSteelSizes:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
 
 
 @end

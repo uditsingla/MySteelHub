@@ -20,7 +20,7 @@
 @property(strong,nonatomic) NSString *budget;
 @property(strong,nonatomic) NSString *city;
 @property(strong,nonatomic) NSString *state;
-@property(strong,nonatomic) NSDate *requiredByDate;
+@property(strong,nonatomic) NSString *requiredByDate;
 @property(strong,nonatomic) NSDate *createdDate;
 @property(strong,nonatomic) NSDate *modifiedDate;
 

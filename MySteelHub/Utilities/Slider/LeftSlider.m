@@ -47,7 +47,7 @@
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
     
     self.view.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,17 +58,17 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
+    //#warning Incomplete implementation, return the number of sections
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//#warning Incomplete implementation, return the number of rows
+    //#warning Incomplete implementation, return the number of rows
     return [arrMenuItems count];
 }
 
 
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     static NSString *_simpleTableIdentifier = @"CellIdentifier";
@@ -76,7 +76,7 @@
     //LeftSliderCell *cell = [tableView dequeueReusableCellWithIdentifier:_simpleTableIdentifier forIndexPath:indexPath];
     
     LeftSliderCell *cell = (LeftSliderCell*)[tableView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
-
+    
     
     // Configure the cell...
     if(cell==nil)
@@ -87,10 +87,10 @@
     }
     
     //Menu lable
-//    cell.lblMenuItem.backgroundColor = GreenColor;
+    //    cell.lblMenuItem.backgroundColor = GreenColor;
     cell.lblMenuItem.textColor = [UIColor whiteColor];
     cell.lblMenuItem.text = [arrMenuItems objectAtIndex:indexPath.row] ;
-    
+    cell.lblMenuItem.font = [UIFont fontWithName:@"Raleway-regular" size:15];
     
     //Menu Image
     //UIImageView *imgMenuItem = (UIImageView*)[cell.contentView viewWithTag:kimgMenuItem];
@@ -117,7 +117,7 @@
         [controllers removeLastObject];
     }
     navigationController.viewControllers = controllers;
-
+    
     
     UIViewController *viewcontroller = [mainstoryboard instantiateViewControllerWithIdentifier: identifier];
     return viewcontroller;
@@ -141,19 +141,19 @@
             [controllers removeLastObject];
         }
         navigationController.viewControllers = controllers;
-
+        
     }
     else if ([keyName caseInsensitiveCompare:@"New Requirement"] == NSOrderedSame){
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-
+        
         [navigationController pushViewController:[self goToController:@"home"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
         
-         
+        
     }
     
     else if ([keyName caseInsensitiveCompare:@"Logout"] == NSOrderedSame)
@@ -161,7 +161,7 @@
         NSLog(@"Logout");
         UINavigationController *navController = (UINavigationController*)appdelegate.window.rootViewController;
         [navController popToRootViewControllerAnimated:YES];
-
+        
     }
     else {
         NSLog(@"else clicked");
