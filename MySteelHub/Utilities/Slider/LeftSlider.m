@@ -36,7 +36,7 @@
                     @"Logout",nil];
     
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
-                          @"history.png",
+                          @"newrequirment.png",
                           @"history.png",
                           @"password.png",
                           @"contact.png",
