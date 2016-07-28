@@ -23,7 +23,7 @@
     [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
         [_tblView reloadData];
     }];
-
+    
 }
 
 - (void)viewDidLoad {
@@ -32,31 +32,31 @@
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
     
-
     
-//    self.navigationController.navigationBar.barTintColor=BlackBackground;
-//    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
-//    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
-//                                                                   style:UIBarButtonItemStylePlain
-//                                                                  target:self
-//                                                                  action:@selector(Back)];
-//    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"]
-//                                                                   style:UIBarButtonItemStylePlain
-//                                                                  target:self
-//                                                                  action:@selector(settings)];
-//    
-//    self.navigationItem.leftBarButtonItem = backButton;
-//    self.navigationItem.rightBarButtonItem = settingsButton;
-//    
-//    self.navigationController.navigationBar.topItem.title=@"";
-//    
-//    UILabel *label = [[UILabel alloc] init];
-//    label.text = @"REQUIREMENTS";
-//    label.frame = CGRectMake(0, 0, 100, 30);
-//    label.textColor=[UIColor whiteColor];
-//    label.textAlignment = NSTextAlignmentCenter;
-//    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
-//    self.navigationItem.titleView = customLabel.customView;
+    
+    //    self.navigationController.navigationBar.barTintColor=BlackBackground;
+    //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
+    //    UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"]
+    //                                                                   style:UIBarButtonItemStylePlain
+    //                                                                  target:self
+    //                                                                  action:@selector(Back)];
+    //    UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings.png"]
+    //                                                                   style:UIBarButtonItemStylePlain
+    //                                                                  target:self
+    //                                                                  action:@selector(settings)];
+    //    
+    //    self.navigationItem.leftBarButtonItem = backButton;
+    //    self.navigationItem.rightBarButtonItem = settingsButton;
+    //    
+    //    self.navigationController.navigationBar.topItem.title=@"";
+    //    
+    //    UILabel *label = [[UILabel alloc] init];
+    //    label.text = @"REQUIREMENTS";
+    //    label.frame = CGRectMake(0, 0, 100, 30);
+    //    label.textColor=[UIColor whiteColor];
+    //    label.textAlignment = NSTextAlignmentCenter;
+    //    UIBarButtonItem *customLabel = [[UIBarButtonItem alloc] initWithCustomView:label];
+    //    self.navigationItem.titleView = customLabel.customView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,13 +78,13 @@
                                                        //add code to make something happen once tapped
                                                    }];
     
-      //
+    //
     [actionSheet addAction:button];
     
     
     NSMutableArray *arr=[[NSMutableArray alloc]initWithObjects:@"Change Password",@"Contact Us",@"Logout" ,nil];
     for (int i=0; i<arr.count; i++) {
-      
+        
         
         [actionSheet addAction:[UIAlertAction actionWithTitle:[arr objectAtIndex:i] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -94,11 +94,11 @@
             if ([action.title isEqualToString:@"Contact Us"]) {
                 //
             }
-
+            
             if ([action.title isEqualToString:@"Logout"]) {
                 //
             }
-
+            
             
             
             
@@ -109,7 +109,7 @@
     //
     
     [self presentViewController:actionSheet animated:YES completion:nil];
-
+    
     
 }
 -(void)Back
@@ -126,8 +126,8 @@
     
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
-   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RequirementCell"];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RequirementCell"];
     UIView *view=(UIView*)[cell.contentView viewWithTag:1];
     [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [view.layer setBorderWidth:1.0f];
@@ -139,7 +139,7 @@
     
     UILabel *lblDate=(UILabel*)[view viewWithTag:3];
     lblDate.text=[requirement.requiredByDate capitalizedString];
-
+    
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -151,23 +151,23 @@
 {
     UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
     [self.navigationController pushViewController:detailVC animated:YES];
-
+    
 }
 
 - (IBAction)btnNewRequirement:(id)sender {
     
     UIViewController *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
-        [self.navigationController pushViewController:homeVC animated:YES];
+    [self.navigationController pushViewController:homeVC animated:YES];
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

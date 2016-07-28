@@ -392,13 +392,14 @@
                                                                 </textField>
                                                                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V81-pi-dFP">
                                                                     <rect key="frame" x="8" y="7" width="262" height="30"/>
-                                                                    <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="deviceRGB"/>
+                                                                    <color key="backgroundColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="deviceRGB"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="30" id="3a6-8F-Ugz"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="16"/>
+                                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                                     <state key="normal" title="Add more">
                                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="btnAddAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="ZLx-QT-Wm4"/>
@@ -447,7 +448,7 @@
                                                             <constraint firstAttribute="width" constant="40" id="O6w-UH-nhd"/>
                                                             <constraint firstAttribute="height" constant="25" id="gX5-Yz-JmW"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chemical" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IY3-HU-tvh">
                                                         <rect key="frame" x="14" y="40" width="88" height="21"/>
@@ -465,7 +466,7 @@
                                                             <constraint firstAttribute="height" constant="25" id="Rla-la-eDO"/>
                                                             <constraint firstAttribute="width" constant="40" id="aDI-Jf-caE"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Certificate Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YL7-gh-rMh">
                                                         <rect key="frame" x="14" y="72" width="173" height="21"/>
@@ -483,7 +484,7 @@
                                                             <constraint firstAttribute="height" constant="25" id="Xeq-c9-TqZ"/>
                                                             <constraint firstAttribute="width" constant="40" id="qcU-6X-zQa"/>
                                                         </constraints>
-                                                        <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                                     </switch>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lenght Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mY2-6h-4WT">
                                                         <rect key="frame" x="14" y="104" width="137" height="21"/>
@@ -506,7 +507,7 @@
                                                             <segment title="Straight"/>
                                                             <segment title="Bend"/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-LY-HGk">
                                                         <rect key="frame" x="14" y="136" width="137" height="21"/>
@@ -528,7 +529,7 @@
                                                             <segment title="Std."/>
                                                             <segment title="Rdm."/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
                                                     </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-1r-3hu">
                                                         <rect key="frame" x="0.0" y="168" width="276" height="21"/>

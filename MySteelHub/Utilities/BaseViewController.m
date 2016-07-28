@@ -24,7 +24,7 @@
     topView.frame = CGRectMake(0, 0, self.view.frame.size.width, 70);
     topView.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
     [self.view addSubview:topView];
-
+    
     // Do any additional setup after loading the view.
 }
 
@@ -36,6 +36,7 @@
 -(void)setTitleLabel:(NSString*)title
 {
     UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     label.text = title;
     label.frame = CGRectMake(0, 20, self.view.frame.size.width, 50);
     label.textColor=[UIColor whiteColor];
@@ -58,7 +59,7 @@
     menuButton.frame = CGRectMake(self.view.frame.size.width-50, 20, 50, 50);
     [menuButton setImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
     [menuButton addTarget:self action:@selector(rightMenuAction) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [self.view addSubview:menuButton];
 }
 

@@ -113,6 +113,23 @@
     
     [self customtxtfield:txtFieldBudget withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
     
+    
+    [txtFieldCity setValue:[UIColor lightGrayColor]
+                forKeyPath:@"_placeholderLabel.textColor"];
+    [txtFieldState setValue:[UIColor lightGrayColor]
+                 forKeyPath:@"_placeholderLabel.textColor"];
+    [txtFieldBudget setValue:[UIColor lightGrayColor]
+                  forKeyPath:@"_placeholderLabel.textColor"];
+    
+    
+    //    btnGradeRequired.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
+    //    btnPreferedBrands.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
+    //    btnRequiredByDate.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
+    
+    
+    
+    
+    
     arrayTblDict = [NSMutableArray new];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
@@ -153,7 +170,7 @@
         arrayPreferredBrands = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelBrands];
     else
         arrayPreferredBrands = [NSMutableArray new];
-
+    
     
     arraySelectedPreferredBrands = [NSMutableArray new];
     
@@ -198,7 +215,7 @@
             [pickerView reloadAllComponents];
         }
     }];
-
+    
 }
 
 
@@ -291,9 +308,9 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd/MM/yyyy"];
     selectedDate = [NSString stringWithFormat:@"%@",
-                          [df stringFromDate:datePicker.date]];
+                    [df stringFromDate:datePicker.date]];
     df = nil;
-
+    
     [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",selectedDate] forState:UIControlStateNormal];
 }
 
@@ -352,7 +369,7 @@
         CGPoint center= selectedDiameterTextfield.center;
         CGPoint rootViewPoint = [selectedDiameterTextfield.superview convertPoint:center toView:tblViewSizes];
         NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
-
+        
         [[arrayTblDict objectAtIndex:indexPath.row] setValue:selectedDiameter forKey:@"size"];
         
         selectedDiameter = @"";
@@ -455,7 +472,7 @@
             
             cell.txtFieldDiameter.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"size"];
             cell.txtFieldQuantity.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"quantity"];
-
+            
             
             
         }
@@ -528,7 +545,7 @@
             {
                 NSIndexPath *indexPath;
                 indexPath = [tblViewSizes indexPathForCell:cell];
-
+                
                 [arrayTblDict removeObjectAtIndex:indexPath.row];
                 tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
                 [tblViewSizes reloadData]; // tell table to refresh now
@@ -749,20 +766,20 @@
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
-        if(arrayTblDict.count==1)
+    if(arrayTblDict.count==1)
+    {
+        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
         {
-            if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-            {
-                [self showAlert:@"Please enter diameter size"];
-                return;
-            }
-            
-            else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
-            {
-                [self showAlert:@"Please enter quantity"];
-                return;
-            }
+            [self showAlert:@"Please enter diameter size"];
+            return;
         }
+        
+        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+        {
+            [self showAlert:@"Please enter quantity"];
+            return;
+        }
+    }
     
     if(arrayTblDict.count==0)
     {
