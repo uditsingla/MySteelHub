@@ -160,11 +160,12 @@
     NSDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
 
     
-    [RequestManager asynchronousRequestWithPath:@"auth/logout" requestType:RequestTypeDELETE params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"auth/logout" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             completionBlock(json,nil);
             [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userID"];
+            [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"isAutoLogin"];
         }
         else{
             completionBlock(nil,nil);
