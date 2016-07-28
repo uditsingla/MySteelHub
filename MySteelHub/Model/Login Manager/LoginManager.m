@@ -36,7 +36,12 @@
             NSLog(@"Here comes the json %@",json);
                    
             if([json objectForKey:@"user_id"])
+            {
                 [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]] forKey:@"userID"];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
+                
+            }
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
                    
             [model_manager.requirementManager getSteelBrands:nil];
