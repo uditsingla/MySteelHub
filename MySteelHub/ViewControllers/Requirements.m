@@ -7,6 +7,7 @@
 //
 
 #import "Requirements.h"
+#import "Home.h"
 
 @interface Requirements ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -149,8 +150,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
-    [self.navigationController pushViewController:detailVC animated:YES];
+//    UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    Home *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
+    homeVC.selectedRequirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:homeVC animated:YES];
+
     
 }
 

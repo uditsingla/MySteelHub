@@ -12,4 +12,5 @@
 
 @interface Home : BaseViewController <UITextFieldDelegate,CLLocationManagerDelegate>
 
+@property(nonatomic,strong) RequirementI *selectedRequirement;
 @end
