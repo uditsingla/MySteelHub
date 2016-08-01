@@ -10,7 +10,7 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades;
 
 - (id)init
 {
@@ -19,6 +19,8 @@
         arrayPostedRequirements = [NSMutableArray new];
         arraySteelBrands = [NSMutableArray new];
         arraySteelSizes = [NSMutableArray new];
+        arraySteelGrades = [NSMutableArray new];
+
     }
     return self;
 }
@@ -40,11 +42,13 @@
                 [model_manager.requirementManager.arrayPostedRequirements addObject:requirement];
             }
             
-            completionBlock(json,nil);
+            if(completionBlock)
+                completionBlock(json,nil);
             
         }
         else{
-            completionBlock(nil,nil);
+            if(completionBlock)
+                completionBlock(nil,nil);
             //show error
         }
         
@@ -58,7 +62,7 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"],@"user_id",nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypeGET params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -99,11 +103,13 @@
 
             }
             
-            completionBlock(json,nil);
+            if(completionBlock)
+                completionBlock(json,nil);
 
         }
         else{
-            completionBlock(nil,nil);
+            if(completionBlock)
+                completionBlock(nil,nil);
             //show error
         }
         
@@ -128,7 +134,8 @@
             
         }
         else{
-            completionBlock(nil,nil);
+            if(completionBlock)
+                completionBlock(nil,nil);
             //show error
         }
         
@@ -152,11 +159,38 @@
             
         }
         else{
-            completionBlock(nil,nil);
+            if(completionBlock)
+                completionBlock(nil,nil);
             //show error
         }
         
     } ];
 }
+
+-(void)getSteelGrades:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"grades" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arraySteelGrades removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arraySteelGrades addObject:[array objectAtIndex:i]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+}
+
 
 @end

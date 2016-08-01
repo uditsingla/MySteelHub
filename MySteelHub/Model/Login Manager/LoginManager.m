@@ -36,11 +36,17 @@
             NSLog(@"Here comes the json %@",json);
                    
             if([json objectForKey:@"user_id"])
+            {
                 [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]] forKey:@"userID"];
+                
+                [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
+                
+            }
             NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
                    
             [model_manager.requirementManager getSteelBrands:nil];
             [model_manager.requirementManager getSteelSizes:nil];
+            [model_manager.requirementManager getSteelGrades:nil];
 
             completionBlock(arr,nil);
         }
@@ -155,11 +161,12 @@
     NSDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
 
     
-    [RequestManager asynchronousRequestWithPath:@"auth/logout" requestType:RequestTypeDELETE params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"auth/logout" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             completionBlock(json,nil);
             [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userID"];
+            [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"isAutoLogin"];
         }
         else{
             completionBlock(nil,nil);

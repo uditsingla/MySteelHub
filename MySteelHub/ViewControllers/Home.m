@@ -181,7 +181,12 @@
     [self.view addSubview:pickerPreferredBrandsView];
     pickerPreferredBrandsView.hidden = YES;
     
-    arrayGradeRequired = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D", nil];
+    //arrayGradeRequired = [NSMutableArray arrayWithObjects:@"A",@"B",@"C",@"D", nil];
+    if(model_manager.requirementManager.arraySteelGrades.count>0)
+        arrayGradeRequired = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelGrades];
+    else
+        arrayGradeRequired = [NSMutableArray new];
+    
     
     // initiaize picker view
     pickerGradeRequiredView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
@@ -216,6 +221,55 @@
         }
     }];
     
+    [model_manager.requirementManager getSteelGrades:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arraySteelGrades.count>0)
+        {
+            arrayGradeRequired = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelGrades];
+            UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
+            [pickerView reloadAllComponents];
+        }
+    }];
+    
+    
+    if(_selectedRequirement)
+    {
+        [self disableUIElements];
+        [arrayTblDict removeAllObjects];
+        arrayTblDict = _selectedRequirement.arraySpecifications;
+        [tblViewSizes reloadData];
+        
+        switchPhysical.on = _selectedRequirement.isPhysical;
+        switchChemical.on = _selectedRequirement.isChemical;
+        switchCertReq.on = _selectedRequirement.isTestCertificateRequired;
+        sgmtControlLenghtRequired.selectedSegmentIndex = [_selectedRequirement.length intValue];
+        sgmtControlTypeRequired.selectedSegmentIndex = [_selectedRequirement.type intValue];
+        [btnPreferedBrands setTitle:[_selectedRequirement.arrayPreferedBrands componentsJoinedByString:@","] forState:UIControlStateNormal];
+        [btnGradeRequired setTitle:_selectedRequirement.gradeRequired forState:UIControlStateNormal];
+        txtFieldCity.text = _selectedRequirement.city;
+        txtFieldState.text = _selectedRequirement.state;
+        txtFieldBudget.text = _selectedRequirement.budget;
+        [btnRequiredByDate setTitle:_selectedRequirement.requiredByDate forState:UIControlStateNormal];
+    }
+}
+
+-(void)disableUIElements
+{
+    tblViewSizes.userInteractionEnabled = NO;
+    switchPhysical.userInteractionEnabled = NO;
+    switchChemical.userInteractionEnabled = NO;
+    switchCertReq.userInteractionEnabled = NO;
+    sgmtControlLenghtRequired.userInteractionEnabled = NO;
+    sgmtControlTypeRequired.userInteractionEnabled = NO;
+    btnPreferedBrands.userInteractionEnabled = NO;
+    btnGradeRequired.userInteractionEnabled = NO;
+    txtFieldCity.userInteractionEnabled = NO;
+    txtFieldState.userInteractionEnabled = NO;
+    txtFieldBudget.userInteractionEnabled = NO;
+    btnRequiredByDate.userInteractionEnabled = NO;
+    pickerToolBarView.userInteractionEnabled = NO;
+    pickerPreferredBrandsView.userInteractionEnabled = NO;
+    pickerGradeRequiredView.userInteractionEnabled = NO;
+    datePickerView.userInteractionEnabled = NO;
 }
 
 
@@ -338,7 +392,7 @@
     if(pickerView.tag==111)
         return [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]];
     else if(pickerView.tag==333)
-        return [arrayGradeRequired objectAtIndex: row];
+        return [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
     else
         return @"";
 }
@@ -352,8 +406,8 @@
     }
     else if(pickerView.tag==333)
     {
-        NSLog(@"You selected this: %@", [arrayGradeRequired objectAtIndex: row]);
-        selectedGradeRequired = [arrayGradeRequired objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
+        selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
     }
     
 }
@@ -756,7 +810,7 @@
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender {
     pickerGradeRequiredView.hidden = NO;
     [self.view bringSubviewToFront:pickerGradeRequiredView];
-    selectedGradeRequired = [arrayGradeRequired objectAtIndex:0];
+    selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
     
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
     

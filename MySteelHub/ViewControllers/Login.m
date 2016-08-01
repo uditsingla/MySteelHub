@@ -30,9 +30,9 @@
     txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
     
-    txtEmail.text = @"xyz@gmail.com";
-    txtPassword.text = @"aaaaaaaa";
-    
+//    txtEmail.text = @"xyz@gmail.com";
+//    txtPassword.text = @"aaaaaaaa";
+//    
     //[txtUsername setValue:[UIColor blueColor] forKeyPath:@"_placeholderLabel.textColor"];
     
     
@@ -51,6 +51,11 @@
     //    [[NSAttributedString alloc]
     //     initWithString:@"Username"
     //     attributes:@{NSForegroundColorAttributeName:color}];3
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"isAutoLogin"])
+    {
+        [self callSlideMenu];
+    }
 }
 
 

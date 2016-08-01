@@ -14,6 +14,7 @@
 @property(strong,nonatomic) NSMutableArray *arrayPostedRequirements;
 @property(strong,nonatomic) NSMutableArray *arraySteelBrands;
 @property(strong,nonatomic) NSMutableArray *arraySteelSizes;
+@property(strong,nonatomic) NSMutableArray *arraySteelGrades;
 
 
 
@@ -26,6 +27,7 @@
 
 -(void)getSteelSizes:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)getSteelGrades:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 
 @end

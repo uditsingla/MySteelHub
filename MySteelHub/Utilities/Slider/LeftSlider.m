@@ -159,8 +159,16 @@
     else if ([keyName caseInsensitiveCompare:@"Logout"] == NSOrderedSame)
     {
         NSLog(@"Logout");
-        UINavigationController *navController = (UINavigationController*)appdelegate.window.rootViewController;
-        [navController popToRootViewControllerAnimated:YES];
+        [SVProgressHUD show];
+
+        [model_manager.loginManager logoutWithCompletion:^(NSDictionary *json, NSError *error) {
+            [SVProgressHUD dismiss];
+            if(json)
+            {
+                UINavigationController *navController = (UINavigationController*)appdelegate.window.rootViewController;
+                [navController popToRootViewControllerAnimated:YES];
+            }
+        }];
         
     }
     else {
