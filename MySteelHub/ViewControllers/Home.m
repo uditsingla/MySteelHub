@@ -8,6 +8,8 @@
 
 #import "Home.h"
 #import "HomeCell.h"
+#import <QuartzCore/QuartzCore.h>
+
 //#import <GoogleMaps/GoogleMaps.h>
 #import "RequirementI.h"
 
@@ -60,6 +62,7 @@
     NSString *selectedDate;
     
     
+    __weak IBOutlet UIView *contentView;
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
 }
@@ -82,6 +85,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //La
+    UILabel *lbl = [[UILabel alloc]init];
+    
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-200);
+    //lblBorderColor.backgroundColor = kBlueColor;
+    lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    lbl.layer.borderWidth = 1.0;
+    [contentView addSubview:lbl];
     
     
     //switch controlls reframe
