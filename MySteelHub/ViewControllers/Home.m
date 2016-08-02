@@ -9,6 +9,7 @@
 #import "Home.h"
 #import "HomeCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SVProgressHUD.h"
 
 //#import <GoogleMaps/GoogleMaps.h>
 #import "RequirementI.h"
@@ -255,12 +256,15 @@
         switchCertReq.on = _selectedRequirement.isTestCertificateRequired;
         sgmtControlLenghtRequired.selectedSegmentIndex = [_selectedRequirement.length intValue];
         sgmtControlTypeRequired.selectedSegmentIndex = [_selectedRequirement.type intValue];
-        [btnPreferedBrands setTitle:[_selectedRequirement.arrayPreferedBrands componentsJoinedByString:@","] forState:UIControlStateNormal];
-        [btnGradeRequired setTitle:_selectedRequirement.gradeRequired forState:UIControlStateNormal];
+        
+        [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[_selectedRequirement.arrayPreferedBrands componentsJoinedByString:@","]] forState:UIControlStateNormal];
+        
+        [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",_selectedRequirement.gradeRequired] forState:UIControlStateNormal];
         txtFieldCity.text = _selectedRequirement.city;
         txtFieldState.text = _selectedRequirement.state;
         txtFieldBudget.text = _selectedRequirement.budget;
-        [btnRequiredByDate setTitle:_selectedRequirement.requiredByDate forState:UIControlStateNormal];
+
+        [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
     }
 }
 
@@ -447,6 +451,11 @@
         [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired] forState:UIControlStateNormal];
         //selectedGradeRequired = @"";
     }
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
 }
 
 -(void)tableDoneButtonPressed
@@ -461,6 +470,10 @@
         [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[arraySelectedPreferredBrands componentsJoinedByString:@", "]] forState:UIControlStateNormal];
         
     }
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
     
 }
 
@@ -817,6 +830,12 @@
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender {
     pickerPreferredBrandsView.hidden = NO;
     [self.view bringSubviewToFront:pickerPreferredBrandsView];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+
 }
 
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender {
@@ -827,6 +846,11 @@
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
     
     [pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
     
 }
 
@@ -888,8 +912,10 @@
         newRequirement.state = txtFieldState.text;
         newRequirement.requiredByDate = selectedDate;
         
+        [SVProgressHUD show];
+        
         [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
-            
+            [SVProgressHUD dismiss];
             if(json)
             {
                 [self.navigationController popViewControllerAnimated:YES];
@@ -905,6 +931,11 @@
 - (IBAction)requiredByDateBtnAction:(UIButton *)sender {
     datePickerView.hidden = NO;
     [self.view bringSubviewToFront:datePickerView];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
 }
 
 -(void)showAlert:(NSString *)errorMsg
