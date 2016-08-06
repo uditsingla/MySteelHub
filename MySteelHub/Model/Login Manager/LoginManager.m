@@ -97,7 +97,7 @@
 {
     [RequestManager asynchronousRequestWithPath:@"auth/register" requestType:RequestTypePOST params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
-        NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"data"];
+//        NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"data"];
      //   completionBlock(arr,nil);
     } ];
 }

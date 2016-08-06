@@ -62,6 +62,7 @@
     UIView *datePickerView;
     NSString *selectedDate;
     
+    __weak IBOutlet UITextField *txtFieldQuantity;
     
     __weak IBOutlet UIView *contentView;
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
@@ -243,6 +244,16 @@
         }
     }];
     
+    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone target:self
+                                                                  action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
+
+    txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
+
     
     if(_selectedRequirement)
     {
@@ -267,6 +278,13 @@
         [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
     }
 }
+
+- (void)doneClicked:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    [self.view endEditing:YES];
+}
+
 
 -(void)disableUIElements
 {

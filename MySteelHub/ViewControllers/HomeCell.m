@@ -13,12 +13,27 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    [keyboardDoneButtonView sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                   style:UIBarButtonItemStyleDone target:self
+                                                                  action:@selector(doneClicked:)];
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    
+    _txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)doneClicked:(id)sender
+{
+    NSLog(@"Done Clicked.");
+    [self.superview endEditing:YES];
 }
 
 @end
