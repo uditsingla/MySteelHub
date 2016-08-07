@@ -27,7 +27,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *sessionManager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     sessionManager.responseSerializer=[AFJSONResponseSerializer serializer];
-       
+    
     
     
     NSURL *baseURL = [NSURL URLWithString:strPath relativeToURL:kBaseUrl];
