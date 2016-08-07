@@ -72,7 +72,7 @@
     messageBtn.frame = CGRectMake(0,0,self.window.frame.size.width,60);
     messageBtn.tag = 1;
     [messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    messageBtn.titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:15];
+    messageBtn.titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:12];
     messageBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     messageBtn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
     [messageBtn addTarget:self action:@selector(notificationTappedAction:)
@@ -305,8 +305,7 @@
     if(state == UIApplicationStateActive)
     {
         if(inAppNotificationView)
-            [self showNotificationView:@"Hiii"];
-            //[self showNotificationView:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
+            [self showNotificationView:[[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] valueForKey:@"body"]];
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
