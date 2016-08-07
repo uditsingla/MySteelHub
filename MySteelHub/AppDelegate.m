@@ -48,6 +48,22 @@
          (UIUserNotificationTypeNone | UIUserNotificationTypeBadge | UIUserNotificationTypeAlert)];
     }
     
+    //Location Manager
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+    
+    [self.locationManager startUpdatingLocation];
+    
+    
+    return YES;
+}
+
+- (void)initializeInAppNotificationView
+{
     //create inAppNotificationView
     inAppNotificationView=[[UIView alloc] init];
     inAppNotificationView.backgroundColor = [UIColor blackColor];
@@ -73,23 +89,7 @@
     
     isAlertAnimating=false;
 
-    
-    
-    //Location Manager
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-    {
-        [self.locationManager requestWhenInUseAuthorization];
-    }
-    
-    [self.locationManager startUpdatingLocation];
-    
-    
-    return YES;
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -304,7 +304,8 @@
     
     if(state == UIApplicationStateActive)
     {
-        [self showNotificationView:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
+        if(inAppNotificationView)
+            [self showNotificationView:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
