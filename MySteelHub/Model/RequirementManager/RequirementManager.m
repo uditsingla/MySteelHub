@@ -62,7 +62,7 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"],@"user_id",nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypeGET params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -84,17 +84,17 @@
                 
                 requirement.type = [[array objectAtIndex:i] valueForKey:@"type"];
 
-                requirement.budget = [[array objectAtIndex:i] valueForKey:@"budget"];
+                requirement.budget = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"budget"]];
 
-                requirement.city = [[array objectAtIndex:i] valueForKey:@"city"];
+                requirement.city = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"city"]];
 
                 requirement.state = [[array objectAtIndex:i] valueForKey:@"state"];
                 
-                requirement.requiredByDate = [[array objectAtIndex:i] valueForKey:@"required_by_date"];
+                requirement.requiredByDate = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"required_by_date"]];
 
                 requirement.arraySpecifications = [[array objectAtIndex:i] valueForKey:@"quantity"];
                 
-                requirement.gradeRequired = [[array objectAtIndex:i] valueForKey:@"grade_required"];
+                requirement.gradeRequired = [NSString stringWithFormat:@"%i",[[[array objectAtIndex:i] valueForKey:@"grade_required"] intValue]];
 
                 requirement.arrayPreferedBrands = [[array objectAtIndex:i] valueForKey:@"preffered_brands"];
 

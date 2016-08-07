@@ -48,7 +48,6 @@
          (UIUserNotificationTypeNone | UIUserNotificationTypeBadge | UIUserNotificationTypeAlert)];
     }
     
-    
     //Location Manager
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -63,7 +62,34 @@
     return YES;
 }
 
+- (void)initializeInAppNotificationView
+{
+    //create inAppNotificationView
+    inAppNotificationView=[[UIView alloc] init];
+    inAppNotificationView.backgroundColor = [UIColor blackColor];
+    
+    UIButton *messageBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    messageBtn.frame = CGRectMake(0,0,self.window.frame.size.width,60);
+    messageBtn.tag = 1;
+    [messageBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    messageBtn.titleLabel.font = [UIFont fontWithName:@"Raleway-regular" size:12];
+    messageBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+    messageBtn.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    [messageBtn addTarget:self action:@selector(notificationTappedAction:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [inAppNotificationView addSubview:messageBtn];
+    
+    
+    [inAppNotificationView sizeToFit];
+    inAppNotificationView.frame=CGRectMake(0,-60,self.window.frame.size.width,60);
+    [self.window addSubview:inAppNotificationView];
+    
+    //bring subview to front
+    [self.window bringSubviewToFront:inAppNotificationView];
+    
+    isAlertAnimating=false;
 
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -278,22 +304,78 @@
     
     if(state == UIApplicationStateActive)
     {
-        //        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationPushReceived object:@"success" userInfo:@{@"appointmentId":appointment_id}];
-        //[self showNotificationAlert:push_msg];
+        if(inAppNotificationView)
+            [self showNotificationView:[[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] valueForKey:@"body"]];
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
-        //        if(slideContainer)
-        //        {
-        if([push_msg isEqualToString:@"Order Received"])
+        if(container)
         {
+            UINavigationController *navigationController = container.centerViewController;
             
+            NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
+            while (controllers.count>1)
+            {
+                [controllers removeLastObject];
+            }
+            navigationController.viewControllers = controllers;
             
-            
+            //[container toggleRightSideMenuCompletion:^{}];
         }
     }
 }
 
+#pragma mark - InApp Notification show/hide
+-(void)showNotificationView:(NSString *)message
+{
+    if(isAlertAnimating==true)
+        return;
+    
+    isAlertAnimating=true;
+    //    UILabel *lbl_message=(UILabel*)[inAppNotificationView viewWithTag:1];
+    //    lbl_message.text=message;
+    
+    UIButton *btn_message=(UIButton*)[inAppNotificationView viewWithTag:1];
+    [btn_message setTitle:message forState:UIControlStateNormal];
+    
+    //bring subview to front
+    [self.window bringSubviewToFront:inAppNotificationView];
+    [UIView animateWithDuration:0.3 animations:^{
+        inAppNotificationView.frame=CGRectMake(0,0,self.window.frame.size.width,60);
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(hideNotificationView) withObject:Nil afterDelay:5.0f];
+    }];
+    
+    
+}
+-(void)hideNotificationView
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        inAppNotificationView.frame=CGRectMake(0,-60,self.window.frame.size.width,60);
+    } completion:^(BOOL finished) {
+        isAlertAnimating=false;
+        //[inAppNotificationSound stop];
+    }];
+}
+
+-(void)notificationTappedAction:(UIButton*)sender
+{
+    //redirect
+    if(container)
+    {
+        UINavigationController *navigationController = container.centerViewController;
+        
+        NSMutableArray *controllers =[navigationController.viewControllers mutableCopy];
+        while (controllers.count>1)
+        {
+            [controllers removeLastObject];
+        }
+        navigationController.viewControllers = controllers;
+        
+        //[container toggleRightSideMenuCompletion:^{}];
+    }
+    [self hideNotificationView];
+}
 
 
 @end
