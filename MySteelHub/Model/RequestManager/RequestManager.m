@@ -99,7 +99,9 @@
                                           }
                                           else
                                           {
-                                              completionBlock(200,responseObject);
+                                              
+                                              int statusCode = [[responseObject valueForKey:@"status" ]intValue];
+                                              completionBlock(statusCode,responseObject);
                                               NSLog(@"%@ %@", response, responseObject);
                                           }
                                       }];

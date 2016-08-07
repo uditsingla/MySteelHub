@@ -98,13 +98,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/Model/Login Manager/LoginManager.m"
-            timestampString = "488553864.176741"
+            timestampString = "492259799.73563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-validateUsername:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginManager validateUsername:]"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "492260182.435115"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__33-[LoginManager validateUsername:]_block_invoke"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "492260182.435289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -163,69 +195,6 @@
             endingLineNumber = "51"
             landmarkName = "-postRequirement:completion:"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[RequirementManager postRequirement:completion:]_block_invoke"
-                  moduleName = "MySteelHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequirementManager/RequirementManager.m"
-                  timestampString = "491115023.583001"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "767">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_"
-                  moduleName = "MySteelHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequirementManager/RequirementManager.m"
-                  timestampString = "491115023.583138"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "94">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "MySteelHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequirementManager/RequirementManager.m"
-                  timestampString = "491115023.583265"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "59">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MySteelHub/Model/RequestManager/RequestManager.m"
-            timestampString = "490990088.349646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "+asynchronousRequestWithPath:requestType:params:timeOut:includeHeaders:onCompletion:"
-            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -235,11 +204,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/Model/Login Manager/LoginManager.m"
-            timestampString = "491115023.481177"
+            timestampString = "492259919.743874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-userLogin:completion:"
             landmarkType = "5">
          </BreakpointContent>
@@ -251,11 +220,90 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/Model/RequestManager/RequestManager.m"
-            timestampString = "491115069.752669"
+            timestampString = "492260182.35868"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "+asynchronousRequestWithPath:requestType:params:timeOut:includeHeaders:onCompletion:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__101+[RequestManager asynchronousRequestWithPath:requestType:params:timeOut:includeHeaders:onCompletion:]_block_invoke"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequestManager/RequestManager.m"
+                  timestampString = "492260182.440876"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "632">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequestManager/RequestManager.m"
+                  timestampString = "492260182.441043"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MysteelHub/MySteelHub/MySteelHub/Model/RequestManager/RequestManager.m"
+                  timestampString = "492260182.441174"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/Model/RequestManager/RequestManager.m"
+            timestampString = "492260006.654883"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "+asynchronousRequestWithPath:requestType:params:timeOut:includeHeaders:onCompletion:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/Model/RequestManager/RequestManager.m"
+            timestampString = "492260187.507732"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "+asynchronousRequestWithPath:requestType:params:timeOut:includeHeaders:onCompletion:"
             landmarkType = "5">
          </BreakpointContent>
