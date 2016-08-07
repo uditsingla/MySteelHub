@@ -22,6 +22,7 @@
     [_tblView reloadData];
     
     [model_manager.requirementManager getPostedRequirements:^(NSDictionary *json, NSError *error) {
+        [SVProgressHUD dismiss];
         [_tblView reloadData];
     }];
     
@@ -33,7 +34,7 @@
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
     
-    
+    [SVProgressHUD show];
     
     //    self.navigationController.navigationBar.barTintColor=BlackBackground;
     //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
