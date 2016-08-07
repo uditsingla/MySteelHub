@@ -13,6 +13,11 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,CLLocationManagerDelegate>
 
+{
+    UIView *inAppNotificationView;
+    BOOL isAlertAnimating;
+}
+
 @property (strong, nonatomic) UIWindow *window;
 
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
