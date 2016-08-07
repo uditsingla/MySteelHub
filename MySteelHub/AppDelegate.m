@@ -305,7 +305,8 @@
     if(state == UIApplicationStateActive)
     {
         if(inAppNotificationView)
-            [self showNotificationView:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
+            [self showNotificationView:@"Hiii"];
+            //[self showNotificationView:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
@@ -320,7 +321,7 @@
             }
             navigationController.viewControllers = controllers;
             
-            [container toggleRightSideMenuCompletion:^{}];
+            //[container toggleRightSideMenuCompletion:^{}];
         }
     }
 }
@@ -372,7 +373,7 @@
         }
         navigationController.viewControllers = controllers;
         
-        [container toggleRightSideMenuCompletion:^{}];
+        //[container toggleRightSideMenuCompletion:^{}];
     }
     [self hideNotificationView];
 }

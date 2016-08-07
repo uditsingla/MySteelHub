@@ -161,7 +161,7 @@
     
     [container setPanMode:MFSideMenuPanModeNone];
     appdelegate.container = container;
-    appdelegate.window.rootViewController = container;
+    //appdelegate.window.rootViewController = container;
     [appdelegate initializeInAppNotificationView];
     
     [self.navigationController pushViewController:container animated:YES];
