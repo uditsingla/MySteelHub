@@ -70,38 +70,6 @@
 }
 
 
-/*
- [rm asynchronousRequestWithPath:(NSString *) requestType:<#(RequestType)#> params:<#(NSDictionary *)#> timeOut:<#(NSInteger)#> includeHeaders:(BOOL) onCompletion:^(long statusCode, NSDictionary *json)
- {
- 
- if(statusCode == 200)
- {
- //sucess
- //preapre dictionary
- completionBlock();
- }
- else
- {
- 
- }
- 
- }];
- 
- // Afnetworking call which u will get from its example
- NSError *error;
- 
- if(!error)
- {
- // Create array of addresses model
- 
- //completionBlock(addresses,nil);
- 
- }
- else {
- //completionBlock(nil,error);
- }
- */
-
 
 -(void)validateUsername:(NSString*)username
 {

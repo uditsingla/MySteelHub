@@ -64,6 +64,8 @@
 		461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E51CAF074300A8F3DC /* ModelManager.m */; };
 		461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E81CAF074300A8F3DC /* RequestManager.m */; };
 		461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */; };
+		467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5E9E1D59AE1200407925 /* ForgotPassword.m */; };
+		467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5EA11D59AF4C00407925 /* ChangePassword.m */; };
 		469942971D3BFBFD00378968 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942851D3BFBFD00378968 /* Raleway-Black.ttf */; };
 		469942981D3BFBFD00378968 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */; };
 		469942991D3BFBFD00378968 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942871D3BFBFD00378968 /* Raleway-Bold.ttf */; };
@@ -194,6 +196,10 @@
 		461BE7E81CAF074300A8F3DC /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		461BE7EC1CAF0B7E00A8F3DC /* SignUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUP.h; sourceTree = "<group>"; };
 		461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUP.m; sourceTree = "<group>"; };
+		467E5E9D1D59AE1200407925 /* ForgotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPassword.h; sourceTree = "<group>"; };
+		467E5E9E1D59AE1200407925 /* ForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPassword.m; sourceTree = "<group>"; };
+		467E5EA01D59AF4C00407925 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
+		467E5EA11D59AF4C00407925 /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
 		469942851D3BFBFD00378968 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
 		469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
 		469942871D3BFBFD00378968 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
@@ -508,6 +514,10 @@
 				188505731CDDE7E500086EC8 /* Requirements.m */,
 				188505791CDF770100086EC8 /* RequirementDetail.h */,
 				1885057A1CDF770100086EC8 /* RequirementDetail.m */,
+				467E5E9D1D59AE1200407925 /* ForgotPassword.h */,
+				467E5E9E1D59AE1200407925 /* ForgotPassword.m */,
+				467E5EA01D59AF4C00407925 /* ChangePassword.h */,
+				467E5EA11D59AF4C00407925 /* ChangePassword.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -810,6 +820,7 @@
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
 				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
 				7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */,
+				467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
 				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
@@ -828,6 +839,7 @@
 				7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */,
 				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,
 				7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */,
+				467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

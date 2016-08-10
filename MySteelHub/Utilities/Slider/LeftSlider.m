@@ -150,6 +150,15 @@
         [navigationController pushViewController:[self goToController:@"home"] animated:NO];
     }
     
+    
+    else if ([keyName caseInsensitiveCompare:@"Change Password"] == NSOrderedSame){
+        
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        [navigationController pushViewController:[self goToController:@"changepassword"] animated:NO];
+    }
+    
+    
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
         
@@ -160,7 +169,7 @@
     {
         NSLog(@"Logout");
         [SVProgressHUD show];
-
+        
         [model_manager.loginManager logoutWithCompletion:^(NSDictionary *json, NSError *error) {
             [SVProgressHUD dismiss];
             if(json)
