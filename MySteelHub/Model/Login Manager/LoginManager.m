@@ -27,8 +27,6 @@
 #pragma mark Service Calls
 
 
-
-
 - (void)userLogin:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock
 {
     [RequestManager asynchronousRequestWithPath:@"auth/securelogin" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
@@ -37,6 +35,8 @@
             
             if([json objectForKey:@"user_id"])
             {
+                model_manager.profileManager.owner.userID = [NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]];
+                
                 [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%i",[[json objectForKey:@"user_id"] intValue]] forKey:@"userID"];
                 
                 [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];

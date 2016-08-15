@@ -245,11 +245,14 @@
     }];
     
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    keyboardDoneButtonView.barStyle = UIBarStyleBlackOpaque;
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStyleDone target:self
                                                                   action:@selector(doneClicked:)];
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+
+    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneButton, nil]];
     txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
 
     txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
@@ -457,6 +460,9 @@
         CGPoint center= selectedDiameterTextfield.center;
         CGPoint rootViewPoint = [selectedDiameterTextfield.superview convertPoint:center toView:tblViewSizes];
         NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
+        
+        HomeCell *cell = [tblViewSizes cellForRowAtIndexPath:indexPath];
+        [cell.txtFieldQuantity becomeFirstResponder];
         
         [[arrayTblDict objectAtIndex:indexPath.row] setValue:selectedDiameter forKey:@"size"];
         
@@ -724,6 +730,13 @@
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
     if(textField.tag==786)
     {
         // getting indexpath from selected textfield
@@ -733,10 +746,6 @@
         
         [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
     }
-    
-    [textField resignFirstResponder];
-    
-    return YES;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

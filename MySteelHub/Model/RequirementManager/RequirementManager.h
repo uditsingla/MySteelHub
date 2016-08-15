@@ -29,5 +29,7 @@
 
 -(void)getSteelGrades:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)resetData;
+
 
 @end

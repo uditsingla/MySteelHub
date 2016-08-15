@@ -108,6 +108,8 @@
 		7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E04F1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */; };
 		7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C712C601D2C26CF00E64FF9 /* HomeCell.m */; };
+		7CC592CD1D621DA6002396F4 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC592CC1D621DA6002396F4 /* ProfileManager.m */; };
+		7CC592D01D621DBF002396F4 /* UserI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC592CF1D621DBF002396F4 /* UserI.m */; };
 		7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */; };
 		7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9E01D32AD0D00D44467 /* RequirementI.m */; };
 		7CECA25F1D4005EC005B3227 /* contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CECA2531D4005EC005B3227 /* contact@2x.png */; };
@@ -259,6 +261,10 @@
 		7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		7C712C601D2C26CF00E64FF9 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		7CC592CB1D621DA6002396F4 /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
+		7CC592CC1D621DA6002396F4 /* ProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileManager.m; sourceTree = "<group>"; };
+		7CC592CE1D621DBF002396F4 /* UserI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserI.h; sourceTree = "<group>"; };
+		7CC592CF1D621DBF002396F4 /* UserI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserI.m; sourceTree = "<group>"; };
 		7CE0C9DC1D32ACDC00D44467 /* RequirementManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementManager.h; sourceTree = "<group>"; };
 		7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementManager.m; sourceTree = "<group>"; };
 		7CE0C9DF1D32AD0D00D44467 /* RequirementI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequirementI.h; sourceTree = "<group>"; };
@@ -480,6 +486,7 @@
 		46F62CED1C90AC5000A61B47 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7CC592CA1D621D87002396F4 /* ProfileManager */,
 				7CE0C9DB1D32ACAC00D44467 /* RequirementManager */,
 				461BE7E01CAF074300A8F3DC /* Login Manager */,
 				461BE7E31CAF074300A8F3DC /* ModelManager */,
@@ -556,6 +563,17 @@
 				7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */,
 			);
 			path = SwipeTableViewCell;
+			sourceTree = "<group>";
+		};
+		7CC592CA1D621D87002396F4 /* ProfileManager */ = {
+			isa = PBXGroup;
+			children = (
+				7CC592CB1D621DA6002396F4 /* ProfileManager.h */,
+				7CC592CC1D621DA6002396F4 /* ProfileManager.m */,
+				7CC592CE1D621DBF002396F4 /* UserI.h */,
+				7CC592CF1D621DBF002396F4 /* UserI.m */,
+			);
+			path = ProfileManager;
 			sourceTree = "<group>";
 		};
 		7CE0C9DB1D32ACAC00D44467 /* RequirementManager */ = {
@@ -832,6 +850,8 @@
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
 				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
 				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
+				7CC592CD1D621DA6002396F4 /* ProfileManager.m in Sources */,
+				7CC592D01D621DBF002396F4 /* UserI.m in Sources */,
 				461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */,
 				7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				46F62CA81C908FDC00A61B47 /* main.m in Sources */,

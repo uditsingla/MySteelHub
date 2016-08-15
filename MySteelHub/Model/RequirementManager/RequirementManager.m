@@ -192,5 +192,9 @@
     } ];
 }
 
+-(void)resetData
+{
+    [arrayPostedRequirements removeAllObjects];
+}
 
 @end

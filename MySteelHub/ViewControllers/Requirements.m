@@ -141,13 +141,18 @@
     
     RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
     
-    UILabel *lblName=(UILabel*)[view viewWithTag:2];
-    lblName.text=[requirement.state capitalizedString];
+    UILabel *lblCity=(UILabel*)[view viewWithTag:111];
+    lblCity.text=[requirement.city capitalizedString];
+
     
-    UILabel *lblDate=(UILabel*)[view viewWithTag:3];
+    UILabel *lblQuantity=(UILabel*)[view viewWithTag:222];
+    lblQuantity.text=[requirement.state capitalizedString];
+    
+    UILabel *lblDate=(UILabel*)[view viewWithTag:333];
     lblDate.text=[requirement.requiredByDate capitalizedString];
     
-    
+    UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
+    lblAmount.text=[requirement.budget capitalizedString];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

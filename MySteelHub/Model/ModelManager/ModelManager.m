@@ -37,6 +37,7 @@ static ModelManager *modelManager = nil;
 //        self.profilemanager=[[ProfileManager alloc] init];
         self.requestManager=[[RequestManager alloc] init];
         self.requirementManager = [RequirementManager new];
+        self.profileManager = [ProfileManager new];
     }
     return self;
 }

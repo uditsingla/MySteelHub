@@ -54,6 +54,7 @@
     
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"isAutoLogin"])
     {
+        model_manager.profileManager.owner.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
         [self callSlideMenu];
     }
 }
