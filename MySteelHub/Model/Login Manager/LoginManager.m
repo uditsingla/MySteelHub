@@ -145,6 +145,8 @@
             completionBlock(json,nil);
             [[NSUserDefaults standardUserDefaults] setValue:nil forKey:@"userID"];
             [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"isAutoLogin"];
+            
+            [model_manager.requirementManager resetData];
         }
         else{
             completionBlock(nil,nil);

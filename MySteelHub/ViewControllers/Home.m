@@ -115,7 +115,13 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
-    [self setTitleLabel:@"NEW REQUIREMENT"];
+    if(_selectedRequirement)
+    {
+        [self setTitleLabel:@"ORDER DETAILS"];
+    }
+    else
+        [self setTitleLabel:@"NEW REQUIREMENT"];
+    
     [self setMenuButton];
     [self setBackButton];
     
