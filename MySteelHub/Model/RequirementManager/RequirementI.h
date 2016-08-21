@@ -29,5 +29,18 @@
 @property(strong,nonatomic) NSString *gradeRequired;
 @property(strong,nonatomic) NSMutableArray *arrayPreferedBrands;
 
+@property(strong,nonatomic) NSString *initialAmount;
+@property(strong,nonatomic) NSString *bargainAmount;
+@property(assign,nonatomic) BOOL isBestPrice;
+
+-(void)postBargainForSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)acceptRejectDeal:(NSString*)sellerID status:(BOOL)action withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)updateBuyerReadStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)updateBuyerReadBargainStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)buyerDeletedPost:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 @end

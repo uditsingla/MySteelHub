@@ -10,7 +10,7 @@
 
 @implementation RequirementI
 
-@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate;
+@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,initialAmount,bargainAmount,isBestPrice;
 
 - (id)init
 {
@@ -27,8 +27,138 @@
         arraySpecifications = [NSMutableArray new];
         arrayPreferedBrands = [NSMutableArray new];
         gradeRequired = @"";
+        initialAmount = @"";
+        bargainAmount = @"";
+        isBestPrice = NO;
     }
     return self;
 }
+
+-(void)postBargainForSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    //create dictParam
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", [NSNumber numberWithInt:1],@"req_for_bargain", nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"buyereqforbargain" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+}
+
+-(void)acceptRejectDeal:(NSString*)sellerID status:(BOOL)action withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    //create dictParam
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithBool:action],@"is_accepted", nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"buyerAcceptedOrNot" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+}
+
+-(void)updateBuyerReadStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    //create dictParam
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"buyereadstatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+}
+
+-(void)updateBuyerReadBargainStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    //create dictParam
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithInt:1],@"is_buyer_read_bargain", nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"buyerBargainReadStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+}
+
+-(void)buyerDeletedPost:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    //create dictParam
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithInt:1],@"is_buyer_deleted", nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"buyerDeletedPost" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+}
+
+
 
 @end
