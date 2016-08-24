@@ -62,6 +62,9 @@
     UIView *datePickerView;
     NSString *selectedDate;
     
+    //for content view border
+    UILabel *lbl;
+    
     __weak IBOutlet UITextField *txtFieldQuantity;
     
     __weak IBOutlet UIView *contentView;
@@ -89,7 +92,7 @@
     // Do any additional setup after loading the view.
     
     //La
-    UILabel *lbl = [[UILabel alloc]init];
+    lbl = [[UILabel alloc]init];
     
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-200);
     //lblBorderColor.backgroundColor = kBlueColor;
@@ -619,8 +622,10 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
-    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
     [tblViewSizes reloadData];
+    
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-92);
 }
 
 #pragma mark - Swipe Cell Delegate
