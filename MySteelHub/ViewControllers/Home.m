@@ -36,6 +36,9 @@
     
     __weak IBOutlet UIButton *btnRequiredByDate;
     
+    __weak IBOutlet UIButton *btnPreferedTax;
+    
+    
     
     CLLocationManager *locationManager;
     
@@ -62,6 +65,11 @@
     UIView *datePickerView;
     NSString *selectedDate;
     
+    UIView *pickerTaxView;
+    NSMutableArray *arrayTaxes;
+    NSString *selectedTax;
+
+    
     //for content view border
     UILabel *lbl;
     
@@ -76,6 +84,8 @@
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender;
 - (IBAction)submitBtnAction:(UIButton *)sender;
 - (IBAction)requiredByDateBtnAction:(UIButton *)sender;
+- (IBAction)preferedTaxBtnAction:(UIButton *)sender;
+
 
 @end
 
@@ -94,7 +104,7 @@
     //La
     lbl = [[UILabel alloc]init];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-200);
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180);
     //lblBorderColor.backgroundColor = kBlueColor;
     lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
     lbl.layer.borderWidth = 1.0;
@@ -225,6 +235,15 @@
     [self.view addSubview:datePickerView];
     datePickerView.hidden = YES;
     
+    //initialize taxes picker
+    pickerTaxView = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [pickerTaxView setBackgroundColor:[UIColor whiteColor]];
+    [self createPickerWithTag:555 inView:pickerTaxView];
+    [self.view addSubview:pickerTaxView];
+    pickerTaxView.hidden = YES;
+    
+    arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
+    
     [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arraySteelBrands.count>0)
         {
@@ -316,6 +335,7 @@
     pickerPreferredBrandsView.userInteractionEnabled = NO;
     pickerGradeRequiredView.userInteractionEnabled = NO;
     datePickerView.userInteractionEnabled = NO;
+    btnPreferedTax.userInteractionEnabled = NO;
 }
 
 
@@ -428,6 +448,8 @@
         return [arraySteelSizes count];
     else if(pickerView.tag==333)
         return [arrayGradeRequired count];
+    else if(pickerView.tag==555)
+        return [arrayTaxes count];
     else
         return 0;
     
@@ -439,6 +461,8 @@
         return [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]];
     else if(pickerView.tag==333)
         return [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
+    else if(pickerView.tag==555)
+        return [arrayTaxes objectAtIndex: row];
     else
         return @"";
 }
@@ -454,6 +478,11 @@
     {
         NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
         selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
+    }
+    else if(pickerView.tag==555)
+    {
+        NSLog(@"You selected this: %@", [arrayTaxes objectAtIndex: row]);
+        selectedTax = [arrayTaxes objectAtIndex: row];
     }
     
 }
@@ -483,6 +512,13 @@
     {
         [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired] forState:UIControlStateNormal];
         //selectedGradeRequired = @"";
+    }
+    
+    pickerTaxView.hidden = YES;
+    if(selectedTax.length>0)
+    {
+        [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",selectedTax] forState:UIControlStateNormal];
+        //selectedTax = @"";
     }
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
@@ -625,7 +661,7 @@
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
     [tblViewSizes reloadData];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-92);
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
 }
 
 #pragma mark - Swipe Cell Delegate
@@ -973,6 +1009,18 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
+    
+}
+
+- (IBAction)preferedTaxBtnAction:(UIButton *)sender {
+    pickerTaxView.hidden = NO;
+    [self.view bringSubviewToFront:pickerTaxView];
+    
+    selectedTax = [NSString stringWithFormat:@"%@",[arrayTaxes objectAtIndex: 0]];
+    
+    UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
     
 }
 

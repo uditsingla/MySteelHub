@@ -24,6 +24,7 @@
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -361,7 +362,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5V-Wu-urZ" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="676"/>
+                                        <rect key="frame" x="0.0" y="40" width="320" height="700"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Specifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uST-c4-0Wc">
                                                 <rect key="frame" x="37" y="30" width="136" height="21"/>
@@ -631,6 +632,20 @@
                                                             <outlet property="delegate" destination="P12-dO-A8K" id="Xdf-f2-lgr"/>
                                                         </connections>
                                                     </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ci-xA-N0q" userLabel="Prefered Tax">
+                                                        <rect key="frame" x="0.0" y="360" width="276" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="21" id="t7h-Ru-Thu"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
+                                                        <inset key="contentEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Prefered Tax">
+                                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="preferedTaxBtnAction:" destination="P12-dO-A8K" eventType="touchUpInside" id="7FX-bJ-eKf"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -647,6 +662,7 @@
                                                     <constraint firstItem="q1r-wB-BrQ" firstAttribute="leading" secondItem="SQj-cG-ZsR" secondAttribute="leading" constant="6" id="Ghr-70-50n"/>
                                                     <constraint firstItem="xbI-NC-698" firstAttribute="top" secondItem="SQj-cG-ZsR" secondAttribute="top" constant="2" id="ITK-lu-ebI"/>
                                                     <constraint firstItem="vzp-LY-HGk" firstAttribute="top" secondItem="mY2-6h-4WT" secondAttribute="bottom" constant="11" id="LX5-y4-ljk"/>
+                                                    <constraint firstAttribute="trailing" secondItem="0Ci-xA-N0q" secondAttribute="trailing" id="Lfe-3q-Gfm"/>
                                                     <constraint firstItem="mY2-6h-4WT" firstAttribute="top" secondItem="YL7-gh-rMh" secondAttribute="bottom" constant="11" id="N0Z-UQ-0ul"/>
                                                     <constraint firstAttribute="trailing" secondItem="5ph-Uk-Meq" secondAttribute="trailing" constant="1" id="OAQ-dY-RKB"/>
                                                     <constraint firstItem="YL7-gh-rMh" firstAttribute="leading" secondItem="SQj-cG-ZsR" secondAttribute="leading" constant="14" id="QYU-FJ-zz6"/>
@@ -662,7 +678,9 @@
                                                     <constraint firstAttribute="trailing" secondItem="Jbg-rI-kCG" secondAttribute="trailing" id="Zet-n9-vla"/>
                                                     <constraint firstItem="Jbg-rI-kCG" firstAttribute="leading" secondItem="SQj-cG-ZsR" secondAttribute="leading" constant="6" id="aZw-9r-fyp"/>
                                                     <constraint firstItem="cOb-ir-1lC" firstAttribute="width" secondItem="xbI-NC-698" secondAttribute="width" id="bge-Ot-cJZ"/>
+                                                    <constraint firstItem="0Ci-xA-N0q" firstAttribute="top" secondItem="Jbg-rI-kCG" secondAttribute="bottom" constant="11" id="c9L-CR-5XS"/>
                                                     <constraint firstItem="dcl-1r-3hu" firstAttribute="leading" secondItem="SQj-cG-ZsR" secondAttribute="leading" id="f86-bJ-5dc"/>
+                                                    <constraint firstItem="0Ci-xA-N0q" firstAttribute="leading" secondItem="SQj-cG-ZsR" secondAttribute="leading" id="fN2-xh-fH7"/>
                                                     <constraint firstItem="xPs-Vc-fBO" firstAttribute="top" secondItem="dcl-1r-3hu" secondAttribute="bottom" constant="11" id="hj4-K5-Bfi"/>
                                                     <constraint firstAttribute="width" secondItem="SQj-cG-ZsR" secondAttribute="height" multiplier="92:135" id="hkK-3f-YCW"/>
                                                     <constraint firstAttribute="trailing" secondItem="YvB-A2-dEB" secondAttribute="trailing" constant="1" id="ib3-HB-MK0"/>
@@ -689,13 +707,13 @@
                                             <constraint firstItem="yUp-W4-aNe" firstAttribute="top" secondItem="uST-c4-0Wc" secondAttribute="bottom" constant="2" id="Jae-ra-yX9"/>
                                             <constraint firstItem="yUp-W4-aNe" firstAttribute="leading" secondItem="x5V-Wu-urZ" secondAttribute="leading" constant="26" id="O96-EV-zEB"/>
                                             <constraint firstItem="SQj-cG-ZsR" firstAttribute="top" secondItem="yUp-W4-aNe" secondAttribute="bottom" id="lgP-24-lxE"/>
-                                            <constraint firstAttribute="bottom" secondItem="SQj-cG-ZsR" secondAttribute="bottom" constant="68" id="nvZ-EU-mNk"/>
+                                            <constraint firstAttribute="bottom" secondItem="SQj-cG-ZsR" secondAttribute="bottom" constant="92" id="nvZ-EU-mNk"/>
                                             <constraint firstItem="uST-c4-0Wc" firstAttribute="top" secondItem="x5V-Wu-urZ" secondAttribute="top" constant="30" id="pt4-Th-0kw"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="x5V-Wu-urZ" secondAttribute="bottom" constant="-72" id="GYE-pv-iQn"/>
+                                    <constraint firstAttribute="bottom" secondItem="x5V-Wu-urZ" secondAttribute="bottom" id="GYE-pv-iQn"/>
                                     <constraint firstItem="x5V-Wu-urZ" firstAttribute="top" secondItem="Exc-Wa-j9O" secondAttribute="top" constant="40" id="L5H-KL-K1f"/>
                                     <constraint firstAttribute="trailing" secondItem="x5V-Wu-urZ" secondAttribute="trailing" id="Lc6-ky-Ww9"/>
                                     <constraint firstItem="x5V-Wu-urZ" firstAttribute="leading" secondItem="Exc-Wa-j9O" secondAttribute="leading" id="fIo-pu-zLy"/>
@@ -718,7 +736,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="x5V-Wu-urZ" firstAttribute="height" secondItem="fak-CN-mwW" secondAttribute="height" priority="250" constant="32" id="3AC-s2-jo4"/>
+                            <constraint firstItem="x5V-Wu-urZ" firstAttribute="height" secondItem="fak-CN-mwW" secondAttribute="height" priority="250" constant="132" id="3AC-s2-jo4"/>
                             <constraint firstItem="Exc-Wa-j9O" firstAttribute="leading" secondItem="fak-CN-mwW" secondAttribute="leading" id="90z-gF-r5j"/>
                             <constraint firstAttribute="trailing" secondItem="qtx-Yn-yvn" secondAttribute="trailing" id="H7g-pP-U06"/>
                             <constraint firstItem="Exc-Wa-j9O" firstAttribute="top" secondItem="fak-CN-mwW" secondAttribute="top" id="LDz-me-U9S"/>
@@ -733,6 +751,7 @@
                         <outlet property="_scrollView" destination="Exc-Wa-j9O" id="y34-NI-CO1"/>
                         <outlet property="btnGradeRequired" destination="xPs-Vc-fBO" id="hQh-7K-Ehc"/>
                         <outlet property="btnPreferedBrands" destination="dcl-1r-3hu" id="Gjg-n6-AxP"/>
+                        <outlet property="btnPreferedTax" destination="0Ci-xA-N0q" id="bKN-dL-aSE"/>
                         <outlet property="btnRequiredByDate" destination="F9N-Fi-K4K" id="aDN-fJ-v1N"/>
                         <outlet property="contentView" destination="x5V-Wu-urZ" id="sCB-Ej-E6H"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
