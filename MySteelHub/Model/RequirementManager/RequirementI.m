@@ -37,10 +37,10 @@
 -(void)postBargainForSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", [NSNumber numberWithInt:1],@"req_for_bargain", nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", [NSNumber numberWithInt:1],@"req_for_bargain",@"buyerReqForBargainOrAccepted",@"type", nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"buyereqforbargain" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"updateConversationStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -62,10 +62,10 @@
 -(void)acceptRejectDeal:(NSString*)sellerID status:(BOOL)action withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithBool:action],@"is_accepted", nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithBool:action],@"is_accepted", @"buyerAcceptedOrNot",@"type", nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"buyerAcceptedOrNot" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"updateConversationStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -87,10 +87,10 @@
 -(void)updateBuyerReadStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", @"buyerReadStatus",@"type", nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"buyereadstatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"updateConversationStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -112,10 +112,10 @@
 -(void)updateBuyerReadBargainStatus:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithInt:1],@"is_buyer_read_bargain", nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithInt:1],@"is_buyer_read_bargain", @"buyerReadBargainStatus",@"type", nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"buyerBargainReadStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"updateConversationStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -140,7 +140,7 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id",[NSNumber numberWithInt:1],@"is_buyer_deleted", nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"buyerDeletedPost" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"deletePost" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
