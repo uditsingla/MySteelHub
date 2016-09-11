@@ -57,5 +57,7 @@
 		<string>Raleway-SemiBold.ttf</string>
 		<string>Raleway-Thin.ttf</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>MySteelHub-B</string>
 </dict>
 </plist>
