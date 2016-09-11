@@ -11,6 +11,11 @@
 @interface SignUP ()
 {
     NSString *errorType;
+    
+    UIView *pickerViewCategory;
+    NSMutableArray *arrayCategories;
+    NSString *selectedCategory;
+
 }
 
 @end
@@ -36,7 +41,59 @@
     
     [self setupTextFields];
     
+    //initialize picker for category
+    pickerViewCategory = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [pickerViewCategory setBackgroundColor:[UIColor whiteColor]];
+    [self createPickerWithTag:555 inView:pickerViewCategory];
+    [self.view addSubview:pickerViewCategory];
+    pickerViewCategory.hidden = YES;
     
+    arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
+    
+    
+    //category button border
+    CGFloat borderWidth = 1;
+    UIColor *graycolor = [UIColor lightGrayColor];
+    btnCategory.layer.borderColor = graycolor.CGColor;
+    btnCategory.layer.borderWidth = borderWidth;
+    
+//    CGFloat custWidth = btnCategory.frame.size.width;
+//    CGFloat custHeight = 40;
+//    
+//    
+//    
+//    //Bottom border
+//    if (btnCategory) {
+//        CALayer *border = [CALayer layer];
+//        border.borderColor = graycolor.CGColor;
+//        border.frame = CGRectMake(0, custHeight - borderWidth, custWidth, custHeight);
+//        border.borderWidth = borderWidth;
+//        [btnCategory.layer addSublayer:border];
+//        
+//    }
+//    //
+//    
+//    //right border
+//    if (btnCategory) {
+//        CALayer *rightBorder = [CALayer layer];
+//        rightBorder.frame = CGRectMake(custWidth - 1, 0, 1, custHeight);
+//        rightBorder.borderColor = graycolor.CGColor;
+//        rightBorder.borderWidth = borderWidth;
+//        [btnCategory.layer addSublayer:rightBorder];
+//        
+//    }
+//    
+//    
+//    //left border
+//    if (btnCategory) {
+//        CALayer *leftBorder = [CALayer layer];
+//        leftBorder.frame = CGRectMake(0, 0, 1, custHeight);
+//        leftBorder.borderColor = graycolor.CGColor;
+//        leftBorder.borderWidth = borderWidth;
+//        [btnCategory.layer addSublayer:leftBorder];
+//    }
+    
+
     
 }
 -(void)setupTextFields
@@ -280,6 +337,83 @@
 }
 
 
+-(void)createPickerWithTag:(int)tag inView:(UIView*)parentview
+{
+    UIPickerView *pickerView=[[UIPickerView alloc]init];
+    pickerView.frame=CGRectMake(0,0,self.view.frame.size.width, 216);
+    pickerView.showsSelectionIndicator = YES;
+    [pickerView setDataSource: self];
+    [pickerView setDelegate: self];
+    pickerView.tag = tag;
+    pickerView.backgroundColor = [UIColor whiteColor];
+    
+    
+    [parentview addSubview:pickerView];
+    
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar sizeToFit];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDoneButtonPressed)];
+    
+    
+    [pickerToolbar setItems:@[flexSpace, doneBtn] animated:YES];
+    
+    [parentview addSubview:pickerToolbar];
+}
+
+#pragma mark - UIPickerView delgates
+
+// Number of components.
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+
+// Total rows in our component.
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    if(pickerView.tag==555)
+        return [arrayCategories count];
+    else
+        return 0;
+    
+}
+
+// Display each row's data.
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    if(pickerView.tag==555)
+        return [arrayCategories objectAtIndex: row];
+    else
+        return @"";
+}
+
+// Do something with the selected row.
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    if(pickerView.tag==555)
+    {
+        NSLog(@"You selected this: %@", [arrayCategories objectAtIndex: row]);
+        selectedCategory = [arrayCategories objectAtIndex: row];
+    }
+    
+}
+
+-(void)pickerDoneButtonPressed
+{
+    
+    pickerViewCategory.hidden = YES;
+    if(selectedCategory.length>0)
+    {
+        [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",selectedCategory] forState:UIControlStateNormal];
+    }
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -298,4 +432,16 @@
  }
  */
 
+- (IBAction)btnCategoryAction:(UIButton *)sender {
+    
+    pickerViewCategory.hidden = NO;
+    [self.view bringSubviewToFront:pickerViewCategory];
+    
+    selectedCategory = [NSString stringWithFormat:@"%@",[arrayCategories objectAtIndex: 0]];
+    
+    UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
+    
+}
 @end

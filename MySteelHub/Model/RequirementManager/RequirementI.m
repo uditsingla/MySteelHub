@@ -10,7 +10,7 @@
 
 @implementation RequirementI
 
-@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,initialAmount,bargainAmount,isBestPrice;
+@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,initialAmount,bargainAmount,isBestPrice,isBuyerRead,isBuyerReadBargain,isAccepted,isBargainRequired,isDeleted;
 
 - (id)init
 {
@@ -30,6 +30,12 @@
         initialAmount = @"";
         bargainAmount = @"";
         isBestPrice = NO;
+        isBuyerRead = NO;
+        isBuyerReadBargain = NO;
+        isAccepted = NO;
+        isBargainRequired = NO;
+        isDeleted = NO;
+
     }
     return self;
 }

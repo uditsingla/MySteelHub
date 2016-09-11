@@ -31,6 +31,7 @@
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
             <string>Raleway-Regular</string>
+            <string>Raleway-Regular</string>
         </mutableArray>
         <mutableArray key="Raleway-SemiBold.ttf">
             <string>Raleway-SemiBold</string>
@@ -53,7 +54,7 @@
                                 <rect key="frame" x="0.0" y="55" width="320" height="513"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-jH-rE0" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="533"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="550"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KyB-kK-lRT">
                                                 <rect key="frame" x="10" y="0.0" width="300" height="40"/>
@@ -187,6 +188,20 @@
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DSf-vC-QbI">
+                                                <rect key="frame" x="10" y="439" width="300" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="rck-CP-WPZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
+                                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Category">
+                                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnCategoryAction:" destination="jfG-DW-PUx" eventType="touchUpInside" id="odr-ux-Duu"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -197,6 +212,7 @@
                                             <constraint firstItem="qeQ-5x-I1v" firstAttribute="leading" secondItem="XKP-jH-rE0" secondAttribute="leading" constant="10" id="4f0-hV-FJm"/>
                                             <constraint firstAttribute="trailing" secondItem="Ygx-bc-SSA" secondAttribute="trailing" constant="10" id="6Js-5i-lNC"/>
                                             <constraint firstItem="6H2-kp-RuV" firstAttribute="top" secondItem="yZo-Pk-Ubv" secondAttribute="bottom" id="6ly-Ns-0Ye"/>
+                                            <constraint firstAttribute="trailing" secondItem="DSf-vC-QbI" secondAttribute="trailing" constant="10" id="737-vH-MAz"/>
                                             <constraint firstItem="qeQ-5x-I1v" firstAttribute="top" secondItem="les-Me-PxO" secondAttribute="bottom" id="7Hj-t1-HUS"/>
                                             <constraint firstItem="C2I-Qi-18Z" firstAttribute="top" secondItem="nrG-Up-V6W" secondAttribute="bottom" id="8R6-Lh-Yiu"/>
                                             <constraint firstItem="HYX-Nb-ZqS" firstAttribute="leading" secondItem="XKP-jH-rE0" secondAttribute="leading" constant="10" id="9wm-Mk-bRQ"/>
@@ -212,11 +228,13 @@
                                             <constraint firstItem="apy-qY-HSA" firstAttribute="width" secondItem="qeQ-5x-I1v" secondAttribute="width" id="OLi-2b-B90"/>
                                             <constraint firstItem="6H2-kp-RuV" firstAttribute="height" secondItem="KyB-kK-lRT" secondAttribute="height" id="ORU-jK-MZ1"/>
                                             <constraint firstAttribute="trailing" secondItem="HYX-Nb-ZqS" secondAttribute="trailing" constant="10" id="Pv1-ZP-6J2"/>
+                                            <constraint firstItem="DSf-vC-QbI" firstAttribute="leading" secondItem="XKP-jH-rE0" secondAttribute="leading" constant="10" id="RAa-lF-yp7"/>
                                             <constraint firstItem="C2I-Qi-18Z" firstAttribute="width" secondItem="les-Me-PxO" secondAttribute="width" id="T1j-Oq-ny2"/>
                                             <constraint firstItem="yZo-Pk-Ubv" firstAttribute="height" secondItem="KyB-kK-lRT" secondAttribute="height" id="TfH-YV-mMb"/>
                                             <constraint firstItem="A6U-3W-dFC" firstAttribute="height" secondItem="KyB-kK-lRT" secondAttribute="height" id="UFk-nf-6Qj"/>
                                             <constraint firstItem="Ygx-bc-SSA" firstAttribute="height" secondItem="SQD-Qp-pCt" secondAttribute="height" id="VLI-T1-bkJ"/>
                                             <constraint firstItem="nrG-Up-V6W" firstAttribute="leading" secondItem="XKP-jH-rE0" secondAttribute="leading" constant="10" id="XPy-U7-UOn"/>
+                                            <constraint firstItem="DSf-vC-QbI" firstAttribute="top" secondItem="Ygx-bc-SSA" secondAttribute="bottom" constant="-1" id="XUY-pI-GbD"/>
                                             <constraint firstItem="SQD-Qp-pCt" firstAttribute="top" secondItem="HYX-Nb-ZqS" secondAttribute="bottom" id="ZjA-6o-5gm"/>
                                             <constraint firstAttribute="trailing" secondItem="yZo-Pk-Ubv" secondAttribute="trailing" constant="10" id="aLz-On-E6R"/>
                                             <constraint firstItem="A6U-3W-dFC" firstAttribute="width" secondItem="KyB-kK-lRT" secondAttribute="width" id="ay6-Qx-jjU"/>
@@ -247,9 +265,9 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="XKP-jH-rE0" firstAttribute="centerY" secondItem="iTe-HF-fTu" secondAttribute="centerY" constant="10" id="2zY-Y0-8q9"/>
+                                    <constraint firstItem="XKP-jH-rE0" firstAttribute="centerY" secondItem="iTe-HF-fTu" secondAttribute="centerY" constant="18.5" id="2zY-Y0-8q9"/>
                                     <constraint firstItem="XKP-jH-rE0" firstAttribute="top" secondItem="iTe-HF-fTu" secondAttribute="top" id="76g-3u-D04"/>
-                                    <constraint firstAttribute="bottom" secondItem="XKP-jH-rE0" secondAttribute="bottom" constant="-20" id="T0n-hh-CAo"/>
+                                    <constraint firstAttribute="bottom" secondItem="XKP-jH-rE0" secondAttribute="bottom" id="T0n-hh-CAo"/>
                                     <constraint firstItem="XKP-jH-rE0" firstAttribute="centerX" secondItem="iTe-HF-fTu" secondAttribute="centerX" id="b8a-tJ-pdv"/>
                                     <constraint firstItem="XKP-jH-rE0" firstAttribute="leading" secondItem="iTe-HF-fTu" secondAttribute="leading" id="mO1-KF-ZaG"/>
                                     <constraint firstAttribute="trailing" secondItem="XKP-jH-rE0" secondAttribute="trailing" id="uAy-rW-cOD"/>
@@ -274,7 +292,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tWX-to-zcY" firstAttribute="leading" secondItem="Aeb-gd-Lfe" secondAttribute="leading" id="0di-co-vU2"/>
-                            <constraint firstItem="XKP-jH-rE0" firstAttribute="height" secondItem="Aeb-gd-Lfe" secondAttribute="height" priority="250" id="0n1-d0-iVq"/>
+                            <constraint firstItem="XKP-jH-rE0" firstAttribute="height" secondItem="Aeb-gd-Lfe" secondAttribute="height" priority="250" constant="-18" id="0n1-d0-iVq"/>
                             <constraint firstAttribute="trailing" secondItem="tWX-to-zcY" secondAttribute="trailing" id="19S-ws-WHR"/>
                             <constraint firstItem="iTe-HF-fTu" firstAttribute="bottom" secondItem="THR-s5-Xwi" secondAttribute="top" id="IVW-8g-40E"/>
                             <constraint firstItem="THR-s5-Xwi" firstAttribute="top" secondItem="tWX-to-zcY" secondAttribute="bottom" id="POW-R2-Za9"/>
@@ -300,6 +318,7 @@
                         <outlet property="_txtFieldTin" destination="HYX-Nb-ZqS" id="FOZ-gF-GJM"/>
                         <outlet property="_txtFieldUsername" destination="KyB-kK-lRT" id="Klx-3D-dbj"/>
                         <outlet property="_txtFieldZipCode" destination="qeQ-5x-I1v" id="uQj-uX-cSP"/>
+                        <outlet property="btnCategory" destination="DSf-vC-QbI" id="6yq-Op-ViT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXo-rQ-Jqo" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -154,6 +154,21 @@
     UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
     lblAmount.text=[requirement.budget capitalizedString];
     
+    UIImageView *imgViewStatus=(UIImageView*)[view viewWithTag:777];
+    if(requirement.initialAmount.intValue>0 && requirement.isBuyerRead == false)
+    {
+        imgViewStatus.backgroundColor = kBlueColor;
+    }
+    else if(requirement.isBargainRequired && requirement.bargainAmount.intValue > 0 && requirement.isBuyerReadBargain == false)
+    {
+        imgViewStatus.backgroundColor = RedColor;
+    }
+    else
+    {
+        imgViewStatus.backgroundColor = LightGreyColor;
+    }
+
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     

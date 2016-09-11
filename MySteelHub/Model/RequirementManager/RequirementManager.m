@@ -97,6 +97,23 @@
                 requirement.gradeRequired = [NSString stringWithFormat:@"%i",[[[array objectAtIndex:i] valueForKey:@"grade_required"] intValue]];
 
                 requirement.arrayPreferedBrands = [[array objectAtIndex:i] valueForKey:@"preffered_brands"];
+                
+                requirement.initialAmount = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"initial_amt"]];
+
+                requirement.bargainAmount = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"bargain_amt"]];
+
+                requirement.isBestPrice = [[[array objectAtIndex:i] valueForKey:@"is_best_price"] boolValue];
+
+                requirement.isBuyerRead = [[[array objectAtIndex:i] valueForKey:@"is_buyer_read"] boolValue];
+
+                requirement.isBuyerReadBargain = [[[array objectAtIndex:i] valueForKey:@"is_buyer_read_bargain"] boolValue];
+
+                requirement.isAccepted = [[[array objectAtIndex:i] valueForKey:@"is_accepted"] boolValue];
+
+                requirement.isBargainRequired = [[[array objectAtIndex:i] valueForKey:@"req_for_bargain"] boolValue];
+
+                requirement.isDeleted = [[[array objectAtIndex:i] valueForKey:@"is_buyer_deleted"] boolValue];
+
 
                 [arrayPostedRequirements addObject:requirement];
                 

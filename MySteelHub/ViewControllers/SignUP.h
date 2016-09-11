@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface SignUP : BaseViewController<UITextFieldDelegate>
+@interface SignUP : BaseViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 {
     
     __weak IBOutlet UIScrollView *_scrollView;
@@ -32,8 +32,12 @@
 
     __weak IBOutlet UITextField *txtFieldBrand;
     __weak IBOutlet UITextField *_txtFieldExpected;
+    
+    
+    __weak IBOutlet UIButton *btnCategory;
 
     
 }
 
+- (IBAction)btnCategoryAction:(UIButton *)sender;
 @end
