@@ -7,6 +7,7 @@
 //
 
 #import "RequirementManager.h"
+#import "Conversation.h"
 
 @implementation RequirementManager
 
@@ -98,22 +99,30 @@
 
                 requirement.arrayPreferedBrands = [[array objectAtIndex:i] valueForKey:@"preffered_brands"];
                 
-                requirement.initialAmount = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"initial_amt"]];
+                NSArray *arrayResponse = [[array objectAtIndex:i] valueForKey:@"response"];
+        
 
-                requirement.bargainAmount = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"bargain_amt"]];
-
-                requirement.isBestPrice = [[[array objectAtIndex:i] valueForKey:@"is_best_price"] boolValue];
-
-                requirement.isBuyerRead = [[[array objectAtIndex:i] valueForKey:@"is_buyer_read"] boolValue];
-
-                requirement.isBuyerReadBargain = [[[array objectAtIndex:i] valueForKey:@"is_buyer_read_bargain"] boolValue];
-
-                requirement.isAccepted = [[[array objectAtIndex:i] valueForKey:@"is_accepted"] boolValue];
-
-                requirement.isBargainRequired = [[[array objectAtIndex:i] valueForKey:@"req_for_bargain"] boolValue];
-
-                requirement.isDeleted = [[[array objectAtIndex:i] valueForKey:@"is_buyer_deleted"] boolValue];
-
+                for (int j=0; j < arrayResponse.count; j++) {
+                    
+                    Conversation *obj = [Conversation new];
+                    obj.initialAmount = [NSString stringWithFormat:@"%@",[[arrayResponse objectAtIndex:j] valueForKey:@"initial_amt"]];
+                    
+                    obj.bargainAmount = [NSString stringWithFormat:@"%@",[[arrayResponse objectAtIndex:j] valueForKey:@"bargain_amt"]];
+                    
+                    obj.isBestPrice = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_best_price"] boolValue];
+                    
+                    obj.isBuyerRead = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_buyer_read"] boolValue];
+                    
+                    obj.isBuyerReadBargain = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_buyer_read_bargain"] boolValue];
+                    
+                    obj.isAccepted = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_accepted"] boolValue];
+                    
+                    obj.isBargainRequired = [[[arrayResponse objectAtIndex:j] valueForKey:@"req_for_bargain"] boolValue];
+                    
+                    obj.isDeleted = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_buyer_deleted"] boolValue];
+                    
+                    [requirement.arrayConversations addObject:obj];
+                }
 
                 [arrayPostedRequirements addObject:requirement];
                 
