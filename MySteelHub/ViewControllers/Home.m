@@ -311,12 +311,12 @@
     
     
     //update read status
-    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
-    {
-        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
-            
-        }];
-    }
+//    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
+//    {
+//        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
+//            
+//        }];
+//    }
 }
 
 - (void)doneClicked:(id)sender

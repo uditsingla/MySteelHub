@@ -29,14 +29,7 @@
 @property(strong,nonatomic) NSString *gradeRequired;
 @property(strong,nonatomic) NSMutableArray *arrayPreferedBrands;
 
-@property(strong,nonatomic) NSString *initialAmount;
-@property(strong,nonatomic) NSString *bargainAmount;
-@property(assign,nonatomic) BOOL isBestPrice;
-@property(assign,nonatomic) BOOL isBuyerRead;
-@property(assign,nonatomic) BOOL isBuyerReadBargain;
-@property(assign,nonatomic) BOOL isAccepted;
-@property(assign,nonatomic) BOOL isBargainRequired;
-@property(assign,nonatomic) BOOL isDeleted;
+@property(strong,nonatomic) NSMutableArray *arrayConversations;
 
 
 -(void)postBargainForSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;

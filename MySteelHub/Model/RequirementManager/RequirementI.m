@@ -10,7 +10,7 @@
 
 @implementation RequirementI
 
-@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,initialAmount,bargainAmount,isBestPrice,isBuyerRead,isBuyerReadBargain,isAccepted,isBargainRequired,isDeleted;
+@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,arrayConversations;
 
 - (id)init
 {
@@ -27,15 +27,7 @@
         arraySpecifications = [NSMutableArray new];
         arrayPreferedBrands = [NSMutableArray new];
         gradeRequired = @"";
-        initialAmount = @"";
-        bargainAmount = @"";
-        isBestPrice = NO;
-        isBuyerRead = NO;
-        isBuyerReadBargain = NO;
-        isAccepted = NO;
-        isBargainRequired = NO;
-        isDeleted = NO;
-
+        arrayConversations = [NSMutableArray new];
     }
     return self;
 }
