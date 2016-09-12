@@ -10,12 +10,14 @@
 #import "HomeCell.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
-
+#import "Home_SellerResponse.h"    //TableviewCell
 //#import <GoogleMaps/GoogleMaps.h>
 #import "RequirementI.h"
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
+    __weak IBOutlet UITableView *tblSellerResponse;
+    
     __weak IBOutlet UISwitch *switchPhysical;
     __weak IBOutlet UISwitch *switchChemical;
     __weak IBOutlet UISwitch *switchCertReq;
@@ -68,7 +70,7 @@
     UIView *pickerTaxView;
     NSMutableArray *arrayTaxes;
     NSString *selectedTax;
-
+    
     
     //for content view border
     UILabel *lbl;
@@ -78,6 +80,10 @@
     __weak IBOutlet UIView *contentView;
     __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
+    
+    //Array seller Response
+    
+    NSMutableArray *arrSellerResponses;
 }
 
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
@@ -171,6 +177,14 @@
     tblViewSizes.delegate = self;
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
     [tblViewSizes reloadData];
+    
+    
+    
+    //Seller response Array
+    arrSellerResponses = [[NSMutableArray alloc]initWithObjects:@"1",@"2", nil];
+    //[tblSellerResponse reloadData];
+    
+    
     //[self getUserLocation];
     /*
      GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
@@ -279,12 +293,12 @@
                                                                    style:UIBarButtonItemStyleDone target:self
                                                                   action:@selector(doneClicked:)];
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-
+    
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneButton, nil]];
     txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
-
+    
     txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
-
+    
     
     if(_selectedRequirement)
     {
@@ -305,18 +319,20 @@
         txtFieldCity.text = _selectedRequirement.city;
         txtFieldState.text = _selectedRequirement.state;
         txtFieldBudget.text = _selectedRequirement.budget;
-
+        
         [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
     }
     
     
+    
+    
     //update read status
-//    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
-//    {
-//        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
-//            
-//        }];
-//    }
+    //    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
+    //    {
+    //        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
+    //            
+    //        }];
+    //    }
 }
 
 - (void)doneClicked:(id)sender
@@ -559,13 +575,41 @@
 #pragma mark table view data sources and delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView.tag==222)
+    if (tableView == tblSellerResponse) {
+        NSLog(@"Rows Count : %lu",(unsigned long)arrSellerResponses.count);
+        return arrSellerResponses.count;
+    }
+    
+    else if(tableView.tag==222)
         return arrayPreferredBrands.count;
+    
     return arrayTblDict.count+1;
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (tableView == tblSellerResponse)
+    {
+        static NSString *_simpleTableIdentifier = @"Home_SellerResponse";
+        
+        Home_SellerResponse *cell = (Home_SellerResponse*)[tblSellerResponse dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
+        // Configure the cell...
+        if(cell==nil)
+        {
+            cell = [[Home_SellerResponse alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
+        }
+        
+        cell.lblSellerName.text = @"Test Seller";
+        cell.lblAmount.text = @"50000";
+        cell.lblBargainStatus.text = @"Slide Left";
+        
+        NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
+        [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+        [cell setDelegate:self];
+        
+        return cell;
+    }
     
     if(tableView.tag==222)
     {
@@ -640,7 +684,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(tableView.tag==222)
+    
+    if (tableView == tblSellerResponse) {
+        NSLog(@"Table row clicked");
+    }
+    else if(tableView.tag==222)
     {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
@@ -678,6 +726,19 @@
     return YES;
 }
 
+- (NSArray *)tblSellerResponseRightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Bargain"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Accept"];
+    
+    return rightUtilityButtons;
+}
+
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
@@ -700,16 +761,35 @@
         case 0:
         {
             // delete button is pressed
-            if(arrayTblDict.count>1)
+            if ([cell isKindOfClass:[Home_SellerResponse class]])
             {
-                NSIndexPath *indexPath;
-                indexPath = [tblViewSizes indexPathForCell:cell];
-                
-                [arrayTblDict removeObjectAtIndex:indexPath.row];
-                tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
-                [tblViewSizes reloadData]; // tell table to refresh now
+                NSLog(@"bargain clicked");
             }
+            else
+            {
+                if(arrayTblDict.count>1)
+                {
+                    NSIndexPath *indexPath;
+                    indexPath = [tblViewSizes indexPathForCell:cell];
+                    
+                    [arrayTblDict removeObjectAtIndex:indexPath.row];
+                    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+                    [tblViewSizes reloadData]; // tell table to refresh now
+                }
+                
+            }
+            
             break;
+        }
+        case 1:
+        {
+            if ([cell isKindOfClass:[Home_SellerResponse class]])
+            {
+                NSLog(@"Accpet CLicked");
+            }
+            
+            break;
+            
         }
             
         default: break;
@@ -918,7 +998,7 @@
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
-
+    
 }
 
 - (IBAction)gradeRequiredBtnAction:(UIButton *)sender {
