@@ -13,6 +13,7 @@
 #import "Home_SellerResponse.h"    //TableviewCell
 //#import <GoogleMaps/GoogleMaps.h>
 #import "RequirementI.h"
+#import "Conversation.h"
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
@@ -576,8 +577,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == tblSellerResponse) {
-        NSLog(@"Rows Count : %lu",(unsigned long)arrSellerResponses.count);
-        return arrSellerResponses.count;
+        NSLog(@"Rows Count : %lu",(unsigned long)_selectedRequirement.arrayConversations.count);
+        return _selectedRequirement.arrayConversations.count;
     }
     
     else if(tableView.tag==222)
@@ -600,8 +601,10 @@
             cell = [[Home_SellerResponse alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
         }
         
-        cell.lblSellerName.text = @"Test Seller";
-        cell.lblAmount.text = @"50000";
+        Conversation *currentRow = [_selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
+        
+        cell.lblSellerName.text = currentRow.sellerName;
+        cell.lblAmount.text = currentRow.initialAmount;
         cell.lblBargainStatus.text = @"Slide Left";
         
         NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
@@ -764,6 +767,13 @@
             if ([cell isKindOfClass:[Home_SellerResponse class]])
             {
                 NSLog(@"bargain clicked");
+                NSIndexPath *indexPath;
+                indexPath = [tblSellerResponse indexPathForCell:cell];
+                
+                [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                    
+                }];
+
             }
             else
             {

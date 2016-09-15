@@ -121,6 +121,14 @@
                     
                     obj.isDeleted = [[[arrayResponse objectAtIndex:j] valueForKey:@"is_buyer_deleted"] boolValue];
                     
+                    obj.initialAmount = [NSString stringWithFormat:@"%@",[[arrayResponse objectAtIndex:j] valueForKey:@"initial_amt"]];
+
+                    obj.sellerID = [NSString stringWithFormat:@"%i",[[[arrayResponse objectAtIndex:j] valueForKey:@"seller_id"] intValue]];
+                    
+                    obj.sellerName = [NSString stringWithFormat:@"%i",[[[arrayResponse objectAtIndex:j] valueForKey:@"seller_name"] intValue]];
+
+
+                    
                     [requirement.arrayConversations addObject:obj];
                 }
 
