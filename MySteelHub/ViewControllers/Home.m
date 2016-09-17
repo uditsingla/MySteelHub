@@ -84,7 +84,13 @@
     
     //Array seller Response
     
+    __weak IBOutlet UIView *viewCustom;
+    __weak IBOutlet NSLayoutConstraint *sellerReponseHeightConstraint;
+    __weak IBOutlet NSLayoutConstraint *customViewHeightConstarint;
     NSMutableArray *arrSellerResponses;
+    __weak IBOutlet UIButton *btnLoadMore;
+    
+    BOOL isLoadMoreClicked;
 }
 
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
@@ -93,6 +99,7 @@
 - (IBAction)requiredByDateBtnAction:(UIButton *)sender;
 - (IBAction)preferedTaxBtnAction:(UIButton *)sender;
 
+- (IBAction)clkLoadMore:(UIButton *)sender;
 
 @end
 
@@ -101,6 +108,21 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
+    [self setMarginBoundary];
+    
+}
+
+-(void)setMarginBoundary
+{
+    float requirment =_selectedRequirement.arrayConversations.count * 44;
+    float sellerResponse =arrayTblDict.count * 70;
+    float costantheight = 0;
+    if (isLoadMoreClicked) {
+        costantheight = 404;
+    }
+    
+    float combineHeight = requirment+ sellerResponse+costantheight+100;
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20, combineHeight);
 }
 
 - (void)viewDidLoad
@@ -108,10 +130,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    isLoadMoreClicked = true;
+    [self clkLoadMore:nil];
+    
     //La
     lbl = [[UILabel alloc]init];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180);
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180+ btnLoadMore.frame.size.height + tblSellerResponse.frame.size.height );
+    
+    
     //lblBorderColor.backgroundColor = kBlueColor;
     lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
     lbl.layer.borderWidth = 1.0;
@@ -574,10 +601,25 @@
 
 
 #pragma mark table view data sources and delegates
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView == tblSellerResponse) {
+        return 70;
+    }
+    
+    else if(tableView.tag==222)
+        return 44;
+    
+    return 44;
+    
+    
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (tableView == tblSellerResponse) {
         NSLog(@"Rows Count : %lu",(unsigned long)_selectedRequirement.arrayConversations.count);
+        
         return _selectedRequirement.arrayConversations.count;
     }
     
@@ -773,7 +815,7 @@
                 [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
                     
                 }];
-
+                
             }
             else
             {
@@ -819,6 +861,40 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Custom Methods
+
+-(IBAction)clkLoadMore:(id)sender
+{
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDelay:1.0];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    
+    if (isLoadMoreClicked)
+    {
+        isLoadMoreClicked = false;
+        customViewHeightConstarint.constant = 0;
+        viewCustom.hidden = YES;
+        [btnLoadMore setTitle:@"Show More" forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+        isLoadMoreClicked = true;
+        customViewHeightConstarint.constant = 405;
+        viewCustom.hidden = NO;
+        [btnLoadMore setTitle:@"Show Less" forState:UIControlStateNormal];
+        
+    }
+    
+    [UIView commitAnimations];
+    
+    [self setMarginBoundary];
+    
+    
+}
+
+
 -(void)getUserLocation
 {
     locationManager = [[CLLocationManager alloc] init];
