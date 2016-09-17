@@ -796,6 +796,13 @@
             if ([cell isKindOfClass:[Home_SellerResponse class]])
             {
                 NSLog(@"Accpet CLicked");
+                NSIndexPath *indexPath;
+                indexPath = [tblSellerResponse indexPathForCell:cell];
+
+                [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
+                    
+                    
+                }];
             }
             
             break;

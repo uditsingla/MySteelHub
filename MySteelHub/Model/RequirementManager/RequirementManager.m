@@ -11,7 +11,7 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes;
 
 - (id)init
 {
@@ -21,7 +21,7 @@
         arraySteelBrands = [NSMutableArray new];
         arraySteelSizes = [NSMutableArray new];
         arraySteelGrades = [NSMutableArray new];
-
+        arrayTaxTypes = [NSMutableArray new];
     }
     return self;
 }
@@ -225,6 +225,32 @@
         
     } ];
 }
+
+-(void)getTaxTypes:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"tax/types" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arrayTaxTypes removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arrayTaxTypes addObject:[array objectAtIndex:i]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+}
+
 
 -(void)resetData
 {

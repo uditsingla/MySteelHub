@@ -35,7 +35,7 @@
 -(void)postBargainForSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", [NSNumber numberWithInt:1],@"req_for_bargain",@"buyerReqForBargainOrAccepted",@"type", nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", self.userID,@"buyer_id", [NSNumber numberWithInt:1],@"req_for_bargain",@"buyerReqForBargain",@"type", nil];
     
     
     [RequestManager asynchronousRequestWithPath:@"updateConversationStatus" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
