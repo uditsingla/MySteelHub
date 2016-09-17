@@ -284,7 +284,7 @@
     [self.view addSubview:pickerTaxView];
     pickerTaxView.hidden = YES;
     
-    arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
+    //arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
     
     [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arraySteelBrands.count>0)
@@ -310,6 +310,16 @@
         {
             arrayGradeRequired = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelGrades];
             UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
+            [pickerView reloadAllComponents];
+        }
+    }];
+    
+    
+    [model_manager.requirementManager getTaxTypes:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayTaxTypes.count>0)
+        {
+            arrayTaxes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayTaxTypes];
+            UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
             [pickerView reloadAllComponents];
         }
     }];
@@ -349,18 +359,29 @@
         txtFieldBudget.text = _selectedRequirement.budget;
         
         [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
+        
+        [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
     }
     
     
     
     
     //update read status
-    //    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
-    //    {
-    //        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
-    //            
-    //        }];
-    //    }
+    for(Conversation *conversation in _selectedRequirement.arrayConversations)
+    {
+        if(conversation.initialAmount.intValue>0 && conversation.isBuyerRead == false)
+        {
+            [_selectedRequirement updateBuyerReadStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                
+            }];
+        }
+        else if(conversation.bargainAmount.intValue>0 && conversation.isBargainRequired == true && conversation.isBuyerReadBargain ==false)
+        {
+            [_selectedRequirement updateBuyerReadBargainStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                
+            }];
+        }
+    }
 }
 
 - (void)doneClicked:(id)sender
@@ -515,7 +536,7 @@
     else if(pickerView.tag==333)
         return [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
     else if(pickerView.tag==555)
-        return [arrayTaxes objectAtIndex: row];
+        return [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
     else
         return @"";
 }
@@ -534,8 +555,8 @@
     }
     else if(pickerView.tag==555)
     {
-        NSLog(@"You selected this: %@", [arrayTaxes objectAtIndex: row]);
-        selectedTax = [arrayTaxes objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
+        selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
     }
     
 }
@@ -649,10 +670,17 @@
         cell.lblAmount.text = currentRow.initialAmount;
         cell.lblBargainStatus.text = @"Slide Left";
         
-        NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
-        [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
-        [cell setDelegate:self];
-        
+        if(currentRow.isAccepted==false)
+        {
+            NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
+            [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+            [cell setDelegate:self];
+        }
+        else
+        {
+            [cell setRightUtilityButtons:nil WithButtonWidth:0];
+            [cell setDelegate:nil];
+        }
         return cell;
     }
     
@@ -1151,6 +1179,10 @@
     {
         [self showAlert:@"Please enter required by date"];
     }
+    else if(selectedTax.length==0)
+    {
+        [self showAlert:@"Please select tax category"];
+    }
     else
     {
         RequirementI *newRequirement = [RequirementI new];
@@ -1167,6 +1199,7 @@
         newRequirement.city = txtFieldCity.text;
         newRequirement.state = txtFieldState.text;
         newRequirement.requiredByDate = selectedDate;
+        newRequirement.taxType = selectedTax;
         
         [SVProgressHUD show];
         
@@ -1198,7 +1231,7 @@
     pickerTaxView.hidden = NO;
     [self.view bringSubviewToFront:pickerTaxView];
     
-    selectedTax = [NSString stringWithFormat:@"%@",[arrayTaxes objectAtIndex: 0]];
+    selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
     
     UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
     
