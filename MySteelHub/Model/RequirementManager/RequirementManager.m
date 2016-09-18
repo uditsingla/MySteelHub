@@ -130,7 +130,7 @@
 
                     obj.sellerID = [NSString stringWithFormat:@"%i",[[[arrayResponse objectAtIndex:j] valueForKey:@"seller_id"] intValue]];
                     
-                    obj.sellerName = [NSString stringWithFormat:@"%i",[[[arrayResponse objectAtIndex:j] valueForKey:@"seller_name"] intValue]];
+                    obj.sellerName = [NSString stringWithFormat:@"%@",[[arrayResponse objectAtIndex:j] valueForKey:@"seller_name"]];
 
 
                     

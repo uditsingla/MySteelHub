@@ -92,6 +92,8 @@
     __weak IBOutlet UIButton *btnLoadMore;
     
     BOOL isLoadMoreClicked;
+    
+    BOOL isAccepted;
 }
 
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
@@ -131,9 +133,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    isLoadMoreClicked = true;
+    isLoadMoreClicked = false;
     [self clkLoadMore:nil];
     
+    isAccepted = NO;
     //La
     lbl = [[UILabel alloc]init];
     
@@ -340,6 +343,9 @@
     if(_selectedRequirement)
     {
         [self disableUIElements];
+        isLoadMoreClicked = true;
+        [self clkLoadMore:nil];
+
         [arrayTblDict removeAllObjects];
         arrayTblDict = _selectedRequirement.arraySpecifications;
         tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
@@ -373,6 +379,13 @@
         [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
         
         [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
+        NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
+        
+        if(filteredArray.count>0) {
+            isAccepted = YES;
+        }
     }
     
     
@@ -683,11 +696,18 @@
         
         Conversation *currentRow = [_selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
         
-        cell.lblSellerName.text = currentRow.sellerName;
-        cell.lblAmount.text = currentRow.initialAmount;
-        cell.lblBargainStatus.text = @"Slide Left";
+        cell.lblSellerName.text = [NSString stringWithFormat:@"Seller : %@", currentRow.sellerName];
+        cell.lblAmount.text = [NSString stringWithFormat:@"Quotation Amount : Rs %@",currentRow.initialAmount];
+        if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue>0)
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
+        else if(currentRow.isBargainRequired)
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
+        else
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
+
+
         
-        if(currentRow.isAccepted==false)
+        if(isAccepted==false)
         {
             NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
             [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
@@ -864,10 +884,23 @@
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
                 
-                [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
-                    
-                }];
-                
+                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).bargainAmount.intValue==0)
+                {
+                    [SVProgressHUD show];
+                    [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if(json)
+                        {
+                            ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBargainRequired = YES;
+                            [tblSellerResponse reloadData];
+                            
+                        }
+                        else
+                        {
+                            [self showAlert:@"Some error occured. Please try again"];
+                        }
+                    }];
+                }
             }
             else
             {
@@ -896,11 +929,22 @@
                 NSLog(@"Accpet CLicked");
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
-
-                [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
-                    
-                    
-                }];
+                [SVProgressHUD show];
+                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted)
+                {
+                    [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if(json)
+                        {
+                            ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted = YES;
+                            [tblSellerResponse reloadData];
+                        }
+                        else
+                        {
+                            [self showAlert:@"Some error occured. Please try again"];
+                        }
+                    }];
+                }
             }
             
             break;
