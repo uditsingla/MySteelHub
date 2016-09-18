@@ -93,6 +93,9 @@
                 
                 requirement.taxType = [[array objectAtIndex:i] valueForKey:@"tax_type"];
                 
+                requirement.isUnreadFlag = [[[array objectAtIndex:i] valueForKey:@"flag"] boolValue];
+
+                
                 requirement.requiredByDate = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"required_by_date"]];
 
                 requirement.arraySpecifications = [[array objectAtIndex:i] valueForKey:@"quantity"];

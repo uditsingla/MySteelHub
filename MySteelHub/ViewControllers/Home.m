@@ -64,6 +64,8 @@
     UIView *pickerGradeRequiredView;
     NSMutableArray *arrayGradeRequired;
     NSString *selectedGradeRequired;
+    NSString *selectedGradeID;
+
     
     UIView *datePickerView;
     NSString *selectedDate;
@@ -71,7 +73,7 @@
     UIView *pickerTaxView;
     NSMutableArray *arrayTaxes;
     NSString *selectedTax;
-    
+    NSString *selectedTaxID;
     
     //for content view border
     UILabel *lbl;
@@ -87,7 +89,6 @@
     __weak IBOutlet UIView *viewCustom;
     __weak IBOutlet NSLayoutConstraint *sellerReponseHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *customViewHeightConstarint;
-    NSMutableArray *arrSellerResponses;
     __weak IBOutlet UIButton *btnLoadMore;
     
     BOOL isLoadMoreClicked;
@@ -208,8 +209,6 @@
     
     
     
-    //Seller response Array
-    arrSellerResponses = [[NSMutableArray alloc]initWithObjects:@"1",@"2", nil];
     //[tblSellerResponse reloadData];
     
     
@@ -343,7 +342,20 @@
         [self disableUIElements];
         [arrayTblDict removeAllObjects];
         arrayTblDict = _selectedRequirement.arraySpecifications;
+        tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
+        scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
         [tblViewSizes reloadData];
+        
+        if(_selectedRequirement.arrayConversations.count>0)
+        {
+            sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count+1)*70 + 5;
+            scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant - 75;
+            
+            [tblSellerResponse reloadData];
+        }
+        
+        lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+
         
         switchPhysical.on = _selectedRequirement.isPhysical;
         switchChemical.on = _selectedRequirement.isChemical;
@@ -382,6 +394,8 @@
             }];
         }
     }
+    
+    _selectedRequirement.isUnreadFlag = NO;
 }
 
 - (void)doneClicked:(id)sender
@@ -552,11 +566,14 @@
     {
         NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
         selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
+        selectedGradeID = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"id"];
+
     }
     else if(pickerView.tag==555)
     {
         NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
         selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
+        selectedTaxID = [[arrayTaxes objectAtIndex: row] valueForKey:@"id"];
     }
     
 }
@@ -750,6 +767,11 @@
             
             
         }
+        
+        if(_selectedRequirement)
+        {
+            cell.btnAdd.hidden = YES;
+        }
         return cell;
     }
     
@@ -789,6 +811,8 @@
     [arrayTblDict addObject:dict];
     
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
+    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+
     [tblViewSizes reloadData];
     
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
@@ -854,7 +878,11 @@
                     
                     [arrayTblDict removeObjectAtIndex:indexPath.row];
                     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+                    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+
                     [tblViewSizes reloadData]; // tell table to refresh now
+                    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+
                 }
                 
             }
@@ -1126,6 +1154,8 @@
     pickerGradeRequiredView.hidden = NO;
     [self.view bringSubviewToFront:pickerGradeRequiredView];
     selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
+    selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
+
     
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
     
@@ -1194,12 +1224,12 @@
         newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
         newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
         newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
-        newRequirement.gradeRequired = selectedGradeRequired;
+        newRequirement.gradeRequired = selectedGradeID;
         newRequirement.budget = txtFieldBudget.text;
         newRequirement.city = txtFieldCity.text;
         newRequirement.state = txtFieldState.text;
         newRequirement.requiredByDate = selectedDate;
-        newRequirement.taxType = selectedTax;
+        newRequirement.taxType = selectedTaxID;
         
         [SVProgressHUD show];
         
@@ -1232,6 +1262,7 @@
     [self.view bringSubviewToFront:pickerTaxView];
     
     selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
+    selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
     
     UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
     

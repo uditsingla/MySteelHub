@@ -10,7 +10,7 @@
 
 @implementation RequirementI
 
-@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,arrayConversations,taxType;
+@synthesize requirementID,userID,isChemical,isPhysical,isTestCertificateRequired,length,type,budget,city,state,requiredByDate,gradeRequired,arrayPreferedBrands,arraySpecifications,createdDate,modifiedDate,arrayConversations,taxType,isUnreadFlag;
 
 - (id)init
 {
@@ -29,6 +29,7 @@
         gradeRequired = @"";
         arrayConversations = [NSMutableArray new];
         taxType = @"";
+        isUnreadFlag = NO;
     }
     return self;
 }

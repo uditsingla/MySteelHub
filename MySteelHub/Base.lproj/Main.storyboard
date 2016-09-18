@@ -835,6 +835,7 @@
                         <outlet property="contentView" destination="x5V-Wu-urZ" id="sCB-Ej-E6H"/>
                         <outlet property="customViewHeightConstarint" destination="Aus-fW-okv" id="EEG-Fb-s08"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
+                        <outlet property="sellerReponseHeightConstraint" destination="nP6-8f-q1d" id="Btv-Hi-wSp"/>
                         <outlet property="sgmtControlLenghtRequired" destination="5ph-Uk-Meq" id="Pet-DF-KWz"/>
                         <outlet property="sgmtControlTypeRequired" destination="YvB-A2-dEB" id="ayS-Nx-ZZW"/>
                         <outlet property="switchCertReq" destination="Zhw-hp-BnO" id="nT7-2K-GoQ"/>
