@@ -64,6 +64,8 @@
     UIView *pickerGradeRequiredView;
     NSMutableArray *arrayGradeRequired;
     NSString *selectedGradeRequired;
+    NSString *selectedGradeID;
+
     
     UIView *datePickerView;
     NSString *selectedDate;
@@ -71,7 +73,7 @@
     UIView *pickerTaxView;
     NSMutableArray *arrayTaxes;
     NSString *selectedTax;
-    
+    NSString *selectedTaxID;
     
     //for content view border
     UILabel *lbl;
@@ -87,10 +89,11 @@
     __weak IBOutlet UIView *viewCustom;
     __weak IBOutlet NSLayoutConstraint *sellerReponseHeightConstraint;
     __weak IBOutlet NSLayoutConstraint *customViewHeightConstarint;
-    NSMutableArray *arrSellerResponses;
     __weak IBOutlet UIButton *btnLoadMore;
     
     BOOL isLoadMoreClicked;
+    
+    BOOL isAccepted;
 }
 
 - (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
@@ -130,9 +133,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    isLoadMoreClicked = true;
+    isLoadMoreClicked = false;
     [self clkLoadMore:nil];
     
+    isAccepted = NO;
     //La
     lbl = [[UILabel alloc]init];
     
@@ -208,8 +212,6 @@
     
     
     
-    //Seller response Array
-    arrSellerResponses = [[NSMutableArray alloc]initWithObjects:@"1",@"2", nil];
     //[tblSellerResponse reloadData];
     
     
@@ -284,7 +286,7 @@
     [self.view addSubview:pickerTaxView];
     pickerTaxView.hidden = YES;
     
-    arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
+    //arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
     
     [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arraySteelBrands.count>0)
@@ -314,6 +316,16 @@
         }
     }];
     
+    
+    [model_manager.requirementManager getTaxTypes:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayTaxTypes.count>0)
+        {
+            arrayTaxes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayTaxTypes];
+            UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
+            [pickerView reloadAllComponents];
+        }
+    }];
+    
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
     keyboardDoneButtonView.barStyle = UIBarStyleBlackOpaque;
     [keyboardDoneButtonView sizeToFit];
@@ -331,9 +343,25 @@
     if(_selectedRequirement)
     {
         [self disableUIElements];
+        isLoadMoreClicked = true;
+        [self clkLoadMore:nil];
+
         [arrayTblDict removeAllObjects];
         arrayTblDict = _selectedRequirement.arraySpecifications;
+        tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
+        scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
         [tblViewSizes reloadData];
+        
+        if(_selectedRequirement.arrayConversations.count>0)
+        {
+            sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count+1)*70 + 5;
+            scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant - 75;
+            
+            [tblSellerResponse reloadData];
+        }
+        
+        lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+
         
         switchPhysical.on = _selectedRequirement.isPhysical;
         switchChemical.on = _selectedRequirement.isChemical;
@@ -349,18 +377,38 @@
         txtFieldBudget.text = _selectedRequirement.budget;
         
         [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
+        
+        [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
+        NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
+        
+        if(filteredArray.count>0) {
+            isAccepted = YES;
+        }
     }
     
     
     
     
     //update read status
-    //    if(_selectedRequirement.initialAmount.intValue>0 && _selectedRequirement.isBuyerRead == false)
-    //    {
-    //        [_selectedRequirement updateBuyerReadStatus:@"5" withCompletion:^(NSDictionary *json, NSError *error) {
-    //            
-    //        }];
-    //    }
+    for(Conversation *conversation in _selectedRequirement.arrayConversations)
+    {
+        if(conversation.initialAmount.intValue>0 && conversation.isBuyerRead == false)
+        {
+            [_selectedRequirement updateBuyerReadStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                
+            }];
+        }
+        else if(conversation.bargainAmount.intValue>0 && conversation.isBargainRequired == true && conversation.isBuyerReadBargain ==false)
+        {
+            [_selectedRequirement updateBuyerReadBargainStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                
+            }];
+        }
+    }
+    
+    _selectedRequirement.isUnreadFlag = NO;
 }
 
 - (void)doneClicked:(id)sender
@@ -515,7 +563,7 @@
     else if(pickerView.tag==333)
         return [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
     else if(pickerView.tag==555)
-        return [arrayTaxes objectAtIndex: row];
+        return [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
     else
         return @"";
 }
@@ -531,11 +579,14 @@
     {
         NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
         selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
+        selectedGradeID = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"id"];
+
     }
     else if(pickerView.tag==555)
     {
-        NSLog(@"You selected this: %@", [arrayTaxes objectAtIndex: row]);
-        selectedTax = [arrayTaxes objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
+        selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
+        selectedTaxID = [[arrayTaxes objectAtIndex: row] valueForKey:@"id"];
     }
     
 }
@@ -645,14 +696,28 @@
         
         Conversation *currentRow = [_selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
         
-        cell.lblSellerName.text = currentRow.sellerName;
-        cell.lblAmount.text = currentRow.initialAmount;
-        cell.lblBargainStatus.text = @"Slide Left";
+        cell.lblSellerName.text = [NSString stringWithFormat:@"Seller : %@", currentRow.sellerName];
+        cell.lblAmount.text = [NSString stringWithFormat:@"Quotation Amount : Rs %@",currentRow.initialAmount];
+        if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue>0)
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
+        else if(currentRow.isBargainRequired)
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
+        else
+            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
+
+
         
-        NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
-        [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
-        [cell setDelegate:self];
-        
+        if(isAccepted==false)
+        {
+            NSArray *arrayRightBtns = [self tblSellerResponseRightButtons];
+            [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+            [cell setDelegate:self];
+        }
+        else
+        {
+            [cell setRightUtilityButtons:nil WithButtonWidth:0];
+            [cell setDelegate:nil];
+        }
         return cell;
     }
     
@@ -722,6 +787,11 @@
             
             
         }
+        
+        if(_selectedRequirement)
+        {
+            cell.btnAdd.hidden = YES;
+        }
         return cell;
     }
     
@@ -761,6 +831,8 @@
     [arrayTblDict addObject:dict];
     
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
+    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+
     [tblViewSizes reloadData];
     
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
@@ -812,10 +884,23 @@
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
                 
-                [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
-                    
-                }];
-                
+                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).bargainAmount.intValue==0)
+                {
+                    [SVProgressHUD show];
+                    [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if(json)
+                        {
+                            ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBargainRequired = YES;
+                            [tblSellerResponse reloadData];
+                            
+                        }
+                        else
+                        {
+                            [self showAlert:@"Some error occured. Please try again"];
+                        }
+                    }];
+                }
             }
             else
             {
@@ -826,7 +911,11 @@
                     
                     [arrayTblDict removeObjectAtIndex:indexPath.row];
                     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+                    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+
                     [tblViewSizes reloadData]; // tell table to refresh now
+                    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+
                 }
                 
             }
@@ -838,6 +927,24 @@
             if ([cell isKindOfClass:[Home_SellerResponse class]])
             {
                 NSLog(@"Accpet CLicked");
+                NSIndexPath *indexPath;
+                indexPath = [tblSellerResponse indexPathForCell:cell];
+                [SVProgressHUD show];
+                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted)
+                {
+                    [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
+                        [SVProgressHUD dismiss];
+                        if(json)
+                        {
+                            ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted = YES;
+                            [tblSellerResponse reloadData];
+                        }
+                        else
+                        {
+                            [self showAlert:@"Some error occured. Please try again"];
+                        }
+                    }];
+                }
             }
             
             break;
@@ -1091,6 +1198,8 @@
     pickerGradeRequiredView.hidden = NO;
     [self.view bringSubviewToFront:pickerGradeRequiredView];
     selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
+    selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
+
     
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
     
@@ -1144,6 +1253,10 @@
     {
         [self showAlert:@"Please enter required by date"];
     }
+    else if(selectedTax.length==0)
+    {
+        [self showAlert:@"Please select tax category"];
+    }
     else
     {
         RequirementI *newRequirement = [RequirementI new];
@@ -1155,11 +1268,12 @@
         newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
         newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
         newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
-        newRequirement.gradeRequired = selectedGradeRequired;
+        newRequirement.gradeRequired = selectedGradeID;
         newRequirement.budget = txtFieldBudget.text;
         newRequirement.city = txtFieldCity.text;
         newRequirement.state = txtFieldState.text;
         newRequirement.requiredByDate = selectedDate;
+        newRequirement.taxType = selectedTaxID;
         
         [SVProgressHUD show];
         
@@ -1191,7 +1305,8 @@
     pickerTaxView.hidden = NO;
     [self.view bringSubviewToFront:pickerTaxView];
     
-    selectedTax = [NSString stringWithFormat:@"%@",[arrayTaxes objectAtIndex: 0]];
+    selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
+    selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
     
     UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
     
