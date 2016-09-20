@@ -65,7 +65,7 @@
     NSMutableArray *arrayGradeRequired;
     NSString *selectedGradeRequired;
     NSString *selectedGradeID;
-
+    
     
     UIView *datePickerView;
     NSString *selectedDate;
@@ -74,6 +74,8 @@
     NSMutableArray *arrayTaxes;
     NSString *selectedTax;
     NSString *selectedTaxID;
+    
+    UILabel *lbCity,*lbState,*lbAmount;
     
     //for content view border
     UILabel *lbl;
@@ -183,6 +185,32 @@
     [self customtxtfield:txtFieldState withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
     
     [self customtxtfield:txtFieldBudget withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
+    
+    //New Implemetation
+    UIFont *font = [UIFont fontWithName:@"Raleway-Regular" size:15];
+    
+    
+    
+    lbCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 15)];
+    lbCity.textColor =  kPlaceHolderGrey;
+    lbCity.font = font;
+    lbCity.text = @"   Delivery City ";
+    [txtFieldCity setLeftView:lbCity];
+    [txtFieldCity setLeftViewMode:UITextFieldViewModeAlways];
+    
+    lbState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 58, 15)];
+    lbState.textColor =  kPlaceHolderGrey;
+    lbState.font = font;
+    lbState.text = @"   State ";
+    [txtFieldState setLeftView:lbState];
+    [txtFieldState setLeftViewMode:UITextFieldViewModeAlways];
+    
+    lbAmount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 15)];
+    lbAmount.textColor =  kPlaceHolderGrey;
+    lbAmount.font = font;
+    lbAmount.text = @"   Budget Amount (Rs) ";
+    [txtFieldBudget setLeftView:lbAmount];
+    [txtFieldBudget setLeftViewMode:UITextFieldViewModeAlways];
     
     
     [txtFieldCity setValue:[UIColor lightGrayColor]
@@ -345,7 +373,7 @@
         [self disableUIElements];
         isLoadMoreClicked = true;
         [self clkLoadMore:nil];
-
+        
         [arrayTblDict removeAllObjects];
         arrayTblDict = _selectedRequirement.arraySpecifications;
         tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
@@ -361,7 +389,7 @@
         }
         
         lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
-
+        
         
         switchPhysical.on = _selectedRequirement.isPhysical;
         switchChemical.on = _selectedRequirement.isChemical;
@@ -580,7 +608,7 @@
         NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
         selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
         selectedGradeID = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"id"];
-
+        
     }
     else if(pickerView.tag==555)
     {
@@ -704,8 +732,8 @@
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
         else
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
-
-
+        
+        
         
         if(isAccepted==false)
         {
@@ -825,6 +853,7 @@
     }
 }
 
+
 - (IBAction)btnAddAction:(UIButton *)sender {
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
@@ -832,7 +861,7 @@
     
     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
     scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
-
+    
     [tblViewSizes reloadData];
     
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
@@ -912,10 +941,10 @@
                     [arrayTblDict removeObjectAtIndex:indexPath.row];
                     tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
                     scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
-
+                    
                     [tblViewSizes reloadData]; // tell table to refresh now
                     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
-
+                    
                 }
                 
             }
@@ -1057,6 +1086,8 @@
     
 }
 
+#pragma Mark - TextFiled Delegates
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -1074,6 +1105,25 @@
         NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
         
         [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
+    }
+    
+    else if (textField == txtFieldCity)
+    {
+        if(txtFieldCity.text.length == 0)
+            lbCity.text = @"   Delivery City ";
+        
+    }
+    else if (textField == txtFieldState)
+    {
+        if(txtFieldState.text.length == 0)
+            lbState.text = @"   State ";
+        
+    }
+    else if (textField == txtFieldBudget)
+    {
+        if(txtFieldBudget.text.length == 0)
+            lbAmount.text = @"   Budget Amount (Rs) ";
+        
     }
 }
 
@@ -1099,6 +1149,22 @@
         
         selectedDiameterTextfield = textField;
         [textField resignFirstResponder];
+    }
+    
+    else if (textField == txtFieldCity)
+    {
+        lbCity.text = @"   Delivery City :";
+        
+    }
+    else if (textField == txtFieldState)
+    {
+        lbState.text = @"   State :";
+        
+    }
+    else if (textField == txtFieldBudget)
+    {
+        lbAmount.text = @"   Budget Amount (Rs) :";
+        
     }
 }
 
@@ -1199,7 +1265,7 @@
     [self.view bringSubviewToFront:pickerGradeRequiredView];
     selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
     selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
-
+    
     
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
     

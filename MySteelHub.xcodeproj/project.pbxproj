@@ -53,6 +53,7 @@
 		1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885057A1CDF770100086EC8 /* RequirementDetail.m */; };
 		1885057E1CDF7B9000086EC8 /* img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1885057C1CDF7B9000086EC8 /* img@2x.png */; };
 		1885057F1CDF7B9000086EC8 /* img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1885057D1CDF7B9000086EC8 /* img@3x.png */; };
+		461970B31D9073CB00D88DA2 /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461970B21D9073CB00D88DA2 /* splash@2x.png */; };
 		461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CE1CAF01C000A8F3DC /* BaseViewController.m */; };
 		461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7D11CAF01FA00A8F3DC /* Home.m */; };
@@ -179,6 +180,7 @@
 		1885057D1CDF7B9000086EC8 /* img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img@3x.png"; sourceTree = "<group>"; };
 		2C989E1936B874FE611734BF /* libPods-MySteelHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySteelHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.release.xcconfig"; sourceTree = "<group>"; };
+		461970B21D9073CB00D88DA2 /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		461BE7CA1CAF014C00A8F3DC /* LabeledActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabeledActivityIndicatorView.h; sourceTree = "<group>"; };
 		461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabeledActivityIndicatorView.m; sourceTree = "<group>"; };
 		461BE7CD1CAF01C000A8F3DC /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 		1885051E1CDDE3BB00086EC8 /* Graphicss */ = {
 			isa = PBXGroup;
 			children = (
+				461970B21D9073CB00D88DA2 /* splash@2x.png */,
 				46EF53A61D45D9C30052AB86 /* background@2x.png */,
 				46EF53A71D45D9C30052AB86 /* background@3x.png */,
 				1885057C1CDF7B9000086EC8 /* img@2x.png */,
@@ -729,6 +732,7 @@
 				1885054F1CDDE45100086EC8 /* info@2x.png in Resources */,
 				188505651CDDE45100086EC8 /* user@2x.png in Resources */,
 				7CECA25F1D4005EC005B3227 /* contact@2x.png in Resources */,
+				461970B31D9073CB00D88DA2 /* splash@2x.png in Resources */,
 				1885055B1CDDE45100086EC8 /* phone@2x.png in Resources */,
 				188505591CDDE45100086EC8 /* passwordW@2x.png in Resources */,
 				46EF53AC1D45ECAE0052AB86 /* newrequirment@2x.png in Resources */,
