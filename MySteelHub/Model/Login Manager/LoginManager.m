@@ -49,6 +49,8 @@
                 [model_manager.requirementManager getSteelBrands:nil];
                 [model_manager.requirementManager getSteelSizes:nil];
                 [model_manager.requirementManager getSteelGrades:nil];
+                [model_manager.requirementManager getCustomerTypes:nil];
+
                 completionBlock(arr,nil);
                 
             }

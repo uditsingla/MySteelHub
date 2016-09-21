@@ -48,8 +48,17 @@
     [self.view addSubview:pickerViewCategory];
     pickerViewCategory.hidden = YES;
     
-    arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
+    //arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
+    arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
     
+    [model_manager.requirementManager getCustomerTypes:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayCustomerTypes.count>0)
+        {
+            arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
+            UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
+            [pickerView reloadAllComponents];
+        }
+    }];
     
     //category button border
     CGFloat borderWidth = 1;
@@ -384,7 +393,7 @@
 // Display each row's data.
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     if(pickerView.tag==555)
-        return [arrayCategories objectAtIndex: row];
+        return [[arrayCategories objectAtIndex: row] valueForKey:@"type"];
     else
         return @"";
 }
@@ -393,8 +402,8 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(pickerView.tag==555)
     {
-        NSLog(@"You selected this: %@", [arrayCategories objectAtIndex: row]);
-        selectedCategory = [arrayCategories objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arrayCategories objectAtIndex: row] valueForKey:@"type"]);
+        selectedCategory = [[arrayCategories objectAtIndex: row] valueForKey:@"type"];
     }
     
 }
@@ -437,7 +446,8 @@
     pickerViewCategory.hidden = NO;
     [self.view bringSubviewToFront:pickerViewCategory];
     
-    selectedCategory = [NSString stringWithFormat:@"%@",[arrayCategories objectAtIndex: 0]];
+    if(arrayCategories.count>0)
+        selectedCategory = [NSString stringWithFormat:@"%@",[[arrayCategories objectAtIndex: 0] valueForKey:@"type"]];
     
     UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
     
