@@ -15,6 +15,8 @@
 #import "RequirementI.h"
 #import "Conversation.h"
 
+
+
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
     __weak IBOutlet UITableView *tblSellerResponse;
@@ -134,6 +136,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
     
     isLoadMoreClicked = false;
     [self clkLoadMore:nil];
@@ -143,12 +146,19 @@
     lbl = [[UILabel alloc]init];
     
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180+ btnLoadMore.frame.size.height + tblSellerResponse.frame.size.height );
-    
-    
     //lblBorderColor.backgroundColor = kBlueColor;
     lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
     lbl.layer.borderWidth = 1.0;
     [contentView addSubview:lbl];
+    
+    
+    
+    if (!_selectedRequirement) {
+        btnLoadMore.hidden = true;
+        tblSellerResponse.hidden = true;
+        lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180 );
+        
+    }
     
     
     //switch controlls reframe
@@ -226,17 +236,21 @@
     //    btnRequiredByDate.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     
     
-    
-    
-    
     arrayTblDict = [NSMutableArray new];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
     tblViewSizes.dataSource = self;
     tblViewSizes.delegate = self;
-    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
-    [tblViewSizes reloadData];
+    
+    
+   // tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
+
+   // if (_selectedRequirement) {
+       // tblViewHeightConstraint.constant = (arrayTblDict.count)*44;
+
+    //}
+    //[tblViewSizes reloadData];
     
     
     
@@ -368,6 +382,8 @@
     txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
     
     
+    
+    
     if(_selectedRequirement)
     {
         [self disableUIElements];
@@ -376,7 +392,7 @@
         
         [arrayTblDict removeAllObjects];
         arrayTblDict = _selectedRequirement.arraySpecifications;
-        tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
+        tblViewHeightConstraint.constant = (arrayTblDict.count)*44 + 20;
         scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
         [tblViewSizes reloadData];
         
@@ -414,10 +430,18 @@
         if(filteredArray.count>0) {
             isAccepted = YES;
         }
+        
+        tblViewHeightConstraint.constant = (arrayTblDict.count)*44+15;
+
+        
     }
     
+
     
-    
+    else
+    {
+        tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44+5;
+    }
     
     //update read status
     for(Conversation *conversation in _selectedRequirement.arrayConversations)
@@ -438,6 +462,12 @@
     
     _selectedRequirement.isUnreadFlag = NO;
 }
+
+-(void)viewDidLayoutSubviews
+{
+    [self.view setTranslatesAutoresizingMaskIntoConstraints:YES];
+}
+
 
 - (void)doneClicked:(id)sender
 {
@@ -704,9 +734,17 @@
     
     else if(tableView.tag==222)
         return arrayPreferredBrands.count;
+
     
-    return arrayTblDict.count+1;
+    else if (tableView == tblViewSizes)
+    {
+        if (_selectedRequirement) {
+            return arrayTblDict.count;
+        }
+        return arrayTblDict.count+1;
+    }
     
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -787,7 +825,7 @@
         HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+        //cell.contentView.backgroundColor = [UIColor redColor];
         
         
         if(indexPath.row==arrayTblDict.count)

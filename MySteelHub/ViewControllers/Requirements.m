@@ -13,12 +13,19 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
 
+
 @end
 
 @implementation Requirements
+{
+    //Home *homeVC;
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //check for navigation of controller
+ //   homeVC.isRequirmentDetailsClicked = false;
+    
     [_tblView reloadData];
     
     if(model_manager.requirementManager.arrayPostedRequirements.count==0)
@@ -34,12 +41,15 @@
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
     
     [SVProgressHUD show];
+    
+    //homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
     
     //    self.navigationController.navigationBar.barTintColor=BlackBackground;
     //    self.navigationController.navigationBar.tintColor=[UIColor whiteColor];
@@ -172,14 +182,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIViewController *detailVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"Detail"];
-//    [self.navigationController pushViewController:detailVC animated:YES];
     
-    Home *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
+   Home * homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
+    
     homeVC.selectedRequirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:homeVC animated:YES];
-
     
+    
+    [self.navigationController pushViewController:homeVC animated:YES];
 }
 
 - (IBAction)btnNewRequirement:(id)sender {

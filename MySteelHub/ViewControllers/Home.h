@@ -13,4 +13,6 @@
 @interface Home : BaseViewController <UITextFieldDelegate,CLLocationManagerDelegate>
 
 @property(nonatomic,strong) RequirementI *selectedRequirement;
+
+//@property(nonatomic,assign) BOOL isRequirmentDetailsClicked;
 @end
