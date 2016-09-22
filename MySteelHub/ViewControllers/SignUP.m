@@ -15,6 +15,11 @@
     UIView *pickerViewCategory;
     NSMutableArray *arrayCategories;
     NSString *selectedCategory;
+    
+    UIView *pickerViewState;
+    NSMutableArray *arrayStates;
+    NSString *selectedState;
+
 
 }
 
@@ -48,8 +53,36 @@
     [self.view addSubview:pickerViewCategory];
     pickerViewCategory.hidden = YES;
     
-    arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
+    //arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
+    arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
     
+    [model_manager.requirementManager getCustomerTypes:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayCustomerTypes.count>0)
+        {
+            arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
+            UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
+            [pickerView reloadAllComponents];
+        }
+    }];
+    
+    
+    //initialize picker for states
+    pickerViewState = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [pickerViewState setBackgroundColor:[UIColor whiteColor]];
+    [self createPickerWithTag:777 inView:pickerViewState];
+    [self.view addSubview:pickerViewState];
+    pickerViewState.hidden = YES;
+
+    arrayStates = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayStates];
+
+    [model_manager.requirementManager getStates:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayStates.count>0)
+        {
+            arrayStates = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayStates];
+            UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+            [pickerView reloadAllComponents];
+        }
+    }];
     
     //category button border
     CGFloat borderWidth = 1;
@@ -178,6 +211,24 @@
     return YES;
 }
 
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if(textField == _txtFieldState)
+    {
+        [_txtFieldState resignFirstResponder];
+        pickerViewState.hidden = NO;
+        [self.view bringSubviewToFront:pickerViewState];
+        
+        if(arrayStates.count>0)
+            selectedState = [NSString stringWithFormat:@"%@",[[arrayStates objectAtIndex: 0] valueForKey:@"code"]];
+        
+        UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+        
+        [pickerView selectRow:0 inComponent:0 animated:NO];
+        
+    }
+}
+
 - (IBAction)btnSubmit:(id)sender {
     
     if ([_txtFieldUsername.text isEqual:@""]) {
@@ -256,6 +307,12 @@
         [self showError:errorType];
         return;
     }
+    if ([selectedCategory isEqual:@""]) {
+        errorType=@"category";
+        [self showError:errorType];
+        return;
+    }
+
     
     [SVProgressHUD show];
     
@@ -266,7 +323,7 @@
     NSString *strLat = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.latitude];
     NSString *strLong = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.longitude];
     
-    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",strLat,@"latitude",strLong,@"longitude",nil];
+    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",[NSArray arrayWithObject:selectedCategory],@"customer_type",strLat,@"latitude",strLong,@"longitude",nil];
     
     
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
@@ -376,6 +433,8 @@
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     if(pickerView.tag==555)
         return [arrayCategories count];
+    else if(pickerView.tag==777)
+        return [arrayStates count];
     else
         return 0;
     
@@ -384,7 +443,10 @@
 // Display each row's data.
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     if(pickerView.tag==555)
-        return [arrayCategories objectAtIndex: row];
+        return [[arrayCategories objectAtIndex: row] valueForKey:@"type"];
+    else if(pickerView.tag==777)
+        return [NSString stringWithFormat:@"%@ (%@)",[[arrayStates objectAtIndex: row] valueForKey:@"name"],[[arrayStates objectAtIndex: row] valueForKey:@"code"]];
+
     else
         return @"";
 }
@@ -393,8 +455,13 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(pickerView.tag==555)
     {
-        NSLog(@"You selected this: %@", [arrayCategories objectAtIndex: row]);
-        selectedCategory = [arrayCategories objectAtIndex: row];
+        NSLog(@"You selected this: %@", [[arrayCategories objectAtIndex: row] valueForKey:@"type"]);
+        selectedCategory = [[arrayCategories objectAtIndex: row] valueForKey:@"type"];
+    }
+    else if(pickerView.tag==777)
+    {
+        NSLog(@"You selected this: %@", [[arrayStates objectAtIndex: row] valueForKey:@"name"]);
+        selectedState = [[arrayStates objectAtIndex: row] valueForKey:@"code"];
     }
     
 }
@@ -406,6 +473,12 @@
     if(selectedCategory.length>0)
     {
         [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",selectedCategory] forState:UIControlStateNormal];
+    }
+    
+    pickerViewState.hidden = YES;
+    if(selectedState.length>0)
+    {
+        _txtFieldState.text = [selectedState uppercaseString];
     }
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
@@ -437,7 +510,8 @@
     pickerViewCategory.hidden = NO;
     [self.view bringSubviewToFront:pickerViewCategory];
     
-    selectedCategory = [NSString stringWithFormat:@"%@",[arrayCategories objectAtIndex: 0]];
+    if(arrayCategories.count>0)
+        selectedCategory = [NSString stringWithFormat:@"%@",[[arrayCategories objectAtIndex: 0] valueForKey:@"type"]];
     
     UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
     

@@ -79,6 +79,11 @@
     
     UILabel *lbCity,*lbState,*lbAmount;
     
+    UIView *pickerViewState;
+    NSMutableArray *arrayStates;
+    NSString *selectedState;
+
+    
     //for content view border
     UILabel *lbl;
     
@@ -329,6 +334,25 @@
     pickerTaxView.hidden = YES;
     
     //arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
+    
+    //initialize picker for states
+    pickerViewState = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
+    [pickerViewState setBackgroundColor:[UIColor whiteColor]];
+    [self createPickerWithTag:777 inView:pickerViewState];
+    [self.view addSubview:pickerViewState];
+    pickerViewState.hidden = YES;
+    
+    arrayStates = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayStates];
+    
+    [model_manager.requirementManager getStates:^(NSDictionary *json, NSError *error) {
+        if(model_manager.requirementManager.arrayStates.count>0)
+        {
+            arrayStates = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayStates];
+            UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+            [pickerView reloadAllComponents];
+        }
+    }];
+    
     
     [model_manager.requirementManager getSteelBrands:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arraySteelBrands.count>0)
@@ -609,6 +633,8 @@
         return [arrayGradeRequired count];
     else if(pickerView.tag==555)
         return [arrayTaxes count];
+    else if(pickerView.tag==777)
+        return [arrayStates count];
     else
         return 0;
     
@@ -622,6 +648,8 @@
         return [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
     else if(pickerView.tag==555)
         return [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
+    else if(pickerView.tag==777)
+        return [NSString stringWithFormat:@"%@ (%@)",[[arrayStates objectAtIndex: row] valueForKey:@"name"],[[arrayStates objectAtIndex: row] valueForKey:@"code"]];
     else
         return @"";
 }
@@ -645,6 +673,11 @@
         NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
         selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
         selectedTaxID = [[arrayTaxes objectAtIndex: row] valueForKey:@"id"];
+    }
+    else if(pickerView.tag==777)
+    {
+        NSLog(@"You selected this: %@", [[arrayStates objectAtIndex: row] valueForKey:@"name"]);
+        selectedState = [[arrayStates objectAtIndex: row] valueForKey:@"name"];
     }
     
 }
@@ -681,6 +714,12 @@
     {
         [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",selectedTax] forState:UIControlStateNormal];
         //selectedTax = @"";
+    }
+    
+    pickerViewState.hidden = YES;
+    if(selectedState.length>0)
+    {
+        txtFieldState.text = [selectedState capitalizedString];
     }
     
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
@@ -1154,7 +1193,7 @@
     else if (textField == txtFieldState)
     {
         if(txtFieldState.text.length == 0)
-            lbState.text = @"   State ";
+            lbState.text = @"   State :";
         
     }
     else if (textField == txtFieldBudget)
@@ -1194,14 +1233,29 @@
         lbCity.text = @"   Delivery City :";
         
     }
-    else if (textField == txtFieldState)
-    {
-        lbState.text = @"   State :";
-        
-    }
+//    else if (textField == txtFieldState)
+//    {
+//        lbState.text = @"   State :";
+//        
+//    }
     else if (textField == txtFieldBudget)
     {
         lbAmount.text = @"   Budget Amount (Rs) :";
+        
+    }
+    else if(textField == txtFieldState)
+    {
+        lbState.text = @"   State :";
+        [txtFieldState resignFirstResponder];
+        pickerViewState.hidden = NO;
+        [self.view bringSubviewToFront:pickerViewState];
+        
+        if(arrayStates.count>0)
+            selectedState = [NSString stringWithFormat:@"%@",[[arrayStates objectAtIndex: 0] valueForKey:@"name"]];
+        
+        UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+        
+        [pickerView selectRow:0 inComponent:0 animated:NO];
         
     }
 }
