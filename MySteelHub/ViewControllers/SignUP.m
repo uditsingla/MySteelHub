@@ -20,6 +20,7 @@
     NSMutableArray *arrayStates;
     NSString *selectedState;
 
+    NSMutableArray *arraySelectedCategories;
 
 }
 
@@ -49,10 +50,12 @@
     //initialize picker for category
     pickerViewCategory = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerViewCategory setBackgroundColor:[UIColor whiteColor]];
-    [self createPickerWithTag:555 inView:pickerViewCategory];
+    [self createTableViewWithTag:222 inView:pickerViewCategory];
     [self.view addSubview:pickerViewCategory];
     pickerViewCategory.hidden = YES;
     
+    
+    arraySelectedCategories = [NSMutableArray new];
     //arrayCategories = [NSMutableArray arrayWithObjects:@"Customer",@"Retailer",@"Wholesaler",@"Distributor", nil];
     arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
     
@@ -208,6 +211,49 @@
 {
     [textField resignFirstResponder];
     
+    if(textField == _txtFieldUsername)
+        [_txtFieldPassword becomeFirstResponder];
+    else if(textField == _txtFieldPassword)
+        [_txtFieldConfirmPass becomeFirstResponder];
+    else if(textField == _txtFieldConfirmPass)
+        [_txtFieldCompanyName becomeFirstResponder];
+    else if(textField == _txtFieldCompanyName)
+        [_txtFieldEmail becomeFirstResponder];
+    else if(textField == _txtFieldEmail)
+        [_txtFieldAddress becomeFirstResponder];
+    else if(textField == _txtFieldAddress)
+        [_txtFieldCity becomeFirstResponder];
+    else if(textField == _txtFieldCity)
+    {
+        pickerViewState.hidden = NO;
+        [self.view bringSubviewToFront:pickerViewState];
+        
+        if(arrayStates.count>0)
+            selectedState = [NSString stringWithFormat:@"%@",[[arrayStates objectAtIndex: 0] valueForKey:@"code"]];
+        
+        UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+        
+        [pickerView selectRow:0 inComponent:0 animated:NO];
+        
+    }
+    else if(textField == _txtFieldZipCode)
+        [_txtFieldContact becomeFirstResponder];
+    else if(textField == _txtFieldContact)
+        [_txtFieldTin becomeFirstResponder];
+    else if(textField == _txtFieldTin)
+        [_txtFieldPan becomeFirstResponder];
+    else if(textField == _txtFieldPan)
+        [_txtFieldExpected becomeFirstResponder];
+    else if(textField == _txtFieldExpected)
+    {
+        pickerViewCategory.hidden = NO;
+        [self.view bringSubviewToFront:pickerViewCategory];
+        
+        UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+        _scrollView.contentInset = contentInsets;
+        _scrollView.scrollIndicatorInsets = contentInsets;
+    }
+    
     return YES;
 }
 
@@ -323,7 +369,7 @@
     NSString *strLat = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.latitude];
     NSString *strLong = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.longitude];
     
-    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",[NSArray arrayWithObject:selectedCategory],@"customer_type",strLat,@"latitude",strLong,@"longitude",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
+    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
     
     
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
@@ -510,12 +556,144 @@
     pickerViewCategory.hidden = NO;
     [self.view bringSubviewToFront:pickerViewCategory];
     
-    if(arrayCategories.count>0)
-        selectedCategory = [NSString stringWithFormat:@"%@",[[arrayCategories objectAtIndex: 0] valueForKey:@"type"]];
+//    if(arrayCategories.count>0)
+//        selectedCategory = [NSString stringWithFormat:@"%@",[[arrayCategories objectAtIndex: 0] valueForKey:@"type"]];
+//    
+//    UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
+//    
+//    [pickerView selectRow:0 inComponent:0 animated:NO];
     
-    UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
-    
-    [pickerView selectRow:0 inComponent:0 animated:NO];
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+
     
 }
+
+
+-(void)createTableViewWithTag:(int)tag inView:(UIView*)parentview
+{
+    UITableView *tblView=[[UITableView alloc]init];
+    tblView.frame=CGRectMake(0,44,self.view.frame.size.width, 216-44);
+    [tblView setDataSource: self];
+    [tblView setDelegate: self];
+    tblView.tag = tag;
+    tblView.backgroundColor = [UIColor whiteColor];
+    
+    
+    [parentview addSubview:tblView];
+    
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar sizeToFit];
+    
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(tableDoneButtonPressed)];
+    
+    
+    [pickerToolbar setItems:@[flexSpace, doneBtn] animated:YES];
+    
+    [parentview addSubview:pickerToolbar];
+}
+
+-(void)tableDoneButtonPressed
+{
+    pickerViewCategory.hidden = YES;
+    
+    
+    if(arraySelectedCategories.count>0)
+    {
+        
+        [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",[arraySelectedCategories componentsJoinedByString:@", "]] forState:UIControlStateNormal];
+        
+    }
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+}
+
+
+#pragma mark table view data sources and delegates
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView.tag==222)
+        return 44;
+    
+    return 44;
+    
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(tableView.tag==222)
+        return arrayCategories.count;
+
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    if(tableView.tag==222)
+    {
+        static NSString *_simpleTableIdentifier = @"CellIdentifier";
+        
+        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
+        
+        // Configure the cell...
+        if(cell==nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
+            
+        }
+        
+        cell.textLabel.text = [[arrayCategories objectAtIndex:indexPath.row] valueForKey:@"type"];
+        
+        
+        if ([arraySelectedCategories containsObject:[[arrayCategories objectAtIndex:indexPath.row] valueForKey:@"type"]])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
+        
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    }
+    
+    return [UITableViewCell new];
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(tableView.tag==222)
+    {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        //the below code will allow multiple selection
+        if ([arraySelectedCategories containsObject:[[arrayCategories objectAtIndex:indexPath.row] valueForKey:@"type"]])
+        {
+            [arraySelectedCategories removeObject:[[arrayCategories objectAtIndex:indexPath.row] valueForKey:@"type"]];
+        }
+        else
+        {
+            [arraySelectedCategories addObject:[[arrayCategories objectAtIndex:indexPath.row] valueForKey:@"type"]];
+        }
+        [tableView reloadData];
+    }
+   
+}
+
+
 @end
