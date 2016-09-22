@@ -267,8 +267,6 @@
                                       attributes:@{NSForegroundColorAttributeName:
                                                        [UIColor lightGrayColor]}];
     
-    
-    
     UIView *paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
     paddingView.backgroundColor=[UIColor clearColor];
     UIImageView*icon=[[UIImageView alloc]initWithFrame:CGRectMake(12, paddingView.frame.size.height/2-8, 16, 16)];
@@ -291,6 +289,8 @@
     }
     else{
         [textField resignFirstResponder];
+        
+        [self loginUser:nil];
     }
     
     return YES;

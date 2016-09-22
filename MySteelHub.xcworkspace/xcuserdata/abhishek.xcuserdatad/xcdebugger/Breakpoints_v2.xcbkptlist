@@ -87,7 +87,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
-            landmarkName = "-textFieldShouldReturn:"
+            landmarkName = "-hideKeyboard:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -114,7 +114,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496262161.74864"
+                  timestampString = "496270007.8829"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -129,7 +129,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496262161.751596"
+                  timestampString = "496270007.885034"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -144,7 +144,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496262161.753706"
+                  timestampString = "496270007.887048"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
@@ -251,13 +251,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Login.m"
-            timestampString = "495136079.734525"
+            timestampString = "496271557.905593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "-loginUser:"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -338,38 +338,6 @@
             endingLineNumber = "329"
             landmarkName = "-btnSubmit:"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[SignUP btnSubmit:]"
-                  moduleName = "MySteelHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/ViewControllers/SignUP.m"
-                  timestampString = "496262161.817818"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "329"
-                  endingLineNumber = "329"
-                  offsetFromSymbolStart = "5796">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__20-[SignUP btnSubmit:]_block_invoke"
-                  moduleName = "MySteelHub"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/ViewControllers/SignUP.m"
-                  timestampString = "496262161.819881"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "330"
-                  endingLineNumber = "330"
-                  offsetFromSymbolStart = "96">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -402,6 +370,22 @@
             endingLineNumber = "327"
             landmarkName = "-application:didRegisterUserNotificationSettings:"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Login.m"
+            timestampString = "496271557.905593"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "313"
+            endingLineNumber = "313"
+            landmarkName = "@implementation Login"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
