@@ -11,7 +11,7 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes,arrayStates;
 
 - (id)init
 {
@@ -23,6 +23,7 @@
         arraySteelGrades = [NSMutableArray new];
         arrayTaxTypes = [NSMutableArray new];
         arrayCustomerTypes = [NSMutableArray new];
+        arrayStates = [NSMutableArray new];
     }
     return self;
 }
@@ -267,6 +268,31 @@
             NSArray *array = [json valueForKey:@"data"];
             for (int i=0; i < array.count; i++) {
                 [arrayCustomerTypes addObject:[array objectAtIndex:i]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+}
+
+-(void)getStates:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"states" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arrayStates removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arrayStates addObject:[array objectAtIndex:i]];
             }
             
             if(completionBlock)
