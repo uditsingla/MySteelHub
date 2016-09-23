@@ -574,7 +574,7 @@
                                                             <outlet property="delegate" destination="P12-dO-A8K" id="N9c-GF-4Ap"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kOq-AE-sj2">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kOq-AE-sj2">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="5l9-iK-T8Z"/>
                                                         </constraints>
@@ -585,7 +585,7 @@
                                                             <outlet property="delegate" destination="P12-dO-A8K" id="qe7-RI-dgM"/>
                                                         </connections>
                                                     </textField>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Budget Amount (In Rupees)" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-rI-kCG">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Jbg-rI-kCG">
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="ud3-ha-hqd"/>
                                                         </constraints>

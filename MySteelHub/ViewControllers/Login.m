@@ -29,6 +29,13 @@
     
     txtEmail=[self customtxtfield:txtEmail withplaceholder:@"Email"withIcon:[UIImage imageNamed:@"user.png"]];
     txtPassword=[self customtxtfield:txtPassword withplaceholder:@"Password" withIcon:[UIImage imageNamed:@"password.png"]];
+
+    
+    
+    //txtEmail.borderStyle = UITextBorderStyleLine;
+    //txtEmail.layer.borderColor = [UIColor whiteColor].CGColor;
+    //txtEmail.layer.borderWidth = 2;
+    
     
     //    txtEmail.text = @"xyz@gmail.com";
     //    txtPassword.text = @"aaaaaaaa";
@@ -98,7 +105,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 #pragma mark - Custom Methods -
+
+
 -(IBAction)loginUser:(id)sender
 {
     

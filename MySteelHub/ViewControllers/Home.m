@@ -128,12 +128,27 @@
 {
     float requirment =_selectedRequirement.arrayConversations.count * 44;
     float sellerResponse =arrayTblDict.count * 70;
+    
+    
     float costantheight = 0;
-    if (isLoadMoreClicked) {
+ 
+    if (isLoadMoreClicked)
+    {
         costantheight = 404;
     }
     
-    float combineHeight = requirment+ sellerResponse+costantheight+100;
+    float combineHeight;
+    
+    if (_selectedRequirement) {
+        combineHeight = requirment+ sellerResponse+costantheight+100;
+
+    }
+    else
+    {
+        combineHeight = requirment+ sellerResponse+costantheight+50;
+
+    }
+    
     lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20, combineHeight);
 }
 
@@ -420,10 +435,11 @@
         scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
         [tblViewSizes reloadData];
         
-        if(_selectedRequirement.arrayConversations.count>0)
+        if(_selectedRequirement.arrayConversations.count > 0)
         {
-            sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count+1)*70 + 5;
-            scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant - 75;
+            sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*70 ;
+            
+            scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant;
             
             [tblSellerResponse reloadData];
         }
@@ -936,12 +952,15 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
-    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 + 5;
-    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+    
+    tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44 ;
+    
+    
+    scrollContentViewHeightConstraint.constant = tblViewHeightConstraint.constant;
     
     [tblViewSizes reloadData];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-95);
 }
 
 #pragma mark - Swipe Cell Delegate

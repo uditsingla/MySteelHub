@@ -50,7 +50,8 @@
     //initialize picker for category
     pickerViewCategory = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerViewCategory setBackgroundColor:[UIColor whiteColor]];
-    [self createTableViewWithTag:222 inView:pickerViewCategory];
+    [self createPickerWithTag:555 inView:pickerViewCategory];
+
     [self.view addSubview:pickerViewCategory];
     pickerViewCategory.hidden = YES;
     
@@ -63,6 +64,9 @@
         if(model_manager.requirementManager.arrayCustomerTypes.count>0)
         {
             arrayCategories = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayCustomerTypes];
+            
+            [self createTableViewWithTag:222 inView:pickerViewCategory];
+
             UIPickerView *pickerView = [pickerViewCategory viewWithTag:555];
             [pickerView reloadAllComponents];
         }
@@ -259,9 +263,13 @@
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    
     if(textField == _txtFieldState)
     {
+        
+        [self.view endEditing:YES];
         [_txtFieldState resignFirstResponder];
+
         pickerViewState.hidden = NO;
         [self.view bringSubviewToFront:pickerViewState];
         
@@ -271,6 +279,7 @@
         UIPickerView *pickerView = [pickerViewState viewWithTag:777];
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
+        
         
     }
 }
@@ -369,7 +378,7 @@
     NSString *strLat = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.latitude];
     NSString *strLong = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.longitude];
     
-    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
+    NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",@"ios",@"device_type",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
     
     
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
