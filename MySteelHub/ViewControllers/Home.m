@@ -184,13 +184,13 @@
     
     //switch controlls reframe
     switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchPhysical.onTintColor = kBlueColor
+    switchPhysical.onTintColor = kBlueColor;
     
     switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchChemical.onTintColor = kBlueColor
+    switchChemical.onTintColor = kBlueColor;
     
     switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchCertReq.onTintColor = kBlueColor
+    switchCertReq.onTintColor = kBlueColor;
     
     
     
@@ -422,8 +422,6 @@
     txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
     
     
-    
-    
     if(_selectedRequirement)
     {
         [self updateRequirementDetails];
@@ -444,7 +442,7 @@
     isLoadMoreClicked = true;
     [self clkLoadMore:nil];
     
-    [arrayTblDict removeAllObjects];
+    arrayTblDict = nil;
     arrayTblDict = _selectedRequirement.arraySpecifications;
     tblViewHeightConstraint.constant = (arrayTblDict.count)*44 + 20;
     scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
@@ -495,12 +493,17 @@
         {
             [_selectedRequirement updateBuyerReadStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
                 
+                //conversation.isBuyerRead = true;
+                //[tblSellerResponse reloadData];
+
             }];
         }
         else if(conversation.bargainAmount.intValue>0 && conversation.isBargainRequired == true && conversation.isBuyerReadBargain ==false)
         {
             [_selectedRequirement updateBuyerReadBargainStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
                 
+                conversation.isBuyerReadBargain = true;
+                [tblSellerResponse reloadData];
             }];
         }
     }
@@ -845,13 +848,27 @@
         
         
         if(currentRow.isAccepted)
+        {
             cell.imgViewStatus.backgroundColor = GreenColor
+        }
         else if(!currentRow.isBuyerRead)
+        {
             cell.imgViewStatus.backgroundColor = RedColor
+        }
         else if(!currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
+        {
             cell.imgViewStatus.backgroundColor = OrangeColor
+        }
+        else if(currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
+        {
+            cell.imgViewStatus.backgroundColor = PurpleColor
+        }
         else
-            cell.imgViewStatus.backgroundColor = kBlueColor
+        {
+            cell.imgViewStatus.backgroundColor = kBlueColor;
+        }
+        
+        cell.lblBargainStatus.textColor =  cell.imgViewStatus.backgroundColor;
         
         if(isAccepted==false)
         {
@@ -864,6 +881,8 @@
             [cell setRightUtilityButtons:nil WithButtonWidth:0];
             [cell setDelegate:nil];
         }
+        
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
     }
     
@@ -997,10 +1016,10 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+     [UIColor colorWithRed:248/255.00 green:123/255.00 blue:1/255.00 alpha:1]
                                                 title:@"Bargain"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+     [UIColor colorWithRed:40/255.00 green:157/255.00 blue:87/255.00 alpha:1]
                                                 title:@"Accept"];
     
     return rightUtilityButtons;
@@ -1042,6 +1061,9 @@
                         if(json)
                         {
                             ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBargainRequired = YES;
+                            
+                            ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBuyerRead = true;
+                            
                             [tblSellerResponse reloadData];
                             
                         }
@@ -1079,14 +1101,20 @@
                 NSLog(@"Accpet CLicked");
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
-                [SVProgressHUD show];
+                
                 if(!((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted)
                 {
-                    [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
+                    [SVProgressHUD show];
+                    [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error)
+                    {
                         [SVProgressHUD dismiss];
+                        
                         if(json)
                         {
                             ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted = YES;
+                            
+                             ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBuyerRead = true;
+                            
                             [tblSellerResponse reloadData];
                         }
                         else

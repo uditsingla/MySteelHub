@@ -38,7 +38,8 @@
     
     
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
     
     
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")){
@@ -125,7 +126,11 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    
+    [model_manager.requirementManager getPostedRequirements:nil];
+    
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 
@@ -300,7 +305,9 @@
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
     
-    NSLog(@"Userinfo %@",notification.request.content.userInfo);
+    NSLog(@"Userinfo will present %@",notification.request.content.userInfo);
+    
+     [self handlePushNotifications:notification.request.content.userInfo];
     
     completionHandler(UNNotificationPresentationOptionAlert);
 }
@@ -337,9 +344,14 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"received notification%@",userInfo.description);
-    
-    NSString *push_msg = [[userInfo objectForKey:@"aps"]objectForKey:@"alert"];
-    
+
+    [self handlePushNotifications:userInfo];
+}
+
+
+
+-(void)handlePushNotifications:(NSDictionary *)userInfo
+{
     UIApplicationState state = [[UIApplication sharedApplication] applicationState];
     
     
@@ -348,8 +360,6 @@
         if(inAppNotificationView)
             [self showNotificationView:[[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] valueForKey:@"body"]];
         
-        [model_manager.requirementManager getPostedRequirements:nil];
-
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
@@ -367,7 +377,10 @@
             //[container toggleRightSideMenuCompletion:^{}];
         }
     }
+    
+    [model_manager.requirementManager getPostedRequirements:nil];
 }
+
 
 #pragma mark - InApp Notification show/hide
 -(void)showNotificationView:(NSString *)message

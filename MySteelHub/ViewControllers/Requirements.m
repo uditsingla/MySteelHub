@@ -183,7 +183,7 @@
     lblDate.text=[requirement.requiredByDate capitalizedString];
     
     UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
-    lblAmount.text=[requirement.budget capitalizedString];
+    lblAmount.text= [NSString stringWithFormat:@"%@/-",requirement.budget];
     
     UIImageView *imgViewStatus=(UIImageView*)[view viewWithTag:777];
     if(requirement.isUnreadFlag == true)

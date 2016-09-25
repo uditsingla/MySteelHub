@@ -16,7 +16,7 @@
     button.backgroundColor = color;
 //    [button.titleLabel setFont:kRobotoRegular(15)];
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button.titleLabel setAdjustsFontSizeToFitWidth:YES];
     [self addObject:button];
 }

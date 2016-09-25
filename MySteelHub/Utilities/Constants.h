@@ -21,7 +21,7 @@
 
 #define kPlaceHolderGrey [UIColor colorWithRed:170/255.00 green:170/255.00 blue:170/255.00 alpha:1];
 
-#define kBlueColor  [UIColor colorWithRed:34/255.00 green:152/255.00 blue:168/255.00 alpha:1];
+#define kBlueColor  [UIColor colorWithRed:34/255.00 green:152/255.00 blue:168/255.00 alpha:1]
 
 #define LightGreyColor  [UIColor colorWithRed:234/255.00 green:234/255.00 blue:234/255.00 alpha:1];
 
@@ -32,6 +32,8 @@
 #define GreenColor  [UIColor colorWithRed:58/255.00 green:137/255.00 blue:1/255.00 alpha:1];
 
 #define OrangeColor  [UIColor colorWithRed:248/255.00 green:123/255.00 blue:1/255.00 alpha:1];
+
+#define PurpleColor  [UIColor colorWithRed:128/255.00 green:0/255.00 blue:128/255.00 alpha:1];
 
 #define BlackBackground  [UIColor colorWithRed:39/255.00 green:39/255.00 blue:39/255.00 alpha:1];
 
