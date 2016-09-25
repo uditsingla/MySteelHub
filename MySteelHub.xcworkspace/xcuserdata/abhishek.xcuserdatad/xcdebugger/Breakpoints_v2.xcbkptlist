@@ -66,12 +66,12 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496356937.801405"
+                  timestampString = "496491278.990788"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "2205">
+                  offsetFromSymbolStart = "2252">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -81,12 +81,12 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496356937.805314"
+                  timestampString = "496491278.998464"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "42">
+                  offsetFromSymbolStart = "56">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -96,12 +96,12 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
-                  timestampString = "496356937.809869"
+                  timestampString = "496491279.007412"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "75"
                   endingLineNumber = "75"
-                  offsetFromSymbolStart = "29">
+                  offsetFromSymbolStart = "36">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -331,12 +331,12 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/ViewControllers/SignUP.m"
-                  timestampString = "496356937.987244"
+                  timestampString = "496491279.081106"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "384"
                   endingLineNumber = "384"
-                  offsetFromSymbolStart = "5889">
+                  offsetFromSymbolStart = "5760">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -346,12 +346,12 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Volumes/IOS/In%20House%20Projects/MySteelHub_Buyer/MySteelHub/MySteelHub/ViewControllers/SignUP.m"
-                  timestampString = "496356937.991164"
+                  timestampString = "496491279.084786"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "385"
                   endingLineNumber = "385"
-                  offsetFromSymbolStart = "78">
+                  offsetFromSymbolStart = "96">
                </Location>
             </Locations>
          </BreakpointContent>
