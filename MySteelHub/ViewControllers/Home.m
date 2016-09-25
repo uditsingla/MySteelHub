@@ -1278,8 +1278,20 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
+    
+    if(textField == txtFieldState || textField.tag==777)
+    {
+        [textField resignFirstResponder];
+    }
+    
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
     if(textField.tag==777)
     {
+        [self.view endEditing:YES];
+
         pickerToolBarView.hidden = NO;
         [self.view bringSubviewToFront:pickerToolBarView];
         //        if(textField.text.length>0)
@@ -1305,11 +1317,11 @@
         lbCity.text = @"   Delivery City :";
         
     }
-//    else if (textField == txtFieldState)
-//    {
-//        lbState.text = @"   State :";
-//        
-//    }
+    //    else if (textField == txtFieldState)
+    //    {
+    //        lbState.text = @"   State :";
+    //
+    //    }
     else if (textField == txtFieldBudget)
     {
         lbAmount.text = @"   Budget Amount (Rs) :";
@@ -1319,6 +1331,7 @@
     {
         lbState.text = @"   State :";
         [txtFieldState resignFirstResponder];
+        [self.view endEditing:YES];
         pickerViewState.hidden = NO;
         [self.view bringSubviewToFront:pickerViewState];
         
@@ -1329,9 +1342,11 @@
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
         
+        return NO;
     }
-}
 
+    return YES;
+}
 
 #pragma mark - Core Location Delegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -1421,6 +1436,8 @@
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
+    [self.view endEditing:YES];
+
     
 }
 
@@ -1439,7 +1456,8 @@
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
     
-    
+    [self.view endEditing:YES];
+
 }
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
@@ -1528,7 +1546,8 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
-    
+    [self.view endEditing:YES];
+
 }
 
 - (IBAction)preferedTaxBtnAction:(UIButton *)sender {
@@ -1541,6 +1560,9 @@
     UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
     
     [pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    [self.view endEditing:YES];
+
     
 }
 
