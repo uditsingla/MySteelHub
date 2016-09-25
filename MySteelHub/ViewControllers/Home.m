@@ -844,6 +844,14 @@
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
         
         
+        if(currentRow.isAccepted)
+            cell.imgViewStatus.backgroundColor = GreenColor
+        else if(!currentRow.isBuyerRead)
+            cell.imgViewStatus.backgroundColor = RedColor
+        else if(!currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
+            cell.imgViewStatus.backgroundColor = OrangeColor
+        else
+            cell.imgViewStatus.backgroundColor = kBlueColor
         
         if(isAccepted==false)
         {
@@ -1026,7 +1034,7 @@
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
                 
-                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).bargainAmount.intValue==0)
+                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).bargainAmount.intValue==0 && ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBargainRequired == NO)
                 {
                     [SVProgressHUD show];
                     [_selectedRequirement postBargainForSeller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID withCompletion:^(NSDictionary *json, NSError *error) {
@@ -1072,7 +1080,7 @@
                 NSIndexPath *indexPath;
                 indexPath = [tblSellerResponse indexPathForCell:cell];
                 [SVProgressHUD show];
-                if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted)
+                if(!((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted)
                 {
                     [_selectedRequirement acceptRejectDeal:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error) {
                         [SVProgressHUD dismiss];

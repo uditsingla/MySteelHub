@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblSellerName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAmount;
 @property (weak, nonatomic) IBOutlet UILabel *lblBargainStatus;
+@property (weak, nonatomic) IBOutlet UIImageView *imgViewStatus;
 
 @end
