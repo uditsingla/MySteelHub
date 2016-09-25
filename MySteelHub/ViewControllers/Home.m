@@ -157,6 +157,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    model_manager.requirementManager.requirementDetailDelegate = self;
     
     isLoadMoreClicked = false;
     [self clkLoadMore:nil];
@@ -425,63 +426,67 @@
     
     if(_selectedRequirement)
     {
-        [self disableUIElements];
-        isLoadMoreClicked = true;
-        [self clkLoadMore:nil];
-        
-        [arrayTblDict removeAllObjects];
-        arrayTblDict = _selectedRequirement.arraySpecifications;
-        tblViewHeightConstraint.constant = (arrayTblDict.count)*44 + 20;
-        scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
-        [tblViewSizes reloadData];
-        
-        if(_selectedRequirement.arrayConversations.count > 0)
-        {
-            sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*70 ;
-            
-            scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant;
-            
-            [tblSellerResponse reloadData];
-        }
-        
-        lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
-        
-        
-        switchPhysical.on = _selectedRequirement.isPhysical;
-        switchChemical.on = _selectedRequirement.isChemical;
-        switchCertReq.on = _selectedRequirement.isTestCertificateRequired;
-        sgmtControlLenghtRequired.selectedSegmentIndex = [_selectedRequirement.length intValue];
-        sgmtControlTypeRequired.selectedSegmentIndex = [_selectedRequirement.type intValue];
-        
-        [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[_selectedRequirement.arrayPreferedBrands componentsJoinedByString:@","]] forState:UIControlStateNormal];
-        
-        [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",_selectedRequirement.gradeRequired] forState:UIControlStateNormal];
-        txtFieldCity.text = _selectedRequirement.city;
-        txtFieldState.text = _selectedRequirement.state;
-        txtFieldBudget.text = _selectedRequirement.budget;
-        
-        [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
-        
-        [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
-        
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
-        NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
-        
-        if(filteredArray.count>0) {
-            isAccepted = YES;
-        }
-        
-        tblViewHeightConstraint.constant = (arrayTblDict.count)*44+15;
-
-        
+        [self updateRequirementDetails];
     }
     
-
     
     else
     {
         tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44+5;
     }
+    
+    
+}
+
+-(void)updateRequirementDetails
+{
+    [self disableUIElements];
+    isLoadMoreClicked = true;
+    [self clkLoadMore:nil];
+    
+    [arrayTblDict removeAllObjects];
+    arrayTblDict = _selectedRequirement.arraySpecifications;
+    tblViewHeightConstraint.constant = (arrayTblDict.count)*44 + 20;
+    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
+    [tblViewSizes reloadData];
+    
+    if(_selectedRequirement.arrayConversations.count > 0)
+    {
+        sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*70 ;
+        
+        scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant;
+        
+        [tblSellerResponse reloadData];
+    }
+    
+    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+    
+    
+    switchPhysical.on = _selectedRequirement.isPhysical;
+    switchChemical.on = _selectedRequirement.isChemical;
+    switchCertReq.on = _selectedRequirement.isTestCertificateRequired;
+    sgmtControlLenghtRequired.selectedSegmentIndex = [_selectedRequirement.length intValue];
+    sgmtControlTypeRequired.selectedSegmentIndex = [_selectedRequirement.type intValue];
+    
+    [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[_selectedRequirement.arrayPreferedBrands componentsJoinedByString:@","]] forState:UIControlStateNormal];
+    
+    [btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",_selectedRequirement.gradeRequired] forState:UIControlStateNormal];
+    txtFieldCity.text = _selectedRequirement.city;
+    txtFieldState.text = _selectedRequirement.state;
+    txtFieldBudget.text = _selectedRequirement.budget;
+    
+    [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
+    
+    [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
+    NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        isAccepted = YES;
+    }
+    
+    tblViewHeightConstraint.constant = (arrayTblDict.count)*44+15;
     
     //update read status
     for(Conversation *conversation in _selectedRequirement.arrayConversations)
@@ -501,6 +506,18 @@
     }
     
     _selectedRequirement.isUnreadFlag = NO;
+}
+
+-(void)newUpdateReceived
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"requirementID == %@", _selectedRequirement.requirementID];
+    NSArray *filteredArray = [model_manager.requirementManager.arrayPostedRequirements filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        _selectedRequirement = [filteredArray firstObject];
+        
+        [self updateRequirementDetails];
+    }
 }
 
 -(void)viewDidLayoutSubviews

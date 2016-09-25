@@ -11,7 +11,7 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes,arrayStates;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes,arrayStates,requirementDetailDelegate,requirementListingDelegate;
 
 - (id)init
 {
@@ -146,7 +146,11 @@
             
             if(completionBlock)
                 completionBlock(json,nil);
-
+            else
+            {
+                [requirementDetailDelegate newUpdateReceived];
+                [requirementListingDelegate newUpdateReceived];
+            }
         }
         else{
             if(completionBlock)

@@ -347,6 +347,9 @@
     {
         if(inAppNotificationView)
             [self showNotificationView:[[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] valueForKey:@"body"]];
+        
+        [model_manager.requirementManager getPostedRequirements:nil];
+
     }
     else if (state == UIApplicationStateBackground || state == UIApplicationStateInactive)
     {
