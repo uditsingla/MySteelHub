@@ -622,6 +622,14 @@
     datePicker.backgroundColor = [UIColor whiteColor];
     datePicker.tag = tag;
     
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:7];
+    NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+
+
+    datePicker.minimumDate = minDate;
     
     [parentview addSubview:datePicker];
     
