@@ -266,10 +266,16 @@
     
     if(textField == _txtFieldState)
     {
-        
-        [self.view endEditing:YES];
-        [_txtFieldState resignFirstResponder];
+        [textField resignFirstResponder];
+    }
+}
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if(textField==_txtFieldState)
+    {
+        [self.view endEditing:YES];
+        
         pickerViewState.hidden = NO;
         [self.view bringSubviewToFront:pickerViewState];
         
@@ -280,8 +286,13 @@
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
         
-        
     }
+    else
+    {
+        pickerViewState.hidden = YES;
+    }
+    
+    return YES;
 }
 
 - (IBAction)btnSubmit:(id)sender {
