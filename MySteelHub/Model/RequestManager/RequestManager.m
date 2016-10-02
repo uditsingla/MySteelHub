@@ -39,8 +39,7 @@
     
     if(include)
     {
-        [urlRequest setValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"username"] forHTTPHeaderField:@"username"];
-        [urlRequest setValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"usertoken"] forHTTPHeaderField:@"usertoken"];
+        [urlRequest setValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"token"] forHTTPHeaderField:@"access_token"];
     }
     
     

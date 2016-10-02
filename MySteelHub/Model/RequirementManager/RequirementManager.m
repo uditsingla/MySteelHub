@@ -65,7 +65,7 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"],@"user_id",nil];
     
     
-    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -164,7 +164,7 @@
 
 -(void)getSteelBrands:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"brands" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"brands" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -189,7 +189,7 @@
 
 -(void)getSteelSizes:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"steelsizes" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"steelsizes" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -214,7 +214,7 @@
 
 -(void)getSteelGrades:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"grades" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"grades" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -239,7 +239,7 @@
 
 -(void)getTaxTypes:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"tax/types" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"tax/types" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             

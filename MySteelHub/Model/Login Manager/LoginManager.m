@@ -43,6 +43,7 @@
                 
                 [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
                 
+                [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"%@",[json objectForKey:@"token"]] forKey:@"token"];
                 
                 NSMutableArray *arr=(NSMutableArray*)[json objectForKey:@"msg"];
                 
