@@ -103,6 +103,7 @@
 		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
 		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
 		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
+		7C51BEBB1DB2C348004E7547 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C51BEBA1DB2C348004E7547 /* Address.m */; };
 		7C52A6251D8719EF00C45315 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C52A6241D8719EF00C45315 /* Conversation.m */; };
 		7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0471D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m */; };
 		7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0491D34024800B7DD43 /* SWCellScrollView.m */; };
@@ -254,6 +255,8 @@
 		7C183AF01D284B86003159F9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		7C51BEB91DB2C348004E7547 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		7C51BEBA1DB2C348004E7547 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		7C52A6231D8719EF00C45315 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
 		7C52A6241D8719EF00C45315 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
 		7C53E0461D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
@@ -593,6 +596,8 @@
 				7CC592CC1D621DA6002396F4 /* ProfileManager.m */,
 				7CC592CE1D621DBF002396F4 /* UserI.h */,
 				7CC592CF1D621DBF002396F4 /* UserI.m */,
+				7C51BEB91DB2C348004E7547 /* Address.h */,
+				7C51BEBA1DB2C348004E7547 /* Address.m */,
 			);
 			path = ProfileManager;
 			sourceTree = "<group>";
@@ -874,6 +879,7 @@
 				7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */,
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
+				7C51BEBB1DB2C348004E7547 /* Address.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
 				7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */,
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
