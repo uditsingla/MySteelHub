@@ -29,6 +29,7 @@
 
 #define mainstoryboard [UIStoryboard storyboardWithName:@"Main" bundle: nil]
 
+#define shippingStoryboard [UIStoryboard storyboardWithName:@"Shipping" bundle: nil]
 
 
 #endif /* MySteelHub_Prefix_pch */
