@@ -11,7 +11,7 @@
 
 @implementation RequirementManager
 
-@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes,arrayStates,requirementDetailDelegate,requirementListingDelegate;
+@synthesize arrayPostedRequirements,arraySteelBrands,arraySteelSizes,arraySteelGrades,arrayTaxTypes,arrayCustomerTypes,arrayStates,arrayAdminAccounts,requirementDetailDelegate,requirementListingDelegate;
 
 - (id)init
 {
@@ -24,6 +24,7 @@
         arrayTaxTypes = [NSMutableArray new];
         arrayCustomerTypes = [NSMutableArray new];
         arrayStates = [NSMutableArray new];
+        arrayAdminAccounts = [NSMutableArray new];
     }
     return self;
 }
@@ -297,6 +298,31 @@
             NSArray *array = [json valueForKey:@"data"];
             for (int i=0; i < array.count; i++) {
                 [arrayStates addObject:[array objectAtIndex:i]];
+            }
+            
+            if(completionBlock)
+                completionBlock(json,nil);
+            
+        }
+        else{
+            if(completionBlock)
+                completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+}
+
+-(void)getAdminAccountDetails:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"accountDetails" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            
+            [arrayAdminAccounts removeAllObjects];
+            NSArray *array = [json valueForKey:@"data"];
+            for (int i=0; i < array.count; i++) {
+                [arrayAdminAccounts addObject:[array objectAtIndex:i]];
             }
             
             if(completionBlock)

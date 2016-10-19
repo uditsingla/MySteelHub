@@ -33,6 +33,8 @@
 @property(strong,nonatomic) NSMutableArray *arrayTaxTypes;
 @property(strong,nonatomic) NSMutableArray *arrayCustomerTypes;
 @property(strong,nonatomic) NSMutableArray *arrayStates;
+@property(strong,nonatomic) NSMutableArray *arrayAdminAccounts;
+
 
 @property(weak,nonatomic) id<RequirementListingDelegate> requirementListingDelegate;
 
@@ -56,6 +58,7 @@
 
 -(void)getStates:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)getAdminAccountDetails:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 
 -(void)resetData;

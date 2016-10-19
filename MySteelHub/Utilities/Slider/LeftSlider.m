@@ -162,6 +162,11 @@
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
         
+        //temp redirection
+        UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        [navigationController pushViewController:viewcontroller animated:NO];
         
     }
     

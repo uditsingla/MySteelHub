@@ -103,6 +103,9 @@
 		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
 		7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF01D284B86003159F9 /* SVProgressHUD.m */; };
 		7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */; };
+		7C489EA61DB3E8CB007463DF /* Shipping.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C489EA51DB3E8CB007463DF /* Shipping.storyboard */; };
+		7C489EA91DB3EC90007463DF /* AddAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C489EA81DB3EC90007463DF /* AddAddressVC.m */; };
+		7C51BEBB1DB2C348004E7547 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C51BEBA1DB2C348004E7547 /* Address.m */; };
 		7C52A6251D8719EF00C45315 /* Conversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C52A6241D8719EF00C45315 /* Conversation.m */; };
 		7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0471D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m */; };
 		7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0491D34024800B7DD43 /* SWCellScrollView.m */; };
@@ -254,6 +257,11 @@
 		7C183AF01D284B86003159F9 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		7C183AF11D284B86003159F9 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
 		7C183AF21D284B86003159F9 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
+		7C489EA51DB3E8CB007463DF /* Shipping.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Shipping.storyboard; sourceTree = "<group>"; };
+		7C489EA71DB3EC90007463DF /* AddAddressVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAddressVC.h; sourceTree = "<group>"; };
+		7C489EA81DB3EC90007463DF /* AddAddressVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAddressVC.m; sourceTree = "<group>"; };
+		7C51BEB91DB2C348004E7547 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		7C51BEBA1DB2C348004E7547 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		7C52A6231D8719EF00C45315 /* Conversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Conversation.h; sourceTree = "<group>"; };
 		7C52A6241D8719EF00C45315 /* Conversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Conversation.m; sourceTree = "<group>"; };
 		7C53E0461D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+SWUtilityButtons.h"; sourceTree = "<group>"; };
@@ -474,6 +482,7 @@
 				46F62CAC1C908FDC00A61B47 /* ViewController.h */,
 				46F62CAD1C908FDC00A61B47 /* ViewController.m */,
 				461BE7DD1CAF042300A8F3DC /* Login.storyboard */,
+				7C489EA51DB3E8CB007463DF /* Shipping.storyboard */,
 				46F62CAF1C908FDC00A61B47 /* Main.storyboard */,
 				46F62CB51C908FDC00A61B47 /* Assets.xcassets */,
 				46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */,
@@ -546,6 +555,8 @@
 				467E5E9E1D59AE1200407925 /* ForgotPassword.m */,
 				467E5EA01D59AF4C00407925 /* ChangePassword.h */,
 				467E5EA11D59AF4C00407925 /* ChangePassword.m */,
+				7C489EA71DB3EC90007463DF /* AddAddressVC.h */,
+				7C489EA81DB3EC90007463DF /* AddAddressVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -593,6 +604,8 @@
 				7CC592CC1D621DA6002396F4 /* ProfileManager.m */,
 				7CC592CE1D621DBF002396F4 /* UserI.h */,
 				7CC592CF1D621DBF002396F4 /* UserI.m */,
+				7C51BEB91DB2C348004E7547 /* Address.h */,
+				7C51BEBA1DB2C348004E7547 /* Address.m */,
 			);
 			path = ProfileManager;
 			sourceTree = "<group>";
@@ -730,6 +743,7 @@
 				1885055A1CDDE45100086EC8 /* passwordW@3x.png in Resources */,
 				188505531CDDE45100086EC8 /* mm@2x.png in Resources */,
 				7CECA2651D4005EC005B3227 /* logo@2x.png in Resources */,
+				7C489EA61DB3E8CB007463DF /* Shipping.storyboard in Resources */,
 				1885055D1CDDE45100086EC8 /* pin@2x.png in Resources */,
 				1885054E1CDDE45100086EC8 /* date@3x.png in Resources */,
 				469942A61D3BFBFD00378968 /* Raleway-SemiBoldItalic.ttf in Resources */,
@@ -868,12 +882,14 @@
 				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
 				7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */,
 				467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */,
+				7C489EA91DB3EC90007463DF /* AddAddressVC.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
 				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
 				7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */,
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
+				7C51BEBB1DB2C348004E7547 /* Address.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
 				7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */,
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
