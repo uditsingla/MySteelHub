@@ -290,7 +290,7 @@
 -(void)getStates:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     [RequestManager asynchronousRequestWithPath:@"states" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
-        NSLog(@"Here comes the json %@",json);
+        //NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
             [arrayStates removeAllObjects];

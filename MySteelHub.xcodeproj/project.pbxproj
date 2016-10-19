@@ -964,7 +964,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "251d84d5-22ce-4e31-85c7-83a34e33e105";
+				PROVISIONING_PROFILE = "157cf85e-c96c-47ac-8d8a-2bc3cf42cef5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1022,7 +1022,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "251d84d5-22ce-4e31-85c7-83a34e33e105";
+				PROVISIONING_PROFILE = "157cf85e-c96c-47ac-8d8a-2bc3cf42cef5";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1041,7 +1041,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "251d84d5-22ce-4e31-85c7-83a34e33e105";
+				PROVISIONING_PROFILE = "157cf85e-c96c-47ac-8d8a-2bc3cf42cef5";
 				SDKROOT = iphoneos;
 			};
 			name = Release;

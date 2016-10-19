@@ -36,10 +36,14 @@
     [urlRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     
     
-    
+    NSLog(@"request ulr : %@",urlRequest);
     if(include)
     {
-        [urlRequest setValue:[[NSUserDefaults standardUserDefaults]valueForKey:@"token"] forHTTPHeaderField:@"access_token"];
+        
+        NSLog(@"User Token : %@",[[NSUserDefaults standardUserDefaults]valueForKey:@"token"]);
+        NSString *strToken = [[NSUserDefaults standardUserDefaults]valueForKey:@"token"];
+        
+        [urlRequest setValue:strToken forHTTPHeaderField:@"Authorization"];
     }
     
     

@@ -29,9 +29,43 @@
 
 - (void)userLogin:(NSDictionary *)dictParam completion:(void(^)(NSArray *addresses, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"auth/securelogin" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
-        if (statusCode==200) {
+    [RequestManager asynchronousRequestWithPath:@"authenticate" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json)
+    {
+        
+        if([json objectForKey:@"token"])
+        {
+            
+            
+            [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"Bearer %@",[json objectForKey:@"token"]] forKey:@"token"];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
+            
+            
+            NSMutableArray *arr= [[NSMutableArray alloc]initWithObjects:@"Login Succesfull", nil];
+            
+            completionBlock(arr,nil);
+            
+        }
+        else
+        {
+            NSString *strErrorMsg = @"Please verify your account from admin first";
+            NSMutableArray *arr= [[NSMutableArray alloc]init];
+            [arr addObject:strErrorMsg];
+            completionBlock(arr,[NSError new]);
+        }
+        return ;
+        
+        
+        
+        
+        
+        if (statusCode == 200)
+        {
             NSLog(@"Here comes the json %@",json);
+            
+            
+            
+            
             
             if([json objectForKey:@"user_id"])
             {
