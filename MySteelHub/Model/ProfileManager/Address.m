@@ -10,7 +10,7 @@
 
 @implementation Address
 
-@synthesize ID,address1,address2,farmName,city,state,pin,phone,isCurrent;
+@synthesize ID,address1,address2,firmName,city,state,pin,mobile,isCurrent,landLine,addressType,landmark;
 
 - (id)init
 {
@@ -19,11 +19,14 @@
         ID = @"";
         address1 = @"";
         address2 = @"";
-        farmName = @"";
+        firmName = @"";
         city = @"";
         state = @"";
         pin = @"";
-        phone = @"";
+        mobile = @"";
+        landLine = @"";
+        addressType = @"";
+        landmark = @"";
         isCurrent = NO;
     }
     return self;
