@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddAddressVC : BaseViewController
+@interface AddAddressVC : BaseViewController<UITextFieldDelegate>
 {
     __weak IBOutlet UITextField *_txtFieldName;
     __weak IBOutlet UITextField *_txtFieldAddress1;
-    
     __weak IBOutlet UITextField *_txtFieldAddress2;
+    __weak IBOutlet UITextField *_txtFieldLandmark;
     __weak IBOutlet UITextField *_txtFieldCity;
     __weak IBOutlet UITextField *_txtFieldState;
     __weak IBOutlet UITextField *_txtFieldZipCode;
     __weak IBOutlet UITextField *_txtFieldContact;
-    __weak IBOutlet UIButton *btnCategory;
+    __weak IBOutlet UITextField *_txtFieldLandline;
+    __weak IBOutlet UIScrollView *_scrollView;
 
 }
 
-- (IBAction)btnCategoryAction:(UIButton *)sender;
 - (IBAction)saveBtnAction:(UIButton *)sender;
 
 @end

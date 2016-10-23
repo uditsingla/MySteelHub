@@ -163,7 +163,7 @@
         NSLog(@"History");
         
         //temp redirection
-        UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+        UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         
         [navigationController pushViewController:viewcontroller animated:NO];
