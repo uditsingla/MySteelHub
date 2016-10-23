@@ -13,11 +13,14 @@
 @property(strong,nonatomic) NSString *ID;
 @property(strong,nonatomic) NSString *address1;
 @property(strong,nonatomic) NSString *address2;
-@property(strong,nonatomic) NSString *farmName;
+@property(strong,nonatomic) NSString *firmName;
 @property(strong,nonatomic) NSString *city;
 @property(strong,nonatomic) NSString *state;
 @property(strong,nonatomic) NSString *pin;
-@property(strong,nonatomic) NSString *phone;
+@property(strong,nonatomic) NSString *mobile;
+@property(strong,nonatomic) NSString *landLine;
+@property(strong,nonatomic) NSString *addressType;
+@property(strong,nonatomic) NSString *landmark;
 @property(assign,nonatomic) BOOL isCurrent;
 
 
