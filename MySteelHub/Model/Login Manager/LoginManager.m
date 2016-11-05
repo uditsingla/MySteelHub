@@ -40,6 +40,13 @@
             
             [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
             
+            [model_manager.requirementManager getSteelBrands:nil];
+            [model_manager.requirementManager getSteelSizes:nil];
+            [model_manager.requirementManager getSteelGrades:nil];
+            [model_manager.requirementManager getCustomerTypes:nil];
+            [model_manager.requirementManager getStates:nil];
+
+            
             
             NSMutableArray *arr= [[NSMutableArray alloc]initWithObjects:@"Login Succesfull", nil];
             
@@ -48,9 +55,15 @@
         }
         else
         {
-            NSString *strErrorMsg = @"Please verify your account from admin first";
+            NSString *strErrorMsg;
+            if([json objectForKey:@"error"])
+                strErrorMsg = [json objectForKey:@"error"];//@"Please verify your account from admin first";
+            else if([json objectForKey:@"msg"])
+                strErrorMsg = [json objectForKey:@"msg"];
+            
             NSMutableArray *arr= [[NSMutableArray alloc]init];
-            [arr addObject:strErrorMsg];
+            if(strErrorMsg.length>0)
+                [arr addObject:strErrorMsg];
             completionBlock(arr,[NSError new]);
         }
         return ;

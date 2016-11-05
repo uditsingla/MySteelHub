@@ -33,7 +33,7 @@
                     @"History",
                     @"Change Password",
                     @"Contact Us",
-                    [NSString stringWithFormat:@"Logout (%@)",[[NSUserDefaults standardUserDefaults] valueForKey:@"email"]],nil];
+                    [NSString stringWithFormat:@"Logout"],nil];
     
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
                           @"newrequirment.png",
@@ -170,7 +170,7 @@
         
     }
     
-    else if ([keyName caseInsensitiveCompare:[NSString stringWithFormat:@"Logout (%@)",[[NSUserDefaults standardUserDefaults] valueForKey:@"email"]]] == NSOrderedSame)
+    else if ([keyName caseInsensitiveCompare:[NSString stringWithFormat:@"Logout"]] == NSOrderedSame)
     {
         NSLog(@"Logout");
         [SVProgressHUD show];

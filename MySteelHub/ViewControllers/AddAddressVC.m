@@ -84,15 +84,15 @@
     Address *addressObj = [Address new];
 
     addressObj.addressType = @"billing";
-    addressObj.firmName = @"Abhishek";
-    addressObj.city = @"Mohali";
-    addressObj.state = @"Punjab";
-    addressObj.pin = @"123456";
-    addressObj.mobile = @"9316645607";
-    addressObj.landLine = @"01724607365";
-    addressObj.address1= @"Phase 3B2";
-    addressObj.address2= @"";
-    addressObj.landmark = @"Near temple";
+    addressObj.firmName = _txtFieldName.text;
+    addressObj.city = _txtFieldCity.text;
+    addressObj.state = _txtFieldState.text;
+    addressObj.pin = _txtFieldZipCode.text;
+    addressObj.mobile = _txtFieldContact.text;
+    addressObj.landLine = _txtFieldLandline.text;
+    addressObj.address1= _txtFieldAddress1.text;
+    addressObj.address2= _txtFieldAddress2.text;
+    addressObj.landmark = _txtFieldLandmark.text;
     
     
     [SVProgressHUD show];
@@ -307,5 +307,7 @@
 */
 
 - (IBAction)saveBtnAction:(UIButton *)sender {
+    
+    [self addAddress];
 }
 @end
