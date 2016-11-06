@@ -35,7 +35,7 @@
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",requirement.requiredByDate,@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",requirement.taxType,@"tax_type",nil];
 
     
-    [RequestManager asynchronousRequestWithPath:@"buyer/post" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"buyer/post" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             
@@ -315,7 +315,7 @@
 
 -(void)getAdminAccountDetails:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    [RequestManager asynchronousRequestWithPath:@"accountDetails" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
+    [RequestManager asynchronousRequestWithPath:@"accountDetails" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
             

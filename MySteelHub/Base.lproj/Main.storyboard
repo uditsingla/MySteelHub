@@ -118,7 +118,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="cge-cZ-F3i" id="bjZ-dy-eDb">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdM-gL-l41">
@@ -687,7 +687,7 @@
                                                         <rect key="frame" x="0.0" y="1" width="323" height="70"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Px-Xm-asD" id="Fzh-z5-dW1">
-                                                            <frame key="frameInset" width="323" height="69"/>
+                                                            <frame key="frameInset" width="323" height="70"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCg-Ai-nBJ" userLabel="SellerName">
@@ -798,6 +798,7 @@
                         <outlet property="btnPreferedBrands" destination="dcl-1r-3hu" id="Gjg-n6-AxP"/>
                         <outlet property="btnPreferedTax" destination="0Ci-xA-N0q" id="bKN-dL-aSE"/>
                         <outlet property="btnRequiredByDate" destination="F9N-Fi-K4K" id="aDN-fJ-v1N"/>
+                        <outlet property="btnSubmit" destination="qtx-Yn-yvn" id="YJa-TR-yfH"/>
                         <outlet property="contentView" destination="x5V-Wu-urZ" id="sCB-Ej-E6H"/>
                         <outlet property="customViewHeightConstarint" destination="Aus-fW-okv" id="EEG-Fb-s08"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>

@@ -43,6 +43,7 @@
     
     __weak IBOutlet UIButton *btnPreferedTax;
     
+    __weak IBOutlet UIButton *btnSubmit;
     
     
     CLLocationManager *locationManager;
@@ -441,6 +442,8 @@
     [self disableUIElements];
     isLoadMoreClicked = true;
     [self clkLoadMore:nil];
+    
+    btnSubmit.hidden = YES;
     
     arrayTblDict = nil;
     arrayTblDict = _selectedRequirement.arraySpecifications;
@@ -1516,7 +1519,7 @@
     else
     {
         RequirementI *newRequirement = [RequirementI new];
-        newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
+        //newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
         newRequirement.arraySpecifications = arrayTblDict;
         newRequirement.isChemical = switchChemical.isOn;
         newRequirement.isPhysical = switchPhysical.isOn;
