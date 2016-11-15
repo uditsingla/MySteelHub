@@ -10,7 +10,7 @@
 
 @implementation ProfileManager
 @synthesize owner;
-@synthesize arraySavedAddress;
+@synthesize arraySavedAddress,arrayBillingAddress,arrayShippingAddress;
 
 - (id)init
 {
@@ -19,6 +19,9 @@
         
         owner = [UserI new];
         arraySavedAddress = [NSMutableArray new];
+        arrayBillingAddress = [NSMutableArray new];
+        arrayShippingAddress = [NSMutableArray new];
+
     }
     return self;
 }
@@ -38,7 +41,9 @@
                                            address.pin,@"pincode",
                                            address.landmark,@"landmark",
                                            address.mobile,@"mobile",
-                                           address.landLine,@"landline",nil];
+                                           address.landLine,@"landline",
+                                           [NSNumber numberWithInt:1],@"current",
+                                           nil];
 
     
     [RequestManager asynchronousRequestWithPath:@"addNewAddress" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
@@ -47,9 +52,9 @@
         
         if (statusCode==200) {
             
-            if([[[json valueForKey:@"data"] firstObject] valueForKey:@"id"])
+            if([json valueForKey:@"address_id"])
             {
-                address.ID = [[[json valueForKey:@"data"] firstObject] valueForKey:@"id"];
+                address.ID = [json valueForKey:@"address_id"];
                 
 //                requirement.requirementID = [NSString stringWithFormat:@"%i",[[[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"] intValue]];
                 
@@ -129,6 +134,103 @@
 
 }
 
+-(void)getShippingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                       @"shipping",@"addressType",
+                                       nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"fetchAddress" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+     {
+         NSLog(@"Here comes shipping address json %@",json);
+         
+         if (statusCode==200) {
+             
+             if([json valueForKey:@"data"])
+             {
+                 NSArray *array = [json valueForKey:@"data"];
+                 [arrayShippingAddress removeAllObjects];
+                 
+                 for(int i=0; i<array.count; i++)
+                 {
+                     Address *address = [Address new];
+                     address.ID = [[array objectAtIndex:i] valueForKey:@"id"];
+                     address.firmName = [[array objectAtIndex:i] valueForKey:@"firm_name"];
+                     address.addressType = [[array objectAtIndex:i] valueForKey:@"addressType"];
+                     address.address1 = [[array objectAtIndex:i] valueForKey:@"address1"];
+                     address.address2 = [[array objectAtIndex:i] valueForKey:@"address2"];
+                     address.city = [[array objectAtIndex:i] valueForKey:@"city"];
+                     address.state = [[array objectAtIndex:i] valueForKey:@"state"];
+                     address.pin = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"pincode"]];
+                     address.landmark = [[array objectAtIndex:i] valueForKey:@"landmark"];
+                     address.mobile = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"mobile"]];
+                     address.landLine = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"landline"]];
+                     
+                     [arrayShippingAddress addObject:address];
+                 }
+                 
+             }
+         }
+         else{
+             if(completionBlock)
+                 completionBlock(nil,nil);
+             //show error
+         }
+         
+     } ];
+    
+    
+}
+
+-(void)getBillingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                       @"billing",@"addressType",
+                                       nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"fetchAddress" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+     {
+         NSLog(@"Here comes billing address json %@",json);
+         
+         if (statusCode==200) {
+             
+             if([json valueForKey:@"data"])
+             {
+                 NSArray *array = [json valueForKey:@"data"];
+                 [arrayBillingAddress removeAllObjects];
+                 
+                 for(int i=0; i<array.count; i++)
+                 {
+                     Address *address = [Address new];
+                     address.ID = [[array objectAtIndex:i] valueForKey:@"id"];
+                     address.firmName = [[array objectAtIndex:i] valueForKey:@"firm_name"];
+                     address.addressType = [[array objectAtIndex:i] valueForKey:@"addressType"];
+                     address.address1 = [[array objectAtIndex:i] valueForKey:@"address1"];
+                     address.address2 = [[array objectAtIndex:i] valueForKey:@"address2"];
+                     address.city = [[array objectAtIndex:i] valueForKey:@"city"];
+                     address.state = [[array objectAtIndex:i] valueForKey:@"state"];
+                     address.pin = [NSString stringWithFormat:@"%@", [[array objectAtIndex:i] valueForKey:@"pincode"]];
+                     address.landmark = [[array objectAtIndex:i] valueForKey:@"landmark"];
+                     address.mobile = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"mobile"]];
+                     address.landLine = [NSString stringWithFormat:@"%@",[[array objectAtIndex:i] valueForKey:@"landline"]];
+                     
+                     [arrayBillingAddress addObject:address];
+                 }
+                 
+             }
+         }
+         else{
+             if(completionBlock)
+                 completionBlock(nil,nil);
+             //show error
+         }
+         
+     } ];
+    
+    
+}
 
 
 @end

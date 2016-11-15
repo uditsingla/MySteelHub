@@ -15,6 +15,8 @@
 
 @implementation AddAddressVC
 
+@synthesize addressType,selectedAddress;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -29,6 +31,19 @@
     //Address APi
 //    [self addAddress];
 //    [self updateAddress];
+    
+    if(selectedAddress)
+    {
+        _txtFieldName.text = selectedAddress.firmName;
+        _txtFieldCity.text = selectedAddress.city;
+        _txtFieldState.text = selectedAddress.state;
+        _txtFieldZipCode.text = selectedAddress.pin;
+        _txtFieldContact.text = selectedAddress.mobile;
+        _txtFieldLandline.text = selectedAddress.landLine;
+        _txtFieldAddress1.text = selectedAddress.address1;
+        _txtFieldAddress2.text = selectedAddress.address2;
+        _txtFieldLandmark.text = selectedAddress.landmark;
+    }
 
 }
 
@@ -83,7 +98,7 @@
     
     Address *addressObj = [Address new];
 
-    addressObj.addressType = @"billing";
+    addressObj.addressType = addressType;
     addressObj.firmName = _txtFieldName.text;
     addressObj.city = _txtFieldCity.text;
     addressObj.state = _txtFieldState.text;
@@ -103,7 +118,7 @@
         
         if(json)
         {
-            //[self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
@@ -123,18 +138,18 @@
     
     Address *addressObj = [Address new];
     
-    addressObj.ID = @"update this ID";
+    addressObj.ID = selectedAddress.ID;
     
-    addressObj.addressType = @"billing";
-    addressObj.firmName = @"Abhishek";
-    addressObj.city = @"Mohali";
-    addressObj.state = @"Punjab";
-    addressObj.pin = @"123456";
-    addressObj.mobile = @"9316645607";
-    addressObj.landLine = @"01724607365";
-    addressObj.address1= @"Phase 3B2";
-    addressObj.address2= @"";
-    addressObj.landmark = @"Near temple";
+    addressObj.addressType = selectedAddress.addressType;
+    addressObj.firmName = _txtFieldName.text;
+    addressObj.city = _txtFieldCity.text;
+    addressObj.state = _txtFieldState.text;
+    addressObj.pin = _txtFieldZipCode.text;
+    addressObj.mobile = _txtFieldContact.text;
+    addressObj.landLine = _txtFieldLandline.text;
+    addressObj.address1= _txtFieldAddress1.text;
+    addressObj.address2= _txtFieldAddress2.text;
+    addressObj.landmark = _txtFieldLandmark.text;
     
     
     
@@ -146,7 +161,8 @@
         
         if(json)
         {
-            //[self.navigationController popViewControllerAnimated:YES];
+            selectedAddress = addressObj;
+            [self.navigationController popViewControllerAnimated:YES];
         }
         else
         {
@@ -308,6 +324,9 @@
 
 - (IBAction)saveBtnAction:(UIButton *)sender {
     
-    [self addAddress];
+    if(selectedAddress)
+        [self updateAddress];
+    else
+        [self addAddress];
 }
 @end

@@ -47,6 +47,10 @@
     [self setTitleLabel:@"REQUIREMENTS"];
     [self setMenuButton];
     
+    [model_manager.profileManager getBillingAddressesWithCompletion:nil];
+    [model_manager.profileManager getShippingAddressesWithCompletion:nil];
+
+    
     [SVProgressHUD show];
     
     [model_manager.requirementManager getStates:^(NSDictionary *json, NSError *error) {

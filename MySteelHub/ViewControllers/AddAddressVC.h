@@ -25,4 +25,9 @@
 
 - (IBAction)saveBtnAction:(UIButton *)sender;
 
+@property(nonatomic,retain) NSString *addressType;
+
+@property(nonatomic,retain) Address *selectedAddress;
+
+
 @end

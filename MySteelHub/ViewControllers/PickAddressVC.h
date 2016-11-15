@@ -17,6 +17,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tblViewShipping;
 
+@property (assign, nonatomic) BOOL isFromMenu;
+
 
 - (IBAction)btnBillingAction:(UIButton *)sender;
 
