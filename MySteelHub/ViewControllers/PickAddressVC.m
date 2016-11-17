@@ -11,8 +11,16 @@
 #import "ShippingAddressCell.h"
 #import "AddAddressVC.h"
 
+#define kBtnSelectedBackgroundColor [UIColor darkGrayColor]
+#define kBnSelectedTextColor [UIColor colorWithRed:34/255.00 green:152/255.00 blue:168/255.00 alpha:1]
+
+#define kBtnRegularBackgroundColor [UIColor colorWithRed:170/255.00 green:170/255.00 blue:170/255.00 alpha:1]
+#define kBtnRegularTextColor [UIColor whiteColor]
+
 @interface PickAddressVC ()
 {
+    __weak IBOutlet UIButton *btnShippingAddress;
+    __weak IBOutlet UIButton *btnBillingAddress;
     NSString *selectedAddressTab;
 }
 
@@ -22,6 +30,21 @@
 
 @synthesize isFromMenu;
 
+-(void)resetButtonsUI
+{
+    btnShippingAddress.backgroundColor = kBtnRegularBackgroundColor;
+    btnBillingAddress.backgroundColor = kBtnRegularBackgroundColor;
+    btnShippingAddress.titleLabel.textColor = kBtnRegularTextColor;
+    btnBillingAddress.titleLabel.textColor = kBtnRegularTextColor;
+    
+    btnShippingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
+    btnBillingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
+
+
+}
+
+
+#pragma mark - Default Methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,7 +63,8 @@
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
 
-    selectedAddressTab = @"billing";
+    [self btnBillingAction:nil];
+//    selectedAddressTab = @"billing";
 }
 
 #pragma mark table view data sources and delegates
@@ -196,12 +220,22 @@
 */
 
 - (IBAction)btnBillingAction:(UIButton *)sender {
+    
+    [self resetButtonsUI];
+    
+    btnBillingAddress.backgroundColor = kBtnSelectedBackgroundColor;
+    
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
     selectedAddressTab = @"billing";
 }
 
 - (IBAction)btnShippingAction:(UIButton *)sender {
+    
+    [self resetButtonsUI];
+    
+    btnShippingAddress.backgroundColor = kBtnSelectedBackgroundColor;
+    
     _tblViewBilling.hidden = YES;
     _tblViewShipping.hidden = NO;
     selectedAddressTab = @"shipping";
