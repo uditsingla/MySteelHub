@@ -46,8 +46,10 @@
             [model_manager.requirementManager getCustomerTypes:nil];
             [model_manager.requirementManager getStates:nil];
 
-            
-            
+            [model_manager.profileManager getBillingAddressesWithCompletion:nil];
+            [model_manager.profileManager getShippingAddressesWithCompletion:nil];
+
+
             NSMutableArray *arr= [[NSMutableArray alloc]initWithObjects:@"Login Succesfull", nil];
             
             completionBlock(arr,nil);

@@ -9,12 +9,18 @@
 #import "PickAddressVC.h"
 #import "AddressCell.h"
 #import "ShippingAddressCell.h"
+#import "AddAddressVC.h"
 
 @interface PickAddressVC ()
+{
+    NSString *selectedAddressTab;
+}
 
 @end
 
 @implementation PickAddressVC
+
+@synthesize isFromMenu;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,16 +40,16 @@
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
 
-    
+    selectedAddressTab = @"billing";
 }
 
 #pragma mark table view data sources and delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if(tableView == _tblViewShipping)
-        return 1;
+        return model_manager.profileManager.arrayShippingAddress.count;
     else if(tableView == _tblViewBilling)
-        return 1;
+        return model_manager.profileManager.arrayBillingAddress.count;
     
     return 0;
     
@@ -53,6 +59,15 @@
     if(tableView == _tblViewShipping)
     {
         ShippingAddressCell *cell = (ShippingAddressCell*)[tableView dequeueReusableCellWithIdentifier:@"shipping"];
+        
+        Address *selectedAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row];
+        
+        cell.lblName.text = selectedAddress.firmName;
+        cell.lblAddressLine1.text = selectedAddress.address1;
+        cell.lblAddressLine2.text = selectedAddress.address2;
+        cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
+        cell.lblContactInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.mobile,selectedAddress.landLine];
+
         
         NSArray *arrayRightBtns = [self rightButtons];
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
@@ -64,6 +79,15 @@
     else if(tableView == _tblViewBilling)
     {
         AddressCell *cell = (AddressCell*)[tableView dequeueReusableCellWithIdentifier:@"billing"];
+        
+        Address *selectedAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:indexPath.row];
+        
+        cell.lblName.text = selectedAddress.firmName;
+        cell.lblAddressLine1.text = selectedAddress.address1;
+        cell.lblAddressLine2.text = selectedAddress.address2;
+        cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
+        cell.lblContactInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.mobile,selectedAddress.landLine];
+
         
         NSArray *arrayRightBtns = [self rightButtons];
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
@@ -108,11 +132,45 @@
         {
             NSLog(@"Edit CLicked");
             
+            if ([cell isKindOfClass:[ShippingAddressCell class]])
+            {
+                NSIndexPath *indexPath;
+                indexPath = [_tblViewShipping indexPathForCell:cell];
+                AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+                UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+                viewcontroller.addressType = selectedAddressTab;
+                viewcontroller.selectedAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row];
+                [navigationController pushViewController:viewcontroller animated:NO];
+
+            }
+            else
+            {
+                NSIndexPath *indexPath;
+                indexPath = [_tblViewBilling indexPathForCell:cell];
+                AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+                UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+                viewcontroller.addressType = selectedAddressTab;
+                viewcontroller.selectedAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:indexPath.row];
+                [navigationController pushViewController:viewcontroller animated:NO];
+
+            }
+            
             break;
         }
         case 1:
         {
             NSLog(@"Delete CLicked");
+            
+            if ([cell isKindOfClass:[ShippingAddressCell class]])
+            {
+                NSIndexPath *indexPath;
+                indexPath = [_tblViewShipping indexPathForCell:cell];
+            }
+            else
+            {
+                NSIndexPath *indexPath;
+                indexPath = [_tblViewBilling indexPathForCell:cell];
+            }
             
             break;
         }
@@ -140,18 +198,20 @@
 - (IBAction)btnBillingAction:(UIButton *)sender {
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
+    selectedAddressTab = @"billing";
 }
 
 - (IBAction)btnShippingAction:(UIButton *)sender {
     _tblViewBilling.hidden = YES;
     _tblViewShipping.hidden = NO;
+    selectedAddressTab = @"shipping";
 }
 
 - (IBAction)btnAddAction:(UIButton *)sender {
     
-    UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+    AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
     UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-    
+    viewcontroller.addressType = selectedAddressTab;
     [navigationController pushViewController:viewcontroller animated:NO];
 }
 

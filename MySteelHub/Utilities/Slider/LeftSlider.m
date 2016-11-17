@@ -31,6 +31,7 @@
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
                     @"New Requirement",
                     @"History",
+                    @"Manage Addresses",
                     @"Change Password",
                     @"Contact Us",
                     [NSString stringWithFormat:@"Logout"],nil];
@@ -38,6 +39,7 @@
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
                           @"newrequirment.png",
                           @"history.png",
+                          @"pin.png",
                           @"password.png",
                           @"contact.png",
                           @"logout.png",
@@ -161,14 +163,19 @@
     
     else if ([keyName caseInsensitiveCompare:@"History"] == NSOrderedSame){
         NSLog(@"History");
+                
+    }
+    
+    else if ([keyName caseInsensitiveCompare:@"Manage Addresses"] == NSOrderedSame){
+        NSLog(@"Manage Addresses");
         
-        //temp redirection
         UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         
         [navigationController pushViewController:viewcontroller animated:NO];
         
     }
+
     
     else if ([keyName caseInsensitiveCompare:[NSString stringWithFormat:@"Logout"]] == NSOrderedSame)
     {
