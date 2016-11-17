@@ -1060,7 +1060,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "157cf85e-c96c-47ac-8d8a-2bc3cf42cef5";
 				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};
@@ -1080,7 +1080,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "157cf85e-c96c-47ac-8d8a-2bc3cf42cef5";
 				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};
