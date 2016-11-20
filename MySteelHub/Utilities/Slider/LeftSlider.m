@@ -8,6 +8,7 @@
 
 #import "LeftSlider.h"
 #import "LeftSliderCell.h"
+#import "PickAddressVC.h"
 
 //#import "Appointments.h"
 //#import "History.h"
@@ -39,7 +40,7 @@
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
                           @"newrequirment.png",
                           @"history.png",
-                          @"pin.png",
+                          @"contact.png",
                           @"password.png",
                           @"contact.png",
                           @"logout.png",
@@ -169,9 +170,9 @@
     else if ([keyName caseInsensitiveCompare:@"Manage Addresses"] == NSOrderedSame){
         NSLog(@"Manage Addresses");
         
-        UIViewController *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
+        PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        
+        viewcontroller.isFromMenu = YES;
         [navigationController pushViewController:viewcontroller animated:NO];
         
     }

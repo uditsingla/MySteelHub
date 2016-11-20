@@ -19,6 +19,7 @@
 
 @property (assign, nonatomic) BOOL isFromMenu;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnPlaceOrder;
 
 - (IBAction)btnBillingAction:(UIButton *)sender;
 

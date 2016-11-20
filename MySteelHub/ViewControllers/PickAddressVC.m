@@ -65,6 +65,21 @@
 
     [self btnBillingAction:nil];
 //    selectedAddressTab = @"billing";
+    
+    if(isFromMenu)
+    {
+        _btnPlaceOrder.hidden = YES;
+    }
+    else
+    {
+        _btnPlaceOrder.hidden = NO;
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [_tblViewBilling reloadData];
+    [_tblViewShipping reloadData];
 }
 
 #pragma mark table view data sources and delegates

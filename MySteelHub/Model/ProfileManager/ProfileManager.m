@@ -59,6 +59,11 @@
 //                requirement.requirementID = [NSString stringWithFormat:@"%i",[[[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"] intValue]];
                 
                 [model_manager.profileManager.arraySavedAddress addObject:address];
+                
+                if([address.addressType isEqualToString:@"billing"])
+                    [model_manager.profileManager.arrayBillingAddress addObject:address];
+                else
+                    [model_manager.profileManager.arrayShippingAddress addObject:address];
             }
             
             if(completionBlock)
@@ -114,14 +119,15 @@
                      {
                          [model_manager.profileManager.arraySavedAddress replaceObjectAtIndex:i withObject:address];
                          
-                         if(completionBlock)
-                             completionBlock(json,nil);
                          break;
                      }
                      
                  }
                  
-             }             
+             }
+             
+             if(completionBlock)
+                 completionBlock(json,nil);
          }
          else{
              if(completionBlock)
