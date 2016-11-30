@@ -86,6 +86,7 @@
 		469942A61D3BFBFD00378968 /* Raleway-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942941D3BFBFD00378968 /* Raleway-SemiBoldItalic.ttf */; };
 		469942A71D3BFBFD00378968 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942951D3BFBFD00378968 /* Raleway-Thin.ttf */; };
 		469942A81D3BFBFD00378968 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942961D3BFBFD00378968 /* Raleway-ThinItalic.ttf */; };
+		46A31C8A1DEEEEEC001EA7DE /* OrderConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A31C891DEEEEEC001EA7DE /* OrderConfirmation.m */; };
 		46EF53A81D45D9C30052AB86 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53A61D45D9C30052AB86 /* background@2x.png */; };
 		46EF53A91D45D9C30052AB86 /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53A71D45D9C30052AB86 /* background@3x.png */; };
 		46EF53AC1D45ECAE0052AB86 /* newrequirment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53AA1D45ECAE0052AB86 /* newrequirment@2x.png */; };
@@ -233,6 +234,8 @@
 		469942941D3BFBFD00378968 /* Raleway-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		469942951D3BFBFD00378968 /* Raleway-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Thin.ttf"; sourceTree = "<group>"; };
 		469942961D3BFBFD00378968 /* Raleway-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ThinItalic.ttf"; sourceTree = "<group>"; };
+		46A31C881DEEEEEC001EA7DE /* OrderConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmation.h; sourceTree = "<group>"; };
+		46A31C891DEEEEEC001EA7DE /* OrderConfirmation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmation.m; sourceTree = "<group>"; };
 		46B43C5D1D945AA300C33097 /* MySteelHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySteelHub.entitlements; sourceTree = "<group>"; };
 		46EF53A61D45D9C30052AB86 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		46EF53A71D45D9C30052AB86 /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@3x.png"; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				467E5E9E1D59AE1200407925 /* ForgotPassword.m */,
 				467E5EA01D59AF4C00407925 /* ChangePassword.h */,
 				467E5EA11D59AF4C00407925 /* ChangePassword.m */,
+				46A31C881DEEEEEC001EA7DE /* OrderConfirmation.h */,
+				46A31C891DEEEEEC001EA7DE /* OrderConfirmation.m */,
 				7C489EA71DB3EC90007463DF /* AddAddressVC.h */,
 				7C489EA81DB3EC90007463DF /* AddAddressVC.m */,
 				7C4D669D1DBCFD08001CCB6D /* PickAddressVC.h */,
@@ -916,6 +921,7 @@
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
 				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
 				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
+				46A31C8A1DEEEEEC001EA7DE /* OrderConfirmation.m in Sources */,
 				7CC592CD1D621DA6002396F4 /* ProfileManager.m in Sources */,
 				7C52A6251D8719EF00C45315 /* Conversation.m in Sources */,
 				7CC592D01D621DBF002396F4 /* UserI.m in Sources */,
@@ -1002,7 +1008,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "82c08c48-b192-411d-bc8e-44827d52e7c8";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1040,7 +1046,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "82c08c48-b192-411d-bc8e-44827d52e7c8";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1054,13 +1060,14 @@
 				CODE_SIGN_ENTITLEMENTS = MySteelHub/MySteelHub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
+				DEVELOPMENT_TEAM = LC334ADL8X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "82c08c48-b192-411d-bc8e-44827d52e7c8";
 				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};
@@ -1080,7 +1087,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4dec61ab-46ec-44c4-9b6e-5a09b34e1b4c";
+				PROVISIONING_PROFILE = "68c2ad43-caeb-436e-be8f-b587be184ebd";
 				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};

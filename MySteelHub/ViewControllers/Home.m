@@ -8,6 +8,8 @@
 
 #import "Home.h"
 #import "HomeCell.h"
+#import "OrderConfirmation.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import "SVProgressHUD.h"
 #import "Home_SellerResponse.h"    //TableviewCell
@@ -976,8 +978,15 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (tableView == tblSellerResponse) {
+    if (tableView == tblSellerResponse)
+    {
         NSLog(@"Table row clicked");
+        
+        OrderConfirmation *orderConfirmation = [kMainStoryboard instantiateViewControllerWithIdentifier:@"orderconfirmation"];
+        
+        orderConfirmation.selectedRequirement = self.selectedRequirement;
+        
+        [self.navigationController pushViewController:orderConfirmation animated:YES];
     }
     else if(tableView.tag==222)
     {
