@@ -21,4 +21,6 @@
 @property(assign,nonatomic) BOOL isBargainRequired;
 @property(assign,nonatomic) BOOL isDeleted;
 
+@property(strong,nonatomic) NSMutableArray *arraySpecificationsResponse;
+
 @end
