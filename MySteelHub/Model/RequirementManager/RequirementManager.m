@@ -136,6 +136,21 @@
                     obj.sellerName = [NSString stringWithFormat:@"%@",[[arrayResponse objectAtIndex:j] valueForKey:@"seller_name"]];
 
 
+                    if([[arrayResponse objectAtIndex:j] valueForKey:@"initial_unit_price"] && ![[[arrayResponse objectAtIndex:j] valueForKey:@"initial_unit_price"] isEqual:[NSNull null]])
+                    {
+                        if([[[arrayResponse objectAtIndex:j] valueForKey:@"initial_unit_price"] isKindOfClass:[NSArray class]])
+                        {
+                            obj.arraySpecificationsResponse = [[[arrayResponse objectAtIndex:j] valueForKey:@"initial_unit_price"] mutableCopy];
+                        }
+                    }
+                    
+                    if([[arrayResponse objectAtIndex:j] valueForKey:@"bargain_unit_price"] && ![[[arrayResponse objectAtIndex:j] valueForKey:@"bargain_unit_price"] isEqual:[NSNull null]])
+                    {
+                        if([[[arrayResponse objectAtIndex:j] valueForKey:@"bargain_unit_price"] isKindOfClass:[NSArray class]])
+                        {
+                            obj.arraySpecificationsResponse = [[[arrayResponse objectAtIndex:j] valueForKey:@"bargain_unit_price"] mutableCopy];
+                        }
+                    }
                     
                     [requirement.arrayConversations addObject:obj];
                 }

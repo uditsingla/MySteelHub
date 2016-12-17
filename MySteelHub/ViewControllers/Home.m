@@ -985,6 +985,7 @@
         OrderConfirmation *orderConfirmation = [kMainStoryboard instantiateViewControllerWithIdentifier:@"orderconfirmation"];
         
         orderConfirmation.selectedRequirement = self.selectedRequirement;
+        orderConfirmation.selectedConversation = [self.selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
         
         [self.navigationController pushViewController:orderConfirmation animated:YES];
     }

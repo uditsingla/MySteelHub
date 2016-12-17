@@ -238,5 +238,34 @@
     
 }
 
+-(void)getOrdersWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                       @"buyer",@"type",
+                                       nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"getOrders" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+     {
+         NSLog(@"Here comes orders json %@",json);
+         
+         if (statusCode==200) {
+             
+             if([json valueForKey:@"data"])
+             {
+                 NSArray *array = [json valueForKey:@"data"];
+                 
+             }
+         }
+         else{
+             if(completionBlock)
+                 completionBlock(nil,nil);
+             //show error
+         }
+         
+     } ];
+    
+    
+}
 
 @end

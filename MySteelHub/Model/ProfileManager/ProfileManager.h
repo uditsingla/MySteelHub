@@ -26,5 +26,6 @@
 
 -(void)getBillingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)getOrdersWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 @end

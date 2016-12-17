@@ -11,10 +11,11 @@
 @interface OrderConfirmation ()
 @property (weak, nonatomic) IBOutlet UITableView *tableOrderDescription;
 
+@property (weak, nonatomic) IBOutlet UIButton *btnAccept;
 @end
 
 @implementation OrderConfirmation
-@synthesize selectedRequirement;
+@synthesize selectedRequirement,selectedConversation;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,6 +27,8 @@
     [self setMenuButton];
     [self setTitleLabel:@"Confirm Order"];
     
+    if(selectedConversation.isAccepted)
+        _btnAccept.hidden = YES;
 }
 
 
@@ -42,7 +45,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return selectedRequirement.arraySpecifications.count;
+    return selectedConversation.arraySpecificationsResponse.count + 1;
     
 }
 
@@ -62,10 +65,16 @@
     float height = 21;
     
     UILabel *lbl1 = (UILabel *)[cell.contentView viewWithTag:1];
-    lbl1.text = [[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"size"];
+    if(indexPath.row==0)
+        lbl1.text = @"Size";
+    else
+        lbl1.text = [[selectedConversation.arraySpecificationsResponse objectAtIndex:indexPath.row-1]valueForKey:@"size"];
     
     UILabel *lbl2 = (UILabel *)[cell.contentView viewWithTag:2];
-    lbl2.text = [[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"quantity"];
+    if(indexPath.row==0)
+        lbl2.text = @"Quantity";
+    else
+        lbl2.text = [[selectedConversation.arraySpecificationsResponse objectAtIndex:indexPath.row-1]valueForKey:@"quantity"];
     
     UILabel *lbl3 = (UILabel *)[cell.contentView viewWithTag:3];
     lbl3.hidden = YES;
@@ -76,22 +85,31 @@
     lbl1.frame = CGRectMake(0, 12, (cell.frame.size.width/2), height);
     lbl2.frame = CGRectMake((cell.frame.size.width/2), 12, (cell.frame.size.width/2), height);
     
-    if([[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"priceOld"])
+    int currentRow = (int)indexPath.row;
+    
+    if(currentRow>0)
+        currentRow = (int)indexPath.row - 1;
+    
+    if([[selectedConversation.arraySpecificationsResponse objectAtIndex:currentRow]valueForKey:@"unit price"])
     {
         lbl3.hidden = NO;
-
-        lbl3.text = [[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"priceOld"];
+        if(indexPath.row==0)
+            lbl3.text = @"Rate";
+        else
+            lbl3.text = [[selectedConversation.arraySpecificationsResponse objectAtIndex:indexPath.row-1]valueForKey:@"unit price"];
         
         lbl1.frame = CGRectMake(0, 12, (cell.frame.size.width/3), height);
         lbl2.frame = CGRectMake((cell.frame.size.width/3), 12, (cell.frame.size.width/3), height);
         lbl3.frame = CGRectMake(((cell.frame.size.width/3)*2), 12, (cell.frame.size.width/3), height);
     }
     
-    if([[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"priceNew"])
+    if([[selectedConversation.arraySpecificationsResponse objectAtIndex:currentRow]valueForKey:@"new unit price"])
     {
         lbl4.hidden = NO;
-
-        lbl4.text = [[selectedRequirement.arraySpecifications objectAtIndex:indexPath.row]valueForKey:@"priceNew"];
+        if(indexPath.row==0)
+            lbl4.text = @"New Rate";
+        else
+            lbl4.text = [[selectedConversation.arraySpecificationsResponse objectAtIndex:indexPath.row-1]valueForKey:@"new unit price"];
         
         lbl1.frame = CGRectMake(0, 12, (cell.frame.size.width/4), height);
         lbl2.frame = CGRectMake((cell.frame.size.width/4),12 , (cell.frame.size.width/4), height);
@@ -108,8 +126,53 @@
 - (IBAction)clkSubmit:(id)sender {
     
     NSLog(@"Click Submit");
+    
+    if(!selectedConversation.isAccepted)
+    {
+        [SVProgressHUD show];
+        [selectedRequirement acceptRejectDeal:selectedConversation.sellerID status:YES withCompletion:^(NSDictionary *json, NSError *error)
+         {
+             [SVProgressHUD dismiss];
+             
+             if(json)
+             {
+                 selectedConversation.isAccepted = YES;
+                 
+                 selectedConversation.isBuyerRead = true;
+                 
+                 _btnAccept.hidden = YES;
+             }
+             else
+             {
+                 [self showAlert:@"Some error occured. Please try again"];
+             }
+         }];
+    }
 }
 
+-(void)showAlert:(NSString *)errorMsg
+{
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@""
+                                  message:errorMsg
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    [self presentViewController:alert animated:YES completion:nil];
+    
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleCancel
+                         handler:^(UIAlertAction * action)
+                         {
+                             //Do some thing here
+                             //   [view dismissViewControllerAnimated:YES completion:nil];
+                             
+                         }];
+    [alert addAction:ok];
+    
+}
 
 /*
 #pragma mark - Navigation
