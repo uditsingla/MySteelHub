@@ -152,6 +152,14 @@
                         }
                     }
                     
+                    if([[arrayResponse objectAtIndex:j] valueForKey:@"brands"] && ![[[arrayResponse objectAtIndex:j] valueForKey:@"brands"] isEqual:[NSNull null]])
+                    {
+                        if([[[arrayResponse objectAtIndex:j] valueForKey:@"brands"] isKindOfClass:[NSArray class]])
+                        {
+                            obj.arrayBrands = [[[arrayResponse objectAtIndex:j] valueForKey:@"brands"] mutableCopy];
+                        }
+                    }
+                    
                     [requirement.arrayConversations addObject:obj];
                 }
 
