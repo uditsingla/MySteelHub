@@ -23,4 +23,6 @@
 
 @property(strong,nonatomic) NSMutableArray *arraySpecificationsResponse;
 
+@property(strong,nonatomic) NSMutableArray *arrayBrands;
+
 @end

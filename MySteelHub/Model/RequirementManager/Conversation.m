@@ -10,7 +10,7 @@
 
 @implementation Conversation
 
-@synthesize sellerID,sellerName,initialAmount,bargainAmount,isBestPrice,isBuyerRead,isBuyerReadBargain,isAccepted,isBargainRequired,isDeleted,arraySpecificationsResponse;
+@synthesize sellerID,sellerName,initialAmount,bargainAmount,isBestPrice,isBuyerRead,isBuyerReadBargain,isAccepted,isBargainRequired,isDeleted,arraySpecificationsResponse,arrayBrands;
 
 - (id)init
 {
@@ -29,7 +29,7 @@
         isDeleted = NO;
         
         arraySpecificationsResponse = [NSMutableArray new];
-
+        arrayBrands = [NSMutableArray new];
     }
     return self;
 }

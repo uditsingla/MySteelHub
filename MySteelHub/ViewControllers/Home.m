@@ -130,7 +130,7 @@
 -(void)setMarginBoundary
 {
     float requirment =_selectedRequirement.arrayConversations.count * 44;
-    float sellerResponse =arrayTblDict.count * 70;
+    float sellerResponse =arrayTblDict.count * 100;
     
     
     float costantheight = 0;
@@ -455,7 +455,7 @@
     
     if(_selectedRequirement.arrayConversations.count > 0)
     {
-        sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*70 ;
+        sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*100 ;
         
         scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant;
         
@@ -801,7 +801,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == tblSellerResponse) {
-        return 70;
+        return 100;
     }
     
     else if(tableView.tag==222)
@@ -852,6 +852,7 @@
         
         cell.lblSellerName.text = [NSString stringWithFormat:@"Seller : %@", currentRow.sellerName];
         cell.lblAmount.text = [NSString stringWithFormat:@"Quotation Amount : Rs %@",currentRow.initialAmount];
+        cell.lblBrands.text = [NSString stringWithFormat:@"Brands : %@",[currentRow.arrayBrands componentsJoinedByString:@","]];
         if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue>0)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
         else if(currentRow.isBargainRequired)
