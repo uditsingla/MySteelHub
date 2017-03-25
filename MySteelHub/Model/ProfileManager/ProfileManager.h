@@ -18,6 +18,12 @@
 @property(strong,nonatomic) NSMutableArray *arrayBillingAddress;
 
 
+@property(strong,nonatomic) NSMutableArray *arrayPendingOrders;
+@property(strong,nonatomic) NSMutableArray *arrayInprogressOrders;
+@property(strong,nonatomic) NSMutableArray *arrayConfirmedOrders;
+@property(strong,nonatomic) NSMutableArray *arrayDeliveredOrders;
+
+
 -(void)addNewAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 -(void)editAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
@@ -26,6 +32,7 @@
 
 -(void)getBillingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
--(void)getOrdersWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+-(void)getOrderswithOrdertype:(NSMutableDictionary*)dictOrderParam completionBlock:(void(^)(NSDictionary *json, NSError *error))completionBlock
+;
 
 @end

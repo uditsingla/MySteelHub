@@ -87,6 +87,16 @@
 		469942A71D3BFBFD00378968 /* Raleway-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942951D3BFBFD00378968 /* Raleway-Thin.ttf */; };
 		469942A81D3BFBFD00378968 /* Raleway-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942961D3BFBFD00378968 /* Raleway-ThinItalic.ttf */; };
 		46A31C8A1DEEEEEC001EA7DE /* OrderConfirmation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A31C891DEEEEEC001EA7DE /* OrderConfirmation.m */; };
+		46BE797A1E75A6B6008A6C66 /* OrderI.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79791E75A6B6008A6C66 /* OrderI.m */; };
+		46BE797E1E76DBD1008A6C66 /* MyOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE797D1E76DBD1008A6C66 /* MyOrders.m */; };
+		46BE79841E76DC1A008A6C66 /* PendingOrdersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79831E76DC1A008A6C66 /* PendingOrdersVC.m */; };
+		46BE79871E76DC34008A6C66 /* ConfirmedOrdersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79861E76DC34008A6C66 /* ConfirmedOrdersVC.m */; };
+		46BE798A1E76DC64008A6C66 /* InProgressOrdersVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79891E76DC64008A6C66 /* InProgressOrdersVC.m */; };
+		46BE798D1E76DCB0008A6C66 /* HistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE798C1E76DCB0008A6C66 /* HistoryVC.m */; };
+		46BE79901E7EABD6008A6C66 /* PendingOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE798F1E7EABD6008A6C66 /* PendingOrdersCell.m */; };
+		46BE79931E7EABF0008A6C66 /* ConfirmedOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79921E7EABF0008A6C66 /* ConfirmedOrdersCell.m */; };
+		46BE79961E7EAC04008A6C66 /* InProgressOrdersCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79951E7EAC04008A6C66 /* InProgressOrdersCell.m */; };
+		46BE79991E7EAC1A008A6C66 /* HistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46BE79981E7EAC1A008A6C66 /* HistoryCell.m */; };
 		46EF53A81D45D9C30052AB86 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53A61D45D9C30052AB86 /* background@2x.png */; };
 		46EF53A91D45D9C30052AB86 /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53A71D45D9C30052AB86 /* background@3x.png */; };
 		46EF53AC1D45ECAE0052AB86 /* newrequirment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 46EF53AA1D45ECAE0052AB86 /* newrequirment@2x.png */; };
@@ -237,6 +247,26 @@
 		46A31C881DEEEEEC001EA7DE /* OrderConfirmation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderConfirmation.h; sourceTree = "<group>"; };
 		46A31C891DEEEEEC001EA7DE /* OrderConfirmation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderConfirmation.m; sourceTree = "<group>"; };
 		46B43C5D1D945AA300C33097 /* MySteelHub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySteelHub.entitlements; sourceTree = "<group>"; };
+		46BE79781E75A6B6008A6C66 /* OrderI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderI.h; sourceTree = "<group>"; };
+		46BE79791E75A6B6008A6C66 /* OrderI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderI.m; sourceTree = "<group>"; };
+		46BE797C1E76DBD1008A6C66 /* MyOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOrders.h; sourceTree = "<group>"; };
+		46BE797D1E76DBD1008A6C66 /* MyOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyOrders.m; sourceTree = "<group>"; };
+		46BE79821E76DC1A008A6C66 /* PendingOrdersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersVC.h; sourceTree = "<group>"; };
+		46BE79831E76DC1A008A6C66 /* PendingOrdersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersVC.m; sourceTree = "<group>"; };
+		46BE79851E76DC34008A6C66 /* ConfirmedOrdersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmedOrdersVC.h; sourceTree = "<group>"; };
+		46BE79861E76DC34008A6C66 /* ConfirmedOrdersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmedOrdersVC.m; sourceTree = "<group>"; };
+		46BE79881E76DC64008A6C66 /* InProgressOrdersVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InProgressOrdersVC.h; sourceTree = "<group>"; };
+		46BE79891E76DC64008A6C66 /* InProgressOrdersVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InProgressOrdersVC.m; sourceTree = "<group>"; };
+		46BE798B1E76DCB0008A6C66 /* HistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryVC.h; sourceTree = "<group>"; };
+		46BE798C1E76DCB0008A6C66 /* HistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryVC.m; sourceTree = "<group>"; };
+		46BE798E1E7EABD6008A6C66 /* PendingOrdersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PendingOrdersCell.h; sourceTree = "<group>"; };
+		46BE798F1E7EABD6008A6C66 /* PendingOrdersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PendingOrdersCell.m; sourceTree = "<group>"; };
+		46BE79911E7EABF0008A6C66 /* ConfirmedOrdersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmedOrdersCell.h; sourceTree = "<group>"; };
+		46BE79921E7EABF0008A6C66 /* ConfirmedOrdersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmedOrdersCell.m; sourceTree = "<group>"; };
+		46BE79941E7EAC04008A6C66 /* InProgressOrdersCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InProgressOrdersCell.h; sourceTree = "<group>"; };
+		46BE79951E7EAC04008A6C66 /* InProgressOrdersCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InProgressOrdersCell.m; sourceTree = "<group>"; };
+		46BE79971E7EAC1A008A6C66 /* HistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryCell.h; sourceTree = "<group>"; };
+		46BE79981E7EAC1A008A6C66 /* HistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryCell.m; sourceTree = "<group>"; };
 		46EF53A61D45D9C30052AB86 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		46EF53A71D45D9C30052AB86 /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@3x.png"; sourceTree = "<group>"; };
 		46EF53AA1D45ECAE0052AB86 /* newrequirment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newrequirment@2x.png"; sourceTree = "<group>"; };
@@ -433,6 +463,14 @@
 			children = (
 				46925FFC1D8730C30097469E /* Home_SellerResponse.h */,
 				46925FFD1D8730C30097469E /* Home_SellerResponse.m */,
+				46BE798E1E7EABD6008A6C66 /* PendingOrdersCell.h */,
+				46BE798F1E7EABD6008A6C66 /* PendingOrdersCell.m */,
+				46BE79911E7EABF0008A6C66 /* ConfirmedOrdersCell.h */,
+				46BE79921E7EABF0008A6C66 /* ConfirmedOrdersCell.m */,
+				46BE79941E7EAC04008A6C66 /* InProgressOrdersCell.h */,
+				46BE79951E7EAC04008A6C66 /* InProgressOrdersCell.m */,
+				46BE79971E7EAC1A008A6C66 /* HistoryCell.h */,
+				46BE79981E7EAC1A008A6C66 /* HistoryCell.m */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -460,6 +498,23 @@
 				469942961D3BFBFD00378968 /* Raleway-ThinItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		46BE797B1E76DBD1008A6C66 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				46BE797C1E76DBD1008A6C66 /* MyOrders.h */,
+				46BE797D1E76DBD1008A6C66 /* MyOrders.m */,
+				46BE79821E76DC1A008A6C66 /* PendingOrdersVC.h */,
+				46BE79831E76DC1A008A6C66 /* PendingOrdersVC.m */,
+				46BE79851E76DC34008A6C66 /* ConfirmedOrdersVC.h */,
+				46BE79861E76DC34008A6C66 /* ConfirmedOrdersVC.m */,
+				46BE79881E76DC64008A6C66 /* InProgressOrdersVC.h */,
+				46BE79891E76DC64008A6C66 /* InProgressOrdersVC.m */,
+				46BE798B1E76DCB0008A6C66 /* HistoryVC.h */,
+				46BE798C1E76DCB0008A6C66 /* HistoryVC.m */,
+			);
+			path = Orders;
 			sourceTree = "<group>";
 		};
 		46F62C9A1C908FDC00A61B47 = {
@@ -579,6 +634,7 @@
 				7C4D66A11DBD06CC001CCB6D /* AddressCell.m */,
 				7C4D66A31DBD08CA001CCB6D /* ShippingAddressCell.h */,
 				7C4D66A41DBD08CA001CCB6D /* ShippingAddressCell.m */,
+				46BE797B1E76DBD1008A6C66 /* Orders */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -628,6 +684,8 @@
 				7CC592CF1D621DBF002396F4 /* UserI.m */,
 				7C51BEB91DB2C348004E7547 /* Address.h */,
 				7C51BEBA1DB2C348004E7547 /* Address.m */,
+				46BE79781E75A6B6008A6C66 /* OrderI.h */,
+				46BE79791E75A6B6008A6C66 /* OrderI.m */,
 			);
 			path = ProfileManager;
 			sourceTree = "<group>";
@@ -896,6 +954,7 @@
 			files = (
 				46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */,
 				7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */,
+				46BE79841E76DC1A008A6C66 /* PendingOrdersVC.m in Sources */,
 				7C53E0551D34024800B7DD43 /* SWTableViewCell.m in Sources */,
 				7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				7C53E0541D34024800B7DD43 /* SWLongPressGestureRecognizer.m in Sources */,
@@ -904,24 +963,32 @@
 				7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */,
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,
 				461BE7DC1CAF024000A8F3DC /* LeftSliderCell.m in Sources */,
+				46BE797A1E75A6B6008A6C66 /* OrderI.m in Sources */,
 				7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */,
 				467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */,
 				7C489EA91DB3EC90007463DF /* AddAddressVC.m in Sources */,
+				46BE798A1E76DC64008A6C66 /* InProgressOrdersVC.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
+				46BE79901E7EABD6008A6C66 /* PendingOrdersCell.m in Sources */,
 				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
+				46BE79961E7EAC04008A6C66 /* InProgressOrdersCell.m in Sources */,
 				7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */,
 				461BE7DB1CAF024000A8F3DC /* LeftSlider.m in Sources */,
 				7C4D669F1DBCFD08001CCB6D /* PickAddressVC.m in Sources */,
+				46BE798D1E76DCB0008A6C66 /* HistoryVC.m in Sources */,
 				461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */,
 				7C51BEBB1DB2C348004E7547 /* Address.m in Sources */,
+				46BE79991E7EAC1A008A6C66 /* HistoryCell.m in Sources */,
 				7C4D66A21DBD06CC001CCB6D /* AddressCell.m in Sources */,
 				461BE7D51CAF01FA00A8F3DC /* Login.m in Sources */,
 				7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */,
+				46BE797E1E76DBD1008A6C66 /* MyOrders.m in Sources */,
 				46F62CAB1C908FDC00A61B47 /* AppDelegate.m in Sources */,
 				461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */,
 				461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */,
 				46A31C8A1DEEEEEC001EA7DE /* OrderConfirmation.m in Sources */,
+				46BE79871E76DC34008A6C66 /* ConfirmedOrdersVC.m in Sources */,
 				7CC592CD1D621DA6002396F4 /* ProfileManager.m in Sources */,
 				7C52A6251D8719EF00C45315 /* Conversation.m in Sources */,
 				7CC592D01D621DBF002396F4 /* UserI.m in Sources */,
@@ -929,6 +996,7 @@
 				7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				7C4D66A51DBD08CA001CCB6D /* ShippingAddressCell.m in Sources */,
 				46F62CA81C908FDC00A61B47 /* main.m in Sources */,
+				46BE79931E7EABF0008A6C66 /* ConfirmedOrdersCell.m in Sources */,
 				461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */,
 				7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */,
 				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,

@@ -31,6 +31,7 @@
     
     arrMenuItems = [NSArray arrayWithObjects:@"Home",
                     @"New Requirement",
+                    @"My Orders",
                     @"History",
                     @"Manage Addresses",
                     @"Change Password",
@@ -38,6 +39,7 @@
                     [NSString stringWithFormat:@"Logout"],nil];
     
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
+                          @"newrequirment.png",
                           @"newrequirment.png",
                           @"history.png",
                           @"contact.png",
@@ -152,6 +154,14 @@
         
         [navigationController pushViewController:[self goToController:@"home"] animated:NO];
     }
+    
+    else if ([keyName caseInsensitiveCompare:@"My Orders"] == NSOrderedSame){
+        
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        [navigationController pushViewController:[self goToController:@"myorders"] animated:NO];
+    }
+
     
     
     else if ([keyName caseInsensitiveCompare:@"Change Password"] == NSOrderedSame){

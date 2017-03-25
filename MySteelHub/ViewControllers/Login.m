@@ -62,6 +62,8 @@
     if([[NSUserDefaults standardUserDefaults] boolForKey:@"isAutoLogin"])
     {
         model_manager.profileManager.owner.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
+        
+        NSLog(@"User id : %@",txtEmail.text);
         [self callSlideMenu];
     }
 }

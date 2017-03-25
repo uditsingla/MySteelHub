@@ -7,10 +7,10 @@
 //
 
 #import "ProfileManager.h"
-
+#import "OrderI.h"
 @implementation ProfileManager
 @synthesize owner;
-@synthesize arraySavedAddress,arrayBillingAddress,arrayShippingAddress;
+@synthesize arraySavedAddress,arrayBillingAddress,arrayShippingAddress,arrayPendingOrders,arrayInprogressOrders,arrayConfirmedOrders,arrayDeliveredOrders;
 
 - (id)init
 {
@@ -21,6 +21,12 @@
         arraySavedAddress = [NSMutableArray new];
         arrayBillingAddress = [NSMutableArray new];
         arrayShippingAddress = [NSMutableArray new];
+        
+        arrayPendingOrders = [NSMutableArray new];
+        arrayInprogressOrders = [NSMutableArray new];
+        arrayConfirmedOrders = [NSMutableArray new];
+        arrayDeliveredOrders = [NSMutableArray new];
+        
 
     }
     return self;
@@ -234,28 +240,84 @@
          }
          
      } ];
-    
-    
 }
 
--(void)getOrdersWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+
+-(void)getOrderswithOrdertype:(NSMutableDictionary*)dictOrderParam completionBlock:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-                                       @"buyer",@"type",
-                                       nil];
-    
-    
-    [RequestManager asynchronousRequestWithPath:@"getOrders" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+    [RequestManager asynchronousRequestWithPath:@"getOrders" requestType:RequestTypePOST params:dictOrderParam timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
      {
          NSLog(@"Here comes orders json %@",json);
          
-         if (statusCode==200) {
+         int orderType = [[dictOrderParam valueForKey:@"status"] intValue];
+         
+         NSLog(@"Order type : %d",orderType);
+         
+         
+         if (statusCode == 200) {
              
              if([json valueForKey:@"data"])
              {
-                 NSArray *array = [json valueForKey:@"data"];
+                 int orderType = [[dictOrderParam valueForKey:@"status"] intValue];
                  
+                 NSArray *arrData = [json valueForKey:@"data"];
+                 
+                 NSLog(@"Order type : %d",orderType);
+                 switch (orderType) {
+                     case 0:
+                         [arrayPendingOrders removeAllObjects];
+                         break;
+                     case 1:
+                         [arrayConfirmedOrders removeAllObjects];
+                         break;
+                     //case 2:
+                     //    break;
+                     case 3:
+                         [arrayInprogressOrders removeAllObjects];
+                         break;
+                     case 4:
+                         [arrayDeliveredOrders removeAllObjects];
+                         break;
+                     default:
+                         break;
+                 }
+                 
+                 for (int i = 0 ; i < arrData.count; i++) {
+                     
+                     OrderI *order = [OrderI new];
+                     NSDictionary *dict = [[arrData objectAtIndex:i] valueForKey:@"postdata"];
+                     order.req.budget = [dict valueForKey:@"budget"];
+                     order.req.state = [dict valueForKey:@"state"];
+                     order.req.requiredByDate = [dict valueForKey:@"required_by_date"];
+                     order.req.city = [dict valueForKey:@"city"];
+                     order.req.requirementID = [dict valueForKey:@"requirement_id"];
+                     
+                     order.finalAmount =
+                     [[json valueForKey:@"data"] valueForKey:@"final_amt"];
+//                     order.statusCode =
+//                     [[[json valueForKey:@"data"] valueForKey:@"order_status"] intValue];
+                     
+                     if(orderType == 0)
+                     {
+                         [arrayPendingOrders addObject:order];
+                     }
+                     else if (orderType == 1)
+                     {
+                         [arrayConfirmedOrders addObject:order];
+                     }
+                     else if (orderType == 3)
+                     {
+                         [arrayInprogressOrders addObject:order];
+                     }
+                     else if (orderType == 4)
+                     {
+                         [arrayDeliveredOrders addObject:order];
+                     }
+                 }
              }
+             
+             NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
+             completionBlock(dict,nil);
          }
          else{
              if(completionBlock)

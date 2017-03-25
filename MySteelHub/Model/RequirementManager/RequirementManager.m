@@ -165,7 +165,6 @@
 
                 [arrayPostedRequirements addObject:requirement];
                 
-
             }
             
             if(completionBlock)
