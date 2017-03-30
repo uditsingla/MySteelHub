@@ -40,9 +40,9 @@
     
     arrMenuItemsImages = [NSArray arrayWithObjects:@"home.png",
                           @"newrequirment.png",
-                          @"newrequirment.png",
+                          @"new_orders.png",
                           @"history.png",
-                          @"contact.png",
+                          @"manage_addresses.png",
                           @"password.png",
                           @"contact.png",
                           @"logout.png",
@@ -51,8 +51,13 @@
     
     //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellIdentifier"];
     
-    self.view.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
+//    self.view.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
     
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    self.tableView.tableFooterView = [UIView new];
+    [self.tableView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -93,15 +98,16 @@
     
     //Menu lable
     //    cell.lblMenuItem.backgroundColor = GreenColor;
-    cell.lblMenuItem.textColor = [UIColor whiteColor];
+    cell.lblMenuItem.textColor = [UIColor colorWithRed:64/255.0 green:64/255.0 blue:64/255.0 alpha:1];
     cell.lblMenuItem.text = [arrMenuItems objectAtIndex:indexPath.row] ;
-    cell.lblMenuItem.font = [UIFont fontWithName:@"Raleway-regular" size:15];
+    cell.lblMenuItem.font = [UIFont fontWithName:@"Raleway-bold" size:14];
     
     //Menu Image
     //UIImageView *imgMenuItem = (UIImageView*)[cell.contentView viewWithTag:kimgMenuItem];
     
     //NSString *imgBundlePath=[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[]];
     cell.imgMenuItem.image = [UIImage imageNamed:[arrMenuItemsImages objectAtIndex:indexPath.row]];
+    cell.imgMenuItem.contentMode = UIViewContentModeScaleAspectFit;
     
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -168,7 +174,9 @@
         
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         
-        [navigationController pushViewController:[self goToController:@"changepassword"] animated:NO];
+        UIViewController *viewcontroller = [kLoginStoryboard instantiateViewControllerWithIdentifier: @"changepassword"];
+        
+        [navigationController pushViewController:viewcontroller animated:NO];
     }
     
     
@@ -176,6 +184,10 @@
         NSLog(@"History");
         
         //[model_manager.profileManager getOrdersWithCompletion:nil];
+        
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        [navigationController pushViewController:[self goToController:@"enterRTGS"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"Manage Addresses"] == NSOrderedSame){

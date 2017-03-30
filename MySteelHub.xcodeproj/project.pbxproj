@@ -129,6 +129,11 @@
 		7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E04F1D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m */; };
 		7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */; };
 		7C712C611D2C26CF00E64FF9 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C712C601D2C26CF00E64FF9 /* HomeCell.m */; };
+		7CB1217C1E8C25E4003183DE /* manage_addresses@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB121781E8C25E4003183DE /* manage_addresses@2x.png */; };
+		7CB1217D1E8C25E4003183DE /* manage_addresses@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB121791E8C25E4003183DE /* manage_addresses@3x.png */; };
+		7CB1217E1E8C25E4003183DE /* new_orders@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB1217A1E8C25E4003183DE /* new_orders@2x.png */; };
+		7CB1217F1E8C25E4003183DE /* new_orders@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7CB1217B1E8C25E4003183DE /* new_orders@3x.png */; };
+		7CB121821E8D85FC003183DE /* EnterRTGS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CB121811E8D85FC003183DE /* EnterRTGS.m */; };
 		7CC592CD1D621DA6002396F4 /* ProfileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC592CC1D621DA6002396F4 /* ProfileManager.m */; };
 		7CC592D01D621DBF002396F4 /* UserI.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC592CF1D621DBF002396F4 /* UserI.m */; };
 		7CE0C9DE1D32ACDC00D44467 /* RequirementManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE0C9DD1D32ACDC00D44467 /* RequirementManager.m */; };
@@ -322,6 +327,12 @@
 		7C53E0511D34024800B7DD43 /* SWUtilityButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWUtilityButtonView.m; sourceTree = "<group>"; };
 		7C712C5F1D2C26CF00E64FF9 /* HomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
 		7C712C601D2C26CF00E64FF9 /* HomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		7CB121781E8C25E4003183DE /* manage_addresses@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage_addresses@2x.png"; sourceTree = "<group>"; };
+		7CB121791E8C25E4003183DE /* manage_addresses@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage_addresses@3x.png"; sourceTree = "<group>"; };
+		7CB1217A1E8C25E4003183DE /* new_orders@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_orders@2x.png"; sourceTree = "<group>"; };
+		7CB1217B1E8C25E4003183DE /* new_orders@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_orders@3x.png"; sourceTree = "<group>"; };
+		7CB121801E8D85FC003183DE /* EnterRTGS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterRTGS.h; sourceTree = "<group>"; };
+		7CB121811E8D85FC003183DE /* EnterRTGS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterRTGS.m; sourceTree = "<group>"; };
 		7CC592CB1D621DA6002396F4 /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
 		7CC592CC1D621DA6002396F4 /* ProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileManager.m; sourceTree = "<group>"; };
 		7CC592CE1D621DBF002396F4 /* UserI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserI.h; sourceTree = "<group>"; };
@@ -634,6 +645,8 @@
 				7C4D66A11DBD06CC001CCB6D /* AddressCell.m */,
 				7C4D66A31DBD08CA001CCB6D /* ShippingAddressCell.h */,
 				7C4D66A41DBD08CA001CCB6D /* ShippingAddressCell.m */,
+				7CB121801E8D85FC003183DE /* EnterRTGS.h */,
+				7CB121811E8D85FC003183DE /* EnterRTGS.m */,
 				46BE797B1E76DBD1008A6C66 /* Orders */,
 			);
 			path = ViewControllers;
@@ -706,6 +719,10 @@
 		7CECA2521D4005EC005B3227 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				7CB121781E8C25E4003183DE /* manage_addresses@2x.png */,
+				7CB121791E8C25E4003183DE /* manage_addresses@3x.png */,
+				7CB1217A1E8C25E4003183DE /* new_orders@2x.png */,
+				7CB1217B1E8C25E4003183DE /* new_orders@3x.png */,
 				7C4D66A61DBD2468001CCB6D /* addIcon.png */,
 				46EF53AA1D45ECAE0052AB86 /* newrequirment@2x.png */,
 				46EF53AB1D45ECAE0052AB86 /* newrequirment@3x.png */,
@@ -808,6 +825,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB1217C1E8C25E4003183DE /* manage_addresses@2x.png in Resources */,
 				7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */,
 				4699429C1D3BFBFD00378968 /* Raleway-ExtraBoldItalic.ttf in Resources */,
 				1885054D1CDDE45100086EC8 /* date@2x.png in Resources */,
@@ -858,6 +876,7 @@
 				469942A41D3BFBFD00378968 /* Raleway-Regular.ttf in Resources */,
 				188505641CDDE45100086EC8 /* uncheck@3x.png in Resources */,
 				7CECA26A1D4005EC005B3227 /* password@3x.png in Resources */,
+				7CB1217D1E8C25E4003183DE /* manage_addresses@3x.png in Resources */,
 				469942A51D3BFBFD00378968 /* Raleway-SemiBold.ttf in Resources */,
 				469942991D3BFBFD00378968 /* Raleway-Bold.ttf in Resources */,
 				1885057E1CDF7B9000086EC8 /* img@2x.png in Resources */,
@@ -877,6 +896,7 @@
 				188505481CDDE45100086EC8 /* brand@3x.png in Resources */,
 				46F62CB61C908FDC00A61B47 /* Assets.xcassets in Resources */,
 				1885056A1CDDE45100086EC8 /* zip@3x.png in Resources */,
+				7CB1217F1E8C25E4003183DE /* new_orders@3x.png in Resources */,
 				46EF53A91D45D9C30052AB86 /* background@3x.png in Resources */,
 				469942A11D3BFBFD00378968 /* Raleway-LightItalic.ttf in Resources */,
 				188505461CDDE45100086EC8 /* back@3x.png in Resources */,
@@ -884,6 +904,7 @@
 				188505631CDDE45100086EC8 /* uncheck@2x.png in Resources */,
 				188505521CDDE45100086EC8 /* mail@3x.png in Resources */,
 				1885055E1CDDE45100086EC8 /* pin@3x.png in Resources */,
+				7CB1217E1E8C25E4003183DE /* new_orders@2x.png in Resources */,
 				46F62CB11C908FDC00A61B47 /* Main.storyboard in Resources */,
 				7CECA2671D4005EC005B3227 /* logout@2x.png in Resources */,
 				188505491CDDE45100086EC8 /* check@2x.png in Resources */,
@@ -968,6 +989,7 @@
 				467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */,
 				7C489EA91DB3EC90007463DF /* AddAddressVC.m in Sources */,
 				46BE798A1E76DC64008A6C66 /* InProgressOrdersVC.m in Sources */,
+				7CB121821E8D85FC003183DE /* EnterRTGS.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
 				46BE79901E7EABD6008A6C66 /* PendingOrdersCell.m in Sources */,

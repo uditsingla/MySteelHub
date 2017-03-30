@@ -40,7 +40,7 @@
     //Custom UI for TextFilds
     [self customtxtfield:txtPassword withrightIcon:nil borderLeft:true borderRight:true borderBottom:nil borderTop:true];
     
-    [txtOldPassword setValue:[UIColor lightGrayColor]
+    [txtPassword setValue:[UIColor lightGrayColor]
                   forKeyPath:@"_placeholderLabel.textColor"];
     
     //Custom UI for TextFilds
@@ -88,7 +88,7 @@
     {
         
         NSLog(@"Please Enter old password");
-        
+        [self showError:@"Please enter old password"];
         return false;
         
     }
@@ -102,7 +102,7 @@
     {
         
         NSLog(@"Please enter password");
-        
+        [self showError:@"Please enter password"];
         return false;
         
     }
@@ -114,7 +114,7 @@
     {
         
         NSLog(@"Please enter confirm password");
-        
+        [self showError:@"Please enter confirm password"];
         return false;
         
     }
@@ -123,11 +123,28 @@
     if (![txtConfirmPassword.text isEqualToString:txtPassword.text]) {
         
         NSLog(@"Password does not match");
-        
+        [self showError:@"Password does not match"];
         return false;
     }
     
     return true;
+    
+}
+
+-(void)showError:(NSString*)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    
+    // Present action sheet.
+    [self presentViewController:alert animated:YES completion:nil];
     
 }
 
