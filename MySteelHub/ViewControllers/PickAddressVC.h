@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
+#import "OrderI.h"
 
 @interface PickAddressVC : BaseViewController<UITableViewDelegate,UITableViewDataSource,SWTableViewCellDelegate>
 
@@ -28,5 +29,7 @@
 - (IBAction)btnAddAction:(UIButton *)sender;
 
 - (IBAction)btnPlaceOrderAction:(UIButton *)sender;
+
+@property(nonatomic,strong) OrderI *selectedOrder;
 
 @end

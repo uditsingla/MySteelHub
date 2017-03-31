@@ -28,7 +28,7 @@
 
 @implementation PickAddressVC
 
-@synthesize isFromMenu;
+@synthesize isFromMenu,selectedOrder;
 
 -(void)resetButtonsUI
 {
@@ -112,7 +112,7 @@
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
         [cell setDelegate:self];
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     else if(tableView == _tblViewBilling)
@@ -132,7 +132,7 @@
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
         [cell setDelegate:self];
         
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        //cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
     
@@ -265,5 +265,59 @@
 }
 
 - (IBAction)btnPlaceOrderAction:(UIButton *)sender {
+    
+    NSString *shippingID,*billingID = @"";
+    NSIndexPath *selectedIndexPath = [_tblViewBilling indexPathForSelectedRow];
+    Address *selectedAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
+    
+    if(selectedIndexPath==nil)
+    {
+        //pick billing address
+        [self showError:@"Please select billing address"];
+    }
+    else
+    {
+        billingID = selectedAddress.ID;
+    }
+    
+    selectedIndexPath = [_tblViewShipping indexPathForSelectedRow];
+    selectedAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
+    
+    if(selectedIndexPath==nil)
+    {
+        //pick shipping address
+        [self showError:@"Please select shipping address"];
+        return;
+    }
+    else
+    {
+        shippingID = selectedAddress.ID;
+    }
+    
+    [SVProgressHUD show];
+    [selectedOrder buyerSaveAddress:shippingID withBilling:billingID withCompletion:^(NSDictionary *json, NSError *error) {
+        [SVProgressHUD show];
+        
+    }];
+
 }
+
+-(void)showError:(NSString*)error
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        
+        // Cancel button tappped.
+        [self dismissViewControllerAnimated:YES completion:^{
+        }];
+    }]];
+    
+    
+    // Present action sheet.
+    [self presentViewController:alert animated:YES completion:nil];
+    
+}
+
+
 @end

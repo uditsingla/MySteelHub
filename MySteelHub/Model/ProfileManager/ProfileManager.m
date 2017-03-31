@@ -10,7 +10,7 @@
 #import "OrderI.h"
 @implementation ProfileManager
 @synthesize owner;
-@synthesize arraySavedAddress,arrayBillingAddress,arrayShippingAddress,arrayPendingOrders,arrayInprogressOrders,arrayConfirmedOrders,arrayDeliveredOrders;
+@synthesize arraySavedAddress,arrayBillingAddress,arrayShippingAddress,arrayPendingOrders,arrayInprogressOrders,arrayConfirmedOrders,arrayDeliveredOrders,arrayRejectedOrders;
 
 - (id)init
 {
@@ -26,7 +26,7 @@
         arrayInprogressOrders = [NSMutableArray new];
         arrayConfirmedOrders = [NSMutableArray new];
         arrayDeliveredOrders = [NSMutableArray new];
-        
+        arrayRejectedOrders = [NSMutableArray new];
 
     }
     return self;
@@ -270,8 +270,9 @@
                      case 1:
                          [arrayConfirmedOrders removeAllObjects];
                          break;
-                     //case 2:
-                     //    break;
+                     case 2:
+                         [arrayRejectedOrders removeAllObjects];
+                         break;
                      case 3:
                          [arrayInprogressOrders removeAllObjects];
                          break;
@@ -290,12 +291,15 @@
                      order.req.state = [dict valueForKey:@"state"];
                      order.req.requiredByDate = [dict valueForKey:@"required_by_date"];
                      order.req.city = [dict valueForKey:@"city"];
-                     order.req.requirementID = [dict valueForKey:@"requirement_id"];
+                     order.req.requirementID = [[arrData objectAtIndex:i] valueForKey:@"requirement_id"];
                      
-                     order.finalAmount =
-                     [[json valueForKey:@"data"] valueForKey:@"final_amt"];
-//                     order.statusCode =
-//                     [[[json valueForKey:@"data"] valueForKey:@"order_status"] intValue];
+                     order.finalAmount = [[arrData objectAtIndex:i] valueForKey:@"final_amt"];
+                     order.statusCode = [[[arrData objectAtIndex:i] valueForKey:@"order_status"] intValue];
+                     order.RTGS = [[arrData objectAtIndex:i] valueForKey:@"RTGS"];
+                     order.billingID = [[arrData objectAtIndex:i] valueForKey:@"billing_id"];
+                     order.shippingID = [[arrData objectAtIndex:i] valueForKey:@"shipping_id"];
+                     order.buyerID = [[arrData objectAtIndex:i] valueForKey:@"buyer_id"];
+                     order.sellerID = [[arrData objectAtIndex:i] valueForKey:@"seller_id"];
                      
                      if(orderType == 0)
                      {
@@ -304,6 +308,10 @@
                      else if (orderType == 1)
                      {
                          [arrayConfirmedOrders addObject:order];
+                     }
+                     else if (orderType == 2)
+                     {
+                         [arrayRejectedOrders addObject:order];
                      }
                      else if (orderType == 3)
                      {

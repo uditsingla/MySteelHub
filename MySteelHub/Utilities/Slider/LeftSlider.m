@@ -185,9 +185,6 @@
         
         //[model_manager.profileManager getOrdersWithCompletion:nil];
         
-        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        
-        [navigationController pushViewController:[self goToController:@"enterRTGS"] animated:NO];
     }
     
     else if ([keyName caseInsensitiveCompare:@"Manage Addresses"] == NSOrderedSame){

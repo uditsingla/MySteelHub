@@ -44,7 +44,5 @@
 
 -(void)buyerDeletedPost:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
--(void)buyerPostRTGS:(NSString*)rtgsNumber toSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
-
 
 @end

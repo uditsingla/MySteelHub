@@ -159,29 +159,5 @@
     
 }
 
--(void)buyerPostRTGS:(NSString*)rtgsNumber toSeller:(NSString*)sellerID withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock
-{
-    //create dictParam
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.requirementID,@"requirement_id" ,sellerID,@"seller_id", /*self.userID,@"buyer_id",*/rtgsNumber,@"RTGS", nil];
-    
-    
-    [RequestManager asynchronousRequestWithPath:@"saveRTGS" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
-        NSLog(@"Here comes the json %@",json);
-        if (statusCode==200) {
-            
-            
-            if(completionBlock)
-                completionBlock(json,nil);
-            
-        }
-        else{
-            if(completionBlock)
-                completionBlock(nil,nil);
-            //show error
-        }
-        
-    } ];
-    
-}
 
 @end

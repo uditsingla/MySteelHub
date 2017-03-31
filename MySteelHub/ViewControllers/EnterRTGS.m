@@ -17,7 +17,7 @@
 
 @implementation EnterRTGS
 
-@synthesize selectedRequirement;
+@synthesize selectedOrder;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -91,9 +91,9 @@
 - (IBAction)btnSubmitAction:(UIButton *)sender {
     
     if ([self validateData]) {
-        
-        [selectedRequirement buyerPostRTGS:_txtFieldRTGS.text toSeller:@"sellerID" withCompletion:^(NSDictionary *json, NSError *error) {
-            
+        [SVProgressHUD show];
+        [selectedOrder buyerPostRTGS:_txtFieldRTGS.text toSeller:selectedOrder.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
+            [SVProgressHUD dismiss];
         }];
     }
 

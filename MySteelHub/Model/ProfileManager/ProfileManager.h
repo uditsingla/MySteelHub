@@ -22,7 +22,7 @@
 @property(strong,nonatomic) NSMutableArray *arrayInprogressOrders;
 @property(strong,nonatomic) NSMutableArray *arrayConfirmedOrders;
 @property(strong,nonatomic) NSMutableArray *arrayDeliveredOrders;
-
+@property(strong,nonatomic) NSMutableArray *arrayRejectedOrders;
 
 -(void)addNewAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 

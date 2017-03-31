@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderI.h"
 
 @interface EnterRTGS : BaseViewController<UITextFieldDelegate>
 
-@property(nonatomic,strong) RequirementI *selectedRequirement;
+@property(nonatomic,strong) OrderI *selectedOrder;
 
 @end

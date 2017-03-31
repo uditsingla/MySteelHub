@@ -14,4 +14,14 @@
 @property(nonatomic,assign) int statusCode;
 @property(strong,nonatomic) NSString *orderID;
 @property(strong,nonatomic) NSString *finalAmount;
+@property(strong,nonatomic) NSString *RTGS;
+@property(strong,nonatomic) NSString *billingID;
+@property(strong,nonatomic) NSString *shippingID;
+@property(strong,nonatomic) NSString *buyerID;
+@property(strong,nonatomic) NSString *sellerID;
+
+-(void)buyerPostRTGS:(NSString*)rtgsNumber toSeller:(NSString*)sellerId withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
+-(void)buyerSaveAddress:(NSString*)shippingId withBilling:(NSString*)billingId withCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
 @end

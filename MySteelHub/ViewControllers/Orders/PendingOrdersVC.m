@@ -9,6 +9,9 @@
 #import "PendingOrdersVC.h"
 #import "PendingOrdersCell.h"
 #import "OrderI.h"
+#import "EnterRTGS.h"
+#import "PickAddressVC.h"
+
 @interface PendingOrdersVC ()
 {
     NSArray *arrayOrders;
@@ -61,7 +64,53 @@
 #pragma mark - table view data sources and delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return model_manager.profileManager.arrayPendingOrders.count;
+    if(section==0)
+        return model_manager.profileManager.arrayRejectedOrders.count;
+    else
+        return model_manager.profileManager.arrayPendingOrders.count;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionName;
+    switch (section)
+    {
+        case 0:
+            sectionName = @"Rejected orders";
+            break;
+        case 1:
+            sectionName = @"Pending orders";
+            break;
+        default:
+            sectionName = @"";
+            break;
+    }
+    return sectionName;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if(section==0)
+    {
+        if(model_manager.profileManager.arrayRejectedOrders.count>0)
+            return 30;
+        else
+            return 0;
+    }
+    else if(section==1)
+    {
+        if(model_manager.profileManager.arrayPendingOrders.count>0)
+            return 30;
+        else
+            return 0;
+    }
+    
+    return 0;
 }
 
 
@@ -69,8 +118,12 @@
     
     PendingOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pendingcell"];
        
-    OrderI *order = [model_manager.profileManager.arrayPendingOrders objectAtIndex:indexPath.row];
-    
+    OrderI *order;
+    if(indexPath.section==0)
+        order = [model_manager.profileManager.arrayRejectedOrders objectAtIndex:indexPath.row];
+    else
+        order = [model_manager.profileManager.arrayPendingOrders objectAtIndex:indexPath.row];
+
     cell.lblCity.text = order.req.city;
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
@@ -88,7 +141,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    OrderI *order;
+    if(indexPath.section==0)
+        order = [model_manager.profileManager.arrayRejectedOrders objectAtIndex:indexPath.row];
+    else
+        order = [model_manager.profileManager.arrayPendingOrders objectAtIndex:indexPath.row];
     
+    if([order.billingID intValue]==0 && [order.shippingID intValue]==0)
+    {
+        PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        viewcontroller.isFromMenu = NO;
+        [navigationController pushViewController:viewcontroller animated:NO];
+        
+    }
+    else if([order.RTGS intValue]==0)
+    {
+        UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+        
+        EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
+        viewcontroller.selectedOrder = order;
+        [navigationController pushViewController:viewcontroller animated:YES];
+    }
    
 }
 
