@@ -11,14 +11,18 @@
 #import "ShippingAddressCell.h"
 #import "AddAddressVC.h"
 
-#define kBtnSelectedBackgroundColor [UIColor darkGrayColor]
+#define kBtnSelectedBackgroundColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
+
 #define kBnSelectedTextColor [UIColor colorWithRed:34/255.00 green:152/255.00 blue:168/255.00 alpha:1]
 
-#define kBtnRegularBackgroundColor [UIColor colorWithRed:170/255.00 green:170/255.00 blue:170/255.00 alpha:1]
-#define kBtnRegularTextColor [UIColor whiteColor]
+#define kBtnRegularBackgroundColor [UIColor clearColor]
+#define kBtnRegularTextColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
 
 @interface PickAddressVC ()
 {
+    __weak IBOutlet NSLayoutConstraint *contraintPlaceOrder;
+    __weak IBOutlet UISegmentedControl *segControl;
+
     __weak IBOutlet UIButton *btnShippingAddress;
     __weak IBOutlet UIButton *btnBillingAddress;
     NSString *selectedAddressTab;
@@ -32,13 +36,13 @@
 
 -(void)resetButtonsUI
 {
-    btnShippingAddress.backgroundColor = kBtnRegularBackgroundColor;
-    btnBillingAddress.backgroundColor = kBtnRegularBackgroundColor;
-    btnShippingAddress.titleLabel.textColor = kBtnRegularTextColor;
-    btnBillingAddress.titleLabel.textColor = kBtnRegularTextColor;
+   // btnShippingAddress.backgroundColor = kBtnRegularBackgroundColor;
+    //btnBillingAddress.backgroundColor = kBtnRegularBackgroundColor;
+    //btnShippingAddress.titleLabel.textColor = kBtnRegularTextColor;
+    //btnBillingAddress.titleLabel.textColor = kBtnRegularTextColor;
     
-    btnShippingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
-    btnBillingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
+   // btnShippingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
+    //btnBillingAddress.titleEdgeInsets = UIEdgeInsetsMake(8,0,0, 0);
 
 
 }
@@ -65,14 +69,16 @@
 
     [self btnBillingAction:nil];
 //    selectedAddressTab = @"billing";
-    
     if(isFromMenu)
     {
         _btnPlaceOrder.hidden = YES;
+        contraintPlaceOrder.constant = 0;
     }
     else
     {
         _btnPlaceOrder.hidden = NO;
+        contraintPlaceOrder.constant = 45;
+
     }
 }
 
@@ -141,6 +147,34 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+}
+
+#pragma mark - Segment Controll
+
+
+- (IBAction)clkSegment:(id)sender {
+    
+   // [self hideAllContainers];
+    
+    switch (segControl.selectedSegmentIndex) {
+        case 0:
+            _tblViewBilling.hidden = NO;
+            _tblViewShipping.hidden = YES;
+            selectedAddressTab = @"billing";
+            
+            break;
+            
+        case 1:
+            _tblViewBilling.hidden = YES;
+            _tblViewShipping.hidden = NO;
+            selectedAddressTab = @"shipping";
+            break;
+            
+            
+        default:
+            break;
+    }
     
 }
 
@@ -238,7 +272,7 @@
     
     [self resetButtonsUI];
     
-    btnBillingAddress.backgroundColor = kBtnSelectedBackgroundColor;
+    btnBillingAddress.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
     
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;

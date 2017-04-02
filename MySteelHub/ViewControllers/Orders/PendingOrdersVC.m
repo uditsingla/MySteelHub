@@ -81,10 +81,10 @@
     switch (section)
     {
         case 0:
-            sectionName = @"Rejected orders";
+            sectionName = @"Incorrect RTGS";
             break;
         case 1:
-            sectionName = @"Pending orders";
+            sectionName = @"Pending RTGS";
             break;
         default:
             sectionName = @"";
@@ -127,7 +127,7 @@
     cell.lblCity.text = order.req.city;
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
-    //cell.lblAmount.text = order.finalAmount;
+    cell.lblAmount.text = order.finalAmount;
     
     
     //[[json valueForKey:@"data"] valueForKey:@"order_status"];

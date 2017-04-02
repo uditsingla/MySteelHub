@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="P12-dO-A8K">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="P12-dO-A8K">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1352,7 +1352,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bH4-fW-izE">
-                                <rect key="frame" x="0.0" y="68" width="375" height="41"/>
+                                <rect key="frame" x="-2" y="68" width="379" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="3Ew-HC-mhX"/>
                                 </constraints>
@@ -1368,25 +1368,25 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOj-nQ-65a">
-                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
                                     <segue destination="Tca-6g-pNg" kind="embed" identifier="pending" id="GJD-RU-Rlk"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THe-Ow-i0d">
-                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
                                     <segue destination="Pvp-CI-Aen" kind="embed" identifier="confirmed" id="ftW-bN-IeQ"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKB-Uz-Jal">
-                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
                                     <segue destination="Cm4-vE-2R1" kind="embed" identifier="inprogress" id="s8K-1z-4Dp"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtw-Tj-Ux3">
-                                <rect key="frame" x="0.0" y="107" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="109" width="375" height="558"/>
                                 <connections>
                                     <segue destination="W0q-Ng-E78" kind="embed" identifier="history" id="LoC-OX-e2g"/>
                                 </connections>
@@ -1394,25 +1394,25 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="bH4-fW-izE" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" id="30v-L4-GBV"/>
+                            <constraint firstItem="bH4-fW-izE" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" constant="-2" id="30v-L4-GBV"/>
                             <constraint firstItem="UKB-Uz-Jal" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" id="6lK-bL-lwk"/>
                             <constraint firstAttribute="trailing" secondItem="wtw-Tj-Ux3" secondAttribute="trailing" id="7Ic-Mo-m74"/>
                             <constraint firstAttribute="trailing" secondItem="THe-Ow-i0d" secondAttribute="trailing" id="Gm6-zw-ryu"/>
                             <constraint firstItem="wtw-Tj-Ux3" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" id="Jfx-F9-rbd"/>
-                            <constraint firstItem="UKB-Uz-Jal" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="-1" id="Kpj-ln-t5n"/>
+                            <constraint firstItem="UKB-Uz-Jal" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="1" id="Kpj-ln-t5n"/>
                             <constraint firstItem="bwQ-nt-OOL" firstAttribute="top" secondItem="fOj-nQ-65a" secondAttribute="bottom" id="OP8-Kl-h8y"/>
                             <constraint firstItem="bH4-fW-izE" firstAttribute="top" secondItem="ymO-5t-Oan" secondAttribute="bottom" constant="48" id="Qby-qc-2F6"/>
                             <constraint firstItem="bwQ-nt-OOL" firstAttribute="top" secondItem="UKB-Uz-Jal" secondAttribute="bottom" id="R1p-NX-FEd"/>
                             <constraint firstAttribute="trailing" secondItem="UKB-Uz-Jal" secondAttribute="trailing" id="RYg-QE-x9T"/>
-                            <constraint firstItem="fOj-nQ-65a" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="-1" id="SC4-9P-HzR"/>
+                            <constraint firstItem="fOj-nQ-65a" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="1" id="SC4-9P-HzR"/>
                             <constraint firstAttribute="trailing" secondItem="fOj-nQ-65a" secondAttribute="trailing" id="YFJ-hM-aZe"/>
-                            <constraint firstItem="THe-Ow-i0d" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="-1" id="Yee-Oi-0pD"/>
+                            <constraint firstItem="THe-Ow-i0d" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="1" id="Yee-Oi-0pD"/>
                             <constraint firstItem="fOj-nQ-65a" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" id="ZWj-QR-tzs"/>
                             <constraint firstItem="THe-Ow-i0d" firstAttribute="leading" secondItem="9Hj-FT-l1z" secondAttribute="leading" id="cAj-u2-uGG"/>
-                            <constraint firstAttribute="trailing" secondItem="bH4-fW-izE" secondAttribute="trailing" id="ffp-yP-9Vl"/>
+                            <constraint firstAttribute="trailing" secondItem="bH4-fW-izE" secondAttribute="trailing" constant="-2" id="ffp-yP-9Vl"/>
                             <constraint firstItem="bwQ-nt-OOL" firstAttribute="top" secondItem="wtw-Tj-Ux3" secondAttribute="bottom" id="iFm-70-keT"/>
                             <constraint firstItem="bwQ-nt-OOL" firstAttribute="top" secondItem="THe-Ow-i0d" secondAttribute="bottom" id="iZY-p0-Fof"/>
-                            <constraint firstItem="wtw-Tj-Ux3" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="-1" id="yzm-BX-3DU"/>
+                            <constraint firstItem="wtw-Tj-Ux3" firstAttribute="top" secondItem="bH4-fW-izE" secondAttribute="bottom" constant="1" id="yzm-BX-3DU"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1436,11 +1436,11 @@
                         <viewControllerLayoutGuide type="bottom" id="quN-BL-xL4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="mhT-Ha-urU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kBV-AN-2tJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingcell" rowHeight="44" id="xNP-Dp-jQD" customClass="PendingOrdersCell">
@@ -1551,11 +1551,11 @@
                         <viewControllerLayoutGuide type="bottom" id="2bS-HI-Kmd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="bFM-T9-Kbg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="K3y-2G-x83">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="confirmedcell" id="njH-PF-Tso" customClass="ConfirmedOrdersCell">
@@ -1627,6 +1627,12 @@
                                                 <constraint firstItem="lMV-Rl-PTO" firstAttribute="leading" secondItem="9Um-4W-PzI" secondAttribute="leading" id="rLi-oe-IfT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAmount" destination="Xla-M4-0F8" id="xAW-ad-Hlb"/>
+                                            <outlet property="lblCity" destination="DpV-Qr-cKe" id="Qkc-oW-Pch"/>
+                                            <outlet property="lblState" destination="ADC-Q5-fCl" id="3PC-yV-NmR"/>
+                                            <outlet property="lbldate" destination="MR5-2B-eh0" id="Lyw-Dh-wdB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1660,11 +1666,11 @@
                         <viewControllerLayoutGuide type="bottom" id="qP9-xY-kMs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rzf-DF-FSh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZQX-pg-eA5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="inprogresscell" id="4mg-ys-cvk" customClass="InProgressOrdersCell">
@@ -1736,6 +1742,12 @@
                                                 <constraint firstItem="jC5-JL-yk3" firstAttribute="leading" secondItem="j7a-pS-JdY" secondAttribute="leading" id="vNv-wh-Ei5"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAmount" destination="ojX-zj-1tL" id="MKO-jb-J03"/>
+                                            <outlet property="lblCity" destination="Nrq-uW-qKY" id="zOv-h7-YT5"/>
+                                            <outlet property="lblState" destination="LUi-qT-HCA" id="1Ke-5L-PeT"/>
+                                            <outlet property="lbldate" destination="EeZ-0m-ERM" id="Dlh-j8-bms"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -1758,7 +1770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xn5-8f-Gi5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="173" y="-166.5"/>
+            <point key="canvasLocation" x="124" y="-151"/>
         </scene>
         <!--HistoryVC-->
         <scene sceneID="m5N-Ef-H2V">
@@ -1769,11 +1781,11 @@
                         <viewControllerLayoutGuide type="bottom" id="hYA-jv-cGJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Jsm-sS-avJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="txa-wk-TKY">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="560"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="historycell" id="Yly-n0-KkJ" customClass="HistoryCell">
@@ -1845,6 +1857,12 @@
                                                 <constraint firstItem="LdS-SK-aHb" firstAttribute="leading" secondItem="GN3-Vy-5fV" secondAttribute="leading" id="vfQ-7K-9QH"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblAmount" destination="76u-PD-R2c" id="KX9-eb-WvP"/>
+                                            <outlet property="lblCity" destination="ZRf-GO-o0O" id="yPv-Yr-HBa"/>
+                                            <outlet property="lblState" destination="6wb-2V-xgO" id="kXW-Qv-zSt"/>
+                                            <outlet property="lbldate" destination="JMU-4z-mzm" id="rWx-M8-A32"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

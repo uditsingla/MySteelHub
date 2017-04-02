@@ -10,10 +10,9 @@
 
 @interface ConfirmedOrdersCell : UITableViewCell
 
-
-@property(nonatomic,strong)UILabel *lblCity;
-@property(nonatomic,strong)UILabel *lblState;
-@property(nonatomic,strong)UILabel *lbldate;
-@property(nonatomic,strong)UILabel *lblAmount;
+@property (weak, nonatomic) IBOutlet UILabel *lblCity;
+@property (weak, nonatomic) IBOutlet UILabel *lblState;
+@property (weak, nonatomic) IBOutlet UILabel *lbldate;
+@property (weak, nonatomic) IBOutlet UILabel *lblAmount;
 
 @end

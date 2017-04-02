@@ -10,7 +10,6 @@
 
 @interface PendingOrdersCell : UITableViewCell
 
-
 @property(nonatomic,strong)UILabel *lblCity;
 @property(nonatomic,strong)UILabel *lblState;
 @property(nonatomic,strong)UILabel *lbldate;

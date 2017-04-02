@@ -43,13 +43,12 @@
     
     InProgressOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"inprogresscell"];
     
-    
     OrderI *order = [model_manager.profileManager.arrayInprogressOrders objectAtIndex:indexPath.row];
     
     cell.lblCity.text = order.req.city;
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
-    //cell.lblAmount.text = order.finalAmount;
+    cell.lblAmount.text = order.finalAmount;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;

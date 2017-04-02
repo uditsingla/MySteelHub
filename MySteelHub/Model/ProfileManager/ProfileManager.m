@@ -300,6 +300,7 @@
                      order.shippingID = [[arrData objectAtIndex:i] valueForKey:@"shipping_id"];
                      order.buyerID = [[arrData objectAtIndex:i] valueForKey:@"buyer_id"];
                      order.sellerID = [[arrData objectAtIndex:i] valueForKey:@"seller_id"];
+                     order.orderID = [[arrData objectAtIndex:i] valueForKey:@"order_id"];
                      
                      if(orderType == 0)
                      {

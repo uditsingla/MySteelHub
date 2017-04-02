@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6l5-hl-0JN">
                                 <rect key="frame" x="0.0" y="60" width="375" height="573"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firm Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JKN-3I-l0a">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Firm Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKN-3I-l0a">
                                         <rect key="frame" x="10" y="6" width="355" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -42,7 +42,7 @@
                                         <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 1" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="lUR-8Q-gn4">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lUR-8Q-gn4">
                                         <rect key="frame" x="10" y="46" width="355" height="40"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -212,48 +212,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OlT-Xw-ddx">
-                                <rect key="frame" x="0.0" y="60" width="375" height="50"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YIM-EW-cfg">
-                                        <rect key="frame" x="0.0" y="0.0" width="187" height="50"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="nnK-u2-UyJ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="16"/>
-                                        <state key="normal" title="Billing Address"/>
-                                        <connections>
-                                            <action selector="btnBillingAction:" destination="uTo-ZS-Clm" eventType="touchUpInside" id="SWa-Oc-pYN"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GsY-4z-hXC">
-                                        <rect key="frame" x="188" y="0.0" width="187" height="50"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="ohO-u5-Fr7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="16"/>
-                                        <state key="normal" title="Shipping Address"/>
-                                        <connections>
-                                            <action selector="btnShippingAction:" destination="uTo-ZS-Clm" eventType="touchUpInside" id="Df7-yh-Pu3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="n6Z-2k-YNZ">
+                                <rect key="frame" x="-2" y="68" width="379" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="GsY-4z-hXC" secondAttribute="trailing" id="Euf-nd-jnq"/>
-                                    <constraint firstItem="YIM-EW-cfg" firstAttribute="top" secondItem="OlT-Xw-ddx" secondAttribute="top" id="J0K-rZ-Q6P"/>
-                                    <constraint firstItem="GsY-4z-hXC" firstAttribute="leading" secondItem="YIM-EW-cfg" secondAttribute="trailing" constant="1" id="JBR-nU-ebX"/>
-                                    <constraint firstItem="YIM-EW-cfg" firstAttribute="leading" secondItem="OlT-Xw-ddx" secondAttribute="leading" id="SZE-xW-IsA"/>
-                                    <constraint firstAttribute="height" constant="50" id="but-0O-oWp"/>
-                                    <constraint firstItem="GsY-4z-hXC" firstAttribute="width" secondItem="YIM-EW-cfg" secondAttribute="width" id="kRc-dU-P4S"/>
-                                    <constraint firstItem="GsY-4z-hXC" firstAttribute="leading" secondItem="YIM-EW-cfg" secondAttribute="trailing" constant="1" id="q9Y-Fm-Ngi"/>
-                                    <constraint firstItem="GsY-4z-hXC" firstAttribute="top" secondItem="OlT-Xw-ddx" secondAttribute="top" id="ylo-oK-wGc"/>
+                                    <constraint firstAttribute="height" constant="41" id="sgP-B3-rIe"/>
                                 </constraints>
-                            </view>
+                                <segments>
+                                    <segment title="Billing Address"/>
+                                    <segment title="Shipping Address"/>
+                                </segments>
+                                <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="clkSegment:" destination="uTo-ZS-Clm" eventType="valueChanged" id="CzA-y4-69q"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CwR-CY-TFF" userLabel="Table View Billing">
-                                <rect key="frame" x="0.0" y="108" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="billing" id="xGj-DE-oQv" customClass="AddressCell">
@@ -344,7 +318,7 @@
                                 </prototypes>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dWa-4z-W4X" userLabel="Table View Shipping">
-                                <rect key="frame" x="0.0" y="108" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="shipping" id="gw6-2A-GkS" customClass="ShippingAddressCell">
@@ -438,7 +412,7 @@
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="UtX-aV-mV5"/>
+                                    <constraint firstAttribute="height" constant="45" id="I1z-KM-yj9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                 <state key="normal" title="PLACE ORDER">
@@ -463,29 +437,29 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="CwR-CY-TFF" secondAttribute="trailing" id="ANj-Tz-UZQ"/>
                             <constraint firstAttribute="trailing" secondItem="JSf-Rc-g8p" secondAttribute="trailing" constant="10" id="Ag6-eV-pmB"/>
-                            <constraint firstItem="CwR-CY-TFF" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="F4m-Wi-xgf"/>
-                            <constraint firstItem="OlT-Xw-ddx" firstAttribute="top" secondItem="j7M-SI-Vxf" secondAttribute="bottom" constant="40" id="HZ5-Wt-N6X"/>
-                            <constraint firstItem="CwR-CY-TFF" firstAttribute="top" secondItem="j7M-SI-Vxf" secondAttribute="bottom" constant="88" id="IK2-sr-jwg"/>
-                            <constraint firstItem="OlT-Xw-ddx" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="NJb-Yy-N1k"/>
-                            <constraint firstItem="5lB-qS-5bv" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="aHm-g2-73d"/>
-                            <constraint firstAttribute="trailing" secondItem="CwR-CY-TFF" secondAttribute="trailing" id="dvY-hr-Fr0"/>
-                            <constraint firstItem="dWa-4z-W4X" firstAttribute="top" secondItem="j7M-SI-Vxf" secondAttribute="bottom" constant="88" id="eDH-3Q-IlG"/>
+                            <constraint firstItem="dWa-4z-W4X" firstAttribute="top" secondItem="n6Z-2k-YNZ" secondAttribute="bottom" constant="1" id="Bls-vA-dT8"/>
+                            <constraint firstAttribute="trailing" secondItem="dWa-4z-W4X" secondAttribute="trailing" id="F6u-s5-NdH"/>
+                            <constraint firstItem="CwR-CY-TFF" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="b2Z-uG-R9z"/>
                             <constraint firstItem="JSf-Rc-g8p" firstAttribute="top" secondItem="Euf-Jj-tnF" secondAttribute="top" constant="20" id="eNf-Fv-t2Q"/>
-                            <constraint firstAttribute="trailing" secondItem="dWa-4z-W4X" secondAttribute="trailing" id="lZB-jw-3tz"/>
-                            <constraint firstAttribute="trailing" secondItem="5lB-qS-5bv" secondAttribute="trailing" id="o0o-cy-G11"/>
-                            <constraint firstItem="I6k-4C-3Ro" firstAttribute="top" secondItem="dWa-4z-W4X" secondAttribute="bottom" constant="43" id="o0q-14-aZZ"/>
-                            <constraint firstItem="I6k-4C-3Ro" firstAttribute="top" secondItem="5lB-qS-5bv" secondAttribute="bottom" id="sxT-cz-NmW"/>
-                            <constraint firstItem="I6k-4C-3Ro" firstAttribute="top" secondItem="CwR-CY-TFF" secondAttribute="bottom" constant="43" id="tez-Do-Uhb"/>
-                            <constraint firstItem="dWa-4z-W4X" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="uUh-99-8OK"/>
-                            <constraint firstAttribute="trailing" secondItem="OlT-Xw-ddx" secondAttribute="trailing" id="zHR-rC-4PW"/>
+                            <constraint firstItem="I6k-4C-3Ro" firstAttribute="top" secondItem="5lB-qS-5bv" secondAttribute="bottom" id="fTt-Yf-Jl1"/>
+                            <constraint firstItem="dWa-4z-W4X" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="hjn-2z-yDv"/>
+                            <constraint firstItem="n6Z-2k-YNZ" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" constant="-2" id="jo0-P8-r1r"/>
+                            <constraint firstAttribute="trailing" secondItem="n6Z-2k-YNZ" secondAttribute="trailing" constant="-2" id="kWf-EK-9GW"/>
+                            <constraint firstAttribute="trailing" secondItem="5lB-qS-5bv" secondAttribute="trailing" id="keL-K7-PhJ"/>
+                            <constraint firstItem="n6Z-2k-YNZ" firstAttribute="top" secondItem="j7M-SI-Vxf" secondAttribute="bottom" constant="48" id="msn-kE-Dyd"/>
+                            <constraint firstItem="CwR-CY-TFF" firstAttribute="top" secondItem="n6Z-2k-YNZ" secondAttribute="bottom" constant="1" id="oPH-ZA-WWT"/>
+                            <constraint firstItem="5lB-qS-5bv" firstAttribute="leading" secondItem="Euf-Jj-tnF" secondAttribute="leading" id="qs5-ud-S02"/>
+                            <constraint firstItem="5lB-qS-5bv" firstAttribute="top" secondItem="CwR-CY-TFF" secondAttribute="bottom" constant="-2" id="vcN-P3-Bg4"/>
+                            <constraint firstItem="5lB-qS-5bv" firstAttribute="top" secondItem="dWa-4z-W4X" secondAttribute="bottom" constant="-2" id="xaD-rQ-jyp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnAdd" destination="JSf-Rc-g8p" id="bbb-4e-T3Y"/>
-                        <outlet property="btnBillingAddress" destination="YIM-EW-cfg" id="tNB-jL-P8I"/>
                         <outlet property="btnPlaceOrder" destination="5lB-qS-5bv" id="ZQw-aI-iDI"/>
-                        <outlet property="btnShippingAddress" destination="GsY-4z-hXC" id="c31-VW-V2o"/>
+                        <outlet property="contraintPlaceOrder" destination="I1z-KM-yj9" id="Pho-8T-yi8"/>
+                        <outlet property="segControl" destination="n6Z-2k-YNZ" id="pld-rt-Fad"/>
                         <outlet property="tblViewBilling" destination="CwR-CY-TFF" id="jU0-t1-Ax5"/>
                         <outlet property="tblViewShipping" destination="dWa-4z-W4X" id="NXG-2X-vZh"/>
                     </connections>
