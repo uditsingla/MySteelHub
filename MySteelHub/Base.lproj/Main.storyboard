@@ -220,7 +220,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter the RTGS number provided by the Bank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3o-Sy-BoH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make RTGS into this xxxxxxxxxx Account owned by xxxxxxx and enter the RTGS number provided by the Bank" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3o-Sy-BoH">
                                 <rect key="frame" x="10" y="125" width="355" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="B2l-Qc-Enn"/>
@@ -229,7 +229,7 @@
                                 <color key="textColor" red="0.31372549020000001" green="0.31372549020000001" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter RTGS number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Sf-ju-qmO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="RTGS number" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Sf-ju-qmO">
                                 <rect key="frame" x="20" y="195" width="335" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -254,11 +254,20 @@
                                     <action selector="btnSubmitAction:" destination="skl-Ee-z2w" eventType="touchUpInside" id="0RZ-vL-QMl"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="EwL-bx-Wg5">
+                                <rect key="frame" x="137" y="17" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="COb-2V-nBA"/>
+                                    <constraint firstAttribute="width" constant="100" id="Uwo-Hn-K91"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="9ir-aL-aoc" firstAttribute="leading" secondItem="gNG-m9-KXF" secondAttribute="leading" id="2Ai-Vy-z9X"/>
+                            <constraint firstItem="EwL-bx-Wg5" firstAttribute="top" secondItem="gNG-m9-KXF" secondAttribute="top" constant="17" id="7Lj-mV-PFa"/>
                             <constraint firstAttribute="trailing" secondItem="c3o-Sy-BoH" secondAttribute="trailing" constant="10" id="CvP-mm-8EF"/>
+                            <constraint firstItem="EwL-bx-Wg5" firstAttribute="centerX" secondItem="gNG-m9-KXF" secondAttribute="centerX" id="D0r-JD-dbZ"/>
                             <constraint firstItem="c3o-Sy-BoH" firstAttribute="top" secondItem="N3M-Zv-rWV" secondAttribute="bottom" constant="105" id="KnR-MU-qIq"/>
                             <constraint firstItem="0Sf-ju-qmO" firstAttribute="top" secondItem="c3o-Sy-BoH" secondAttribute="bottom" constant="10" id="VAd-g1-peV"/>
                             <constraint firstItem="c3o-Sy-BoH" firstAttribute="leading" secondItem="gNG-m9-KXF" secondAttribute="leading" constant="10" id="bAL-Gm-iN4"/>
@@ -1893,6 +1902,7 @@
         <image name="img.png" width="122" height="122"/>
         <image name="mm.png" width="16" height="16"/>
         <image name="reply.png" width="16" height="16"/>
+        <image name="smile.png" width="50" height="50"/>
         <image name="zip.png" width="16" height="16"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

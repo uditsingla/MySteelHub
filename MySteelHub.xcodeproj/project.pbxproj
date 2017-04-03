@@ -65,6 +65,8 @@
 		461BE7EA1CAF074300A8F3DC /* ModelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E51CAF074300A8F3DC /* ModelManager.m */; };
 		461BE7EB1CAF074300A8F3DC /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7E81CAF074300A8F3DC /* RequestManager.m */; };
 		461BE7EE1CAF0B7E00A8F3DC /* SignUP.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */; };
+		465B622F1E92C206006A6CE0 /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465B622D1E92C206006A6CE0 /* smile@2x.png */; };
+		465B62301E92C206006A6CE0 /* smile@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 465B622E1E92C206006A6CE0 /* smile@3x.png */; };
 		467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5E9E1D59AE1200407925 /* ForgotPassword.m */; };
 		467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5EA11D59AF4C00407925 /* ChangePassword.m */; };
 		46925FFE1D8730C30097469E /* Home_SellerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 46925FFD1D8730C30097469E /* Home_SellerResponse.m */; };
@@ -225,6 +227,8 @@
 		461BE7E81CAF074300A8F3DC /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		461BE7EC1CAF0B7E00A8F3DC /* SignUP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUP.h; sourceTree = "<group>"; };
 		461BE7ED1CAF0B7E00A8F3DC /* SignUP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUP.m; sourceTree = "<group>"; };
+		465B622D1E92C206006A6CE0 /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
+		465B622E1E92C206006A6CE0 /* smile@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@3x.png"; sourceTree = "<group>"; };
 		467E5E9D1D59AE1200407925 /* ForgotPassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPassword.h; sourceTree = "<group>"; };
 		467E5E9E1D59AE1200407925 /* ForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPassword.m; sourceTree = "<group>"; };
 		467E5EA01D59AF4C00407925 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
@@ -719,6 +723,8 @@
 		7CECA2521D4005EC005B3227 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				465B622D1E92C206006A6CE0 /* smile@2x.png */,
+				465B622E1E92C206006A6CE0 /* smile@3x.png */,
 				7CB121781E8C25E4003183DE /* manage_addresses@2x.png */,
 				7CB121791E8C25E4003183DE /* manage_addresses@3x.png */,
 				7CB1217A1E8C25E4003183DE /* new_orders@2x.png */,
@@ -885,6 +891,7 @@
 				4699429A1D3BFBFD00378968 /* Raleway-BoldItalic.ttf in Resources */,
 				188505681CDDE45100086EC8 /* wallet@3x.png in Resources */,
 				1885056D1CDDE64000086EC8 /* logo@2x.png in Resources */,
+				465B62301E92C206006A6CE0 /* smile@3x.png in Resources */,
 				1885054B1CDDE45100086EC8 /* company@2x.png in Resources */,
 				188505451CDDE45100086EC8 /* back@2x.png in Resources */,
 				461BE7DF1CAF042300A8F3DC /* Login.storyboard in Resources */,
@@ -900,6 +907,7 @@
 				46EF53A91D45D9C30052AB86 /* background@3x.png in Resources */,
 				469942A11D3BFBFD00378968 /* Raleway-LightItalic.ttf in Resources */,
 				188505461CDDE45100086EC8 /* back@3x.png in Resources */,
+				465B622F1E92C206006A6CE0 /* smile@2x.png in Resources */,
 				1885055F1CDDE45100086EC8 /* reply@2x.png in Resources */,
 				188505631CDDE45100086EC8 /* uncheck@2x.png in Resources */,
 				188505521CDDE45100086EC8 /* mail@3x.png in Resources */,
