@@ -94,6 +94,14 @@
         [SVProgressHUD show];
         [selectedOrder buyerPostRTGS:_txtFieldRTGS.text toSeller:selectedOrder.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
             [SVProgressHUD dismiss];
+            if([[json valueForKey:@"success"] boolValue])
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+            else
+            {
+                [self showError:@"Something went wrong. Please try again"];
+            }
         }];
     }
 

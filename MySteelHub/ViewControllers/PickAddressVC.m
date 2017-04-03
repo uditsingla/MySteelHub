@@ -330,8 +330,15 @@
     
     [SVProgressHUD show];
     [selectedOrder buyerSaveAddress:shippingID withBilling:billingID withCompletion:^(NSDictionary *json, NSError *error) {
-        [SVProgressHUD show];
-        
+        [SVProgressHUD dismiss];
+        if([[json valueForKey:@"success"] boolValue])
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [self showError:@"Something went wrong. Please try again"];
+        }
     }];
 
 }

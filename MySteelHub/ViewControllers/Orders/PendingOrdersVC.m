@@ -128,7 +128,7 @@
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
     cell.lblAmount.text = order.finalAmount;
-    
+
     
     //[[json valueForKey:@"data"] valueForKey:@"order_status"];
 
@@ -152,6 +152,7 @@
         PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         viewcontroller.isFromMenu = NO;
+        viewcontroller.selectedOrder = order;
         [navigationController pushViewController:viewcontroller animated:NO];
         
     }
