@@ -40,6 +40,10 @@
     [self hideAllContainers];
     
     contPending.hidden = false;
+    
+    pVC = [self.childViewControllers objectAtIndex:0];
+    
+    [pVC didMoveToParentViewController:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,6 +100,7 @@
     switch (segControl.selectedSegmentIndex) {
         case 0:
             pVC = [self.childViewControllers objectAtIndex:0];
+            
             [pVC refreshData];
             contPending.hidden = false;
 

@@ -104,6 +104,15 @@
             }
         }];
     }
+    
 
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self btnSubmitAction:nil];
+    [_txtFieldRTGS resignFirstResponder];
+    return YES;
+}
+
 @end

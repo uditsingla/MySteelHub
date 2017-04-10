@@ -57,7 +57,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
     [super viewWillAppear:YES];
+    NSLog(@"call aa gyi");
 }
 
 
