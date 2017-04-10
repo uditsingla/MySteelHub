@@ -44,6 +44,18 @@
     pVC = [self.childViewControllers objectAtIndex:0];
     
     [pVC didMoveToParentViewController:self];
+    
+    cVC = [self.childViewControllers objectAtIndex:1];
+    
+    [cVC didMoveToParentViewController:self];
+
+    iVC = [self.childViewControllers objectAtIndex:2];
+
+    [iVC didMoveToParentViewController:self];
+
+    hVC = [self.childViewControllers objectAtIndex:3];
+    [hVC didMoveToParentViewController:self];
+
 }
 
 - (void)didReceiveMemoryWarning {

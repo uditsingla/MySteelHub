@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self refreshData];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,17 +35,7 @@
 {
     [super viewWillAppear:YES];
     
-    NSMutableDictionary *dictOrderParams = [[NSMutableDictionary alloc]init];
-    [dictOrderParams setValue:@"buyer" forKey:@"type"];
-    [dictOrderParams setValue:[NSNumber numberWithInt:0] forKey:@"status"];
-    
-    [[ModelManager modelManager].profileManager getOrderswithOrdertype:dictOrderParams completionBlock:^(NSDictionary *json, NSError *error)
-     {
-         if([[json valueForKey:@""] isEqualToString:@""])
-         {
-             //arrayOrders = model_manager.profileManager.arrayPendingOrders;
-         }
-     }];
+    [self refreshData];
 }
 
 #pragma mark table view data sources and delegates
