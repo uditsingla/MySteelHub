@@ -29,8 +29,12 @@
     _txtFieldRTGS.delegate = self;
     
     
+    _txtFieldRTGS.layer.borderWidth = 1;
+    _txtFieldRTGS.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    [_txtFieldRTGS setBorderStyle:UITextBorderStyleLine];
+    
     //Custom UI for TextFilds
-    [self customtxtfield:_txtFieldRTGS withrightIcon:nil borderLeft:true borderRight:true borderBottom:true borderTop:true];
+
     
     [_txtFieldRTGS setValue:[UIColor lightGrayColor]
                   forKeyPath:@"_placeholderLabel.textColor"];
