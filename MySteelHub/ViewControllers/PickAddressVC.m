@@ -10,6 +10,7 @@
 #import "AddressCell.h"
 #import "ShippingAddressCell.h"
 #import "AddAddressVC.h"
+#import "EnterRTGS.h"
 
 #define kBtnSelectedBackgroundColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
 
@@ -333,7 +334,20 @@
         [SVProgressHUD dismiss];
         if([[json valueForKey:@"success"] boolValue])
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            if([selectedOrder.RTGS intValue]==0)
+            {
+                UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+                
+                EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
+                viewcontroller.selectedOrder = selectedOrder;
+                [navigationController pushViewController:viewcontroller animated:YES];
+                
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+            }
+
         }
         else
         {

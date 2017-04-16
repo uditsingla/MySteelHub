@@ -25,7 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self refreshData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,6 +59,7 @@
     
     [super viewWillAppear:YES];
     NSLog(@"call aa gyi");
+    [self refreshData];
 }
 
 

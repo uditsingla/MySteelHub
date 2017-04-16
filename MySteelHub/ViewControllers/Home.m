@@ -16,7 +16,8 @@
 //#import <GoogleMaps/GoogleMaps.h>
 #import "RequirementI.h"
 #import "Conversation.h"
-
+#import "OrderI.h"
+#import "PickAddressVC.h"
 
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
@@ -1138,6 +1139,8 @@
                              ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBuyerRead = true;
                             
                             [tblSellerResponse reloadData];
+                            
+                            [self pushToAddressScreen:[json valueForKey:@"order_id"]];
                         }
                         else
                         {
@@ -1153,6 +1156,19 @@
             
         default: break;
     }
+}
+
+-(void)pushToAddressScreen:(NSString*)orderID
+{
+    OrderI *order = [OrderI new];
+    order.orderID = orderID;
+    order.req = _selectedRequirement;
+    
+    PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
+    UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+    viewcontroller.isFromMenu = NO;
+    viewcontroller.selectedOrder = order;
+    [navigationController pushViewController:viewcontroller animated:NO];
 }
 
 
