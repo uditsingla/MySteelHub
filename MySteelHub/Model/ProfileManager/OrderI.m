@@ -11,12 +11,14 @@
 
 @implementation OrderI
 
-@synthesize req, statusCode, orderID , finalAmount, RTGS, billingID, shippingID, buyerID, sellerID;
+@synthesize addressBilling, addressShipping, req, statusCode, orderID , finalAmount, RTGS, billingID, shippingID, buyerID, sellerID;
 
 - (id)init
 {
     self = [super init];
     if (self) {
+        addressBilling = [Address new];
+        addressShipping = [Address new];
         req = [RequirementI new];
         finalAmount = @"";
         statusCode = 0;

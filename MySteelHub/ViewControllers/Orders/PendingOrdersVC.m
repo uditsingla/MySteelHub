@@ -11,6 +11,7 @@
 #import "OrderI.h"
 #import "EnterRTGS.h"
 #import "PickAddressVC.h"
+#import "OrderPreview.h"
 
 @interface PendingOrdersVC ()
 {
@@ -144,7 +145,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     OrderI *order;
-    if(indexPath.section==0)
+    if(indexPath.section == 0)
         order = [model_manager.profileManager.arrayRejectedOrders objectAtIndex:indexPath.row];
     else
         order = [model_manager.profileManager.arrayPendingOrders objectAtIndex:indexPath.row];
@@ -158,11 +159,14 @@
         [navigationController pushViewController:viewcontroller animated:NO];
         
     }
-    else if([order.RTGS intValue]==0)
+    else if([order.RTGS intValue] == 0)
     {
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
         
-        EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
+        //EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
+        
+        OrderPreview *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"orderpreview"];
+        
         viewcontroller.selectedOrder = order;
         [navigationController pushViewController:viewcontroller animated:YES];
     }

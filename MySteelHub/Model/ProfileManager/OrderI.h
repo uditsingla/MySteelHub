@@ -10,6 +10,9 @@
 #import "RequirementI.h"
 @interface OrderI : NSObject
 
+@property(nonatomic,strong)Address *addressShipping;
+
+@property(nonatomic,strong)Address *addressBilling;
 @property(nonatomic,strong)RequirementI *req;
 @property(nonatomic,assign) int statusCode;
 @property(strong,nonatomic) NSString *orderID;
