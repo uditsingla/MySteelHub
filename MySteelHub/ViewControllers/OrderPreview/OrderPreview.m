@@ -73,7 +73,7 @@
 
 - (IBAction)clkProceed:(id)sender {
     
-    NSLog("Proceed Button clicked");
+    NSLog(@"Proceed Button clicked");
 }
 
 
@@ -145,7 +145,7 @@
             [cell.legthRequired setSelectedSegmentIndex:1];
         
         
-        cell.lblPreferdBrands.text = [selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@","];
+        cell.lblPreferdBrands.text = [NSString stringWithFormat:@"%@", [selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@", "]];
         
         NSLog(@"Brands :  %@",[selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@", "]);
         
@@ -155,7 +155,7 @@
         
         cell.lblDeliveryState.text = [NSString stringWithFormat:@"Delivery state : %@",selectedOrder.req.state];
         
-        cell.lblTax.text = selectedOrder.req.taxType;
+        cell.lblTax.text = [NSString stringWithFormat:@"Prefered Tax : %@",selectedOrder.req.taxType];
         
         
         
