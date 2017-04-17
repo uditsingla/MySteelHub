@@ -1794,7 +1794,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Itv-QD-tfq">
-                                <rect key="frame" x="0.0" y="70" width="375" height="597"/>
+                                <rect key="frame" x="0.0" y="70" width="375" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuantityCell" id="Yl8-kH-d7I" customClass="QuantityCell">
@@ -2053,11 +2053,27 @@
                                     <outlet property="delegate" destination="jFP-tf-NlZ" id="Pot-V3-xOq"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyu-3R-cPo">
+                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
+                                <state key="normal" title="PROCEED">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="clkProceed:" destination="jFP-tf-NlZ" eventType="touchUpInside" id="57O-Kl-t17"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Itv-QD-tfq" secondAttribute="trailing" id="ATF-Pg-ZSe"/>
-                            <constraint firstItem="iqZ-2z-Yye" firstAttribute="top" secondItem="Itv-QD-tfq" secondAttribute="bottom" id="PgQ-Bx-xUE"/>
+                            <constraint firstAttribute="trailing" secondItem="hyu-3R-cPo" secondAttribute="trailing" id="Ndq-jW-ffM"/>
+                            <constraint firstItem="iqZ-2z-Yye" firstAttribute="top" secondItem="hyu-3R-cPo" secondAttribute="bottom" id="PGA-OW-Ylz"/>
+                            <constraint firstItem="iqZ-2z-Yye" firstAttribute="top" secondItem="Itv-QD-tfq" secondAttribute="bottom" constant="45" id="PgQ-Bx-xUE"/>
+                            <constraint firstItem="hyu-3R-cPo" firstAttribute="top" secondItem="Itv-QD-tfq" secondAttribute="bottom" id="SCQ-CZ-1lg"/>
+                            <constraint firstItem="hyu-3R-cPo" firstAttribute="leading" secondItem="0iN-cY-tiS" secondAttribute="leading" id="Tcm-bf-M4Q"/>
                             <constraint firstItem="Itv-QD-tfq" firstAttribute="leading" secondItem="0iN-cY-tiS" secondAttribute="leading" id="rH3-Tg-og2"/>
                             <constraint firstItem="Itv-QD-tfq" firstAttribute="top" secondItem="0iN-cY-tiS" secondAttribute="top" constant="70" id="sdM-s7-Ep4"/>
                         </constraints>

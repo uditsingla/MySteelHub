@@ -71,6 +71,13 @@
     [self.view addSubview:menuButton];
 }
 
+- (IBAction)clkProceed:(id)sender {
+    
+    NSLog("Proceed Button clicked");
+}
+
+
+
 
 #pragma mark table view data sources and delegates
 
@@ -161,6 +168,7 @@
         
         if([cell.lblAddressType isEqual:@"billing_address"])
         {
+            cell.lblAddressType.text = selectedOrder.addressBilling.addressType;
             cell.lblName.text = selectedOrder.addressBilling.firmName;
             cell.lblAddress1.text = selectedOrder.addressBilling.address1;
             cell.lblAddress2.text = selectedOrder.addressBilling.address2;
@@ -169,6 +177,7 @@
         }
         else
         {
+            cell.lblAddressType.text = selectedOrder.addressShipping.addressType;
             cell.lblName.text = selectedOrder.addressShipping.firmName;
             cell.lblAddress1.text = selectedOrder.addressShipping.address1;
             cell.lblAddress2.text = selectedOrder.addressShipping.address2;
