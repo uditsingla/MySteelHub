@@ -12,7 +12,7 @@
 #import "GenralInfoCell.h"
 #import "AdressInfoCell.h"
 #import "FinalAmountCell.h"
-
+#import "EnterRTGS.h"
 
 @interface OrderPreview ()
 
@@ -74,6 +74,13 @@
 - (IBAction)clkProceed:(id)sender {
     
     NSLog(@"Proceed Button clicked");
+    
+    UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+    
+    EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
+    
+    viewcontroller.selectedOrder = self.selectedOrder;
+    [navigationController pushViewController:viewcontroller animated:YES];
 }
 
 
@@ -145,8 +152,11 @@
             [cell.legthRequired setSelectedSegmentIndex:1];
         
         
-        cell.lblPreferdBrands.text = [NSString stringWithFormat:@"%@", [selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@", "]];
+        cell.lblPreferdBrands.text = [NSString stringWithFormat:@"Brands : %@", [selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@", "]];
         
+        cell.lblGraderequired.text = [NSString stringWithFormat:@"Grade Type : %@",selectedOrder.req.gradeRequired];
+        
+        cell.lblRequiredByDate.text = [NSString stringWithFormat:@"Required By : %@",selectedOrder.req.requiredByDate];
         NSLog(@"Brands :  %@",[selectedOrder.req.arrayPreferedBrands componentsJoinedByString:@", "]);
         
         //cell.lblGraderequired.text = selectedOrder.req.gradeRequired;
@@ -166,23 +176,25 @@
     {
         AdressInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"AdressInfoCell"];
         
-        if([cell.lblAddressType isEqual:@"billing_address"])
+        NSLog(@"Address Type : %@",cell.lblAddressType.text);
+        
+        if(indexPath.row == 0)
         {
-            cell.lblAddressType.text = selectedOrder.addressBilling.addressType;
-            cell.lblName.text = selectedOrder.addressBilling.firmName;
-            cell.lblAddress1.text = selectedOrder.addressBilling.address1;
-            cell.lblAddress2.text = selectedOrder.addressBilling.address2;
-            cell.lblArea.text = [NSString stringWithFormat:@"%@, %@",selectedOrder.addressBilling.city,selectedOrder.addressBilling.state];
-            cell.lblContact.text = [NSString stringWithFormat:@"%@, %@",selectedOrder.addressBilling.mobile,selectedOrder.addressBilling.landLine];
+            cell.lblAddressType.text = [NSString stringWithFormat:@"%@ Address",[selectedOrder.addressBilling.addressType capitalizedString]];
+            cell.lblName.text = [NSString stringWithFormat:@"Name : %@",[selectedOrder.addressBilling.firmName capitalizedString]];
+            cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@",[selectedOrder.addressBilling.address1 capitalizedString]];
+            cell.lblAddress2.text = [selectedOrder.addressBilling.address2 capitalizedString];
+            cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.addressBilling.city,selectedOrder.addressBilling.state] capitalizedString];
+            cell.lblContact.text = [NSString stringWithFormat:@"M : %@, L : %@",selectedOrder.addressBilling.mobile,selectedOrder.addressBilling.landLine];
         }
-        else
+        else if(indexPath.row == 1)
         {
-            cell.lblAddressType.text = selectedOrder.addressShipping.addressType;
-            cell.lblName.text = selectedOrder.addressShipping.firmName;
-            cell.lblAddress1.text = selectedOrder.addressShipping.address1;
-            cell.lblAddress2.text = selectedOrder.addressShipping.address2;
-            cell.lblArea.text = [NSString stringWithFormat:@"%@, %@",selectedOrder.addressShipping.city,selectedOrder.addressShipping.state];
-            cell.lblContact.text = [NSString stringWithFormat:@"%@, %@",selectedOrder.addressShipping.mobile,selectedOrder.addressShipping.landLine];
+            cell.lblAddressType.text = [NSString stringWithFormat:@"%@ Address",[selectedOrder.addressShipping.addressType capitalizedString]];
+            cell.lblName.text = [NSString stringWithFormat:@"Name : %@",[selectedOrder.addressShipping.firmName capitalizedString]];
+            cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@",[selectedOrder.addressShipping.address1 capitalizedString]];
+            cell.lblAddress2.text = [selectedOrder.addressShipping.address2 capitalizedString];
+            cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.addressShipping.city,selectedOrder.addressShipping.state] capitalizedString];
+            cell.lblContact.text = [NSString stringWithFormat:@"M : %@, L : %@",selectedOrder.addressShipping.mobile,selectedOrder.addressShipping.landLine];
         }
         
         return cell;
@@ -193,8 +205,8 @@
     {
         FinalAmountCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FinalAmountCell"];
         
-        cell.lblOrderId.text = selectedOrder.orderID;
-        cell.lblTotalAmount.text = selectedOrder.finalAmount;
+        cell.lblOrderId.text = [NSString stringWithFormat:@"Order No : %@",selectedOrder.orderID];
+        cell.lblTotalAmount.text = [NSString stringWithFormat:@"Total Amount : %@",selectedOrder.finalAmount];
         
         return cell;
 
@@ -254,11 +266,11 @@
 {
     switch (indexPath.section) {
         case 0:
-            return 45;
+            return 50;
             break;
             
         case 1:
-            return 390;
+            return 375;
             break;
             
         case 2:

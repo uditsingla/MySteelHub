@@ -287,7 +287,13 @@
                      
                      OrderI *order = [OrderI new];
                      
-                     NSDictionary *dictBillingAddress = [[arrData objectAtIndex:i] valueForKey:@"billing_address"];
+                  
+                     
+                     NSArray *arrBilling = [[arrData objectAtIndex:i] valueForKey:@"billing_address"];
+                     
+                     NSDictionary *dictBillingAddress = [arrBilling objectAtIndex:0];
+                     
+                     NSLog(@"Billing : %@",dictBillingAddress);
                      
                      order.addressBilling.ID = [dictBillingAddress valueForKey:@"id"];
                      order.addressBilling.firmName = [NSString stringWithFormat:@"%@",[dictBillingAddress valueForKey:@"firm_name"]];
@@ -302,8 +308,12 @@
                      order.addressBilling.landLine = [NSString stringWithFormat:@"%@",[dictBillingAddress valueForKey:@"landline"]];
                      
                      
+                     NSArray *arrShipping = [[arrData objectAtIndex:i] valueForKey:@"shipping_address"];
                      
-                     NSDictionary *dictShippingAddress = [[arrData objectAtIndex:i] valueForKey:@"shipping_address"];
+                     NSDictionary *dictShippingAddress = [arrShipping objectAtIndex:0];
+                     
+                     NSLog(@"Shipping : %@",dictShippingAddress);
+
                      
                      order.addressShipping.ID = [dictShippingAddress valueForKey:@"id"];
                      order.addressShipping.firmName = [NSString stringWithFormat:@"%@",[dictShippingAddress valueForKey:@"firm_name"]];
@@ -319,6 +329,7 @@
                      
                      
                      NSDictionary *dict = [[arrData objectAtIndex:i] valueForKey:@"postdata"];
+                     order.req.gradeRequired = [dict valueForKey:@"grade_required"];
                      order.req.budget = [dict valueForKey:@"budget"];
                      order.req.state = [dict valueForKey:@"state"];
                      order.req.requiredByDate = [dict valueForKey:@"required_by_date"];
@@ -348,7 +359,7 @@
                      {
                          [order.req.arraySpecifications addObject:[arr objectAtIndex:i]];
                          
-                         NSLog(@"%@",order.req.arraySpecifications);
+                        // NSLog(@"%@",order.req.arraySpecifications);
                      }
                      
                      

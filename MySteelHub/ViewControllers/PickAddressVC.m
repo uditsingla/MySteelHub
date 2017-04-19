@@ -11,6 +11,8 @@
 #import "ShippingAddressCell.h"
 #import "AddAddressVC.h"
 #import "EnterRTGS.h"
+#import "OrderPreview.h"
+#import "Conversation.h"
 
 #define kBtnSelectedBackgroundColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
 
@@ -303,7 +305,7 @@
     
     NSString *shippingID,*billingID = @"";
     NSIndexPath *selectedIndexPath = [_tblViewBilling indexPathForSelectedRow];
-    Address *selectedAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
+    Address *selectedBillingAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
     
     if(selectedIndexPath==nil)
     {
@@ -312,11 +314,11 @@
     }
     else
     {
-        billingID = selectedAddress.ID;
+        billingID = selectedBillingAddress.ID;
     }
     
     selectedIndexPath = [_tblViewShipping indexPathForSelectedRow];
-    selectedAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
+    Address *selectedShippngAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
     
     if(selectedIndexPath==nil)
     {
@@ -326,7 +328,7 @@
     }
     else
     {
-        shippingID = selectedAddress.ID;
+        shippingID = selectedShippngAddress.ID;
     }
     
     [SVProgressHUD show];
@@ -336,11 +338,47 @@
         {
             if([selectedOrder.RTGS intValue]==0)
             {
+                
+                
                 UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
                 
-                EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
-                viewcontroller.selectedOrder = selectedOrder;
+    
+                
+                OrderPreview *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"orderpreview"];
+                
+                //set data here
+                
+                
+                //if(self.selectedOrder.req.arrayConversations)
+                    
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
+                NSArray *filteredArray = [self.selectedOrder.req.arrayConversations filteredArrayUsingPredicate:predicate];
+                
+                
+                int finalAmount ;
+                
+                if(filteredArray.count > 0) {
+                    
+                    Conversation *objConversation = filteredArray.firstObject;
+                    
+                    
+                    if([objConversation.bargainAmount intValue] >  0)
+                    {
+                        finalAmount = [objConversation.bargainAmount intValue];                    }
+                    else
+                    {
+                        finalAmount = [objConversation.initialAmount intValue];
+                    }
+                    
+                }
+                
+                self.selectedOrder.finalAmount = [NSString stringWithFormat:@"%d",finalAmount];
+                self.selectedOrder.addressBilling = selectedBillingAddress;
+                self.selectedOrder.addressShipping = selectedShippngAddress;
+                viewcontroller.selectedOrder = self.selectedOrder;
                 [navigationController pushViewController:viewcontroller animated:YES];
+                
+                
                 
             }
             else

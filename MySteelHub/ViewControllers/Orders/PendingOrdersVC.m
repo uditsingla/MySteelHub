@@ -9,7 +9,7 @@
 #import "PendingOrdersVC.h"
 #import "PendingOrdersCell.h"
 #import "OrderI.h"
-#import "EnterRTGS.h"
+
 #import "PickAddressVC.h"
 #import "OrderPreview.h"
 
@@ -162,8 +162,6 @@
     else if([order.RTGS intValue] == 0)
     {
         UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
-        
-        //EnterRTGS *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"enterRTGS"];
         
         OrderPreview *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"orderpreview"];
         
