@@ -241,11 +241,24 @@
             {
                 NSIndexPath *indexPath;
                 indexPath = [_tblViewShipping indexPathForCell:cell];
+                
+                [model_manager.profileManager deleteAddress:[model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row] completion:^(NSDictionary *json, NSError *error) {
+                    
+                    //[_tblViewBilling reloadData];
+                    [_tblViewShipping reloadData];
+                }];
+               
             }
             else
             {
                 NSIndexPath *indexPath;
                 indexPath = [_tblViewBilling indexPathForCell:cell];
+                
+                [model_manager.profileManager deleteAddress:[model_manager.profileManager.arrayBillingAddress objectAtIndex:indexPath.row] completion:^(NSDictionary *json, NSError *error) {
+                    
+                    [_tblViewBilling reloadData];
+                }];
+
             }
             
             break;

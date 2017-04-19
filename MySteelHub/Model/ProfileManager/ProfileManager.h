@@ -28,6 +28,8 @@
 
 -(void)editAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)deleteAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
 -(void)getShippingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 -(void)getBillingAddressesWithCompletion:(void(^)(NSDictionary *json, NSError *error))completionBlock;

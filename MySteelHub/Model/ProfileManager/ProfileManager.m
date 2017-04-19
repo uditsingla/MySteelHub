@@ -100,7 +100,7 @@
                                        address.city,@"city",
                                        address.state,@"state",
                                        address.pin,@"pincode",
-                                       address.landmark,@"landmark",
+                                       //address.landmark,@"landmark",
                                        address.mobile,@"mobile",
                                        address.landLine,@"landline",nil];
     
@@ -111,25 +111,42 @@
          
          if (statusCode==200) {
              
-             if([[[json valueForKey:@"data"] firstObject] valueForKey:@"id"])
+             if([json valueForKey:@"address_id"])
              {
-                 address.ID = [[[json valueForKey:@"data"] firstObject] valueForKey:@"id"];
+                 address.ID = [json valueForKey:@"address_id"];
                  
-                 //                requirement.requirementID = [NSString stringWithFormat:@"%i",[[[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"] intValue]];
+                 NSLog(@"Address count : %lu",(unsigned long)model_manager.profileManager.arraySavedAddress.count);
                  
-                 for (int i = 0 ; i < model_manager.profileManager.arraySavedAddress.count; i++)
+                 if([address.addressType isEqualToString:@"billing"])
                  {
-                     Address *addressExisting = [model_manager.profileManager.arraySavedAddress objectAtIndex:i];
-                     
-                     if (address.ID == addressExisting.ID)
+                     for (int i = 0 ; i < model_manager.profileManager.arrayBillingAddress.count; i++)
                      {
-                         [model_manager.profileManager.arraySavedAddress replaceObjectAtIndex:i withObject:address];
+                         Address *addressExisting = [model_manager.profileManager.arrayBillingAddress objectAtIndex:i];
                          
-                         break;
+                         if (address.ID == addressExisting.ID)
+                         {
+                             [model_manager.profileManager.arrayBillingAddress replaceObjectAtIndex:i withObject:address];
+                             
+                             break;
+                         }
+                         
                      }
-                     
                  }
-                 
+                 else if ([address.addressType isEqualToString:@"shipping"])
+                 {
+                     for (int i = 0 ; i < model_manager.profileManager.arrayShippingAddress.count; i++)
+                     {
+                         Address *addressExisting = [model_manager.profileManager.arrayShippingAddress objectAtIndex:i];
+                         
+                         if (address.ID == addressExisting.ID)
+                         {
+                             [model_manager.profileManager.arrayShippingAddress replaceObjectAtIndex:i withObject:address];
+                             
+                             break;
+                         }
+                         
+                     }
+                 }
              }
              
              if(completionBlock)
@@ -142,6 +159,75 @@
          }
          
      } ];
+    
+
+}
+
+-(void)deleteAddress:(Address *)address completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                       address.ID,@"id",
+                                       address.addressType,@"addressType",
+                                      nil];
+    
+    
+    [RequestManager asynchronousRequestWithPath:@"deleteAddress" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+     {
+         NSLog(@"Here comes save new address json %@",json);
+         
+         if (statusCode==200) {
+             
+             if([json valueForKey:@"address_id"])
+             {
+                 address.ID = [json valueForKey:@"address_id"];
+                 
+                 NSLog(@"Address count : %lu",(unsigned long)model_manager.profileManager.arraySavedAddress.count);
+                 
+                 if([address.addressType isEqualToString:@"billing"])
+                 {
+                     for (int i = 0 ; i < model_manager.profileManager.arrayBillingAddress.count; i++)
+                     {
+                         Address *addressExisting = [model_manager.profileManager.arrayBillingAddress objectAtIndex:i];
+                         
+                         if (address.ID == addressExisting.ID)
+                         {
+                             [model_manager.profileManager.arrayBillingAddress removeObjectAtIndex:i];
+                             
+                             break;
+                         }
+                         
+                     }
+                 }
+                 else if ([address.addressType isEqualToString:@"shipping"])
+                 {
+                     for (int i = 0 ; i < model_manager.profileManager.arrayShippingAddress.count; i++)
+                     {
+                         Address *addressExisting = [model_manager.profileManager.arrayShippingAddress objectAtIndex:i];
+                         
+                         if (address.ID == addressExisting.ID)
+                         {
+                             [model_manager.profileManager.arrayShippingAddress removeObjectAtIndex:i];
+                             
+                             break;
+                         }
+                         
+                     }
+                 }
+             
+             }
+             if(completionBlock)
+                 completionBlock(json,nil);
+         
+         
+         
+     }
+         
+         else{
+             if(completionBlock)
+                 completionBlock(nil,nil);
+             //show error
+         }
+     }];
     
 
 }
