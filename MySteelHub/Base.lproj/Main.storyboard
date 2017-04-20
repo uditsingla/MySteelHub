@@ -175,7 +175,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-Gg-KRb">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="yJ9-Tt-4F1"/>
                                 </constraints>
@@ -241,7 +241,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ir-aL-aoc">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="TjV-Iw-qMe"/>
                                 </constraints>
@@ -493,7 +493,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5r-yZ-ntX">
                                 <rect key="frame" x="0.0" y="614.5" width="375" height="52.5"/>
-                                <color key="backgroundColor" red="0.031372549019607843" green="0.73725490196078436" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="z5r-yZ-ntX" secondAttribute="height" multiplier="64:9" id="nhP-U2-4S4"/>
                                 </constraints>
@@ -708,7 +708,7 @@
                                                             <segment title="Straight"/>
                                                             <segment title="Bend"/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </segmentedControl>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type Required" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-LY-HGk">
                                                         <rect key="frame" x="14" y="136" width="137" height="21"/>
@@ -730,7 +730,7 @@
                                                             <segment title="Std."/>
                                                             <segment title="Rdm."/>
                                                         </segments>
-                                                        <color key="tintColor" red="0.1803921568627451" green="0.73333333333333328" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </segmentedControl>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcl-1r-3hu">
                                                         <rect key="frame" x="0.0" y="168" width="331" height="21"/>
@@ -878,7 +878,7 @@
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWs-Ij-5m0">
                                                 <rect key="frame" x="34" y="596" width="315" height="30"/>
-                                                <color key="backgroundColor" red="0.031372549019607843" green="0.73725490196078436" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="BYE-HG-69k"/>
                                                 </constraints>
@@ -987,7 +987,7 @@
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtx-Yn-yvn">
                                 <rect key="frame" x="0.0" y="614.5" width="375" height="52.5"/>
-                                <color key="backgroundColor" red="0.031372549019607843" green="0.73725490196078436" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="qtx-Yn-yvn" secondAttribute="height" multiplier="64:9" id="Za8-IV-AZG"/>
                                 </constraints>
@@ -1080,7 +1080,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqr-oY-hvT">
                                                 <rect key="frame" x="206" y="102" width="75" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" red="0.095903664827346802" green="0.68626916408538818" blue="0.78720772266387939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="BARGAIN">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1371,7 +1371,7 @@
                                     <segment title="InProgress"/>
                                     <segment title="History"/>
                                 </segments>
-                                <color key="tintColor" red="0.15686274510000001" green="0.68627450980000004" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="clkSegment:" destination="Axj-sT-US0" eventType="valueChanged" id="5MN-p5-5Um"/>
                                 </connections>
@@ -1933,7 +1933,7 @@
                                                         <segment title="Straight"/>
                                                         <segment title="Bend"/>
                                                     </segments>
-                                                    <color key="tintColor" red="0.18039215689999999" green="0.73333333329999995" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </segmentedControl>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="usP-cg-g0P">
                                                     <rect key="frame" x="221" y="144" width="109" height="26"/>
@@ -1942,7 +1942,7 @@
                                                         <segment title="Std."/>
                                                         <segment title="Rdm."/>
                                                     </segments>
-                                                    <color key="tintColor" red="0.18039215689999999" green="0.73333333329999995" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="tintColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -2056,7 +2056,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyu-3R-cPo">
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
-                                <color key="backgroundColor" red="0.031372549020000001" green="0.73725490199999999" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.13725490196078433" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                 <state key="normal" title="PROCEED">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

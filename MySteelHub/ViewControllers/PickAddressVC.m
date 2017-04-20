@@ -14,12 +14,8 @@
 #import "OrderPreview.h"
 #import "Conversation.h"
 
-#define kBtnSelectedBackgroundColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
-
-#define kBnSelectedTextColor [UIColor colorWithRed:34/255.00 green:152/255.00 blue:168/255.00 alpha:1]
 
 #define kBtnRegularBackgroundColor [UIColor clearColor]
-#define kBtnRegularTextColor [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1]
 
 @interface PickAddressVC ()
 {
@@ -288,7 +284,7 @@
     
     [self resetButtonsUI];
     
-    btnBillingAddress.backgroundColor = [UIColor colorWithRed:8/255.0 green:188/255.0 blue:211/255.0 alpha:1];
+    btnBillingAddress.backgroundColor = kBlueColor;
     
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
@@ -299,7 +295,7 @@
     
     [self resetButtonsUI];
     
-    btnShippingAddress.backgroundColor = kBtnSelectedBackgroundColor;
+    btnShippingAddress.backgroundColor = kBlueColor;
     
     _tblViewBilling.hidden = YES;
     _tblViewShipping.hidden = NO;

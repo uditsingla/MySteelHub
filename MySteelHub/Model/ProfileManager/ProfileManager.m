@@ -377,6 +377,9 @@
                      
                      NSArray *arrBilling = [[arrData objectAtIndex:i] valueForKey:@"billing_address"];
                      
+                     if(arrBilling.count > 0)
+                     {
+                     
                      NSDictionary *dictBillingAddress = [arrBilling objectAtIndex:0];
                      
                      NSLog(@"Billing : %@",dictBillingAddress);
@@ -392,9 +395,12 @@
                      order.addressBilling.landmark = [NSString stringWithFormat:@"%@",[dictBillingAddress valueForKey:@"landmark"]];
                      order.addressBilling.mobile = [NSString stringWithFormat:@"%@",[dictBillingAddress valueForKey:@"mobile"]];
                      order.addressBilling.landLine = [NSString stringWithFormat:@"%@",[dictBillingAddress valueForKey:@"landline"]];
+                     }
                      
                      
                      NSArray *arrShipping = [[arrData objectAtIndex:i] valueForKey:@"shipping_address"];
+                     if(arrShipping.count > 0)
+                     {
                      
                      NSDictionary *dictShippingAddress = [arrShipping objectAtIndex:0];
                      
@@ -412,7 +418,7 @@
                      order.addressShipping.landmark = [NSString stringWithFormat:@"%@",[dictShippingAddress valueForKey:@"landmark"]];
                      order.addressShipping.mobile = [NSString stringWithFormat:@"%@",[dictShippingAddress valueForKey:@"mobile"]];
                      order.addressShipping.landLine = [NSString stringWithFormat:@"%@",[dictShippingAddress valueForKey:@"landline"]];
-                     
+                     }
                      
                      NSDictionary *dict = [[arrData objectAtIndex:i] valueForKey:@"postdata"];
                      order.req.gradeRequired = [dict valueForKey:@"grade_required"];

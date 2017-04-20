@@ -115,6 +115,35 @@
     return cell;
 }
 
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, tableView.frame.size.width, 18)];
+    [label setFont:[UIFont boldSystemFontOfSize:12]];
+    /* Section header is in 0th index... */
+    [label setTextColor:[UIColor whiteColor]];
+    [label setText:@"BUYER"];
+    
+    
+    UILabel *labelEmail = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 18)];
+    [labelEmail setFont:[UIFont systemFontOfSize:12]];
+    [labelEmail setText:[[NSUserDefaults standardUserDefaults]valueForKey:@"email"]];
+    //[labelEmail setText:@"test@gmail.com"];
+    //NSLog(@"%@",labelEmail.text);
+    [labelEmail setTextColor:[UIColor whiteColor]];
+    
+    [view addSubview:label];
+    [view addSubview:labelEmail];
+    [view setBackgroundColor:kBlueColor]; //your background color...
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
+
 
 #pragma mark - TableView delegate
 

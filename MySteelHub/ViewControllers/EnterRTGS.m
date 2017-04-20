@@ -38,6 +38,10 @@
     
     [_txtFieldRTGS setValue:[UIColor lightGrayColor]
                   forKeyPath:@"_placeholderLabel.textColor"];
+    
+    
+    
+
 }
 
 
@@ -100,7 +104,16 @@
             [SVProgressHUD dismiss];
             if([[json valueForKey:@"success"] boolValue])
             {
-                [self.navigationController popViewControllerAnimated:YES];
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Thanks" message:@"Your will receive payment confirmation message with in next 48 working hours." preferredStyle:UIAlertControllerStyleAlert];
+                
+                [alertController addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    
+                    [self.navigationController popToRootViewControllerAnimated:YES];
+                    
+                }]];
+                
+                [self presentViewController:alertController animated:YES completion:nil];
+
             }
             else
             {

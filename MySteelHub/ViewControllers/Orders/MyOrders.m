@@ -55,6 +55,8 @@
 
     hVC = [self.childViewControllers objectAtIndex:3];
     [hVC didMoveToParentViewController:self];
+    
+    [segControl setTintColor:kBlueColor];
 
 }
 
