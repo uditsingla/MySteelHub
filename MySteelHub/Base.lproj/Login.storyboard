@@ -545,7 +545,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z9q-FD-M7o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="466" y="-445"/>
+            <point key="canvasLocation" x="344" y="-446"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="aL3-9C-zon">
@@ -565,10 +565,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WHM-De-dnV">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-GL-dvI">
-                                                <rect key="frame" x="10" y="48" width="300" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dSa-GL-dvI">
+                                                <rect key="frame" x="10" y="48" width="355" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="GiT-jo-SWS"/>
+                                                </constraints>
                                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -576,10 +578,12 @@
                                                     <outlet property="delegate" destination="N4G-vP-CfT" id="nW5-IT-WJf"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="knA-CY-ucv">
-                                                <rect key="frame" x="10" y="88" width="300" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="knA-CY-ucv">
+                                                <rect key="frame" x="10" y="88" width="355" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="71G-2q-sMw"/>
+                                                </constraints>
                                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -587,10 +591,12 @@
                                                     <outlet property="delegate" destination="N4G-vP-CfT" id="sKb-3I-eZ7"/>
                                                 </connections>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zRg-vj-H7C">
-                                                <rect key="frame" x="10" y="128" width="300" height="40"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zRg-vj-H7C">
+                                                <rect key="frame" x="10" y="128" width="355" height="40"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="3ne-cM-nNk"/>
+                                                </constraints>
                                                 <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES"/>
@@ -598,10 +604,12 @@
                                                     <outlet property="delegate" destination="N4G-vP-CfT" id="jRB-xp-7iX"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfz-Cy-oRD">
-                                                <rect key="frame" x="0.0" y="192" width="320" height="45"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wfz-Cy-oRD">
+                                                <rect key="frame" x="0.0" y="193" width="375" height="45"/>
                                                 <color key="backgroundColor" red="0.13333333333333333" green="0.59607843137254901" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="EI6-To-0LK"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                 <state key="normal" title="SUBMIT">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -614,6 +622,20 @@
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="wfz-Cy-oRD" firstAttribute="top" secondItem="zRg-vj-H7C" secondAttribute="bottom" constant="25" id="4g9-zs-loI"/>
+                                            <constraint firstAttribute="trailing" secondItem="knA-CY-ucv" secondAttribute="trailing" constant="10" id="BwD-91-iAm"/>
+                                            <constraint firstItem="knA-CY-ucv" firstAttribute="leading" secondItem="WHM-De-dnV" secondAttribute="leading" constant="10" id="MDB-Cb-ugd"/>
+                                            <constraint firstItem="zRg-vj-H7C" firstAttribute="top" secondItem="knA-CY-ucv" secondAttribute="bottom" id="QfD-Do-zbT"/>
+                                            <constraint firstAttribute="trailing" secondItem="wfz-Cy-oRD" secondAttribute="trailing" id="dod-yt-qks"/>
+                                            <constraint firstAttribute="trailing" secondItem="dSa-GL-dvI" secondAttribute="trailing" constant="10" id="ePP-yE-YMB"/>
+                                            <constraint firstItem="dSa-GL-dvI" firstAttribute="leading" secondItem="WHM-De-dnV" secondAttribute="leading" constant="10" id="mkP-e3-lLp"/>
+                                            <constraint firstAttribute="trailing" secondItem="zRg-vj-H7C" secondAttribute="trailing" constant="10" id="pW4-0o-Vcd"/>
+                                            <constraint firstItem="zRg-vj-H7C" firstAttribute="leading" secondItem="WHM-De-dnV" secondAttribute="leading" constant="10" id="sF0-Kb-fsx"/>
+                                            <constraint firstItem="knA-CY-ucv" firstAttribute="top" secondItem="dSa-GL-dvI" secondAttribute="bottom" id="szv-RU-1s1"/>
+                                            <constraint firstItem="dSa-GL-dvI" firstAttribute="top" secondItem="WHM-De-dnV" secondAttribute="top" constant="48" id="wXR-SF-Ydp"/>
+                                            <constraint firstItem="wfz-Cy-oRD" firstAttribute="leading" secondItem="WHM-De-dnV" secondAttribute="leading" id="z25-gl-mP5"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -642,7 +664,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjt-Wp-ZPS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1715" y="-456"/>
+            <point key="canvasLocation" x="1714.5" y="-456.5"/>
         </scene>
     </scenes>
     <resources>

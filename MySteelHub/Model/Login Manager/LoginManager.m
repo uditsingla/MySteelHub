@@ -31,11 +31,8 @@
 {
     [RequestManager asynchronousRequestWithPath:@"authenticate" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json)
     {
-        
         if([json objectForKey:@"token"])
         {
-            
-            
             [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"Bearer %@",[json objectForKey:@"token"]] forKey:@"token"];
             
             [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
@@ -77,9 +74,6 @@
         if (statusCode == 200)
         {
             NSLog(@"Here comes the json %@",json);
-            
-            
-            
             
             
             if([json objectForKey:@"user_id"])

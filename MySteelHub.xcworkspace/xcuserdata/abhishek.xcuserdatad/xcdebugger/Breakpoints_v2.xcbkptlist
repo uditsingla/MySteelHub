@@ -61,22 +61,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MySteelHub/Utilities/Slider/LeftSlider.m"
-            timestampString = "514400067.256387"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
-            landmarkName = "-tableView:viewForHeaderInSection:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Orders/MyOrders.m"
             timestampString = "514401847.511404"
             startingColumnNumber = "9223372036854775807"
@@ -133,6 +117,85 @@
             endingLineNumber = "52"
             landmarkName = "-viewDidLoad"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/Model/Login Manager/LoginManager.m"
+            timestampString = "514486920.111965"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-userLogin:completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/Model/Login Manager/LoginManager.m"
+            timestampString = "514487148.05339"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "-userLogin:completion:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__37-[LoginManager userLogin:completion:]_block_invoke"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "514487148.061523"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "1907">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__copy_helper_block_"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "514487148.065723"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "MySteelHub"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/Login%20Manager/LoginManager.m"
+                  timestampString = "514487148.069436"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "29">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
