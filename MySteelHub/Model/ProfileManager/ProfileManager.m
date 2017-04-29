@@ -506,11 +506,11 @@
                  NSDictionary *dictData = [json valueForKey:@"data"];
                  owner.email = [dictData valueForKey:@"email"];
                  owner.name = [dictData valueForKey:@"name"];
-    
-            NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
                  
-             completionBlock(nil,dict);
-         }
+                 NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
+                 
+                 completionBlock(dict,nil);
+             }
          }
          else{
              if(completionBlock)
@@ -518,7 +518,7 @@
              //show error
          }
          
-     
+         
      }];
 }
 @end

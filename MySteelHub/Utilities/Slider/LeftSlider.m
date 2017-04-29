@@ -57,6 +57,14 @@
     
     self.tableView.tableFooterView = [UIView new];
     [self.tableView reloadData];
+    
+    [model_manager.profileManager getUserProfile:^(NSDictionary *json, NSError *error) {
+        if(json)
+        {
+            [self.tableView reloadData];
+        }
+    }];
+
 
 }
 
@@ -129,7 +137,7 @@
     UILabel *labelEmail = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 18)];
     [labelEmail setFont:[UIFont systemFontOfSize:12]];
     [labelEmail setText:model_manager.profileManager.owner.email];
-    //[labelEmail setText:@"test@gmail.com"];
+    [labelEmail setText:model_manager.profileManager.owner.email];
     //NSLog(@"%@",labelEmail.text);
     [labelEmail setTextColor:[UIColor whiteColor]];
     
