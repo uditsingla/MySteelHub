@@ -37,4 +37,6 @@
 -(void)getOrderswithOrdertype:(NSMutableDictionary*)dictOrderParam completionBlock:(void(^)(NSDictionary *json, NSError *error))completionBlock
 ;
 
+-(void)getUserProfile:(void(^)(NSDictionary *json, NSError *error))completionBlock;
+
 @end

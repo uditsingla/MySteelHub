@@ -492,4 +492,33 @@
     
 }
 
+-(void)getUserProfile:(void (^)(NSDictionary *, NSError *))completionBlock
+{
+    
+    [RequestManager asynchronousRequestWithPath:@"getProfile" requestType:RequestTypeGET params:nil timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json)
+     {
+         NSLog(@"Here comes orders json %@",json);
+         
+         if (statusCode == 200) {
+             
+             if([json valueForKey:@"data"])
+             {
+                 NSDictionary *dictData = [json valueForKey:@"data"];
+                 owner.email = [dictData valueForKey:@"email"];
+                 owner.name = [dictData valueForKey:@"name"];
+    
+            NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
+                 
+             completionBlock(nil,dict);
+         }
+         }
+         else{
+             if(completionBlock)
+                 completionBlock(nil,nil);
+             //show error
+         }
+         
+     
+     }];
+}
 @end

@@ -36,7 +36,7 @@
             [[NSUserDefaults standardUserDefaults] setValue:[NSString stringWithFormat:@"Bearer %@",[json objectForKey:@"token"]] forKey:@"token"];
             
             [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"isAutoLogin"];
-            
+            [model_manager.profileManager getUserProfile:nil];
             [model_manager.requirementManager getSteelBrands:nil];
             [model_manager.requirementManager getSteelSizes:nil];
             [model_manager.requirementManager getSteelGrades:nil];

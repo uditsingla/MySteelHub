@@ -128,7 +128,7 @@
     
     UILabel *labelEmail = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, tableView.frame.size.width, 18)];
     [labelEmail setFont:[UIFont systemFontOfSize:12]];
-    [labelEmail setText:[[NSUserDefaults standardUserDefaults]valueForKey:@"email"]];
+    [labelEmail setText:model_manager.profileManager.owner.email];
     //[labelEmail setText:@"test@gmail.com"];
     //NSLog(@"%@",labelEmail.text);
     [labelEmail setTextColor:[UIColor whiteColor]];
