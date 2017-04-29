@@ -13,6 +13,7 @@
 #import "AdressInfoCell.h"
 #import "FinalAmountCell.h"
 #import "EnterRTGS.h"
+#import "AddAddressVC.h"
 
 @interface OrderPreview ()
 
@@ -33,6 +34,27 @@
     
     NSLog(@"%@",selectedOrder);
     NSLog(@"%@",selectedOrder.req.arraySpecifications);
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"ID == %@", selectedOrder.addressBilling.ID];
+    NSArray *filteredArray = [model_manager.profileManager.arrayBillingAddress filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        selectedOrder.addressBilling = [filteredArray firstObject];
+        
+    }
+    
+    NSPredicate *predicate2 = [NSPredicate predicateWithFormat:@"ID == %@", selectedOrder.addressShipping.ID];
+    NSArray *filteredArray2 = [model_manager.profileManager.arrayShippingAddress filteredArrayUsingPredicate:predicate2];
+    
+    if(filteredArray2.count>0) {
+        selectedOrder.addressShipping = [filteredArray2 firstObject];
+        
+    }
+    
+    [_tableOrders reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -288,7 +310,30 @@
     return 0;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2)
+    {
+        if(indexPath.row == 0)
+        {
+            //billing address
+            AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+            UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+            viewcontroller.addressType = selectedOrder.addressBilling.addressType;
+            viewcontroller.selectedAddress = selectedOrder.addressBilling;
+            [navigationController pushViewController:viewcontroller animated:YES];
+        }
+        else if(indexPath.row == 1)
+        {
+            //shipping address
+            AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
+            UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+            viewcontroller.addressType = selectedOrder.addressShipping.addressType;
+            viewcontroller.selectedAddress = selectedOrder.addressShipping;
+            [navigationController pushViewController:viewcontroller animated:YES];
+        }
+    }
+}
 
 /*
 #pragma mark - Navigation
