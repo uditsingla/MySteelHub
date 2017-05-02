@@ -572,7 +572,6 @@
 				46F62CA51C908FDC00A61B47 /* MySteelHub */,
 				46F62CA41C908FDC00A61B47 /* Products */,
 				CA947B5EBAC5A09731B55613 /* Pods */,
-				D856835EDA49992E1E818FAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -787,6 +786,7 @@
 		CA947B5EBAC5A09731B55613 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				D856835EDA49992E1E818FAA /* Frameworks */,
 				EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */,
 				39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */,
 			);

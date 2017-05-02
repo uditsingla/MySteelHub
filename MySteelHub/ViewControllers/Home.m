@@ -153,7 +153,7 @@
 
     }
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20, combineHeight);
+    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20, combineHeight);
 }
 
 - (void)viewDidLoad
@@ -170,18 +170,21 @@
     //La
     lbl = [[UILabel alloc]init];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180+ btnLoadMore.frame.size.height + tblSellerResponse.frame.size.height );
+    lbl.frame = CGRectMake(10,80,self.view.frame.size.width-20,self.view.frame.size.height - 90 );
     //lblBorderColor.backgroundColor = kBlueColor;
     lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
     lbl.layer.borderWidth = 1.0;
-    [contentView addSubview:lbl];
+    [self.view addSubview:lbl];
+    
+    
+    [self.view bringSubviewToFront:lbl];
     
     
     
     if (!_selectedRequirement) {
         btnLoadMore.hidden = true;
         tblSellerResponse.hidden = true;
-        lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-180 );
+        lbl.frame = CGRectMake(10,80,self.view.frame.size.width-20,self.view.frame.size.height - 90 - btnSubmit.frame.size.height );
         
     }
     
@@ -463,7 +466,7 @@
         [tblSellerResponse reloadData];
     }
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
     
     
     switchPhysical.on = _selectedRequirement.isPhysical;
@@ -1027,7 +1030,7 @@
     
     [tblViewSizes reloadData];
     
-    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-95);
+    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-95);
 }
 
 #pragma mark - Swipe Cell Delegate
@@ -1109,7 +1112,7 @@
                     scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
                     
                     [tblViewSizes reloadData]; // tell table to refresh now
-                    lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
+                    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
                     
                 }
                 

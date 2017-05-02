@@ -186,6 +186,7 @@
 - (NSArray *)rightButtons
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:248/255.00 green:123/255.00 blue:1/255.00 alpha:1]
                                                 title:@"Edit"];
