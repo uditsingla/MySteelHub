@@ -506,7 +506,22 @@
                  NSDictionary *dictData = [json valueForKey:@"data"];
                  owner.email = [dictData valueForKey:@"email"];
                  owner.name = [dictData valueForKey:@"name"];
-                 
+                 owner.address = [dictData valueForKey:@"address"];
+                 if([dictData valueForKey:@"brand"] && ![[dictData valueForKey:@"brand"] isEqual:[NSNull null]])
+                     owner.brands = [dictData valueForKey:@"brand"];
+                 owner.city = [dictData valueForKey:@"city"];
+                 owner.companyName = [dictData valueForKey:@"company_name"];
+                 owner.contactNo = [NSString stringWithFormat:@"%.0f", [[dictData valueForKey:@"contact"] doubleValue]];
+                 owner.customerType = [dictData valueForKey:@"customer_type"];
+                 owner.expectedQuantity = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"exp_quantity"] doubleValue]];
+                 owner.userID = [NSString stringWithFormat:@"%i",[[dictData valueForKey:@"id"] intValue]];
+                 owner.latitude = [[dictData valueForKey:@"latitude"] doubleValue];
+                 owner.longitude = [[dictData valueForKey:@"longitude"] doubleValue];
+                 owner.pan = [NSString stringWithFormat:@"%@",[dictData valueForKey:@"pan"]];
+                 owner.role = [dictData valueForKey:@"role"];
+                 owner.state = [dictData valueForKey:@"state"];
+                 owner.tin = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"tin"] doubleValue]];
+                 owner.zip = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"zip"] doubleValue]];
                  NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
                  
                  completionBlock(dict,nil);
@@ -521,4 +536,24 @@
          
      }];
 }
+
+- (void)updateProfile:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *response, NSError *error))completionBlock
+{
+    [RequestManager asynchronousRequestWithPath:@"update/profile" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
+        NSLog(@"Here comes the json %@",json);
+        if (statusCode==200) {
+            completionBlock(json,nil);
+            
+        }
+        else{
+            completionBlock(nil,nil);
+            //show error
+        }
+        
+    } ];
+    
+    
+}
+
+
 @end

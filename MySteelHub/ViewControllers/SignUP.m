@@ -27,6 +27,9 @@
 @end
 
 @implementation SignUP
+
+@synthesize isEditProfile;
+
 -(void)viewWillAppear:(BOOL)animated{
 }
 -(void)viewWillDisappear:(BOOL)animated{
@@ -41,7 +44,15 @@
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
-    [self setTitleLabel:@"COMPLETE YOUR PROFILE"];
+    if(isEditProfile)
+    {
+        [self setTitleLabel:@"EDIT YOUR PROFILE"];
+        [btnSubmit setTitle:@"UPDATE" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self setTitleLabel:@"COMPLETE YOUR PROFILE"];
+    }
     [self setBackButton];
     
     
@@ -134,6 +145,24 @@
 //    }
     
 
+    if(isEditProfile)
+    {
+        _txtFieldUsername.text = model_manager.profileManager.owner.name;
+        _txtFieldPassword.text = @"12345678";
+        _txtFieldConfirmPass.text = @"12345678";
+        _txtFieldCompanyName.text = model_manager.profileManager.owner.companyName;
+        _txtFieldEmail.text = model_manager.profileManager.owner.email;
+        _txtFieldAddress.text = model_manager.profileManager.owner.address;
+        _txtFieldCity.text = model_manager.profileManager.owner.city;
+        _txtFieldState.text = model_manager.profileManager.owner.state;
+        _txtFieldZipCode.text = model_manager.profileManager.owner.zip;
+        _txtFieldContact.text = model_manager.profileManager.owner.contactNo;
+        _txtFieldTin.text = model_manager.profileManager.owner.tin;
+        _txtFieldPan.text = model_manager.profileManager.owner.pan;
+        _txtFieldExpected.text = model_manager.profileManager.owner.expectedQuantity;
+        [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",model_manager.profileManager.owner.customerType] forState:UIControlStateNormal];
+        selectedCategory = model_manager.profileManager.owner.customerType;
+    }
     
 }
 -(void)setupTextFields
@@ -373,7 +402,7 @@
         [self showError:errorType];
         return;
     }
-    if ([selectedCategory isEqual:@""]) {
+    if (arraySelectedCategories.count==0) {
         errorType=@"category";
         [self showError:errorType];
         return;
@@ -389,6 +418,42 @@
     NSString *strLat = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.latitude];
     NSString *strLong = [NSString stringWithFormat:@"%f",appdelegate.currentLocation.coordinate.longitude];
     
+    if(isEditProfile)
+    {
+        NSDictionary *dictParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldUsername.text,@"name",_txtFieldPassword.text,@"password",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",nil];
+        
+        
+        [model_manager.profileManager updateProfile:dictParams completion:^(NSDictionary *response, NSError *error){
+            [SVProgressHUD dismiss];
+            
+            if(response)
+            {
+                UIAlertController *alertController = [UIAlertController
+                                                      alertControllerWithTitle:@""
+                                                      message:[response valueForKey:@"msg"]
+                                                      preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *okAction = [UIAlertAction
+                                           actionWithTitle:@"Ok"
+                                           style:UIAlertActionStyleCancel
+                                           handler:^(UIAlertAction *action)
+                                           {
+                                               [self dismissViewControllerAnimated:YES completion:nil];
+                                               [self.navigationController popViewControllerAnimated:YES];
+                                               NSLog(@"OK action");
+                                           }];
+                
+                [alertController addAction:okAction];
+                [self presentViewController:alertController animated:YES completion:nil];
+            }
+            //
+            //        NSLog(@"Login Response");
+            //
+            //
+        }];
+        
+    }
+    else
+    {
     NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",@"ios",@"device_type",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
     
     
@@ -419,6 +484,8 @@
         //
         //
     }];
+        
+    }
     
     
     

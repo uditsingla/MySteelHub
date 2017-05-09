@@ -39,4 +39,7 @@
 
 -(void)getUserProfile:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+- (void)updateProfile:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *response, NSError *error))completionBlock;
+
+
 @end
