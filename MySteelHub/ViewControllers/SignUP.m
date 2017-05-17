@@ -148,8 +148,10 @@
     if(isEditProfile)
     {
         _txtFieldUsername.text = model_manager.profileManager.owner.name;
-        _txtFieldPassword.text = @"12345678";
-        _txtFieldConfirmPass.text = @"12345678";
+        _txtFieldPassword.text = @"12345";
+        _txtFieldPassword.userInteractionEnabled = false;
+        _txtFieldConfirmPass.text = @"12345";
+        _txtFieldConfirmPass.userInteractionEnabled = false;
         _txtFieldCompanyName.text = model_manager.profileManager.owner.companyName;
         _txtFieldEmail.text = model_manager.profileManager.owner.email;
         _txtFieldAddress.text = model_manager.profileManager.owner.address;
@@ -420,7 +422,7 @@
     
     if(isEditProfile)
     {
-        NSDictionary *dictParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldUsername.text,@"name",_txtFieldPassword.text,@"password",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",nil];
+        NSDictionary *dictParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"exp_quantity",strLat,@"latitude",strLong,@"longitude",nil];
         
         
         [model_manager.profileManager updateProfile:dictParams completion:^(NSDictionary *response, NSError *error){
@@ -430,7 +432,7 @@
             {
                 UIAlertController *alertController = [UIAlertController
                                                       alertControllerWithTitle:@""
-                                                      message:[response valueForKey:@"msg"]
+                                                      message:[NSString stringWithFormat:@"%@",[response valueForKey:@"msg"]]
                                                       preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *okAction = [UIAlertAction
                                            actionWithTitle:@"Ok"
