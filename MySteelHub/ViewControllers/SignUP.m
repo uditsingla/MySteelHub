@@ -165,6 +165,13 @@
         [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",model_manager.profileManager.owner.customerType] forState:UIControlStateNormal];
         selectedCategory = [model_manager.profileManager.owner.customerType componentsJoinedByString:@","];
         arraySelectedCategories = [NSMutableArray arrayWithArray:model_manager.profileManager.owner.customerType];
+        
+        if(arraySelectedCategories.count>0)
+        {
+            
+            [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",[arraySelectedCategories componentsJoinedByString:@", "]] forState:UIControlStateNormal];
+            
+        }
     }
     
 }

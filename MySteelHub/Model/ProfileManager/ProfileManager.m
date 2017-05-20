@@ -523,10 +523,12 @@
                  owner.state = [dictData valueForKey:@"state"];
                  owner.tin = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"tin"] doubleValue]];
                  owner.zip = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"zip"] doubleValue]];
-                 NSDictionary *dict = [[NSDictionary alloc]initWithObjectsAndKeys:@"true",@"success", nil];
                  
-                 completionBlock(dict,nil);
              }
+             
+             if(completionBlock)
+                 completionBlock(json,nil);
+
          }
          else{
              if(completionBlock)
