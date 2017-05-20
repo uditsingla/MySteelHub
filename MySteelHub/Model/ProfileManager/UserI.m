@@ -25,7 +25,7 @@
         zip = @"";
         contactNo = @"";
         companyName = @"";
-        customerType = @"";
+        customerType = [NSMutableArray new];
         expectedQuantity = @"";
         latitude = 0;
         longitude = 0;

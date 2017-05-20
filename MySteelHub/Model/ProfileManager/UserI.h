@@ -19,7 +19,7 @@
 @property(strong,nonatomic) NSString *zip;
 @property(strong,nonatomic) NSString *contactNo;
 @property(strong,nonatomic) NSString *companyName;
-@property(strong,nonatomic) NSString *customerType;
+@property(strong,nonatomic) NSMutableArray *customerType;
 @property(strong,nonatomic) NSString *expectedQuantity;
 @property(assign,nonatomic) double latitude;
 @property(assign,nonatomic) double longitude;

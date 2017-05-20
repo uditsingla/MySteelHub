@@ -512,7 +512,8 @@
                  owner.city = [dictData valueForKey:@"city"];
                  owner.companyName = [dictData valueForKey:@"company_name"];
                  owner.contactNo = [NSString stringWithFormat:@"%.0f", [[dictData valueForKey:@"contact"] doubleValue]];
-                 owner.customerType = [dictData valueForKey:@"customer_type"];
+                 if([dictData valueForKey:@"customer_type"] != nil && [dictData valueForKey:@"customer_type"] != [NSNull null])
+                     owner.customerType = [[dictData valueForKey:@"customer_type"] mutableCopy];
                  owner.expectedQuantity = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"exp_quantity"] doubleValue]];
                  owner.userID = [NSString stringWithFormat:@"%i",[[dictData valueForKey:@"id"] intValue]];
                  owner.latitude = [[dictData valueForKey:@"latitude"] doubleValue];

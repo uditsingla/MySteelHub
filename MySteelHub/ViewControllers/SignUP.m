@@ -163,7 +163,8 @@
         _txtFieldPan.text = model_manager.profileManager.owner.pan;
         _txtFieldExpected.text = model_manager.profileManager.owner.expectedQuantity;
         [btnCategory setTitle:[NSString stringWithFormat:@"Category : %@",model_manager.profileManager.owner.customerType] forState:UIControlStateNormal];
-        selectedCategory = model_manager.profileManager.owner.customerType;
+        selectedCategory = [model_manager.profileManager.owner.customerType componentsJoinedByString:@","];
+        arraySelectedCategories = [NSMutableArray arrayWithArray:model_manager.profileManager.owner.customerType];
     }
     
 }
@@ -422,7 +423,7 @@
     
     if(isEditProfile)
     {
-        NSDictionary *dictParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"exp_quantity",strLat,@"latitude",strLong,@"longitude",nil];
+        NSDictionary *dictParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"exp_quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",nil];
         
         
         [model_manager.profileManager updateProfile:dictParams completion:^(NSDictionary *response, NSError *error){
