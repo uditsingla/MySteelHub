@@ -36,8 +36,11 @@
     
     __weak IBOutlet UIButton *btnCategory;
 
+    __weak IBOutlet UIButton *btnSubmit;
     
 }
+
+@property(nonatomic,assign) BOOL isEditProfile;
 
 - (IBAction)btnCategoryAction:(UIButton *)sender;
 @end

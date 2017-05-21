@@ -9,6 +9,7 @@
 #import "LeftSlider.h"
 #import "LeftSliderCell.h"
 #import "PickAddressVC.h"
+#import "SignUP.h"
 
 //#import "Appointments.h"
 //#import "History.h"
@@ -144,7 +145,20 @@
     [view addSubview:label];
     [view addSubview:labelEmail];
     [view setBackgroundColor:kBlueColor]; //your background color...
+    
+    UITapGestureRecognizer *gesRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)]; // Declare the Gesture.
+    gesRecognizer.delegate = self;
+    [view addGestureRecognizer:gesRecognizer]; // Add Gesture to your view.
+
     return view;
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)gestureRecognizer{
+    NSLog(@"Tapped");
+    SignUP *signUpVc = [kLoginStoryboard instantiateViewControllerWithIdentifier:@"signUp"];
+    signUpVc.isEditProfile = true;
+    [self.navigationController pushViewController:signUpVc animated:YES];
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
