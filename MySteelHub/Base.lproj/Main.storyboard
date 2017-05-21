@@ -1025,6 +1025,7 @@
                         <outlet property="btnRequiredByDate" destination="F9N-Fi-K4K" id="aDN-fJ-v1N"/>
                         <outlet property="btnSubmit" destination="qtx-Yn-yvn" id="YJa-TR-yfH"/>
                         <outlet property="contentView" destination="x5V-Wu-urZ" id="sCB-Ej-E6H"/>
+                        <outlet property="contraintBrandsLbl" destination="1d0-G5-0Kt" id="Dbi-y1-e6C"/>
                         <outlet property="customViewHeightConstarint" destination="Aus-fW-okv" id="EEG-Fb-s08"/>
                         <outlet property="scrollContentViewHeightConstraint" destination="3AC-s2-jo4" id="bS8-Nd-wTL"/>
                         <outlet property="sellerReponseHeightConstraint" destination="nP6-8f-q1d" id="Btv-Hi-wSp"/>

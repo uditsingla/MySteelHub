@@ -22,6 +22,7 @@
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
+    __weak IBOutlet NSLayoutConstraint *contraintBrandsLbl;
     __weak IBOutlet UITableView *tblSellerResponse;
     
     __weak IBOutlet UISwitch *switchPhysical;
@@ -259,7 +260,8 @@
                   forKeyPath:@"_placeholderLabel.textColor"];
     
     
-    //    btnGradeRequired.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
+    btnPreferedBrands.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+       // btnGradeRequired.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     //    btnPreferedBrands.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     //    btnRequiredByDate.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     
@@ -781,6 +783,26 @@
     
 }
 
+- (CGFloat)getLabelHeight:(UIButton *)btn
+{
+    CGSize constraint = CGSizeMake(btn.frame.size.width, CGFLOAT_MAX);
+    CGSize size;
+    
+    NSLog(@"string : %@",btn.titleLabel.text);
+    NSStringDrawingContext *context = [[NSStringDrawingContext alloc] init];
+    CGSize boundingBox = [btn.titleLabel.text boundingRectWithSize:constraint
+                                                  options:NSStringDrawingUsesLineFragmentOrigin
+                                               attributes:@{NSFontAttributeName:btn.titleLabel.font}
+                                                  context:context].size;
+    
+    size = CGSizeMake(ceil(boundingBox.width), ceil(boundingBox.height));
+    
+    
+    NSLog(@"string size: %f",size.height);
+
+    return size.height + 3;
+}
+
 -(void)tableDoneButtonPressed
 {
     pickerGradeRequiredView.hidden = YES;
@@ -791,6 +813,15 @@
     {
         
         [btnPreferedBrands setTitle:[NSString stringWithFormat:@"Prefered Brands : %@",[arraySelectedPreferredBrands componentsJoinedByString:@", "]] forState:UIControlStateNormal];
+        
+       contraintBrandsLbl.constant =  [self getLabelHeight:btnPreferedBrands];
+        
+        //NSString *myString = btnPreferedBrands.titleLabel.text;
+        
+        
+       // CGSize stringsize = [myString sizeWithFont:[UIFont fontWithName:@"Raleway-Regular" size:15]];
+        //NSLog(@"string size: %f",stringsize.height);
+
         
     }
     
