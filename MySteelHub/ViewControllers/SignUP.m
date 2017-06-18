@@ -650,6 +650,7 @@
 
 - (IBAction)btnCategoryAction:(UIButton *)sender {
     
+    [self.view endEditing:YES];
     pickerViewCategory.hidden = NO;
     [self.view bringSubviewToFront:pickerViewCategory];
     

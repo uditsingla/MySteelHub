@@ -22,7 +22,7 @@
         req = [RequirementI new];
         finalAmount = @"";
         statusCode = 0;
-        orderID = 0;
+        orderID = @"";
         RTGS = @"";
         billingID = @"";
         shippingID = @"";
@@ -42,6 +42,11 @@
         NSLog(@"Here comes the json %@",json);
         if (status==200) {
             
+            //remove order from pending list
+            NSPredicate *predicateOrderId = [NSPredicate predicateWithFormat:@"orderID == %@",self.orderID];
+            NSArray *filteredArray = [model_manager.profileManager.arrayPendingOrders filteredArrayUsingPredicate:predicateOrderId];
+            if (filteredArray.count>0)
+                [model_manager.profileManager.arrayPendingOrders removeObject:filteredArray.firstObject];
             
             if(completionBlock)
                 completionBlock(json,nil);
