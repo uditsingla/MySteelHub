@@ -8,7 +8,7 @@
 
 #import "Requirements.h"
 #import "Home.h"
-
+#import "Constants.h"
 @interface Requirements ()<UITableViewDelegate,UITableViewDataSource,RequirementListingDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
@@ -168,9 +168,14 @@
     RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
     
     UILabel *lblCity=(UILabel*)[view viewWithTag:111];
-    lblCity.text=[requirement.city capitalizedString];
-
     UILabel *lblQuantity=(UILabel*)[view viewWithTag:222];
+    UILabel *lblDate=(UILabel*)[view viewWithTag:333];
+    UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
+    UIImageView *imgViewStatus=(UIImageView*)[view viewWithTag:777];
+    UIImageView *imgViewNotification=(UIImageView*)[view viewWithTag:66];
+    
+    
+    lblCity.text=[requirement.city capitalizedString];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name == %@)", [requirement.state capitalizedString]];
     NSArray *filteredArray = [model_manager.requirementManager.arrayStates filteredArrayUsingPredicate:predicate];
@@ -183,20 +188,32 @@
     else
         lblQuantity.text=[requirement.state capitalizedString];
     
-    UILabel *lblDate=(UILabel*)[view viewWithTag:333];
+   
     lblDate.text=[requirement.requiredByDate capitalizedString];
     
-    UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
+    
     lblAmount.text= [NSString stringWithFormat:@"%@/-",requirement.budget];
     
-    UIImageView *imgViewStatus=(UIImageView*)[view viewWithTag:777];
+    
+    //set text fonts and respectiver Image
+    
     if(requirement.isUnreadFlag == true)
     {
         imgViewStatus.backgroundColor = RedColor;
+        
+        lblCity.font = fontRalewayBold12;
+        lblQuantity.font = fontRalewayBold12;
+        lblDate.font = fontRalewayBold12;
+        lblAmount.font = fontRalewayBold12;
     }
     else
     {
         imgViewStatus.backgroundColor = kBlueColor;
+        
+        lblCity.font = fontRaleway13;
+        lblQuantity.font = fontRaleway13;
+        lblDate.font = fontRaleway13;
+        lblAmount.font = fontRaleway13;
     }
 
     
