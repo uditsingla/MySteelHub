@@ -255,7 +255,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile.png" translatesAutoresizingMaskIntoConstraints="NO" id="EwL-bx-Wg5">
-                                <rect key="frame" x="137" y="82" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="82" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="COb-2V-nBA"/>
                                     <constraint firstAttribute="width" constant="100" id="Uwo-Hn-K91"/>
@@ -940,15 +940,25 @@
                                                                         <constraint firstAttribute="width" constant="4" id="uV7-1K-fU9"/>
                                                                     </constraints>
                                                                 </imageView>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MR6-U1-0hU">
+                                                                    <rect key="frame" x="292" y="42" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="16" id="HZZ-8l-b7M"/>
+                                                                        <constraint firstAttribute="width" constant="16" id="cfP-vl-qia"/>
+                                                                    </constraints>
+                                                                </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="trailing" secondItem="MR6-U1-0hU" secondAttribute="trailing" constant="15" id="0QO-5F-i9Y"/>
                                                                 <constraint firstItem="U2a-16-OzH" firstAttribute="leading" secondItem="Fzh-z5-dW1" secondAttribute="leading" id="6Mi-sN-PpU"/>
+                                                                <constraint firstItem="MR6-U1-0hU" firstAttribute="centerY" secondItem="Fzh-z5-dW1" secondAttribute="centerY" id="Tc6-hM-RCF"/>
                                                                 <constraint firstItem="U2a-16-OzH" firstAttribute="top" secondItem="Fzh-z5-dW1" secondAttribute="top" constant="3" id="w1V-yG-TTb"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="imgViewStatus" destination="U2a-16-OzH" id="qAA-Nw-3av"/>
+                                                            <outlet property="imgviewStatus" destination="MR6-U1-0hU" id="vy7-zg-gsp"/>
                                                             <outlet property="lblAmount" destination="Blx-QR-215" id="ZlH-HD-BCj"/>
                                                             <outlet property="lblBargainStatus" destination="RHM-tL-Pba" id="mrT-Vy-4Hj"/>
                                                             <outlet property="lblBrands" destination="mpT-kr-WfE" id="OWb-lJ-zyx"/>

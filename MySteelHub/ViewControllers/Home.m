@@ -857,7 +857,8 @@
         cell.lblSellerName.text = [NSString stringWithFormat:@"Seller : %@", currentRow.sellerName];
         cell.lblAmount.text = [NSString stringWithFormat:@"Quotation Amount : Rs %@",currentRow.initialAmount];
         cell.lblBrands.text = [NSString stringWithFormat:@"Brands : %@",[currentRow.arrayBrands componentsJoinedByString:@","]];
-        if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue>0)
+        
+        if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue > 0)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
         else if(currentRow.isBargainRequired)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
@@ -865,21 +866,43 @@
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
         
         
+        cell.lblSellerName.font = fontRaleway13;
+        cell.lblAmount.font = fontRaleway13;
+        cell.lblBrands.font = fontRaleway13;
+        
+        cell.imgViewStatus.hidden = true;
+        
         if(currentRow.isAccepted)
         {
             cell.imgViewStatus.backgroundColor = GreenColor
+            cell.imgViewStatus.hidden = false;
+            cell.imgviewStatus.image = [UIImage imageNamed:@"checkDouble.png"];
         }
         else if(!currentRow.isBuyerRead)
         {
             cell.imgViewStatus.backgroundColor = RedColor
+            
+            cell.lblSellerName.font = fontRalewayBold12;
+            cell.lblAmount.font = fontRalewayBold12;
+            cell.lblBrands.font = fontRalewayBold12;
+            
         }
         else if(!currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
         {
             cell.imgViewStatus.backgroundColor = OrangeColor
+            cell.imgViewStatus.hidden = false;
+            cell.imgviewStatus.image = [UIImage imageNamed:@"checkSingle.png"];
+
         }
         else if(currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
         {
             cell.imgViewStatus.backgroundColor = PurpleColor
+            cell.imgViewStatus.hidden = false;
+            cell.imgviewStatus.image = [UIImage imageNamed:@"notificationBell.png"];
+            
+            cell.lblSellerName.font = fontRalewayBold12;
+            cell.lblAmount.font = fontRalewayBold12;
+            cell.lblBrands.font = fontRalewayBold12;
         }
         else
         {
