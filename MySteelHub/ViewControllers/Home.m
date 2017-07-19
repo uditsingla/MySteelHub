@@ -19,43 +19,19 @@
 #import "OrderI.h"
 #import "PickAddressVC.h"
 
+#import "HomeQuantityCell.h"
+#import "HomeAddMoreCell.h"
+#import "HomeProductDetailCell.h"
+
 
 @interface Home ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource,SWTableViewCellDelegate>
 {
-    __weak IBOutlet UITableView *tblSellerResponse;
-    
-    __weak IBOutlet UISwitch *switchPhysical;
-    __weak IBOutlet UISwitch *switchChemical;
-    __weak IBOutlet UISwitch *switchCertReq;
-    
-    __weak IBOutlet UISegmentedControl *sgmtControlLenghtRequired;
-    
-    __weak IBOutlet UISegmentedControl *sgmtControlTypeRequired;
-    
-    __weak IBOutlet UIButton *btnPreferedBrands;
-    
-    __weak IBOutlet UIButton *btnGradeRequired;
-    
-    __weak IBOutlet UITextField *txtFieldCity;
-    
-    __weak IBOutlet UITextField *txtFieldState;
-    
-    __weak IBOutlet UITextField *txtFieldBudget;
-    
-    __weak IBOutlet UIButton *btnRequiredByDate;
-    
-    __weak IBOutlet UIButton *btnPreferedTax;
-    
+    __weak IBOutlet UITableView *tblView;
     __weak IBOutlet UIButton *btnSubmit;
-    
     
     CLLocationManager *locationManager;
     
-    __weak IBOutlet UIScrollView *_scrollView;
-    
-    __weak IBOutlet UITableView *tblViewSizes;
     NSString *selectedDiameter;
-    UITextField *selectedDiameterTextfield;
     
     NSMutableArray *arrayTblDict;
     
@@ -72,7 +48,6 @@
     NSString *selectedGradeRequired;
     NSString *selectedGradeID;
     
-    
     UIView *datePickerView;
     NSString *selectedDate;
     
@@ -81,27 +56,12 @@
     NSString *selectedTax;
     NSString *selectedTaxID;
     
-    UILabel *lbCity,*lbState,*lbAmount;
     
     UIView *pickerViewState;
     NSMutableArray *arrayStates;
     NSString *selectedState;
 
-    
-    //for content view border
-    UILabel *lbl;
-    
-    __weak IBOutlet UITextField *txtFieldQuantity;
-    
-    __weak IBOutlet UIView *contentView;
-    __weak IBOutlet NSLayoutConstraint *tblViewHeightConstraint;
-    __weak IBOutlet NSLayoutConstraint *scrollContentViewHeightConstraint;
-    
-    //Array seller Response
-    
-    __weak IBOutlet UIView *viewCustom;
-    __weak IBOutlet NSLayoutConstraint *sellerReponseHeightConstraint;
-    __weak IBOutlet NSLayoutConstraint *customViewHeightConstarint;
+
     __weak IBOutlet UIButton *btnLoadMore;
     
     BOOL isLoadMoreClicked;
@@ -109,11 +69,9 @@
     BOOL isAccepted;
 }
 
-- (IBAction)preferedBrandsBtnAction:(UIButton *)sender;
-- (IBAction)gradeRequiredBtnAction:(UIButton *)sender;
+
 - (IBAction)submitBtnAction:(UIButton *)sender;
-- (IBAction)requiredByDateBtnAction:(UIButton *)sender;
-- (IBAction)preferedTaxBtnAction:(UIButton *)sender;
+
 
 - (IBAction)clkLoadMore:(UIButton *)sender;
 
@@ -124,37 +82,10 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-    [self setMarginBoundary];
+   
     
 }
 
--(void)setMarginBoundary
-{
-    float requirment =_selectedRequirement.arrayConversations.count * 44;
-    float sellerResponse =arrayTblDict.count * 100;
-    
-    
-    float costantheight = 0;
- 
-    if (isLoadMoreClicked)
-    {
-        costantheight = 404;
-    }
-    
-    float combineHeight;
-    
-    if (_selectedRequirement) {
-        combineHeight = requirment+ sellerResponse+costantheight+100;
-
-    }
-    else
-    {
-        combineHeight = requirment+ sellerResponse+costantheight+50;
-
-    }
-    
-    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20, combineHeight);
-}
 
 - (void)viewDidLoad
 {
@@ -167,29 +98,16 @@
     [self clkLoadMore:nil];
     
     isAccepted = NO;
-    //La
-    lbl = [[UILabel alloc]init];
-    
-    lbl.frame = CGRectMake(10,80,self.view.frame.size.width-20,self.view.frame.size.height - 90 );
-    //lblBorderColor.backgroundColor = kBlueColor;
-    lbl.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    lbl.layer.borderWidth = 1.0;
-    [self.view addSubview:lbl];
-    
-    
-    [self.view bringSubviewToFront:lbl];
-    
     
     
     if (!_selectedRequirement) {
         btnLoadMore.hidden = true;
-        tblSellerResponse.hidden = true;
-        lbl.frame = CGRectMake(10,80,self.view.frame.size.width-20,self.view.frame.size.height - 90 - btnSubmit.frame.size.height );
         
     }
     
     
     //switch controlls reframe
+    /*
     switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
     switchPhysical.onTintColor = kBlueColor;
     
@@ -199,7 +117,7 @@
     switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
     switchCertReq.onTintColor = kBlueColor;
     
-    
+    */
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
     
@@ -216,7 +134,7 @@
     [self setMenuButton];
     [self setBackButton];
     
-    
+    /*
     //Custom UI for TextFilds
     [self customtxtfield:txtFieldCity withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
     
@@ -258,6 +176,8 @@
     [txtFieldBudget setValue:[UIColor lightGrayColor]
                   forKeyPath:@"_placeholderLabel.textColor"];
     
+    */
+    
     
     //    btnGradeRequired.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
     //    btnPreferedBrands.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
@@ -268,8 +188,8 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
-    tblViewSizes.dataSource = self;
-    tblViewSizes.delegate = self;
+    tblView.dataSource = self;
+    tblView.delegate = self;
     
     
    // tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
@@ -381,8 +301,8 @@
         if(model_manager.requirementManager.arraySteelBrands.count>0)
         {
             arrayPreferredBrands = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelBrands];
-            UITableView *tblView = [pickerPreferredBrandsView viewWithTag:222];
-            [tblView reloadData];
+            UITableView *tblViewBrands = [pickerPreferredBrandsView viewWithTag:222];
+            [tblViewBrands reloadData];
             
         }
     }];
@@ -424,21 +344,20 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneButton, nil]];
+    
+    /*
     txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
     
     txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
     
+    */
     
     if(_selectedRequirement)
     {
         [self updateRequirementDetails];
     }
     
-    
-    else
-    {
-        tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44+5;
-    }
+
     
     
 }
@@ -453,21 +372,9 @@
     
     arrayTblDict = nil;
     arrayTblDict = _selectedRequirement.arraySpecifications;
-    tblViewHeightConstraint.constant = (arrayTblDict.count)*44 + 20;
-    scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + tblViewHeightConstraint.constant - 150;
-    [tblViewSizes reloadData];
+    [tblView reloadData];
     
-    if(_selectedRequirement.arrayConversations.count > 0)
-    {
-        sellerReponseHeightConstraint.constant = (_selectedRequirement.arrayConversations.count)*100 ;
-        
-        scrollContentViewHeightConstraint.constant = scrollContentViewHeightConstraint.constant + sellerReponseHeightConstraint.constant;
-        
-        [tblSellerResponse reloadData];
-    }
-    
-    //lbl.frame = CGRectMake(10,20,self.view.frame.size.width-20,contentView.frame.size.height-65);
-    
+    /*
     
     switchPhysical.on = _selectedRequirement.isPhysical;
     switchChemical.on = _selectedRequirement.isChemical;
@@ -485,6 +392,7 @@
     [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",_selectedRequirement.requiredByDate] forState:UIControlStateNormal];
     
     [btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",_selectedRequirement.taxType] forState:UIControlStateNormal];
+    */
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
     NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
@@ -493,7 +401,6 @@
         isAccepted = YES;
     }
     
-    tblViewHeightConstraint.constant = (arrayTblDict.count)*44+15;
     
     //update read status
     for(Conversation *conversation in _selectedRequirement.arrayConversations)
@@ -501,9 +408,8 @@
         if(conversation.initialAmount.intValue>0 && conversation.isBuyerRead == false)
         {
             [_selectedRequirement updateBuyerReadStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
-                
-                //conversation.isBuyerRead = true;
-                //[tblSellerResponse reloadData];
+
+                [tblView reloadData];
 
             }];
         }
@@ -512,7 +418,7 @@
             [_selectedRequirement updateBuyerReadBargainStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
                 
                 conversation.isBuyerReadBargain = true;
-                [tblSellerResponse reloadData];
+                [tblView reloadData];
             }];
         }
     }
@@ -547,6 +453,7 @@
 
 -(void)disableUIElements
 {
+    /*
     tblViewSizes.userInteractionEnabled = NO;
     switchPhysical.userInteractionEnabled = NO;
     switchChemical.userInteractionEnabled = NO;
@@ -559,11 +466,13 @@
     txtFieldState.userInteractionEnabled = NO;
     txtFieldBudget.userInteractionEnabled = NO;
     btnRequiredByDate.userInteractionEnabled = NO;
+    btnPreferedTax.userInteractionEnabled = NO;
+    */
     pickerToolBarView.userInteractionEnabled = NO;
     pickerPreferredBrandsView.userInteractionEnabled = NO;
     pickerGradeRequiredView.userInteractionEnabled = NO;
     datePickerView.userInteractionEnabled = NO;
-    btnPreferedTax.userInteractionEnabled = NO;
+    
 }
 
 
@@ -597,15 +506,15 @@
 
 -(void)createTableViewWithTag:(int)tag inView:(UIView*)parentview
 {
-    UITableView *tblView=[[UITableView alloc]init];
-    tblView.frame=CGRectMake(0,44,self.view.frame.size.width, 216-44);
-    [tblView setDataSource: self];
-    [tblView setDelegate: self];
-    tblView.tag = tag;
-    tblView.backgroundColor = [UIColor whiteColor];
+    UITableView *tblViewSellerResponse=[[UITableView alloc]init];
+    tblViewSellerResponse.frame=CGRectMake(0,44,self.view.frame.size.width, 216-44);
+    [tblViewSellerResponse setDataSource: self];
+    [tblViewSellerResponse setDelegate: self];
+    tblViewSellerResponse.tag = tag;
+    tblViewSellerResponse.backgroundColor = [UIColor whiteColor];
     
     
-    [parentview addSubview:tblView];
+    [parentview addSubview:tblViewSellerResponse];
     
     
     UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
@@ -667,7 +576,7 @@
                     [df stringFromDate:datePicker.date]];
     df = nil;
     
-    [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",selectedDate] forState:UIControlStateNormal];
+   // [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",selectedDate] forState:UIControlStateNormal];
 }
 
 
@@ -775,9 +684,7 @@
         txtFieldState.text = [selectedState capitalizedString];
     }
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 0, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+
     
 }
 
@@ -815,42 +722,95 @@
     
     
 }
+    
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+    {
+        if(tableView = tblView)
+        return 3;
+        
+        else if(tableView.tag == 222)
+        return 1;
+    }
+    
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == tblSellerResponse) {
-        NSLog(@"Rows Count : %lu",(unsigned long)_selectedRequirement.arrayConversations.count);
-        
-        return _selectedRequirement.arrayConversations.count;
-    }
-    
-    else if(tableView.tag==222)
-        return arrayPreferredBrands.count;
-
-    
-    else if (tableView == tblViewSizes)
+    switch (section)
     {
+        case 0:
+        
         if (_selectedRequirement) {
             return arrayTblDict.count;
         }
         return arrayTblDict.count+1;
+        
+        break;
+        case 1:
+        return 1;
+        break;
+        
+        case 2:
+        return _selectedRequirement.arrayConversations.count;
+        break;
+        
+        default:
+        break;
     }
+    
+    else if(tableView.tag == 222)
+        return arrayPreferredBrands.count;
     
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (tableView == tblSellerResponse)
-    {
-        static NSString *_simpleTableIdentifier = @"Home_SellerResponse";
+    switch (indexPath.section) {
         
-        Home_SellerResponse *cell = (Home_SellerResponse*)[tblSellerResponse dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
-        // Configure the cell...
-        if(cell==nil)
+        case 0:
+        if((indexPath.row == arrayTblDict.count) &&  !_selectedRequirement)
         {
-            cell = [[Home_SellerResponse alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
+            HomeAddMoreCell *cell = (HomeAddMoreCell *)[tableView dequeueReusableCellWithIdentifier:"HomeAddMoreCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            return cell;
         }
+        else
+        {
+            HomeQuantityCell *cell = (HomeQuantityCell *)[tableView dequeueReusableCellWithIdentifier:"HomeQuantityCell"];
+            
+            NSArray *arrayRightBtns = [self rightButtons];
+            [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+            [cell setDelegate:self];
+            
+            cell.txtSize.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"size"];
+            cell.txtQuantity.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"quantity"];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cell;
+        }
+        
+        break;
+        
+        case 1:
+        
+        HomeProductDetailCell *cell = (HomeProductDetailCell *)[tableView dequeueReusableCellWithIdentifier:"HomeProductDetailCell"];
+        
+        
+        cell.switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        cell.switchPhysical.onTintColor = kBlueColor;
+        
+        switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        switchChemical.onTintColor = kBlueColor;
+        
+        switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
+        switchCertReq.onTintColor = kBlueColor;
+        
+        break:
+        
+        case 2:
+        
+        Home_SellerResponse *cell = (Home_SellerResponse *)[tableView dequeueReusableCellWithIdentifier:"Home_SellerResponse"];
         
         Conversation *currentRow = [_selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
         
@@ -859,11 +819,11 @@
         cell.lblBrands.text = [NSString stringWithFormat:@"Brands : %@",[currentRow.arrayBrands componentsJoinedByString:@","]];
         
         if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue > 0)
-            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
+        cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
         else if(currentRow.isBargainRequired)
-            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
+        cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
         else
-            cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
+        cell.lblBargainStatus.text = [NSString stringWithFormat:@"Slide left to view more options"];
         
         
         cell.lblSellerName.font = fontRaleway13;
@@ -892,7 +852,7 @@
             cell.imgViewStatus.backgroundColor = OrangeColor
             cell.imgViewStatus.hidden = false;
             cell.imgviewStatus.image = [UIImage imageNamed:@"checkSingle.png"];
-
+            
         }
         else if(currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
         {
@@ -925,9 +885,19 @@
         
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
         return cell;
+        
+        break;
+        
+        
+        default:
+        break;
     }
     
-    if(tableView.tag==222)
+    
+    
+
+    
+     if(tableView.tag == 222)
     {
         static NSString *_simpleTableIdentifier = @"CellIdentifier";
         
@@ -960,46 +930,7 @@
     }
     
     
-    else
-    {
-        HomeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomCell"];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        //cell.contentView.backgroundColor = [UIColor redColor];
-        
-        
-        if(indexPath.row==arrayTblDict.count)
-        {
-            cell.btnAdd.hidden = NO;
-            cell.txtFieldDiameter.hidden = YES;
-            cell.txtFieldQuantity.hidden = YES;
-            [cell setRightUtilityButtons:nil WithButtonWidth:0];
-            [cell setDelegate:nil];
-            
-        }
-        else
-        {
-            cell.txtFieldDiameter.hidden = NO;
-            cell.txtFieldQuantity.hidden = NO;
-            cell.btnAdd.hidden = YES;
-            
-            NSArray *arrayRightBtns = [self rightButtons];
-            [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
-            [cell setDelegate:self];
-            
-            cell.txtFieldDiameter.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"size"];
-            cell.txtFieldQuantity.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"quantity"];
-            
-            
-            
-        }
-        
-        if(_selectedRequirement)
-        {
-            cell.btnAdd.hidden = YES;
-        }
-        return cell;
-    }
+    
     
 }
 
@@ -1236,7 +1167,7 @@
     
 }
 
-
+/*
 -(void)getUserLocation
 {
     locationManager = [[CLLocationManager alloc] init];
@@ -1255,12 +1186,8 @@
         [locationManager startUpdatingLocation]; //Will update location immediately
     }
 }
--(IBAction)btnClicked:(id)sender
-{
-    [RequestManager asynchronousRequestWithPath:@"" requestType:RequestTypePOST params:nil timeOut:60 includeHeaders:NO onCompletion:^(long statusCode, NSDictionary *json) {
-        NSLog(@"Here comes the json %@",json);
-    }];
-}
+ */
+
 
 
 //- (IBAction)btnPhysical:(id)sender {
@@ -1294,9 +1221,7 @@
 
 -(void)Back
 {
-    
     [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 #pragma Mark - TextFiled Delegates
@@ -1351,67 +1276,41 @@
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if(textField.tag==777)
     {
-        [self.view endEditing:YES];
-
-        pickerToolBarView.hidden = NO;
-        [self.view bringSubviewToFront:pickerToolBarView];
-        //        if(textField.text.length>0)
-        //        {
-        //            selectedDiameter = textField.text;
-        //        }
-        //        else
+        if(textField.tag==777)
+        {
+            [self.view endEditing:YES];
+            
+            pickerToolBarView.hidden = NO;
+            [self.view bringSubviewToFront:pickerToolBarView];
+            
+            selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
+            
+            UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
+            
+            
+            [pickerView selectRow:0 inComponent:0 animated:NO];
+            
+            
+            selectedDiameterTextfield = textField;
+            [textField resignFirstResponder];
+        }
         
-        selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
+        else if (textField == txtFieldCity)
+        {
+            lbCity.text = @"   Delivery City :";
+            
+        }
+        else if (textField == txtFieldBudget)
+        {
+            lbAmount.text = @"   Budget Amount (Rs) :";
+            
+        }
         
-        UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
-        
-        
-        [pickerView selectRow:0 inComponent:0 animated:NO];
-        
-        
-        selectedDiameterTextfield = textField;
-        [textField resignFirstResponder];
+        return YES;
     }
     
-    else if (textField == txtFieldCity)
-    {
-        lbCity.text = @"   Delivery City :";
-        
-    }
-    //    else if (textField == txtFieldState)
-    //    {
-    //        lbState.text = @"   State :";
-    //
-    //    }
-    else if (textField == txtFieldBudget)
-    {
-        lbAmount.text = @"   Budget Amount (Rs) :";
-        
-    }
-    else if(textField == txtFieldState)
-    {
-        lbState.text = @"   State :";
-        [txtFieldState resignFirstResponder];
-        [self.view endEditing:YES];
-        pickerViewState.hidden = NO;
-        [self.view bringSubviewToFront:pickerViewState];
-        
-        if(arrayStates.count>0)
-            selectedState = [NSString stringWithFormat:@"%@",[[arrayStates objectAtIndex: 0] valueForKey:@"name"]];
-        
-        UIPickerView *pickerView = [pickerViewState viewWithTag:777];
-        
-        [pickerView selectRow:0 inComponent:0 animated:NO];
-        
-        return NO;
-    }
-
-    return YES;
-}
-
+/*
 #pragma mark - Core Location Delegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
@@ -1451,6 +1350,7 @@
             break;
     }
 }
+*/
 
 #pragma mark Keyboard
 -(void)showKeyboard:(NSNotification*)notification
@@ -1492,37 +1392,9 @@
  }
  */
 
-- (IBAction)preferedBrandsBtnAction:(UIButton *)sender {
-    pickerPreferredBrandsView.hidden = NO;
-    [self.view bringSubviewToFront:pickerPreferredBrandsView];
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
-    
-    [self.view endEditing:YES];
 
-    
-}
 
-- (IBAction)gradeRequiredBtnAction:(UIButton *)sender {
-    pickerGradeRequiredView.hidden = NO;
-    [self.view bringSubviewToFront:pickerGradeRequiredView];
-    selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
-    selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
-    
-    
-    UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
-    
-    [pickerView selectRow:0 inComponent:0 animated:NO];
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
-    
-    [self.view endEditing:YES];
 
-}
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
@@ -1603,32 +1475,9 @@
     }
 }
 
-- (IBAction)requiredByDateBtnAction:(UIButton *)sender {
-    datePickerView.hidden = NO;
-    [self.view bringSubviewToFront:datePickerView];
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
-    [self.view endEditing:YES];
 
-}
 
-- (IBAction)preferedTaxBtnAction:(UIButton *)sender {
-    pickerTaxView.hidden = NO;
-    [self.view bringSubviewToFront:pickerTaxView];
-    
-    selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
-    selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
-    
-    UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
-    
-    [pickerView selectRow:0 inComponent:0 animated:NO];
-    
-    [self.view endEditing:YES];
 
-    
-}
 
 -(void)showAlert:(NSString *)errorMsg
 {
@@ -1651,6 +1500,84 @@
                              
                          }];
     [alert addAction:ok];
+    
+}
+    
+   
+#pragma mark - Tap Gestures
+    
+- (IBAction)clkPreferedBrands:(UITapGestureRecognizer *)sender {
+    
+    pickerPreferredBrandsView.hidden = NO;
+    [self.view bringSubviewToFront:pickerPreferredBrandsView];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+    [self.view endEditing:YES];
+}
+    
+- (IBAction)clkGradeRequired:(UITapGestureRecognizer *)sender
+    {
+    pickerGradeRequiredView.hidden = NO;
+    [self.view bringSubviewToFront:pickerGradeRequiredView];
+    selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
+    selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
+    
+    
+    UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    
+    [self.view endEditing:YES];
+
+}
+    
+- (IBAction)clkRequiredByDate:(UITapGestureRecognizer *)sender {
+    datePickerView.hidden = NO;
+    [self.view bringSubviewToFront:datePickerView];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    _scrollView.contentInset = contentInsets;
+    _scrollView.scrollIndicatorInsets = contentInsets;
+    [self.view endEditing:YES];
+    
+    }
+    
+- (IBAction)clkState:(UITapGestureRecognizer *)sender {
+    lbState.text = @"   State :";
+    [txtFieldState resignFirstResponder];
+    [self.view endEditing:YES];
+    pickerViewState.hidden = NO;
+    [self.view bringSubviewToFront:pickerViewState];
+    
+    if(arrayStates.count>0)
+    selectedState = [NSString stringWithFormat:@"%@",[[arrayStates objectAtIndex: 0] valueForKey:@"name"]];
+    
+    UIPickerView *pickerView = [pickerViewState viewWithTag:777];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
+
+}
+    
+- (IBAction)clkPreferedTax:(UITapGestureRecognizer *)sender {
+    
+    pickerTaxView.hidden = NO;
+    [self.view bringSubviewToFront:pickerTaxView];
+    
+    selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
+    selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
+    
+    UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
+    
+    [pickerView selectRow:0 inComponent:0 animated:NO];
+    
+    [self.view endEditing:YES];
     
 }
 

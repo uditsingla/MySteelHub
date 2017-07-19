@@ -61,6 +61,10 @@
 		1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 1885057A1CDF770100086EC8 /* RequirementDetail.m */; };
 		1885057E1CDF7B9000086EC8 /* img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1885057C1CDF7B9000086EC8 /* img@2x.png */; };
 		1885057F1CDF7B9000086EC8 /* img@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1885057D1CDF7B9000086EC8 /* img@3x.png */; };
+		18B4AA5F1F1F4A5A00CA582B /* HomeQuantityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4AA5E1F1F4A5A00CA582B /* HomeQuantityCell.m */; };
+		18B4AA621F1F4A7100CA582B /* HomeAddMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4AA611F1F4A7100CA582B /* HomeAddMoreCell.m */; };
+		18B4AA651F1F4AA600CA582B /* HomeProductDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4AA641F1F4AA600CA582B /* HomeProductDetailCell.m */; };
+		18B4AA681F1F4B0D00CA582B /* Home_SellerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B4AA671F1F4B0D00CA582B /* Home_SellerResponse.m */; };
 		461970B31D9073CB00D88DA2 /* splash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 461970B21D9073CB00D88DA2 /* splash@2x.png */; };
 		461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 461BE7CE1CAF01C000A8F3DC /* BaseViewController.m */; };
@@ -84,7 +88,6 @@
 		465B62471EA3D40C006A6CE0 /* FinalAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B62461EA3D40C006A6CE0 /* FinalAmountCell.m */; };
 		467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5E9E1D59AE1200407925 /* ForgotPassword.m */; };
 		467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5EA11D59AF4C00407925 /* ChangePassword.m */; };
-		46925FFE1D8730C30097469E /* Home_SellerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 46925FFD1D8730C30097469E /* Home_SellerResponse.m */; };
 		469942971D3BFBFD00378968 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942851D3BFBFD00378968 /* Raleway-Black.ttf */; };
 		469942981D3BFBFD00378968 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */; };
 		469942991D3BFBFD00378968 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942871D3BFBFD00378968 /* Raleway-Bold.ttf */; };
@@ -225,6 +228,14 @@
 		1885057A1CDF770100086EC8 /* RequirementDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequirementDetail.m; sourceTree = "<group>"; };
 		1885057C1CDF7B9000086EC8 /* img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img@2x.png"; sourceTree = "<group>"; };
 		1885057D1CDF7B9000086EC8 /* img@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img@3x.png"; sourceTree = "<group>"; };
+		18B4AA5D1F1F4A5A00CA582B /* HomeQuantityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeQuantityCell.h; sourceTree = "<group>"; };
+		18B4AA5E1F1F4A5A00CA582B /* HomeQuantityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeQuantityCell.m; sourceTree = "<group>"; };
+		18B4AA601F1F4A7100CA582B /* HomeAddMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAddMoreCell.h; sourceTree = "<group>"; };
+		18B4AA611F1F4A7100CA582B /* HomeAddMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAddMoreCell.m; sourceTree = "<group>"; };
+		18B4AA631F1F4AA600CA582B /* HomeProductDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeProductDetailCell.h; sourceTree = "<group>"; };
+		18B4AA641F1F4AA600CA582B /* HomeProductDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeProductDetailCell.m; sourceTree = "<group>"; };
+		18B4AA661F1F4B0D00CA582B /* Home_SellerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home_SellerResponse.h; sourceTree = "<group>"; };
+		18B4AA671F1F4B0D00CA582B /* Home_SellerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home_SellerResponse.m; sourceTree = "<group>"; };
 		2C989E1936B874FE611734BF /* libPods-MySteelHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySteelHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.release.xcconfig"; sourceTree = "<group>"; };
 		461970B21D9073CB00D88DA2 /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
@@ -267,8 +278,6 @@
 		467E5E9E1D59AE1200407925 /* ForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPassword.m; sourceTree = "<group>"; };
 		467E5EA01D59AF4C00407925 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
 		467E5EA11D59AF4C00407925 /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
-		46925FFC1D8730C30097469E /* Home_SellerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home_SellerResponse.h; sourceTree = "<group>"; };
-		46925FFD1D8730C30097469E /* Home_SellerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home_SellerResponse.m; sourceTree = "<group>"; };
 		469942851D3BFBFD00378968 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
 		469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
 		469942871D3BFBFD00378968 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
@@ -459,6 +468,21 @@
 			path = Graphicss;
 			sourceTree = "<group>";
 		};
+		18B4AA5C1F1F493300CA582B /* HomeCells */ = {
+			isa = PBXGroup;
+			children = (
+				18B4AA5D1F1F4A5A00CA582B /* HomeQuantityCell.h */,
+				18B4AA5E1F1F4A5A00CA582B /* HomeQuantityCell.m */,
+				18B4AA601F1F4A7100CA582B /* HomeAddMoreCell.h */,
+				18B4AA611F1F4A7100CA582B /* HomeAddMoreCell.m */,
+				18B4AA631F1F4AA600CA582B /* HomeProductDetailCell.h */,
+				18B4AA641F1F4AA600CA582B /* HomeProductDetailCell.m */,
+				18B4AA661F1F4B0D00CA582B /* Home_SellerResponse.h */,
+				18B4AA671F1F4B0D00CA582B /* Home_SellerResponse.m */,
+			);
+			path = HomeCells;
+			sourceTree = "<group>";
+		};
 		461BE7C91CAF014C00A8F3DC /* Custom Loader */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,8 +550,7 @@
 		46925FFB1D8730480097469E /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
-				46925FFC1D8730C30097469E /* Home_SellerResponse.h */,
-				46925FFD1D8730C30097469E /* Home_SellerResponse.m */,
+				18B4AA5C1F1F493300CA582B /* HomeCells */,
 				46BE798E1E7EABD6008A6C66 /* PendingOrdersCell.h */,
 				46BE798F1E7EABD6008A6C66 /* PendingOrdersCell.m */,
 				46BE79911E7EABF0008A6C66 /* ConfirmedOrdersCell.h */,
@@ -1053,6 +1076,7 @@
 				46F62CAE1C908FDC00A61B47 /* ViewController.m in Sources */,
 				7CE0C9E11D32AD0D00D44467 /* RequirementI.m in Sources */,
 				46BE79841E76DC1A008A6C66 /* PendingOrdersVC.m in Sources */,
+				18B4AA651F1F4AA600CA582B /* HomeProductDetailCell.m in Sources */,
 				7C53E0551D34024800B7DD43 /* SWTableViewCell.m in Sources */,
 				7C53E0521D34024800B7DD43 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				7C53E0541D34024800B7DD43 /* SWLongPressGestureRecognizer.m in Sources */,
@@ -1070,6 +1094,8 @@
 				7CB121821E8D85FC003183DE /* EnterRTGS.m in Sources */,
 				188505741CDDE7E500086EC8 /* Requirements.m in Sources */,
 				7C183AF61D284B86003159F9 /* SVProgressHUD.m in Sources */,
+				18B4AA621F1F4A7100CA582B /* HomeAddMoreCell.m in Sources */,
+				18B4AA681F1F4B0D00CA582B /* Home_SellerResponse.m in Sources */,
 				46BE79901E7EABD6008A6C66 /* PendingOrdersCell.m in Sources */,
 				7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */,
 				46BE79961E7EAC04008A6C66 /* InProgressOrdersCell.m in Sources */,
@@ -1097,12 +1123,12 @@
 				461BE7D41CAF01FA00A8F3DC /* Home.m in Sources */,
 				7C53E0561D34024800B7DD43 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				7C4D66A51DBD08CA001CCB6D /* ShippingAddressCell.m in Sources */,
+				18B4AA5F1F1F4A5A00CA582B /* HomeQuantityCell.m in Sources */,
 				46F62CA81C908FDC00A61B47 /* main.m in Sources */,
 				46BE79931E7EABF0008A6C66 /* ConfirmedOrdersCell.m in Sources */,
 				461BE7CC1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m in Sources */,
 				7C53E0531D34024800B7DD43 /* SWCellScrollView.m in Sources */,
 				461BE7E91CAF074300A8F3DC /* LoginManager.m in Sources */,
-				46925FFE1D8730C30097469E /* Home_SellerResponse.m in Sources */,
 				465B62471EA3D40C006A6CE0 /* FinalAmountCell.m in Sources */,
 				7C183AF71D284B86003159F9 /* SVRadialGradientLayer.m in Sources */,
 				467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */,
