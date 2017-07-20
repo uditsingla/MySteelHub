@@ -191,9 +191,15 @@
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
     [arrayTblDict addObject:dict];
     
+    
     tblView.dataSource = self;
     tblView.delegate = self;
     
+    tblView.estimatedRowHeight = 200.0;
+    tblView.rowHeight = UITableViewAutomaticDimension;
+    [tblView layoutIfNeeded];
+    [tblView setNeedsLayout];
+
     
    // tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
 
@@ -543,7 +549,7 @@
     datePicker.backgroundColor = [UIColor whiteColor];
     datePicker.tag = tag;
     
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *currentDate = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:7];
@@ -709,6 +715,7 @@
     
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
     {
+        
         if(tableView == tblView)
         return 3;
         
@@ -757,14 +764,18 @@
         {
         if((indexPath.row == arrayTblDict.count) &&  !_selectedRequirement)
         {
-            HomeAddMoreCell *cell = (HomeAddMoreCell *)[tableView dequeueReusableCellWithIdentifier:@"HomeAddMoreCell"];
+            HomeAddMoreCell *cell = (HomeAddMoreCell *)[tblView dequeueReusableCellWithIdentifier:@"HomeAddMoreCell"];
+            if (!cell) {
+                cell = [[HomeAddMoreCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"HomeAddMoreCell"];
+            }
+            
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             return cell;
         }
         else
         {
-            HomeQuantityCell *cell = (HomeQuantityCell *)[tableView dequeueReusableCellWithIdentifier:@"HomeQuantityCell"];
+            HomeQuantityCell *cell = (HomeQuantityCell *)[tblView dequeueReusableCellWithIdentifier:@"HomeQuantityCell"];
             
             NSArray *arrayRightBtns = [self rightButtons];
             [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
@@ -783,7 +794,7 @@
         
         case 1:
         {
-            HomeProductDetailCell *cell = (HomeProductDetailCell *)[tableView dequeueReusableCellWithIdentifier:@"HomeProductDetailCell"];
+            HomeProductDetailCell *cell = (HomeProductDetailCell *)[tblView dequeueReusableCellWithIdentifier:@"HomeProductDetailCell"];
             
             cell.switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
             cell.switchPhysical.onTintColor = kBlueColor;
@@ -802,7 +813,7 @@
         case 2:
         {
             
-            Home_SellerResponse *cell = (Home_SellerResponse *)[tableView dequeueReusableCellWithIdentifier:@"Home_SellerResponse"];
+            Home_SellerResponse *cell = (Home_SellerResponse *)[tblView dequeueReusableCellWithIdentifier:@"Home_SellerResponse"];
             
             Conversation *currentRow = [_selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
             
@@ -893,7 +904,7 @@
     {
         static NSString *_simpleTableIdentifier = @"CellIdentifier";
         
-        UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
+        UITableViewCell *cell = (UITableViewCell*)[tblView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
         
         // Configure the cell...
         if(cell==nil)
@@ -931,13 +942,14 @@
     if (tableView == tblView)
     {
         NSLog(@"Table row clicked");
-        
+        /*
         OrderConfirmation *orderConfirmation = [kMainStoryboard instantiateViewControllerWithIdentifier:@"orderconfirmation"];
         
         orderConfirmation.selectedRequirement = self.selectedRequirement;
         orderConfirmation.selectedConversation = [self.selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
         
         [self.navigationController pushViewController:orderConfirmation animated:YES];
+         */
     }
     
     else if(tableView.tag==222)
@@ -963,14 +975,7 @@
 }
 
 
-- (IBAction)btnAddAction:(UIButton *)sender {
-    
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
-    [arrayTblDict addObject:dict];
-    
-    [tblView reloadData];
-    
-}
+
 
 #pragma mark - Swipe Cell Delegate
 - (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
@@ -1016,7 +1021,7 @@
             {
                 NSLog(@"bargain clicked");
                 NSIndexPath *indexPath;
-                indexPath = [ç indexPathForCell:cell];
+                indexPath = [tblView indexPathForCell:cell];
                 
                 if(((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).bargainAmount.intValue==0 && ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBargainRequired == NO)
                 {
@@ -1117,6 +1122,34 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma mark - Custom Methods
+- (IBAction)clkAddMore:(UIButton *)sender {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
+    [arrayTblDict addObject:dict];
+    
+    [tblView reloadData];
+}
+
+- (IBAction)isSwithToggeled:(UISwitch *)sender {
+    
+    
+    switch (sender.tag)
+    {
+        case 1:
+            NSLog(@"switch 1 off");
+            break;
+        case 2:
+            NSLog(@"switch 2 off");
+            break;
+        case 3:
+            NSLog(@"switch 3 off");
+            break;
+            
+        default:
+            break;
+    }
+}
+
 
 -(IBAction)clkLoadMore:(id)sender
 {
@@ -1215,77 +1248,123 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if(textField.tag==786)
-    {
-        // getting indexpath from selected textfield
-        CGPoint center= textField.center;
-        CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblViewSizes];
-        NSIndexPath *indexPath = [tblViewSizes indexPathForRowAtPoint:rootViewPoint];
-        
-        [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
-    }
+    CGPoint center= textField.center;
+    CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
+    NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
     
-    else if (textField == txtFieldCity)
-    {
-        if(txtFieldCity.text.length == 0)
-            lbCity.text = @"   Delivery City ";
-        
+    switch (indexPath.section) {
+        case 0:
+        {
+            HomeQuantityCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+
+            if(cell.txtQuantity.tag == 786)
+            {
+                [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
+            }
+        }
+            break;
+        case 1:
+        {
+            HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+            if (textField == cell.txtDeliveryCity)
+            {
+                if(textField.text.length == 0)
+                    textField.text = @"   Delivery City ";
+            }
+            
+            else if (textField == cell.txtBudget)
+            {
+                if(textField.text.length == 0)
+                    textField.text = @"   Budget Amount (Rs) ";
+            }
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
     }
+
+
+    /*
     else if (textField == txtFieldState)
     {
         if(txtFieldState.text.length == 0)
             lbState.text = @"   State :";
         
     }
-    else if (textField == txtFieldBudget)
-    {
-        if(txtFieldBudget.text.length == 0)
-            lbAmount.text = @"   Budget Amount (Rs) ";
-        
-    }
+     */
+
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
-    if(textField == txtFieldState || textField.tag==777)
-    {
-        [textField resignFirstResponder];
-    }
+    //if(textField == txtFieldState || textField.tag==777)
+    //{
+        //[textField resignFirstResponder];
+    //}
     
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
     {
-        if(textField.tag==777)
-        {
-            [self.view endEditing:YES];
-            
-            pickerToolBarView.hidden = NO;
-            [self.view bringSubviewToFront:pickerToolBarView];
-            
-            selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
-            
-            UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
-            
-            
-            [pickerView selectRow:0 inComponent:0 animated:NO];
-            
-            
-            selectedDiameterTextfield = textField;
-            [textField resignFirstResponder];
+        CGPoint center= textField.center;
+        CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
+        NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
+        
+        switch (indexPath.section) {
+            case 0:
+            {
+                if(textField.tag == 777)
+                {
+                    [self.view endEditing:YES];
+                    
+                    pickerToolBarView.hidden = NO;
+                    [self.view bringSubviewToFront:pickerToolBarView];
+                    
+                    selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
+                    
+                    UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
+                    
+                    
+                    [pickerView selectRow:0 inComponent:0 animated:NO];
+                    
+                    
+                    selectedDiameterTextfield = textField;
+                    [textField resignFirstResponder];
+                }
+            }
+                break;
+            case 1:
+            {
+                HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+                 if (textField == cell.txtDeliveryCity)
+                {
+                    textField.text = @"   Delivery City :";
+                    
+                }
+                else if (textField == cell.txtBudget)
+                {
+                    textField.text = @"   Budget Amount (Rs) :";
+                    
+                }
+            }
+                break;
+            case 2:
+            {
+                
+            }
+                break;
+
+            default:
+                break;
         }
         
-        else if (textField == txtFieldCity)
-        {
-            lbCity.text = @"   Delivery City :";
-            
-        }
-        else if (textField == txtFieldBudget)
-        {
-            lbAmount.text = @"   Budget Amount (Rs) :";
-            
-        }
         
         return YES;
     }
@@ -1337,28 +1416,26 @@
 {
     NSLog(@"Keyboard shown");
     
-    NSDictionary *info = [notification userInfo];
-    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+    //NSDictionary *info = [notification userInfo];
+    //CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
+    //_scrollView.contentInset = contentInsets;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
     
     
 }
 -(void)hideKeyboard:(NSNotification*)notification
 {
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
+    //_scrollView.contentInset = contentInsets;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
     
 }
 
 -(void)Closekeyboard:(NSNotification*)notification
 {
-    NSLog(@"Keyboard hidden");
-    
-    
+    NSLog(@"Keyboard hidden");    
 }
 
 
@@ -1401,6 +1478,9 @@
     {
         [self showAlert:@"Please select grade"];
     }
+    
+    /*
+    // Temp block
     else if([[txtFieldCity.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
     {
         [self showAlert:@"Please enter city"];
@@ -1413,6 +1493,7 @@
     {
         [self showAlert:@"Please enter budget"];
     }
+    */
     else if([[selectedDate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
     {
         [self showAlert:@"Please enter required by date"];
@@ -1424,8 +1505,8 @@
     else
     {
         RequirementI *newRequirement = [RequirementI new];
-        //newRequirement.userID = [[NSUserDefaults standardUserDefaults] valueForKey:@"userID"];
         newRequirement.arraySpecifications = arrayTblDict;
+        /*
         newRequirement.isChemical = switchChemical.isOn;
         newRequirement.isPhysical = switchPhysical.isOn;
         newRequirement.isTestCertificateRequired = switchCertReq.isOn;
@@ -1438,7 +1519,7 @@
         newRequirement.state = txtFieldState.text;
         newRequirement.requiredByDate = selectedDate;
         newRequirement.taxType = selectedTaxID;
-        
+        */
         [SVProgressHUD show];
         
         [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
@@ -1491,9 +1572,9 @@
     pickerPreferredBrandsView.hidden = NO;
     [self.view bringSubviewToFront:pickerPreferredBrandsView];
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    //_scrollView.contentInset = contentInsets;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
     
     [self.view endEditing:YES];
 }
@@ -1510,9 +1591,9 @@
     
     [pickerView selectRow:0 inComponent:0 animated:NO];
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    //_scrollView.contentInset = contentInsets;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
     
     [self.view endEditing:YES];
 
@@ -1522,16 +1603,16 @@
     datePickerView.hidden = NO;
     [self.view bringSubviewToFront:datePickerView];
     
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
-    _scrollView.contentInset = contentInsets;
-    _scrollView.scrollIndicatorInsets = contentInsets;
+    //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, 216, 0);
+    //_scrollView.contentInset = contentInsets;
+    //_scrollView.scrollIndicatorInsets = contentInsets;
     [self.view endEditing:YES];
     
     }
     
 - (IBAction)clkState:(UITapGestureRecognizer *)sender {
-    lbState.text = @"   State :";
-    [txtFieldState resignFirstResponder];
+    //lbState.text = @"   State :";
+    //[txtFieldState resignFirstResponder];
     [self.view endEditing:YES];
     pickerViewState.hidden = NO;
     [self.view bringSubviewToFront:pickerViewState];
