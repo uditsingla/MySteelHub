@@ -18,8 +18,8 @@
     if (self) {
         requirementID=@"";
         userID=@"";
-        length=@"";
-        type=@"";
+        length=@"0";
+        type=@"0";
         budget=@"";
         city=@"";
         state=@"";

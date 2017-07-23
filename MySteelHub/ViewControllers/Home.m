@@ -64,6 +64,9 @@
     NSString *selectedState;
     
 
+    RequirementI *newRequirement;
+    
+    UIToolbar *keyboardDoneButtonView;
 
     __weak IBOutlet UIButton *btnLoadMore;
     
@@ -102,7 +105,16 @@
     
     isAccepted = NO;
     
+    if(_selectedRequirement)
+        newRequirement = _selectedRequirement;
+    else
+        newRequirement = [RequirementI new];
     
+    selectedGradeRequired = @"";
+    selectedDate = @"";
+    selectedTax = @"";
+    selectedState = @"";
+
     if (!_selectedRequirement) {
         btnLoadMore.hidden = true;
         
@@ -344,7 +356,7 @@
         }
     }];
     
-    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
+    keyboardDoneButtonView = [[UIToolbar alloc] init];
     keyboardDoneButtonView.barStyle = UIBarStyleBlackOpaque;
     [keyboardDoneButtonView sizeToFit];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
@@ -353,6 +365,7 @@
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneButton, nil]];
+    [tblView reloadData];
     
     /*
     txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
@@ -382,6 +395,13 @@
     arrayTblDict = nil;
     arrayTblDict = _selectedRequirement.arraySpecifications;
     [tblView reloadData];
+    
+    arraySelectedPreferredBrands = _selectedRequirement.arrayPreferedBrands;
+    
+    selectedGradeRequired = _selectedRequirement.gradeRequired;
+    selectedDate = _selectedRequirement.requiredByDate;
+    selectedState = _selectedRequirement.state;
+    selectedTax = _selectedRequirement.taxType;
     
     /*
     
@@ -691,6 +711,8 @@
     {
         //txtFieldState.text = [selectedState capitalizedString];
     }
+    
+    [tblView reloadData];
 }
 
 -(void)tableDoneButtonPressed
@@ -706,7 +728,7 @@
         
     }
  
-    
+    [tblView reloadData];
 }
 
 
@@ -728,6 +750,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(tableView.tag == 222)
+        return arrayPreferredBrands.count;
+    
+    
     switch (section)
     {
         case 0:
@@ -750,13 +776,45 @@
         break;
     }
     
-     if(tableView.tag == 222)
-        return arrayPreferredBrands.count;
+    
     
     return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if(tableView.tag == 222)
+    {
+        static NSString *_simpleTableIdentifier = @"CellIdentifier";
+        
+        UITableViewCell *cell = (UITableViewCell*)[tblView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
+        
+        // Configure the cell...
+        if(cell==nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
+            
+        }
+        
+        cell.textLabel.text = [[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"];
+        
+        
+        if ([arraySelectedPreferredBrands containsObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]])
+        {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
+        
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+    }
+    
     
     switch (indexPath.section) {
         
@@ -777,12 +835,19 @@
         {
             HomeQuantityCell *cell = (HomeQuantityCell *)[tblView dequeueReusableCellWithIdentifier:@"HomeQuantityCell"];
             
+            if(_selectedRequirement)
+                cell.userInteractionEnabled = NO;
+
+            
             NSArray *arrayRightBtns = [self rightButtons];
             [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
             [cell setDelegate:self];
             
             cell.txtSize.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"size"];
             cell.txtQuantity.text = [[arrayTblDict objectAtIndex:indexPath.row] valueForKey:@"quantity"];
+            
+            
+            cell.txtQuantity.inputAccessoryView = keyboardDoneButtonView;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             return cell;
@@ -796,14 +861,42 @@
         {
             HomeProductDetailCell *cell = (HomeProductDetailCell *)[tblView dequeueReusableCellWithIdentifier:@"HomeProductDetailCell"];
             
+            if(_selectedRequirement)
+                cell.userInteractionEnabled = NO;
+            
             cell.switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
             cell.switchPhysical.onTintColor = kBlueColor;
+            cell.switchPhysical.on = newRequirement.isPhysical;
             
             cell.switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
             cell.switchChemical.onTintColor = kBlueColor;
+            cell.switchChemical.on =  newRequirement.isChemical;
+
             
             cell.switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
             cell.switchCertReq.onTintColor = kBlueColor;
+            cell.switchCertReq.on =  newRequirement.isTestCertificateRequired;
+            
+            cell.sgmtControlLenghtRequired.selectedSegmentIndex = [newRequirement.length intValue];
+            cell.sgmtControlTypeRequired.selectedSegmentIndex = [newRequirement.type intValue];
+
+            
+            cell.lblGraderequired.text = [NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired];
+            cell.lblPreferedTax.text = [NSString stringWithFormat:@"Prefered Tax : %@",selectedTax];
+            cell.txtDeliveryCity.text = [NSString stringWithFormat:@"Delivery City : %@",[newRequirement.city capitalizedString]];
+            cell.lblDeliveryState.text = [NSString stringWithFormat:@"State : %@",[selectedState capitalizedString]];
+            
+            cell.txtBudget.text = [NSString stringWithFormat:@"Budget Amount (Rs) : %@",newRequirement.budget];
+            
+            if(arraySelectedPreferredBrands.count>0)
+                cell.lblPreferedBrands.text = [NSString stringWithFormat:@"Prefered Brands : %@",[arraySelectedPreferredBrands componentsJoinedByString:@", "]];
+            else
+                cell.lblPreferedBrands.text = [NSString stringWithFormat:@"Prefered Brands :"];
+            
+            cell.lblRequiredByDate.text = [NSString stringWithFormat:@"Required by Date : %@",selectedDate];
+            
+            
+            cell.txtBudget.inputAccessoryView = keyboardDoneButtonView;
             
             return cell;
             break;
@@ -900,37 +993,7 @@
     
 
     
-     if(tableView.tag == 222)
-    {
-        static NSString *_simpleTableIdentifier = @"CellIdentifier";
-        
-        UITableViewCell *cell = (UITableViewCell*)[tblView dequeueReusableCellWithIdentifier:_simpleTableIdentifier];
-        
-        // Configure the cell...
-        if(cell==nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:_simpleTableIdentifier];
-            
-        }
-        
-        cell.textLabel.text = [[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"];
-        
-        
-        if ([arraySelectedPreferredBrands containsObject:[[arrayPreferredBrands objectAtIndex:indexPath.row] valueForKey:@"brand_name"]])
-        {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        else
-        {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            
-        }
-        
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-    }
+    
     
     
     return [UITableViewCell new];
@@ -1137,12 +1200,33 @@
     {
         case 1:
             NSLog(@"switch 1 off");
+            newRequirement.isPhysical = sender.isOn;
             break;
         case 2:
             NSLog(@"switch 2 off");
+            newRequirement.isChemical = sender.isOn;
             break;
         case 3:
             NSLog(@"switch 3 off");
+            newRequirement.isTestCertificateRequired = sender.isOn;
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+- (IBAction)segmentValueChanged:(UISegmentedControl *)sender {
+    switch (sender.tag)
+    {
+        case 111:
+            NSLog(@"length changes");
+            newRequirement.length = [NSString stringWithFormat:@"%li", (long)sender.selectedSegmentIndex];
+            break;
+        case 222:
+            NSLog(@"type changes");
+            newRequirement.type = [NSString stringWithFormat:@"%li", (long)sender.selectedSegmentIndex];
             break;
             
         default:
@@ -1269,14 +1353,26 @@
             if (textField == cell.txtDeliveryCity)
             {
                 if(textField.text.length == 0)
-                    textField.text = @"   Delivery City ";
+                {
+                    textField.text = @"Delivery City : ";
+                    newRequirement.city = @"";
+                }
+                else
+                    newRequirement.city = textField.text;
+
             }
             
             else if (textField == cell.txtBudget)
             {
                 if(textField.text.length == 0)
-                    textField.text = @"   Budget Amount (Rs) ";
+                {
+                    textField.text = @"Budget Amount (Rs) : ";
+                    newRequirement.budget = @"";
+                }
+                else
+                    newRequirement.budget = textField.text;
             }
+            
         }
             break;
         case 2:
@@ -1304,10 +1400,10 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
-    //if(textField == txtFieldState || textField.tag==777)
-    //{
-        //[textField resignFirstResponder];
-    //}
+    if(textField.tag==777)
+    {
+        [textField resignFirstResponder];
+    }
     
 }
 
@@ -1345,13 +1441,12 @@
                 HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
                  if (textField == cell.txtDeliveryCity)
                 {
-                    textField.text = @"   Delivery City :";
+                    textField.text = @"Delivery City : ";
                     
                 }
                 else if (textField == cell.txtBudget)
                 {
-                    textField.text = @"   Budget Amount (Rs) :";
-                    
+                    textField.text = @"Budget Amount (Rs) : ";
                 }
             }
                 break;
@@ -1368,7 +1463,50 @@
         
         return YES;
     }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+
     
+    CGPoint center= textField.center;
+    CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
+    NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            
+        }
+            break;
+        case 1:
+        {
+            HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+            if (textField == cell.txtDeliveryCity)
+            {
+                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+                return !([newString length] < 16);
+                
+            }
+            else if (textField == cell.txtBudget)
+            {
+                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
+                return !([newString length] < 21);
+            }
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+    return YES;
+}
+
 /*
 #pragma mark - Core Location Delegate
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -1455,15 +1593,15 @@
 
 - (IBAction)submitBtnAction:(UIButton *)sender {
     
-    if(arrayTblDict.count==1)
+    for(int i=0 ; i < arrayTblDict.count ;i++)
     {
-        if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+        if([[[[arrayTblDict objectAtIndex:i] valueForKey:@"size"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
         {
             [self showAlert:@"Please enter diameter size"];
             return;
         }
         
-        else if([[[[arrayTblDict objectAtIndex:0] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
+        else if([[[[arrayTblDict objectAtIndex:i] valueForKey:@"quantity"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length] == 0)
         {
             [self showAlert:@"Please enter quantity"];
             return;
@@ -1479,46 +1617,45 @@
         [self showAlert:@"Please select grade"];
     }
     
-    /*
-    // Temp block
-    else if([[txtFieldCity.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
-    {
-        [self showAlert:@"Please enter city"];
-    }
-    else if([[txtFieldState.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
-    {
-        [self showAlert:@"Please enter state"];
-    }
-    else if([[txtFieldBudget.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
-    {
-        [self showAlert:@"Please enter budget"];
-    }
-    */
     else if([[selectedDate stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
     {
         [self showAlert:@"Please enter required by date"];
     }
+    else if([[newRequirement.city stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter city"];
+    }
+    else if([[selectedState stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter state"];
+    }
+    else if([[newRequirement.budget stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0)
+    {
+        [self showAlert:@"Please enter budget"];
+    }
+    
     else if(selectedTax.length==0)
     {
         [self showAlert:@"Please select tax category"];
     }
     else
     {
-        RequirementI *newRequirement = [RequirementI new];
         newRequirement.arraySpecifications = arrayTblDict;
+        newRequirement.state = selectedState;
+        newRequirement.requiredByDate = selectedDate;
+        newRequirement.taxType = selectedTaxID;
+        newRequirement.gradeRequired = selectedGradeID;
+        newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
+
+        
         /*
         newRequirement.isChemical = switchChemical.isOn;
         newRequirement.isPhysical = switchPhysical.isOn;
         newRequirement.isTestCertificateRequired = switchCertReq.isOn;
         newRequirement.length = [NSString stringWithFormat:@"%li", (long)sgmtControlLenghtRequired.selectedSegmentIndex];
         newRequirement.type = [NSString stringWithFormat:@"%li", (long)sgmtControlTypeRequired.selectedSegmentIndex];
-        newRequirement.arrayPreferedBrands = arraySelectedPreferredBrands;
-        newRequirement.gradeRequired = selectedGradeID;
-        newRequirement.budget = txtFieldBudget.text;
-        newRequirement.city = txtFieldCity.text;
-        newRequirement.state = txtFieldState.text;
-        newRequirement.requiredByDate = selectedDate;
-        newRequirement.taxType = selectedTaxID;
+        
+        
         */
         [SVProgressHUD show];
         
