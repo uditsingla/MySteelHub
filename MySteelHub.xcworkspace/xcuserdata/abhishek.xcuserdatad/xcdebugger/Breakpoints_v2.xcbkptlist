@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "791"
             endingLineNumber = "791"
-            landmarkName = "-getLabelHeight:"
-            landmarkType = "7">
+            landmarkName = "@implementation Home"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
