@@ -315,7 +315,7 @@
     
     NSString *shippingID,*billingID = @"";
     NSIndexPath *selectedIndexPath = [_tblViewBilling indexPathForSelectedRow];
-    Address *selectedBillingAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
+    Address *selectedBillingAddress;
     
     if(selectedIndexPath==nil)
     {
@@ -324,11 +324,13 @@
     }
     else
     {
+        selectedBillingAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
+
         billingID = selectedBillingAddress.ID;
     }
     
     selectedIndexPath = [_tblViewShipping indexPathForSelectedRow];
-    Address *selectedShippngAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
+    Address *selectedShippngAddress;
     
     if(selectedIndexPath==nil)
     {
@@ -338,6 +340,8 @@
     }
     else
     {
+        selectedShippngAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
+
         shippingID = selectedShippngAddress.ID;
     }
     

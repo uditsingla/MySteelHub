@@ -39,4 +39,20 @@
 
 #define Other  [UIColor colorWithRed:34/255.00 green:36/255.00 blue:85/255.00 alpha:1];
 
+
+//#define fontMacro(_name_, _size_) ((UIFont *)[UIFont fontWithName:(NSString *)(_name_) size:(CGFloat)(_size_)])
+
+
+
+#define fontRaleway12 [UIFont fontWithName:@"Raleway-Regular" size:12]
+#define fontRaleway13 [UIFont fontWithName:@"Raleway-Regular" size:13]
+#define fontRaleway14 ((UIFont *)[UIFont fontWithName:@"Raleway-Regular" size:14])
+#define fontRaleway16 ((UIFont *)[UIFont fontWithName:@"Raleway-Regular" size:16])
+
+
+#define fontRalewayBold12 [UIFont fontWithName:@"Raleway-SemiBold" size:12]
+#define fontRalewayBold13 [UIFont fontWithName:@"Raleway-SemiBold" size:13]
+#define fontRalewayBold14 ((UIFont *)[UIFont fontWithName:@"Raleway-SemiBold" size:14])
+#define fontRalewayBold16 ((UIFont *)[UIFont fontWithName:@"Raleway-SemiBold" size:16])
+
 #endif /* Constants_h */
