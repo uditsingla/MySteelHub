@@ -883,7 +883,7 @@
 					46F62CA21C908FDC00A61B47 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = LC334ADL8X;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1261,15 +1261,17 @@
 				CODE_SIGN_ENTITLEMENTS = MySteelHub/MySteelHub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = LC334ADL8X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "86c90315-856c-48dc-9f4b-63e3615b2ca9";
+				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1282,15 +1284,17 @@
 				CODE_SIGN_ENTITLEMENTS = MySteelHub/MySteelHub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Harsh Bansal (NP37VP9V3U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = LC334ADL8X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MysteelHub/MysteelHub-Prefix.pch";
 				INFOPLIST_FILE = MySteelHub/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "86c90315-856c-48dc-9f4b-63e3615b2ca9";
+				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
 				SDKROOT = iphoneos;
 			};
 			name = Release;

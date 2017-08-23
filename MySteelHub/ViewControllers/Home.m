@@ -100,6 +100,10 @@
     
     BOOL isLoadMoreClicked;
     
+    __weak IBOutlet NSLayoutConstraint *constraintSubmitBtnHeight;
+    
+   UITextField *actifText;
+
     BOOL isAccepted;
 }
 
@@ -107,7 +111,6 @@
 - (IBAction)submitBtnAction:(UIButton *)sender;
 
 
-- (IBAction)clkLoadMore:(UIButton *)sender;
 
 @end
 
@@ -143,9 +146,8 @@
     selectedTax = @"";
     selectedState = @"";
 
-    if (!_selectedRequirement) {
-        btnLoadMore.hidden = true;
-        
+    if (_selectedRequirement) {
+        constraintSubmitBtnHeight.constant = 0;
     }
     
     
@@ -634,6 +636,7 @@
                     [df stringFromDate:datePicker.date]];
     df = nil;
     
+    [tblView reloadData];
    // [btnRequiredByDate setTitle:[NSString stringWithFormat:@"Required by Date : %@",selectedDate] forState:UIControlStateNormal];
 }
 
@@ -884,7 +887,7 @@
             if (!cell) {
                 cell = [[HomeAddMoreCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"HomeAddMoreCell"];
             }
-            
+        
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
             return cell;
@@ -908,6 +911,7 @@
             cell.txtQuantity.inputAccessoryView = keyboardDoneButtonView;
             
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
             return cell;
         }
         
@@ -1107,7 +1111,7 @@
 {
     NSMutableArray *rightUtilityButtons = [NSMutableArray new];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
-     [UIColor colorWithRed:248/255.00 green:123/255.00 blue:1/255.00 alpha:1]
+     kBlueColor
                                                 title:@"Bargain"];
     [rightUtilityButtons sw_addUtilityButtonWithColor:
      [UIColor colorWithRed:40/255.00 green:157/255.00 blue:87/255.00 alpha:1]
@@ -1390,6 +1394,9 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    
+    actifText = nil;
+    
     CGPoint center= textField.center;
     CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
     NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
@@ -1416,8 +1423,9 @@
                     newRequirement.city = @"";
                 }
                 else
-                    newRequirement.city = textField.text;
-
+                {
+                    newRequirement.city = [textField.text substringFromIndex:16];
+                }
             }
             
             else if (textField == cell.txtBudget)
@@ -1428,7 +1436,11 @@
                     newRequirement.budget = @"";
                 }
                 else
-                    newRequirement.budget = textField.text;
+                {                    
+                    newRequirement.budget = [textField.text substringFromIndex:21];
+                }
+                    
+                
             }
             
         }
@@ -1458,9 +1470,14 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
+    
     if(textField.tag==777)
     {
         [textField resignFirstResponder];
+    }
+    else{
+        
+        actifText = textField;
     }
     
 }
@@ -1497,22 +1514,17 @@
             case 1:
             {
                 HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+                
                  if (textField == cell.txtDeliveryCity)
                 {
                     textField.text = @"Delivery City : ";
-                    
                 }
                 else if (textField == cell.txtBudget)
                 {
                     textField.text = @"Budget Amount (Rs) : ";
                 }
             }
-                break;
-            case 2:
-            {
-                
-            }
-                break;
+                break;           
 
             default:
                 break;
@@ -1619,19 +1631,75 @@
     //_scrollView.scrollIndicatorInsets = contentInsets;
     
     
+    // Get the keyboard size
+    CGRect keyboardBounds;
+    [[notification.userInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] getValue: &keyboardBounds];
+    
+    // Detect orientation
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    CGRect frame = tblView.frame;
+    
+    // Start animation
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3f];
+    
+    // Reduce size of the Table view
+    if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
+        frame.size.height -= keyboardBounds.size.height;
+    else
+        frame.size.height -= keyboardBounds.size.width;
+    
+    // Apply new size of table view
+    tblView.frame = frame;
+    
+    // Scroll the table view to see the TextField just above the keyboard
+    if (actifText)
+    {
+        CGRect textFieldRect = [tblView convertRect:actifText.bounds fromView:actifText];
+        [tblView scrollRectToVisible:textFieldRect animated:NO];
+    }
+    
+    [UIView commitAnimations];
+    
+    
 }
 -(void)hideKeyboard:(NSNotification*)notification
 {
-    
+    NSLog(@"Keyboard hidden");
     //UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0,0, 0);
     //_scrollView.contentInset = contentInsets;
     //_scrollView.scrollIndicatorInsets = contentInsets;
+    
+    // Get the keyboard size
+    CGRect keyboardBounds;
+    [[notification.userInfo valueForKey:UIKeyboardFrameBeginUserInfoKey] getValue: &keyboardBounds];
+    
+    // Detect orientation
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    CGRect frame = tblView.frame;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:0.3f];
+    
+    // Increase size of the Table view
+    if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
+        frame.size.height += keyboardBounds.size.height;
+    else
+        frame.size.height += keyboardBounds.size.width;
+    
+    // Apply new size of table view
+    tblView.frame = frame;
+    
+    [UIView commitAnimations];
     
 }
 
 -(void)Closekeyboard:(NSNotification*)notification
 {
-    NSLog(@"Keyboard hidden");    
+    NSLog(@"Keyboard tempppp");
+
 }
 
 
