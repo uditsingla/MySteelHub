@@ -128,7 +128,7 @@
 		46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46F62CB21C908FDC00A61B47 /* MySteelHub.xcdatamodeld */; };
 		46F62CB61C908FDC00A61B47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB51C908FDC00A61B47 /* Assets.xcassets */; };
 		46F62CB91C908FDC00A61B47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46F62CB71C908FDC00A61B47 /* LaunchScreen.storyboard */; };
-		6B14A10B3B9DBC3A71A7E428 /* libPods-MySteelHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C989E1936B874FE611734BF /* libPods-MySteelHub.a */; };
+		7686439BD636894412F4262A /* libPods-MySteelHub.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B01F5DDB9E9C80E44B43636 /* libPods-MySteelHub.a */; };
 		7C183AF31D284B86003159F9 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AEA1D284B86003159F9 /* SVIndefiniteAnimatedView.m */; };
 		7C183AF41D284B86003159F9 /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C183AEC1D284B86003159F9 /* SVProgressAnimatedView.m */; };
 		7C183AF51D284B86003159F9 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7C183AEE1D284B86003159F9 /* SVProgressHUD.bundle */; };
@@ -236,8 +236,6 @@
 		18B4AA641F1F4AA600CA582B /* HomeProductDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeProductDetailCell.m; sourceTree = "<group>"; };
 		18B4AA661F1F4B0D00CA582B /* Home_SellerResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home_SellerResponse.h; sourceTree = "<group>"; };
 		18B4AA671F1F4B0D00CA582B /* Home_SellerResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home_SellerResponse.m; sourceTree = "<group>"; };
-		2C989E1936B874FE611734BF /* libPods-MySteelHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySteelHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.release.xcconfig"; sourceTree = "<group>"; };
 		461970B21D9073CB00D88DA2 /* splash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash@2x.png"; sourceTree = "<group>"; };
 		461BE7CA1CAF014C00A8F3DC /* LabeledActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabeledActivityIndicatorView.h; sourceTree = "<group>"; };
 		461BE7CB1CAF014C00A8F3DC /* LabeledActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabeledActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -336,6 +334,9 @@
 		46F62CBA1C908FDC00A61B47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		46F62D451C9363D100A61B47 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		46F62D531C95472900A61B47 /* MySteelHub-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MySteelHub-Prefix.pch"; sourceTree = "<group>"; };
+		5D6D0F0730B72796D0EC7441 /* Pods-MySteelHub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.release.xcconfig"; sourceTree = "<group>"; };
+		66D81AD035313E2F7183C6CD /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
+		7B01F5DDB9E9C80E44B43636 /* libPods-MySteelHub.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MySteelHub.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C183AE91D284B86003159F9 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
 		7C183AEA1D284B86003159F9 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
 		7C183AEB1D284B86003159F9 /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
@@ -399,7 +400,6 @@
 		7CECA25C1D4005EC005B3227 /* logout@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logout@3x.png"; sourceTree = "<group>"; };
 		7CECA25D1D4005EC005B3227 /* password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@2x.png"; sourceTree = "<group>"; };
 		7CECA25E1D4005EC005B3227 /* password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "password@3x.png"; sourceTree = "<group>"; };
-		EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySteelHub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -407,7 +407,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B14A10B3B9DBC3A71A7E428 /* libPods-MySteelHub.a in Frameworks */,
+				7686439BD636894412F4262A /* libPods-MySteelHub.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +611,7 @@
 				46F62CA51C908FDC00A61B47 /* MySteelHub */,
 				46F62CA41C908FDC00A61B47 /* Products */,
 				CA947B5EBAC5A09731B55613 /* Pods */,
+				D7D6F042D5F68D52B59BDD47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -833,17 +834,16 @@
 		CA947B5EBAC5A09731B55613 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D856835EDA49992E1E818FAA /* Frameworks */,
-				EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */,
-				39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */,
+				66D81AD035313E2F7183C6CD /* Pods-MySteelHub.debug.xcconfig */,
+				5D6D0F0730B72796D0EC7441 /* Pods-MySteelHub.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D856835EDA49992E1E818FAA /* Frameworks */ = {
+		D7D6F042D5F68D52B59BDD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C989E1936B874FE611734BF /* libPods-MySteelHub.a */,
+				7B01F5DDB9E9C80E44B43636 /* libPods-MySteelHub.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -855,12 +855,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 46F62CBD1C908FDC00A61B47 /* Build configuration list for PBXNativeTarget "MySteelHub" */;
 			buildPhases = (
-				50B8799220F9DADC6B080A49 /* Check Pods Manifest.lock */,
+				6062D02E9F8D57C1976844AB /* [CP] Check Pods Manifest.lock */,
 				46F62C9F1C908FDC00A61B47 /* Sources */,
 				46F62CA01C908FDC00A61B47 /* Frameworks */,
 				46F62CA11C908FDC00A61B47 /* Resources */,
-				81013797BBF9436D7011FE32 /* Embed Pods Frameworks */,
-				B9DE0DD0021856940A40334C /* Copy Pods Resources */,
+				4613E35BD9B1BE84BC2320F0 /* [CP] Embed Pods Frameworks */,
+				1CBB604A4A813B24B6F8D9F2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1022,29 +1022,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		50B8799220F9DADC6B080A49 /* Check Pods Manifest.lock */ = {
+		1CBB604A4A813B24B6F8D9F2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		81013797BBF9436D7011FE32 /* Embed Pods Frameworks */ = {
+		4613E35BD9B1BE84BC2320F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1052,19 +1052,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B9DE0DD0021856940A40334C /* Copy Pods Resources */ = {
+		6062D02E9F8D57C1976844AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySteelHub/Pods-MySteelHub-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1255,7 +1255,7 @@
 		};
 		46F62CBE1C908FDC00A61B47 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EEEC3465D81B8334B07CED1D /* Pods-MySteelHub.debug.xcconfig */;
+			baseConfigurationReference = 66D81AD035313E2F7183C6CD /* Pods-MySteelHub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MySteelHub/MySteelHub.entitlements;
@@ -1276,7 +1276,7 @@
 		};
 		46F62CBF1C908FDC00A61B47 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 39E223B27012AF95266488E8 /* Pods-MySteelHub.release.xcconfig */;
+			baseConfigurationReference = 5D6D0F0730B72796D0EC7441 /* Pods-MySteelHub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MySteelHub/MySteelHub.entitlements;
