@@ -1524,7 +1524,7 @@
                     textField.text = @"Budget Amount (Rs) : ";
                 }
             }
-                break;           
+                break;
 
             default:
                 break;
