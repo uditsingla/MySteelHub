@@ -1068,14 +1068,16 @@
     {
         NSLog(@"Table row clicked");
         
-        OrderConfirmation *orderConfirmation = [kMainStoryboard instantiateViewControllerWithIdentifier:@"orderconfirmation"];
-        
-        orderConfirmation.selectedRequirement = self.selectedRequirement;
-        
-        orderConfirmation.selectedConversation = [self.selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
-        
-        [self.navigationController pushViewController:orderConfirmation animated:YES];
-         
+        if(_selectedRequirement)
+        {
+            OrderConfirmation *orderConfirmation = [kMainStoryboard instantiateViewControllerWithIdentifier:@"orderconfirmation"];
+            
+            orderConfirmation.selectedRequirement = self.selectedRequirement;
+            
+            orderConfirmation.selectedConversation = [self.selectedRequirement.arrayConversations objectAtIndex:indexPath.row];
+            
+            [self.navigationController pushViewController:orderConfirmation animated:YES];
+        }         
     }
     
     else if(tableView.tag==222)
@@ -1211,7 +1213,7 @@
                             
                             [tblView reloadData];
                             
-                            [self pushToAddressScreen:[json valueForKey:@"order_id"]];
+                            [self pushToAddressScreen:[json valueForKey:@"order_id"] seller:((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).sellerID];
                         }
                         else
                         {
@@ -1229,10 +1231,11 @@
     }
 }
 
--(void)pushToAddressScreen:(NSString*)orderID
+-(void)pushToAddressScreen:(NSString*)orderID seller:(NSString *)sellerId
 {
     OrderI *order = [OrderI new];
     order.orderID = orderID;
+    order.sellerID = sellerId;
     order.req = _selectedRequirement;
     
     PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
@@ -1689,6 +1692,12 @@
         frame.size.height += keyboardBounds.size.height;
     else
         frame.size.height += keyboardBounds.size.width;
+    
+
+    if(keyboardBounds.size.height == 0)
+    {
+        frame.size.height += 299;
+    }
     
     // Apply new size of table view
     tblView.frame = frame;

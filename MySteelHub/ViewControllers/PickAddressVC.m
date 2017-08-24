@@ -52,6 +52,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSLog(@"%@", self.selectedOrder);
+    
     [self setTitleLabel:@"Pick Address"];
     [self setBackButton];
     

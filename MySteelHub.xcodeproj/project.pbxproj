@@ -883,7 +883,7 @@
 					46F62CA21C908FDC00A61B47 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = LC334ADL8X;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1270,8 +1270,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86c90315-856c-48dc-9f4b-63e3615b2ca9";
-				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1293,8 +1293,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = app.steelhub.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "86c90315-856c-48dc-9f4b-63e3615b2ca9";
-				PROVISIONING_PROFILE_SPECIFIER = dev_steelhub;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
