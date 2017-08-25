@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -234,7 +234,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xGj-DE-oQv" id="Bxf-8q-YlA">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAJ-Vv-uWL">
@@ -285,12 +285,21 @@
                                                         <constraint firstAttribute="height" constant="45" id="bGp-Yy-C7w"/>
                                                     </constraints>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p3o-WU-X77">
+                                                    <rect key="frame" x="335" y="50" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="142-XF-HEN"/>
+                                                        <constraint firstAttribute="width" constant="25" id="yoR-d0-fCN"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Pog-mU-NBb" secondAttribute="trailing" constant="13" id="1ot-iB-Rlm"/>
                                                 <constraint firstItem="lAJ-Vv-uWL" firstAttribute="top" secondItem="Bxf-8q-YlA" secondAttribute="top" id="1sj-CP-L39"/>
                                                 <constraint firstItem="5MF-xd-AxU" firstAttribute="leading" secondItem="q7C-sw-Vkl" secondAttribute="trailing" constant="-20" id="77R-1Y-iHj"/>
+                                                <constraint firstAttribute="trailing" secondItem="p3o-WU-X77" secondAttribute="trailing" constant="15" id="A7D-nC-S65"/>
                                                 <constraint firstItem="q7C-sw-Vkl" firstAttribute="leading" secondItem="Bxf-8q-YlA" secondAttribute="leading" constant="5" id="AEP-Cx-3bh"/>
+                                                <constraint firstItem="p3o-WU-X77" firstAttribute="centerY" secondItem="Bxf-8q-YlA" secondAttribute="centerY" id="BTU-i0-TG2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="ePT-Wh-3R3" secondAttribute="trailing" constant="13" id="F8s-W3-K1k"/>
                                                 <constraint firstItem="ePT-Wh-3R3" firstAttribute="top" secondItem="lAJ-Vv-uWL" secondAttribute="bottom" constant="21" id="HH5-BD-KJ1"/>
                                                 <constraint firstItem="KMq-lT-Isq" firstAttribute="top" secondItem="ePT-Wh-3R3" secondAttribute="bottom" constant="22" id="I4c-rI-r1e"/>
@@ -308,6 +317,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnRadio" destination="q7C-sw-Vkl" id="YxU-gl-tJW"/>
+                                            <outlet property="imgTick" destination="p3o-WU-X77" id="4tL-A1-9gP"/>
                                             <outlet property="lblAddressLine1" destination="5MF-xd-AxU" id="cqJ-w0-HSF"/>
                                             <outlet property="lblAddressLine2" destination="ePT-Wh-3R3" id="bG0-sx-FpK"/>
                                             <outlet property="lblAreaInfo" destination="Pog-mU-NBb" id="Avp-Wf-cYs"/>
@@ -325,7 +335,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="125"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gw6-2A-GkS" id="tQW-4u-CcP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="124.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSd-JQ-Um4">
@@ -376,6 +386,13 @@
                                                         <constraint firstAttribute="width" constant="45" id="iGX-ys-1o8"/>
                                                     </constraints>
                                                 </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xSC-yp-tHW">
+                                                    <rect key="frame" x="335" y="50" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="lwB-kP-YCp"/>
+                                                        <constraint firstAttribute="width" constant="25" id="yDd-6m-zFS"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="q7u-8Q-yHS" firstAttribute="top" secondItem="qKK-WJ-y4B" secondAttribute="bottom" constant="22" id="0ox-vo-cOO"/>
@@ -392,6 +409,8 @@
                                                 <constraint firstItem="nh3-rd-TH2" firstAttribute="top" secondItem="tQW-4u-CcP" secondAttribute="topMargin" constant="15" id="i6G-MB-vsc"/>
                                                 <constraint firstAttribute="trailing" secondItem="q7u-8Q-yHS" secondAttribute="trailing" constant="21" id="kkP-VL-mdw"/>
                                                 <constraint firstItem="qKK-WJ-y4B" firstAttribute="leading" secondItem="Q0d-gT-qQs" secondAttribute="trailing" constant="-20" id="lHG-GX-NlZ"/>
+                                                <constraint firstItem="xSC-yp-tHW" firstAttribute="centerY" secondItem="tQW-4u-CcP" secondAttribute="centerY" id="oUF-bG-O15"/>
+                                                <constraint firstAttribute="trailing" secondItem="xSC-yp-tHW" secondAttribute="trailing" constant="15" id="qa1-CD-yLD"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NXr-Kr-zHd" secondAttribute="trailing" constant="13" id="sh8-bI-N3e"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="nh3-rd-TH2" secondAttribute="trailing" constant="13" id="wk3-4j-9Qt"/>
                                                 <constraint firstItem="NXr-Kr-zHd" firstAttribute="leading" secondItem="Q0d-gT-qQs" secondAttribute="trailing" constant="-20" id="zUs-df-q8g"/>
@@ -399,6 +418,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="btnRadio" destination="Q0d-gT-qQs" id="tVF-IU-kgh"/>
+                                            <outlet property="imgTick" destination="xSC-yp-tHW" id="dfq-S5-mTb"/>
                                             <outlet property="lblAddressLine1" destination="nh3-rd-TH2" id="c3A-y1-3pu"/>
                                             <outlet property="lblAddressLine2" destination="qKK-WJ-y4B" id="n3G-vy-f7c"/>
                                             <outlet property="lblAreaInfo" destination="NXr-Kr-zHd" id="fnu-e6-A31"/>

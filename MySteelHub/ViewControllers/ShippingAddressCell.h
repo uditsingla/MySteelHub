@@ -12,6 +12,7 @@
 
 @interface ShippingAddressCell : SWTableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *imgTick;
 @property (weak, nonatomic) IBOutlet UILabel *lblName;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddressLine1;
 @property (weak, nonatomic) IBOutlet UILabel *lblAddressLine2;

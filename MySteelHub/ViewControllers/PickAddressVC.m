@@ -24,6 +24,11 @@
 
     __weak IBOutlet UIButton *btnShippingAddress;
     __weak IBOutlet UIButton *btnBillingAddress;
+    
+    NSString *shippingID,*billingID;
+
+    Address *selectedShippingAddress,*selectedBillingAddress;
+    
     NSString *selectedAddressTab;
 }
 
@@ -118,8 +123,15 @@
         NSArray *arrayRightBtns = [self rightButtons];
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
         [cell setDelegate:self];
-        
+        [cell.imgTick setImage:[UIImage imageNamed:@"checkSingle.png"]];
+
         //cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        if(selectedAddress.ID == shippingID)
+            cell.imgTick.hidden = false;
+        else
+            cell.imgTick.hidden = true;
+        
         return cell;
     }
     else if(tableView == _tblViewBilling)
@@ -133,7 +145,13 @@
         cell.lblAddressLine2.text = selectedAddress.address2;
         cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
         cell.lblContactInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.mobile,selectedAddress.landLine];
+        [cell.imgTick setImage:[UIImage imageNamed:@"checkSingle.png"]];
 
+        
+        if(selectedAddress.ID == billingID)
+            cell.imgTick.hidden = false;
+        else
+            cell.imgTick.hidden = true;
         
         NSArray *arrayRightBtns = [self rightButtons];
         [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:80];
@@ -148,6 +166,37 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    if(tableView == _tblViewBilling)
+    {
+        selectedBillingAddress = ((Address*)[model_manager.profileManager.arrayBillingAddress objectAtIndex:indexPath.row]);
+        
+        
+        if(billingID == selectedBillingAddress.ID)
+        {
+            billingID = nil;
+        }
+        else
+        billingID = selectedBillingAddress.ID;
+        
+        [_tblViewBilling reloadData];
+
+    }
+    
+    else if(tableView == _tblViewShipping)
+    {
+        selectedShippingAddress = ((Address*)[model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row]);
+        
+        if(shippingID == selectedShippingAddress.ID)
+        {
+            shippingID = nil;
+        }
+        else
+        shippingID = selectedShippingAddress.ID;
+        
+        [_tblViewShipping reloadData];
+
+    }
     
 }
 
@@ -318,37 +367,19 @@
 
 - (IBAction)btnPlaceOrderAction:(UIButton *)sender {
     
-    NSString *shippingID,*billingID = @"";
-    NSIndexPath *selectedIndexPath = [_tblViewBilling indexPathForSelectedRow];
-    Address *selectedBillingAddress;
+        if(billingID == nil || [billingID  isEqual: @""])
+        {
+            //pick billing address
+            [self showError:@"Please select billing address"];
+            return;
+        }
     
-    if(selectedIndexPath==nil)
-    {
-        //pick billing address
-        [self showError:@"Please select billing address"];
-    }
-    else
-    {
-        selectedBillingAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:selectedIndexPath.row];
-
-        billingID = selectedBillingAddress.ID;
-    }
-    
-    selectedIndexPath = [_tblViewShipping indexPathForSelectedRow];
-    Address *selectedShippngAddress;
-    
-    if(selectedIndexPath==nil)
-    {
-        //pick shipping address
-        [self showError:@"Please select shipping address"];
-        return;
-    }
-    else
-    {
-        selectedShippngAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:selectedIndexPath.row];
-
-        shippingID = selectedShippngAddress.ID;
-    }
+        else if(shippingID == nil || [shippingID  isEqual: @""])
+        {
+            //pick billing address
+            [self showError:@"Please select shipping address"];
+            return;
+        }
     
     [SVProgressHUD show];
     [selectedOrder buyerSaveAddress:shippingID withBilling:billingID withCompletion:^(NSDictionary *json, NSError *error) {
@@ -393,7 +424,7 @@
                 
                 self.selectedOrder.finalAmount = [NSString stringWithFormat:@"%d",finalAmount];
                 self.selectedOrder.addressBilling = selectedBillingAddress;
-                self.selectedOrder.addressShipping = selectedShippngAddress;
+                self.selectedOrder.addressShipping = selectedShippingAddress;
                 viewcontroller.selectedOrder = self.selectedOrder;
                 [navigationController pushViewController:viewcontroller animated:YES];
                 

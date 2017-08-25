@@ -119,10 +119,23 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     
-   
+    [super viewWillAppear:true];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
 }
 
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:true];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardDidHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIKeyboardDidShowNotification object:nil];
+}
 
 - (void)viewDidLoad
 {
@@ -163,11 +176,7 @@
     switchCertReq.onTintColor = kBlueColor;
     
     */
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
-    
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
+
     
     if(_selectedRequirement)
     {
@@ -1644,9 +1653,9 @@
     CGRect frame = tblView.frame;
     
     // Start animation
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    [UIView setAnimationDuration:0.3f];
     
     // Reduce size of the Table view
     if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
@@ -1664,7 +1673,7 @@
         [tblView scrollRectToVisible:textFieldRect animated:NO];
     }
     
-    [UIView commitAnimations];
+    //[UIView commitAnimations];
     
     
 }
@@ -1683,9 +1692,9 @@
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     CGRect frame = tblView.frame;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:0.3f];
+//    [UIView beginAnimations:nil context:NULL];
+//    [UIView setAnimationBeginsFromCurrentState:YES];
+//    [UIView setAnimationDuration:0.3f];
     
     // Increase size of the Table view
     if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown)
@@ -1702,15 +1711,10 @@
     // Apply new size of table view
     tblView.frame = frame;
     
-    [UIView commitAnimations];
+    //[UIView commitAnimations];
     
 }
 
--(void)Closekeyboard:(NSNotification*)notification
-{
-    NSLog(@"Keyboard tempppp");
-
-}
 
 
 /*

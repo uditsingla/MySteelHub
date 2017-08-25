@@ -42,6 +42,14 @@
         NSLog(@"Here comes the json %@",json);
         if (status==200) {
             
+            
+            //remove order from requirments
+            NSPredicate *predicateReqId = [NSPredicate predicateWithFormat:@"requirementID == %@",self.req.requirementID];
+            NSArray *filterArray = [model_manager.requirementManager.arrayPostedRequirements filteredArrayUsingPredicate:predicateReqId];
+            if (filterArray.count>0)
+                [model_manager.requirementManager.arrayPostedRequirements removeObject:filterArray.firstObject];
+            
+            
             //remove order from pending list
             NSPredicate *predicateOrderId = [NSPredicate predicateWithFormat:@"orderID == %@",self.orderID];
             NSArray *filteredArray = [model_manager.profileManager.arrayPendingOrders filteredArrayUsingPredicate:predicateOrderId];

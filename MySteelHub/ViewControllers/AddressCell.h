@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAreaInfo;
 @property (weak, nonatomic) IBOutlet UILabel *lblContactInfo;
 @property (weak, nonatomic) IBOutlet UIButton *btnRadio;
+@property (weak, nonatomic) IBOutlet UIImageView *imgTick;
 
 @end
