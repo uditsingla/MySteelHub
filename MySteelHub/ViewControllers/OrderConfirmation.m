@@ -29,6 +29,8 @@
     
     if(selectedConversation.isAccepted)
         _btnAccept.hidden = YES;
+    
+    self.tableOrderDescription.tableFooterView = [UIView new];
 }
 
 

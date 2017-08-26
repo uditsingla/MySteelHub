@@ -72,6 +72,10 @@
     
     _tblViewBilling.hidden = NO;
     _tblViewShipping.hidden = YES;
+    
+    _tblViewBilling.tableFooterView = [UIView new];
+    _tblViewShipping.tableFooterView = [UIView new];
+    
 
     [self btnBillingAction:nil];
 //    selectedAddressTab = @"billing";
@@ -86,6 +90,18 @@
         contraintPlaceOrder.constant = 45;
 
     }
+    
+    // -------Customise Font & color of Segmented control------
+    UIFont *objFont = [UIFont fontWithName:@"Raleway-Regular" size:15.0f];
+    
+    // Add font object to Dictionary
+    NSDictionary *dictAttributes = [NSDictionary dictionaryWithObject:objFont forKey:NSFontAttributeName];
+    
+    [segControl setTitleTextAttributes:dictAttributes forState:UIControlStateNormal];
+    
+    segControl.tintColor = kBlueColor;
+    //----------------------------------------------------------
+
 }
 
 -(void)viewWillAppear:(BOOL)animated

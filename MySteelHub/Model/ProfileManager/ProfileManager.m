@@ -560,5 +560,15 @@
     
 }
 
+-(void)resetData
+{
+    [self.arrayShippingAddress removeAllObjects];
+    [self.arrayBillingAddress removeAllObjects];
+    [self.arrayPendingOrders removeAllObjects];
+    [self.arrayInprogressOrders removeAllObjects];
+    [self.arrayConfirmedOrders removeAllObjects];
+    [self.arrayDeliveredOrders removeAllObjects];
+    [self.arrayRejectedOrders removeAllObjects];
+}
 
 @end

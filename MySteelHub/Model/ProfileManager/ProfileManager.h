@@ -41,5 +41,6 @@
 
 - (void)updateProfile:(NSDictionary *)dictParam completion:(void(^)(NSDictionary *response, NSError *error))completionBlock;
 
+-(void)resetData;
 
 @end
