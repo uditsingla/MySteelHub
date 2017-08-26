@@ -521,9 +521,9 @@
                  owner.pan = [NSString stringWithFormat:@"%@",[dictData valueForKey:@"pan"]];
                  owner.role = [dictData valueForKey:@"role"];
                  owner.state = [dictData valueForKey:@"state"];
-                 owner.tin = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"tin"] doubleValue]];
-                 owner.zip = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"zip"] doubleValue]];
+                 owner.tin = [dictData valueForKey:@"tin"];
                  
+                 owner.zip = [NSString stringWithFormat:@"%.0f",[[dictData valueForKey:@"zip"] doubleValue]];
              }
              
              if(completionBlock)
@@ -545,6 +545,8 @@
     [RequestManager asynchronousRequestWithPath:@"update/profile" requestType:RequestTypePOST params:dictParam timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
         if (statusCode==200) {
+            
+        
             completionBlock(json,nil);
             
         }

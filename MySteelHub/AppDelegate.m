@@ -381,6 +381,7 @@
     }
     
     [model_manager.requirementManager getPostedRequirements:nil];
+    [model_manager.profileManager getUserProfile:nil];
 }
 
 
