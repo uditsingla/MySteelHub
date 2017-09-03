@@ -9,6 +9,7 @@
 #import "InProgressOrdersVC.h"
 #import "OrderI.h"
 #import "InProgressOrdersCell.h"
+#import "OrderPreview.h"
 
 @interface InProgressOrdersVC ()
 {
@@ -62,8 +63,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
     
-    
+    OrderPreview *viewcontroller = [kMainStoryboard instantiateViewControllerWithIdentifier: @"orderpreview"];
+    OrderI *order = [model_manager.profileManager.arrayInprogressOrders objectAtIndex:indexPath.row];
+    viewcontroller.selectedOrder = order;
+    viewcontroller.hideProceedButton = true;
+    [navigationController pushViewController:viewcontroller animated:YES];
 }
 
 -(void)refreshData

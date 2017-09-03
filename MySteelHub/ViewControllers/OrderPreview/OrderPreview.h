@@ -12,6 +12,8 @@
 @interface OrderPreview : BaseViewController
 
 @property(nonatomic,strong) OrderI *selectedOrder;
+@property(nonatomic,assign) BOOL hideProceedButton;
 
-
+@property (weak, nonatomic) IBOutlet UIButton *btnProceed;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tblBottomSpaceConstraint;
 @end
