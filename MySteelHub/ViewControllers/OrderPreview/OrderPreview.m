@@ -34,6 +34,12 @@
     
     NSLog(@"%@",selectedOrder);
     NSLog(@"%@",selectedOrder.req.arraySpecifications);
+    
+    if(_hideProceedButton)
+    {
+        _btnProceed.hidden = true;
+        _tblBottomSpaceConstraint.constant = 0;
+    }
 }
 
 - (void) viewWillAppear:(BOOL)animated
