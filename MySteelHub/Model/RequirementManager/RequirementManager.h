@@ -60,6 +60,7 @@
 
 -(void)getAdminAccountDetails:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
+-(void)deleteRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock;
 
 -(void)resetData;
 

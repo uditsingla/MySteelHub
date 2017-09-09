@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OrderI.h"
 
 @interface AddAddressVC : BaseViewController<UITextFieldDelegate>
 {
@@ -28,6 +29,8 @@
 @property(nonatomic,retain) NSString *addressType;
 
 @property(nonatomic,retain) Address *selectedAddress;
+
+@property(nonatomic,weak)OrderI *selectedOrder;
 
 
 @end

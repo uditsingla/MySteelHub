@@ -9,7 +9,10 @@
 #import "Requirements.h"
 #import "Home.h"
 #import "Constants.h"
-@interface Requirements ()<UITableViewDelegate,UITableViewDataSource,RequirementListingDelegate>
+#import "SWTableViewCell.h"
+
+
+@interface Requirements ()<UITableViewDelegate,UITableViewDataSource,RequirementListingDelegate,SWTableViewCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tblView;
 
@@ -160,10 +163,18 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RequirementCell"];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RequirementCell"];
     UIView *view=(UIView*)[cell.contentView viewWithTag:1];
     [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
     [view.layer setBorderWidth:1.0f];
+    
+    
+    
+    NSArray *arrayRightBtns = [self rightButtons];
+
+    [cell setRightUtilityButtons:arrayRightBtns WithButtonWidth:70];
+
+    [cell setDelegate:self];
     
     RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
     
@@ -237,6 +248,47 @@
     
     UIViewController *homeVC = [kMainStoryboard instantiateViewControllerWithIdentifier:@"home"];
     [self.navigationController pushViewController:homeVC animated:YES];
+}
+
+#pragma mark - Swipe Cell Delegate
+- (BOOL)swipeableTableViewCellShouldHideUtilityButtonsOnSwipe:(SWTableViewCell *)cell {
+    return YES;
+}
+
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    
+    UIButton *btn_accept = [UIButton buttonWithType:UIButtonTypeCustom];
+    [btn_accept setFrame:CGRectMake(0, 0, 40, 40)];
+    [btn_accept setBackgroundColor:[UIColor redColor]];
+    [btn_accept setTitle:NSLocalizedString(@"Delete",nil) forState:UIControlStateNormal];
+    [btn_accept setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [rightUtilityButtons addObject:btn_accept];
+    
+    
+    return rightUtilityButtons;
+}
+
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    
+    NSIndexPath *indexPath;
+    indexPath = [_tblView indexPathForCell:cell];
+    
+    RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
+    
+    [model_manager.requirementManager deleteRequirement:requirement completion:^(NSDictionary *json, NSError *error) {
+        if (json) {
+            [_tblView reloadData];
+        }
+        else
+        {
+            NSLog(@"not deleted");
+        }
+    }];
+    
 }
 
 /*

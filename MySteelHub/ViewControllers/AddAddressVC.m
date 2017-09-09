@@ -15,11 +15,14 @@
 
 @implementation AddAddressVC
 
-@synthesize addressType,selectedAddress;
+@synthesize addressType,selectedAddress,selectedOrder;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
+    NSLog(@"%@",addressType);
     
     [self setTitleLabel:@"Add New Address"];
     [self setMenuButton];
@@ -208,50 +211,72 @@
     
     _txtFieldAddress1 = [self customtxtfield:_txtFieldAddress1 withrightIcon:[UIImage imageNamed:@"pin.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldAddress1.delegate = self;
-
+    
     
     _txtFieldAddress2 = [self customtxtfield:_txtFieldAddress2 withrightIcon:[UIImage imageNamed:@"pin.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldAddress2.delegate = self;
-
+    
     
     
     _txtFieldContact = [self customtxtfield:_txtFieldContact withrightIcon:[UIImage imageNamed:@"phone.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldContact.delegate = self;
-
     
-    UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
-    [keyboardDoneButtonView sizeToFit];
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
-                                                                   style:UIBarButtonItemStyleDone target:self
-                                                                  action:@selector(doneClicked:)];
-    keyboardDoneButtonView.barStyle = UIBarStyleBlackOpaque;
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] init];
+    [pickerToolbar sizeToFit];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar setBackgroundImage:[UIImage new]
+                   forToolbarPosition:UIToolbarPositionAny
+                           barMetrics:UIBarMetricsDefault];
+    
+    [pickerToolbar setBackgroundColor:kBlueColor];
+    
+    
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                                style:UIBarButtonItemStyleDone target:self
+                                                               action:@selector(doneClicked:)];
+    
+    
+    [doneBtn setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName,
+                                     nil] forState:UIControlStateNormal];
     
     UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     
-    [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneButton, nil]];
-    _txtFieldContact.inputAccessoryView = keyboardDoneButtonView;
+    [pickerToolbar setItems:[NSArray arrayWithObjects:flexSpace,doneBtn, nil]];
+    _txtFieldContact.inputAccessoryView = pickerToolbar;
     
     _txtFieldLandmark = [self customtxtfield:_txtFieldLandmark withrightIcon:[UIImage imageNamed:@"pin.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldLandmark.delegate = self;
-
+    
     _txtFieldCity = [self customtxtfield:_txtFieldCity withrightIcon:[UIImage imageNamed:@"pin.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldCity.delegate = self;
-
+    
     _txtFieldState = [self customtxtfield:_txtFieldState withrightIcon:[UIImage imageNamed:@"pin.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldState.delegate = self;
-
+    
     
     _txtFieldZipCode = [self customtxtfield:_txtFieldZipCode withrightIcon:[UIImage imageNamed:@"zip.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldZipCode.delegate = self;
-
-    _txtFieldZipCode.inputAccessoryView = keyboardDoneButtonView;
+    
+    _txtFieldZipCode.inputAccessoryView = pickerToolbar;
     
     _txtFieldLandline = [self customtxtfield:_txtFieldLandline withrightIcon:[UIImage imageNamed:@"phone.png"] borderLeft:YES borderRight:YES borderBottom:YES borderTop:NO];
     _txtFieldLandline.delegate = self;
     
-    _txtFieldLandline.inputAccessoryView = keyboardDoneButtonView;
-
+    _txtFieldLandline.inputAccessoryView = pickerToolbar;
     
+    
+    
+    if(selectedOrder)
+    {
+        if ([self.addressType isEqualToString:@"shipping"])
+        {
+            _txtFieldCity.text = selectedOrder.req.city;
+            _txtFieldState.text = selectedOrder.req.state;
+        }
+    }
+
 }
 
 -(void)showKeyboard:(NSNotification*)notification

@@ -858,7 +858,7 @@
                                 <rect key="frame" x="5" y="70" width="365" height="541.5"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequirementCell" rowHeight="53" id="aLu-Qj-hH6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RequirementCell" rowHeight="53" id="aLu-Qj-hH6" customClass="SWTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="365" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aLu-Qj-hH6" id="FK8-G0-7zZ">

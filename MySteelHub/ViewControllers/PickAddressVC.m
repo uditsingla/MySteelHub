@@ -148,6 +148,8 @@
         else
             cell.imgTick.hidden = true;
         
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
         return cell;
     }
     else if(tableView == _tblViewBilling)
@@ -195,6 +197,7 @@
         else
         billingID = selectedBillingAddress.ID;
         
+        
         [_tblViewBilling reloadData];
 
     }
@@ -203,17 +206,44 @@
     {
         selectedShippingAddress = ((Address*)[model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row]);
         
-        if(shippingID == selectedShippingAddress.ID)
+        if([self validateAddress:selectedAddressTab])
         {
-            shippingID = nil;
+            if(shippingID == selectedShippingAddress.ID)
+            {
+                shippingID = nil;
+            }
+            else
+                shippingID = selectedShippingAddress.ID;
+            
+            
+            
+            [_tblViewShipping reloadData];
         }
-        else
-        shippingID = selectedShippingAddress.ID;
         
-        [_tblViewShipping reloadData];
+
 
     }
     
+}
+
+-(BOOL)validateAddress:(NSString *)addressType
+{
+    if(selectedOrder != nil)
+    {
+        NSLog(@"Selected address : %@",selectedOrder.req.state);
+        
+        if([addressType isEqualToString:@"shipping"])
+        {
+            if(([selectedOrder.req.state caseInsensitiveCompare:selectedShippingAddress.state]) &&
+               ([selectedOrder.req.city caseInsensitiveCompare:selectedShippingAddress.city]))
+            {
+                [self showError:@"City and State should be same as of posted requirement"];
+                return false;
+            }
+        }
+    }
+    
+    return true;
 }
 
 #pragma mark - Segment Controll
@@ -378,6 +408,7 @@
     AddAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"addAddress"];
     UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
     viewcontroller.addressType = selectedAddressTab;
+    viewcontroller.selectedOrder = selectedOrder;
     [navigationController pushViewController:viewcontroller animated:NO];
 }
 
@@ -387,6 +418,8 @@
         {
             //pick billing address
             [self showError:@"Please select billing address"];
+            
+            
             return;
         }
     
@@ -463,7 +496,7 @@
 
 -(void)showError:(NSString*)error
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error" message:[NSString stringWithFormat:@"%@", error] preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
