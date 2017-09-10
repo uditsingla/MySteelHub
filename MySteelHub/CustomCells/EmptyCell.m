@@ -1,14 +1,14 @@
 //
-//  HistoryCell.m
+//  EmptyCell.m
 //  MySteelHub
 //
-//  Created by Abhishek Singla on 19/03/17.
+//  Created by Abhishek Singla on 10/09/17.
 //  Copyright © 2017 MySteelHub. All rights reserved.
 //
 
-#import "HistoryCell.h"
+#import "EmptyCell.h"
 
-@implementation HistoryCell
+@implementation EmptyCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -19,10 +19,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-    _lblCity.font = fontRaleway13;
-    _lblState.font = fontRaleway13;
-    _lbldate.font = fontRaleway13;
-    _lblAmount.font = fontRaleway13;
 }
 
 @end

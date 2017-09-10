@@ -179,7 +179,7 @@
     RequirementI *requirement = [model_manager.requirementManager.arrayPostedRequirements objectAtIndex:indexPath.row];
     
     UILabel *lblCity=(UILabel*)[view viewWithTag:111];
-    UILabel *lblQuantity=(UILabel*)[view viewWithTag:222];
+    UILabel *lblState=(UILabel*)[view viewWithTag:222];
     UILabel *lblDate=(UILabel*)[view viewWithTag:333];
     UILabel *lblAmount=(UILabel*)[view viewWithTag:444];
     UIImageView *imgViewStatus=(UIImageView*)[view viewWithTag:777];
@@ -188,22 +188,23 @@
     
     lblCity.text=[requirement.city capitalizedString];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(name == %@)", [requirement.state capitalizedString]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.name contains[cd] %@)",requirement.state];
+    
     NSArray *filteredArray = [model_manager.requirementManager.arrayStates filteredArrayUsingPredicate:predicate];
     
     if(filteredArray.count>0) {
         NSLog(@"selected state....%@",[[filteredArray firstObject] valueForKey:@"code"]);
-        lblQuantity.text = [[filteredArray firstObject] valueForKey:@"code"];
+        lblState.text = [[filteredArray firstObject] valueForKey:@"code"];
 
     }
     else
-        lblQuantity.text=[requirement.state capitalizedString];
+        lblState.text=[requirement.state capitalizedString];
     
    
     lblDate.text=[requirement.requiredByDate capitalizedString];
     
     
-    lblAmount.text= [NSString stringWithFormat:@"%@/-",requirement.budget];
+    lblAmount.text= [NSString stringWithFormat:@"%@.00/- Rs",requirement.budget];
     
     
     //set text fonts and respectiver Image
@@ -213,7 +214,7 @@
         imgViewStatus.backgroundColor = RedColor;
         
         lblCity.font = fontRalewayBold12;
-        lblQuantity.font = fontRalewayBold12;
+        lblState.font = fontRalewayBold12;
         lblDate.font = fontRalewayBold12;
         lblAmount.font = fontRalewayBold12;
     }
@@ -222,7 +223,7 @@
         imgViewStatus.backgroundColor = kBlueColor;
         
         lblCity.font = fontRaleway13;
-        lblQuantity.font = fontRaleway13;
+        lblState.font = fontRaleway13;
         lblDate.font = fontRaleway13;
         lblAmount.font = fontRaleway13;
     }
@@ -243,6 +244,13 @@
     
     [self.navigationController pushViewController:homeVC animated:YES];
 }
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+}
+
 
 - (IBAction)btnNewRequirement:(id)sender {
     

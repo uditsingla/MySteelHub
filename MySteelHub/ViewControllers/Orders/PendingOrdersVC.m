@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    tablePending.tableFooterView = [UIView new];
+
     
 }
 
@@ -120,18 +122,36 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     PendingOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pendingcell"];
-       
+    
+    
+    UIView *view=(UIView*)[cell.contentView viewWithTag:1];
+    [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [view.layer setBorderWidth:1.0f];
+    
+    
     OrderI *order;
     if(indexPath.section==0)
         order = [model_manager.profileManager.arrayRejectedOrders objectAtIndex:indexPath.row];
     else
         order = [model_manager.profileManager.arrayPendingOrders objectAtIndex:indexPath.row];
 
-    cell.lblCity.text = order.req.city;
+    cell.lblCity.text = order.req.city.capitalizedString;
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
-    cell.lblAmount.text = order.finalAmount;
-
+    cell.lblAmount.text = [NSString stringWithFormat:@"%@.00/- Rs",order.finalAmount];
+    
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.name contains[cd] %@)",order.req.state];
+    
+    NSArray *filteredArray = [model_manager.requirementManager.arrayStates filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        NSLog(@"selected state....%@",[[filteredArray firstObject] valueForKey:@"code"]);
+        cell.lblState.text = [[filteredArray firstObject] valueForKey:@"code"];
+        
+    }
+    else
+        cell.lblState.text=[order.req.state capitalizedString];
     
     //[[json valueForKey:@"data"] valueForKey:@"order_status"];
 
@@ -169,6 +189,12 @@
         [navigationController pushViewController:viewcontroller animated:YES];
     }
    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
+    
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "ConfirmedOrdersVC.h"
+#import "EmptyCell.h"
 #import "ConfirmedOrdersCell.h"
 #import "OrderI.h"
 
@@ -24,7 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    tableConfirmed.tableFooterView = [UIView new];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,28 +44,83 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return model_manager.profileManager.arrayConfirmedOrders.count;
+    if (model_manager.profileManager.arrayConfirmedOrders.count > 0) {
+        return model_manager.profileManager.arrayConfirmedOrders.count;
+    }
+    else
+        return 1;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-     ConfirmedOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"confirmedcell"];
+    
+    if(model_manager.profileManager.arrayConfirmedOrders.count > 0)
+    {
+        ConfirmedOrdersCell *cell = [tableView dequeueReusableCellWithIdentifier:@"confirmedcell"];
+        
+        UIView *view=(UIView*)[cell.contentView viewWithTag:1];
+        [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+        [view.layer setBorderWidth:1.0f];
+        
+        OrderI *order = [model_manager.profileManager.arrayConfirmedOrders objectAtIndex:indexPath.row];
+        
+        cell.lblCity.text = order.req.city.capitalizedString;
+        cell.lblState.text = order.req.state;
+        cell.lbldate.text = order.req.requiredByDate;
+        cell.lblAmount.text = [NSString stringWithFormat:@"%@.00/- Rs",order.finalAmount];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.name contains[cd] %@)",order.req.state];
+        
+        NSArray *filteredArray = [model_manager.requirementManager.arrayStates filteredArrayUsingPredicate:predicate];
+        
+        if(filteredArray.count>0) {
+            NSLog(@"selected state....%@",[[filteredArray firstObject] valueForKey:@"code"]);
+            cell.lblState.text = [[filteredArray firstObject] valueForKey:@"code"];
+            
+        }
+        else
+            cell.lblState.text=[order.req.state capitalizedString];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
 
-    OrderI *order = [model_manager.profileManager.arrayConfirmedOrders objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        EmptyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
+        
+        UIView *view=(UIView*)[cell.contentView viewWithTag:1];
+        [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+        [view.layer setBorderWidth:1.0f];
+        
+        
+        
+        //cell.lblMsg.text = @"No Data Received";
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+
+    }
     
-    cell.lblCity.text = order.req.city;
-    cell.lblState.text = order.req.state;
-    cell.lbldate.text = order.req.requiredByDate;
-    cell.lblAmount.text = order.finalAmount;
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    return [UITableViewCell new];
     
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if (model_manager.profileManager.arrayConfirmedOrders.count > 0) {
+        return 90;
+    }
+    else
+        return self.view.frame.size.height;
     
 }
 

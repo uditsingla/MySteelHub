@@ -189,7 +189,9 @@
 -(void)deleteRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam with requirement object
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.requirementID,@"requirement_id",nil];
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.requirementID,@"requirement_id",@"buyer",@"type",nil];
+    
+    NSLog(@"Params : %@",dictParams);
     
     [RequestManager asynchronousRequestWithPath:@"deletePost" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
@@ -347,6 +349,8 @@
             for (int i=0; i < array.count; i++) {
                 [arrayStates addObject:[array objectAtIndex:i]];
             }
+            
+            NSLog(@"States : %@",self.arrayStates);
             
             if(completionBlock)
                 completionBlock(json,nil);

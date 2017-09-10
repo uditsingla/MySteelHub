@@ -88,6 +88,7 @@
 		465B62471EA3D40C006A6CE0 /* FinalAmountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 465B62461EA3D40C006A6CE0 /* FinalAmountCell.m */; };
 		467E5E9F1D59AE1200407925 /* ForgotPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5E9E1D59AE1200407925 /* ForgotPassword.m */; };
 		467E5EA21D59AF4C00407925 /* ChangePassword.m in Sources */ = {isa = PBXBuildFile; fileRef = 467E5EA11D59AF4C00407925 /* ChangePassword.m */; };
+		468FBD201F65B54D0075443A /* EmptyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 468FBD1F1F65B54D0075443A /* EmptyCell.m */; };
 		469942971D3BFBFD00378968 /* Raleway-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942851D3BFBFD00378968 /* Raleway-Black.ttf */; };
 		469942981D3BFBFD00378968 /* Raleway-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */; };
 		469942991D3BFBFD00378968 /* Raleway-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 469942871D3BFBFD00378968 /* Raleway-Bold.ttf */; };
@@ -276,6 +277,8 @@
 		467E5E9E1D59AE1200407925 /* ForgotPassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPassword.m; sourceTree = "<group>"; };
 		467E5EA01D59AF4C00407925 /* ChangePassword.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePassword.h; sourceTree = "<group>"; };
 		467E5EA11D59AF4C00407925 /* ChangePassword.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePassword.m; sourceTree = "<group>"; };
+		468FBD1E1F65B54D0075443A /* EmptyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyCell.h; sourceTree = "<group>"; };
+		468FBD1F1F65B54D0075443A /* EmptyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyCell.m; sourceTree = "<group>"; };
 		469942851D3BFBFD00378968 /* Raleway-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Black.ttf"; sourceTree = "<group>"; };
 		469942861D3BFBFD00378968 /* Raleway-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BlackItalic.ttf"; sourceTree = "<group>"; };
 		469942871D3BFBFD00378968 /* Raleway-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-Bold.ttf"; sourceTree = "<group>"; };
@@ -559,6 +562,8 @@
 				46BE79951E7EAC04008A6C66 /* InProgressOrdersCell.m */,
 				46BE79971E7EAC1A008A6C66 /* HistoryCell.h */,
 				46BE79981E7EAC1A008A6C66 /* HistoryCell.m */,
+				468FBD1E1F65B54D0075443A /* EmptyCell.h */,
+				468FBD1F1F65B54D0075443A /* EmptyCell.m */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -1083,6 +1088,7 @@
 				7C53E0541D34024800B7DD43 /* SWLongPressGestureRecognizer.m in Sources */,
 				461BE7CF1CAF01C000A8F3DC /* BaseViewController.m in Sources */,
 				1885057B1CDF770100086EC8 /* RequirementDetail.m in Sources */,
+				468FBD201F65B54D0075443A /* EmptyCell.m in Sources */,
 				465B623E1EA3D38D006A6CE0 /* QuantityCell.m in Sources */,
 				7C53E0571D34024800B7DD43 /* SWUtilityButtonView.m in Sources */,
 				46F62CB41C908FDC00A61B47 /* MySteelHub.xcdatamodeld in Sources */,

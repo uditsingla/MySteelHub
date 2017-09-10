@@ -70,7 +70,7 @@
 {
     UILabel *label = [[UILabel alloc] init];
     label.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
-    label.text = title;
+    label.text = title.uppercaseString;
     label.frame = CGRectMake(0, 20, self.view.frame.size.width, 50);
     label.textColor=[UIColor whiteColor];
     label.textAlignment = NSTextAlignmentCenter;

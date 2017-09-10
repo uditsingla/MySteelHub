@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    tableHistory.tableFooterView = [UIView new];
+
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -48,12 +50,29 @@
     
     HistoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"historycell"];
     
+    
+    UIView *view=(UIView*)[cell.contentView viewWithTag:1];
+    [view.layer setBorderColor:[UIColor lightGrayColor].CGColor];
+    [view.layer setBorderWidth:1.0f];
+    
     OrderI *order = [model_manager.profileManager.arrayDeliveredOrders objectAtIndex:indexPath.row];
     
-    cell.lblCity.text = order.req.city;
+    cell.lblCity.text = order.req.city.capitalizedString;
     cell.lblState.text = order.req.state;
     cell.lbldate.text = order.req.requiredByDate;
-    cell.lblAmount.text = order.finalAmount;
+    cell.lblAmount.text = [NSString stringWithFormat:@"%@.00/- Rs",order.finalAmount];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(SELF.name contains[cd] %@)",order.req.state];
+    
+    NSArray *filteredArray = [model_manager.requirementManager.arrayStates filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        NSLog(@"selected state....%@",[[filteredArray firstObject] valueForKey:@"code"]);
+        cell.lblState.text = [[filteredArray firstObject] valueForKey:@"code"];
+        
+    }
+    else
+        cell.lblState.text=[order.req.state capitalizedString];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
@@ -64,6 +83,11 @@
 {
     
     
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 90;
 }
 
 -(void)refreshData
