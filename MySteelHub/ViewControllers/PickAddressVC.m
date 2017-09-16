@@ -129,7 +129,8 @@
         
         Address *selectedAddress = [model_manager.profileManager.arrayShippingAddress objectAtIndex:indexPath.row];
         
-        cell.lblName.text = selectedAddress.firmName;
+        cell.lblName.text = selectedAddress.firmName.uppercaseString;
+        cell.lblName.font = fontRalewayBold14;
         cell.lblAddressLine1.text = selectedAddress.address1;
         cell.lblAddressLine2.text = selectedAddress.address2;
         cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
@@ -158,7 +159,8 @@
         
         Address *selectedAddress = [model_manager.profileManager.arrayBillingAddress objectAtIndex:indexPath.row];
         
-        cell.lblName.text = selectedAddress.firmName;
+        cell.lblName.text = selectedAddress.firmName.uppercaseString;
+        cell.lblName.font = fontRalewayBold14;
         cell.lblAddressLine1.text = selectedAddress.address1;
         cell.lblAddressLine2.text = selectedAddress.address2;
         cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];

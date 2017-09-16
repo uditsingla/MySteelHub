@@ -14,5 +14,6 @@
 
 @property(nonatomic,strong) RequirementI *selectedRequirement;
 
+
 //@property(nonatomic,assign) BOOL isRequirmentDetailsClicked;
 @end

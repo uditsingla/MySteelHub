@@ -497,7 +497,7 @@
 
             }];
         }
-        else if(conversation.bargainAmount.intValue>0 && conversation.isBargainRequired == true && conversation.isBuyerReadBargain ==false)
+        else if(conversation.bargainAmount.intValue >= 0 && conversation.isBargainRequired == true && conversation.isBuyerReadBargain == false)
         {
             [_selectedRequirement updateBuyerReadBargainStatus:conversation.sellerID withCompletion:^(NSDictionary *json, NSError *error) {
                 
@@ -1029,6 +1029,8 @@
             
             if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue > 0)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
+            else if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue == 0)
+                cell.lblBargainStatus.text = [NSString stringWithFormat:@"Already gave you best price"];
             else if(currentRow.isBargainRequired)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
             else
@@ -1043,9 +1045,10 @@
             
             if(currentRow.isAccepted)
             {
+                
                 cell.imgViewStatus.backgroundColor = GreenColor
                 cell.imgViewStatus.hidden = false;
-                cell.imgviewStatus.image = [UIImage imageNamed:@"checkDouble.png"];
+                cell.imgviewStatus.image = [UIImage imageNamed:@"green_bubble.png"];
             }
             else if(!currentRow.isBuyerRead)
             {
@@ -1060,14 +1063,14 @@
             {
                 cell.imgViewStatus.backgroundColor = OrangeColor
                 cell.imgViewStatus.hidden = false;
-                cell.imgviewStatus.image = [UIImage imageNamed:@"checkSingle.png"];
+                cell.imgviewStatus.image = [UIImage imageNamed:@"orange_purple.png"];
                 
             }
             else if(currentRow.isBuyerReadBargain && currentRow.isBargainRequired)
             {
                 cell.imgViewStatus.backgroundColor = PurpleColor
                 cell.imgViewStatus.hidden = false;
-                cell.imgviewStatus.image = [UIImage imageNamed:@"notificationBell.png"];
+                cell.imgviewStatus.image = [UIImage imageNamed:@"purple_bubble.png"];
                 
                 cell.lblSellerName.font = fontRalewayBold12;
                 cell.lblAmount.font = fontRalewayBold12;
