@@ -221,7 +221,9 @@
             cell.lblName.text = [NSString stringWithFormat:@"Name : %@",[selectedOrder.addressShipping.firmName capitalizedString]];
             cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@",[selectedOrder.addressShipping.address1 capitalizedString]];
             cell.lblAddress2.text = [selectedOrder.addressShipping.address2 capitalizedString];
-            cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.addressShipping.city,selectedOrder.addressShipping.state] capitalizedString];
+            cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.req.city,selectedOrder.req.state] capitalizedString];
+            
+            
             cell.lblContact.text = [NSString stringWithFormat:@"M : %@, L : %@",selectedOrder.addressShipping.mobile,selectedOrder.addressShipping.landLine];
         }
         

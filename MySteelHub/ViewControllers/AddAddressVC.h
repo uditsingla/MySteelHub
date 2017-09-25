@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "OrderI.h"
 
-@interface AddAddressVC : BaseViewController<UITextFieldDelegate>
+@interface AddAddressVC : BaseViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource>
 {
     __weak IBOutlet UITextField *_txtFieldName;
     __weak IBOutlet UITextField *_txtFieldAddress1;
