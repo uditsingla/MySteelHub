@@ -646,7 +646,7 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDate *currentDate = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
-    [comps setDay:7];
+    [comps setDay:1];
     NSDate *minDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
 
 
@@ -1600,25 +1600,38 @@
     CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
     NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
     
+    NSString *resultText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
     switch (indexPath.section) {
         case 0:
         {
-            
+            NSLog(@"%ld",(long)indexPath.section);
+         if(textField.tag == 786)
+            {
+                return resultText.length <= 3;
+            }
         }
             break;
         case 1:
         {
+            
             HomeProductDetailCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+            
+            [textField setClearButtonMode:UITextFieldViewModeNever];
+            
             if (textField == cell.txtDeliveryCity)
             {
-                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-                return !([newString length] < 16);
-                
+                if(textField.text.length >= 16 && textField.text.length <= 30)
+                    return [self setContentInTextField:string textType:@"Characheters"];
+                else
+                    return ([resultText length] >= 16 && [resultText length] <= 30);
             }
             else if (textField == cell.txtBudget)
             {
-                NSString *newString = [textField.text stringByReplacingCharactersInRange:range withString:string];
-                return !([newString length] < 21);
+                if(textField.text.length >= 22 && textField.text.length <= 23)
+                    return [self setContentInTextField:string textType:@"Numerics"];
+                else
+                    return ([resultText length] >= 22 && [resultText length] <= 23);
             }
         }
             break;
@@ -1633,6 +1646,26 @@
     }
 
     return YES;
+}
+
+-(BOOL)setContentInTextField:(NSString*)textFieldInputString textType:(NSString*)strType
+{
+    NSString *strChars = @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    NSString *strNumerics = @"0123456789";
+    NSCharacterSet *cs;
+    
+    if([strType  isEqual: @"Characheters"])
+    {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:strChars] invertedSet];
+    }
+    else if ([strType  isEqual: @"Numerics"])
+    {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:strNumerics] invertedSet];
+    }
+    
+    NSString *filtered = [[textFieldInputString componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    
+    return [textFieldInputString isEqualToString:filtered];
 }
 
 /*

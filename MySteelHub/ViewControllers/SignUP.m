@@ -344,6 +344,85 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    
+    NSString *resultText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if (textField == _txtFieldUsername)
+    {
+        if(textField.text.length <= 20)
+            return [self setContentInTextField:string textType:@"Characheters"];
+        else
+            return resultText.length <= 20;
+    }
+    else if(textField == _txtFieldCompanyName)
+    {
+        return resultText.length <= 25;
+    }
+    else if(textField == _txtFieldEmail)
+    {
+        return resultText.length <= 30;
+    }
+    else if(textField == _txtFieldAddress)
+    {
+        return resultText.length <= 30;
+    }
+    else if (textField == _txtFieldCity)
+    {
+        if(textField.text.length <= 14)
+            return [self setContentInTextField:string textType:@"Characheters"];
+        else
+            return resultText.length <= 14;
+    }
+    
+    else if (textField == _txtFieldZipCode)
+    {
+        return resultText.length <= 6;
+    }
+    else if (textField == _txtFieldContact)
+    {
+        return resultText.length <= 10;
+    }
+    else if(textField == _txtFieldTin)
+    {
+        return resultText.length <= 15;
+    }
+    else if (textField == _txtFieldPan)
+    {
+        return resultText.length <= 10;
+    }
+    else if (textField == _txtFieldExpected)
+    {
+        if(textField.text.length <= 2)
+            return [self setContentInTextField:string textType:@"Numerics"];
+        else
+            return resultText.length <= 2;
+    }
+    return true;
+}
+
+-(BOOL)setContentInTextField:(NSString*)textFieldInputString textType:(NSString*)strType
+{
+    NSString *strChars = @" ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    NSString *strNumerics = @"0123456789";
+    NSCharacterSet *cs;
+    
+    if([strType  isEqual: @"Characheters"])
+    {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:strChars] invertedSet];
+    }
+    else if ([strType  isEqual: @"Numerics"])
+    {
+        cs = [[NSCharacterSet characterSetWithCharactersInString:strNumerics] invertedSet];
+    }
+    
+    NSString *filtered = [[textFieldInputString componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    
+    return [textFieldInputString isEqualToString:filtered];
+}
+
 - (IBAction)btnSubmit:(id)sender {
     
     if ([_txtFieldUsername.text isEqual:@""]) {

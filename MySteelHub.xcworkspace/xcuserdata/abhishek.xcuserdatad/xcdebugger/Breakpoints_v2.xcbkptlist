@@ -26,23 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "526657414.345975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527283710.785405"
+            timestampString = "529153125.25721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1255"
@@ -58,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527283710.785405"
+            timestampString = "529153125.257377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1257"
@@ -74,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527283710.785405"
+            timestampString = "529153125.257465"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1264"
@@ -90,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527283710.785405"
+            timestampString = "529153125.25755"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1295"
@@ -170,7 +154,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementManager.m"
-                  timestampString = "527535418.690364"
+                  timestampString = "529151197.124631"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "38"
@@ -185,7 +169,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementManager.m"
-                  timestampString = "527535418.692655"
+                  timestampString = "529151197.136571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "39"
@@ -250,7 +234,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementI.m"
-                  timestampString = "527535418.706986"
+                  timestampString = "529151197.187195"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "43"
@@ -265,7 +249,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementI.m"
-                  timestampString = "527535418.709461"
+                  timestampString = "529151197.191104"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
@@ -314,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527282255.584296"
+            timestampString = "529153125.25788"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "490"
@@ -330,7 +314,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/ViewControllers/Home.m"
-                  timestampString = "527535418.719191"
+                  timestampString = "529151197.206073"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "490"
@@ -345,7 +329,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/ViewControllers/Home.m"
-                  timestampString = "527535418.721592"
+                  timestampString = "529151197.209715"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "490"
@@ -362,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527282287.301346"
+            timestampString = "529153125.258282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "502"
@@ -378,7 +362,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/ViewControllers/Home.m"
-                  timestampString = "527535418.727067"
+                  timestampString = "529151197.217847"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "502"
@@ -393,7 +377,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/ViewControllers/Home.m"
-                  timestampString = "527535418.729545"
+                  timestampString = "529151197.22134"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "502"
@@ -410,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527282290.693362"
+            timestampString = "529153125.258366"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "492"
@@ -442,7 +426,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementI.m"
-                  timestampString = "527535418.739784"
+                  timestampString = "529151197.235502"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "93"
@@ -457,7 +441,7 @@
                   moduleName = "MySteelHub"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/abhishek/Desktop/SH/SteelHub-B/MySteelHub/MySteelHub/Model/RequirementManager/RequirementI.m"
-                  timestampString = "527535418.742596"
+                  timestampString = "529151197.238914"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "94"
@@ -490,7 +474,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MySteelHub/ViewControllers/Home.m"
-            timestampString = "527283485.001952"
+            timestampString = "529153125.258493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "1030"
@@ -608,6 +592,134 @@
             startingLineNumber = "220"
             endingLineNumber = "220"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.258745"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1635"
+            endingLineNumber = "1635"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.258823"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1554"
+            endingLineNumber = "1554"
+            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.2589"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1549"
+            endingLineNumber = "1549"
+            landmarkName = "-textFieldShouldBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.258979"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1532"
+            endingLineNumber = "1532"
+            landmarkName = "-textFieldDidBeginEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.259056"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1448"
+            endingLineNumber = "1448"
+            landmarkName = "-textFieldShouldReturn:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.25914"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1456"
+            endingLineNumber = "1456"
+            landmarkName = "-textFieldDidEndEditing:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.259214"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1608"
+            endingLineNumber = "1608"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MySteelHub/ViewControllers/Home.m"
+            timestampString = "529153125.259287"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "1624"
+            endingLineNumber = "1624"
+            landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

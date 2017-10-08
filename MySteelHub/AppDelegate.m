@@ -142,6 +142,7 @@
 
 
 #pragma mark - Location services
+/*
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     NSLog(@"didUpdateToLocation: %@", [locations lastObject]);
@@ -219,6 +220,7 @@
             break;
     }
 }
+ */
 
 
 #pragma mark - Core Data stack
