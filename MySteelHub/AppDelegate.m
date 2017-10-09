@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "IQKeyboardManager.h"
 
 #define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 
@@ -35,6 +36,11 @@
         }
     }
     //
+    
+    //Enabling keyboard manager(Use this line to enable managing distance between keyboard & textField/textView).
+    [[IQKeyboardManager sharedManager] setEnable:YES];
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+
     
     
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];

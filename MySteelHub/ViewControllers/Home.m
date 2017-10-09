@@ -485,7 +485,7 @@
         isAccepted = YES;
     }
     
-    
+    NSLog(@"array : %@",_selectedRequirement.arrayConversations);
     //update read status
     for(Conversation *conversation in _selectedRequirement.arrayConversations)
     {
@@ -532,6 +532,7 @@
 {
     NSLog(@"Done Clicked.");
     [self.view endEditing:YES];
+    
 }
 
 
@@ -1029,8 +1030,8 @@
             
             if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue > 0)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Amount : Rs %@",currentRow.bargainAmount];
-            else if(currentRow.isBargainRequired && currentRow.bargainAmount.intValue == 0)
-                cell.lblBargainStatus.text = [NSString stringWithFormat:@"Already gave you best price"];
+            else if(currentRow.isBargainRequired && currentRow.isBestPrice)
+                cell.lblBargainStatus.text = [NSString stringWithFormat:@"Already gave you the best price"];
             else if(currentRow.isBargainRequired)
             cell.lblBargainStatus.text = [NSString stringWithFormat:@"Bargain Requested"];
             else
@@ -1628,10 +1629,10 @@
             }
             else if (textField == cell.txtBudget)
             {
-                if(textField.text.length >= 22 && textField.text.length <= 23)
+                if(textField.text.length >= 22 && textField.text.length <= 26)
                     return [self setContentInTextField:string textType:@"Numerics"];
                 else
-                    return ([resultText length] >= 22 && [resultText length] <= 23);
+                    return ([resultText length] >= 22 && [resultText length] <= 26);
             }
         }
             break;

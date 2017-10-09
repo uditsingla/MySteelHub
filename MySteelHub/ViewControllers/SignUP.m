@@ -486,11 +486,12 @@ replacementString:(NSString *)string {
         [self showError:errorType];
         return;
     }
-    if ([_txtFieldTin.text isEqual:@""]) {
-        errorType=@"tin";
+    if (([_txtFieldTin.text isEqual:@""]) || (_txtFieldTin.text.length < 15)) {
+        errorType=@"gstn";
         [self showError:errorType];
         return;
     }
+   
     if ([_txtFieldPan.text isEqual:@""]) {
         errorType=@"pan";
         [self showError:errorType];
@@ -555,7 +556,8 @@ replacementString:(NSString *)string {
     {
     NSDictionary *dictSignupParams=[[NSDictionary alloc]initWithObjectsAndKeys:_txtFieldEmail.text,@"email",_txtFieldPassword.text,@"password",_txtFieldUsername.text,@"name",_txtFieldContact.text,@"contact",_txtFieldAddress.text,@"address",_txtFieldState.text,@"state",_txtFieldCity.text,@"city",_txtFieldZipCode.text,@"zip",_txtFieldTin.text,@"tin",_txtFieldCompanyName.text,@"company_name",_txtFieldPan.text,@"pan",@"buyer",@"role",_txtFieldExpected.text,@"quantity",arraySelectedCategories,@"customer_type",strLat,@"latitude",strLong,@"longitude",@"ios",@"device_type",[[NSUserDefaults standardUserDefaults] valueForKey:@"DeviceToken"],@"device_token",nil];
     
-    
+        NSLog(@"signup params : %@",dictSignupParams);
+        
     [model_manager.loginManager userSignUp:dictSignupParams completion:^(NSArray *addresses, NSError *error){
         [SVProgressHUD dismiss];
         
@@ -608,7 +610,7 @@ replacementString:(NSString *)string {
 }
 -(void)showError:(NSString*)error
 {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"Please enter a valid %@",error] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops" message:[NSString stringWithFormat:@"Please enter a valid %@",error] preferredStyle:UIAlertControllerStyleAlert];
     
     [alert addAction:[UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         
