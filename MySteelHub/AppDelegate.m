@@ -30,11 +30,11 @@
     
     ///Font name
     
-    for (NSString *fontFamilyName in [UIFont familyNames]) {
-        for (NSString *fontName in [UIFont fontNamesForFamilyName:fontFamilyName]) {
-            NSLog(@"Family: %@    Font: %@", fontFamilyName, fontName);
-        }
-    }
+//    for (NSString *fontFamilyName in [UIFont familyNames]) {
+//        for (NSString *fontName in [UIFont fontNamesForFamilyName:fontFamilyName]) {
+//            NSLog(@"Family: %@    Font: %@", fontFamilyName, fontName);
+//        }
+//    }
     //
     
     //Enabling keyboard manager(Use this line to enable managing distance between keyboard & textField/textView).

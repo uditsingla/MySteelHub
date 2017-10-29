@@ -121,10 +121,10 @@
     
     [super viewWillAppear:true];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(hideKeyboard:) name:UIKeyboardDidHideNotification object:nil ];
     
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
 }
 
@@ -163,21 +163,7 @@
         constraintSubmitBtnHeight.constant = 0;
     }
     
-    
-    //switch controlls reframe
-    /*
-    switchPhysical.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchPhysical.onTintColor = kBlueColor;
-    
-    switchChemical.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchChemical.onTintColor = kBlueColor;
-    
-    switchCertReq.transform = CGAffineTransformMakeScale(0.8, 0.8);
-    switchCertReq.onTintColor = kBlueColor;
-    
-    */
 
-    
     if(_selectedRequirement)
     {
         [self setTitleLabel:@"ORDER DETAILS"];
@@ -187,57 +173,6 @@
     
     [self setMenuButton];
     [self setBackButton];
-    
-    /*
-    //Custom UI for TextFilds
-    [self customtxtfield:txtFieldCity withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
-    
-    [self customtxtfield:txtFieldState withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
-    
-    [self customtxtfield:txtFieldBudget withrightIcon:nil borderLeft:false borderRight:false borderBottom:false borderTop:false];
-    
-    //New Implemetation
-    UIFont *font = [UIFont fontWithName:@"Raleway-Regular" size:15];
-    
-    
-    
-    lbCity = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 110, 15)];
-    lbCity.textColor =  kPlaceHolderGrey;
-    lbCity.font = font;
-    lbCity.text = @"   Delivery City ";
-    [txtFieldCity setLeftView:lbCity];
-    [txtFieldCity setLeftViewMode:UITextFieldViewModeAlways];
-    
-    lbState = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 58, 15)];
-    lbState.textColor =  kPlaceHolderGrey;
-    lbState.font = font;
-    lbState.text = @"   State ";
-    [txtFieldState setLeftView:lbState];
-    [txtFieldState setLeftViewMode:UITextFieldViewModeAlways];
-    
-    lbAmount = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 15)];
-    lbAmount.textColor =  kPlaceHolderGrey;
-    lbAmount.font = font;
-    lbAmount.text = @"   Budget Amount (Rs) ";
-    [txtFieldBudget setLeftView:lbAmount];
-    [txtFieldBudget setLeftViewMode:UITextFieldViewModeAlways];
-    
-    
-    [txtFieldCity setValue:[UIColor lightGrayColor]
-                forKeyPath:@"_placeholderLabel.textColor"];
-    [txtFieldState setValue:[UIColor lightGrayColor]
-                 forKeyPath:@"_placeholderLabel.textColor"];
-    [txtFieldBudget setValue:[UIColor lightGrayColor]
-                  forKeyPath:@"_placeholderLabel.textColor"];
-    
-    */
-    
-    
-    //btnPreferedBrands.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-       // btnGradeRequired.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
-    //    btnPreferedBrands.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
-    //    btnRequiredByDate.titleLabel.font = [UIFont fontWithName:@"Raleway-Regular" size:15];
-    
     
     arrayTblDict = [NSMutableArray new];
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"",@"size",@"",@"quantity", nil];
@@ -252,34 +187,6 @@
     [tblView layoutIfNeeded];
     [tblView setNeedsLayout];
 
-    
-   // tblViewHeightConstraint.constant = (arrayTblDict.count+1)*44;
-
-   // if (_selectedRequirement) {
-       // tblViewHeightConstraint.constant = (arrayTblDict.count)*44;
-
-    //}
-    //[tblViewSizes reloadData];
-    
-    
-    
-    //[tblSellerResponse reloadData];
-    
-    
-    //[self getUserLocation];
-    /*
-     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
-     longitude:151.2086
-     zoom:6];
-     //mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-     GMSMarker *marker = [[GMSMarker alloc] init];
-     marker.position = camera.target;
-     marker.snippet = @"Hello World";
-     marker.appearAnimation = kGMSMarkerAnimationPop;
-     marker.map = mapView;
-     self.view = mapView;
-     */
-    
     
     if(model_manager.requirementManager.arraySteelSizes.count>0)
         arraySteelSizes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arraySteelSizes];
@@ -337,8 +244,6 @@
     [self.view addSubview:pickerTaxView];
     pickerTaxView.hidden = YES;
     
-    //arrayTaxes = [NSMutableArray arrayWithObjects:@"CST",@"VAT",@"SST", nil];
-    
     //initialize picker for states
     pickerViewState = [[UIView alloc]initWithFrame:CGRectMake(0,self.view.frame.size.height-216, self.view.frame.size.width,216)];
     [pickerViewState setBackgroundColor:[UIColor whiteColor]];
@@ -393,6 +298,7 @@
             arrayTaxes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayTaxTypes];
             UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
             [pickerView reloadAllComponents];
+            
         }
     }];
     
@@ -407,9 +313,6 @@
     
     [keyboardDoneButtonView setBackgroundColor:kBlueColor];
     
-    
-    
-    
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                                    style:UIBarButtonItemStyleDone target:self
                                                                   action:@selector(doneClicked:)];
@@ -422,21 +325,11 @@
     [keyboardDoneButtonView setItems:[NSArray arrayWithObjects:flexSpace,doneBtn, nil]];
     [tblView reloadData];
     
-    /*
-    txtFieldBudget.inputAccessoryView = keyboardDoneButtonView;
-    
-    txtFieldQuantity.inputAccessoryView = keyboardDoneButtonView;
-    
-    */
     
     if(_selectedRequirement)
     {
         [self updateRequirementDetails];
     }
-    
-
-    
-    
 }
 
 -(void)updateRequirementDetails
@@ -1567,6 +1460,11 @@
                     
                     selectedDiameterTextfield = textField;
                     [textField resignFirstResponder];
+                }
+                else
+                {
+                    pickerToolBarView.hidden = YES;
+                    pickerGradeRequiredView.hidden = YES;
                 }
             }
                 break;
