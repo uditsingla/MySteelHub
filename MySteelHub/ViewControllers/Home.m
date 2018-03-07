@@ -102,7 +102,7 @@
     
     __weak IBOutlet NSLayoutConstraint *constraintSubmitBtnHeight;
     
-   UITextField *actifText;
+   //UITextField *actifText;
 
     BOOL isAccepted;
 }
@@ -626,25 +626,36 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     if(pickerView.tag==111)
     {
-        NSLog(@"You selected this: %@", [[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]);
+        //NSLog(@"You selected this: %@", [[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]);
+        if(arraySteelSizes.count > 0)
         selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: row] valueForKey:@"size"]];
     }
     else if(pickerView.tag==333)
     {
-        NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
-        selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
-        selectedGradeID = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"id"];
+        //NSLog(@"You selected this: %@", [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"]);
+        if(arrayGradeRequired.count > 0)
+        {
+            selectedGradeRequired = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"grade"];
+            selectedGradeID = [[arrayGradeRequired objectAtIndex: row] valueForKey:@"id"];
+
+        }
+
         
     }
     else if(pickerView.tag==555)
     {
-        NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
-        selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
-        selectedTaxID = [[arrayTaxes objectAtIndex: row] valueForKey:@"id"];
+        //NSLog(@"You selected this: %@", [[arrayTaxes objectAtIndex: row] valueForKey:@"type"]);
+        if(arrayTaxes.count > 0)
+        {
+            selectedTax = [[arrayTaxes objectAtIndex: row] valueForKey:@"type"];
+            selectedTaxID = [[arrayTaxes objectAtIndex: row] valueForKey:@"id"];
+
+        }
     }
     else if(pickerView.tag==777)
     {
-        NSLog(@"You selected this: %@", [[arrayStates objectAtIndex: row] valueForKey:@"name"]);
+        //NSLog(@"You selected this: %@", [[arrayStates objectAtIndex: row] valueForKey:@"name"]);
+        if(arrayStates.count > 0)
         selectedState = [[arrayStates objectAtIndex: row] valueForKey:@"name"];
     }
     
@@ -1347,7 +1358,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
-    actifText = nil;
+    //actifText = nil;
     
     CGPoint center= textField.center;
     CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
@@ -1429,7 +1440,7 @@
     }
     else{
         
-        actifText = textField;
+       // actifText = textField;
     }
     
 }
@@ -1450,6 +1461,7 @@
                     pickerToolBarView.hidden = NO;
                     [self.view bringSubviewToFront:pickerToolBarView];
                     
+                    if(arraySteelSizes.count > 0)
                     selectedDiameter = [NSString stringWithFormat:@"%@ mm",[[arraySteelSizes objectAtIndex: 0] valueForKey:@"size"]];
                     
                     UIPickerView *pickerView = [pickerToolBarView viewWithTag:111];
@@ -1520,10 +1532,10 @@
             
             if (textField == cell.txtDeliveryCity)
             {
-                if(textField.text.length >= 16 && textField.text.length <= 30)
+                if(textField.text.length > 16 && textField.text.length <= 35)
                     return [self setContentInTextField:string textType:@"Characheters"];
                 else
-                    return ([resultText length] >= 16 && [resultText length] <= 30);
+                    return ([resultText length] >= 16 && [resultText length] <= 35);
             }
             else if (textField == cell.txtBudget)
             {
@@ -1644,11 +1656,11 @@
     tblView.frame = frame;
     
     // Scroll the table view to see the TextField just above the keyboard
-    if (actifText)
-    {
-        CGRect textFieldRect = [tblView convertRect:actifText.bounds fromView:actifText];
-        [tblView scrollRectToVisible:textFieldRect animated:NO];
-    }
+//    if (actifText)
+//    {
+//        CGRect textFieldRect = [tblView convertRect:actifText.bounds fromView:actifText];
+//        [tblView scrollRectToVisible:textFieldRect animated:NO];
+//    }
     
     //[UIView commitAnimations];
     
@@ -1837,8 +1849,11 @@
     {
     pickerGradeRequiredView.hidden = NO;
     [self.view bringSubviewToFront:pickerGradeRequiredView];
-    selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
-    selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
+        if(arrayGradeRequired.count > 0)
+        {
+            selectedGradeRequired = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"grade"];
+            selectedGradeID = [[arrayGradeRequired objectAtIndex: 0] valueForKey:@"id"];
+        }
     
     
     UIPickerView *pickerView = [pickerGradeRequiredView viewWithTag:333];
@@ -1885,8 +1900,12 @@
     pickerTaxView.hidden = NO;
     [self.view bringSubviewToFront:pickerTaxView];
     
-    selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
-    selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
+    if(arrayTaxes.count > 0)
+    {
+        selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
+        selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
+    }
+    
     
     UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
     
