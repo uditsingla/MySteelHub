@@ -9,7 +9,7 @@ target 'MySteelHub' do
     pod 'MFSideMenu', '~> 0.5'
     
     #Keyboard Manager
-    #pod 'IQKeyboardManager', '~> 5.0'
+    pod 'IQKeyboardManager', '~> 5.0'
     #pod 'SWTableViewCell', '~> 0.3'
     
 end

@@ -102,7 +102,7 @@
     
     __weak IBOutlet NSLayoutConstraint *constraintSubmitBtnHeight;
     
-   //UITextField *actifText;
+   UITextField *actifText;
 
     BOOL isAccepted;
 }
@@ -1358,7 +1358,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     
-    //actifText = nil;
+    actifText = nil;
     
     CGPoint center= textField.center;
     CGPoint rootViewPoint = [textField.superview convertPoint:center toView:tblView];
@@ -1440,7 +1440,7 @@
     }
     else{
         
-       // actifText = textField;
+        actifText = textField;
     }
     
 }
@@ -1656,11 +1656,11 @@
     tblView.frame = frame;
     
     // Scroll the table view to see the TextField just above the keyboard
-//    if (actifText)
-//    {
-//        CGRect textFieldRect = [tblView convertRect:actifText.bounds fromView:actifText];
-//        [tblView scrollRectToVisible:textFieldRect animated:NO];
-//    }
+    if (actifText)
+    {
+        CGRect textFieldRect = [tblView convertRect:actifText.bounds fromView:actifText];
+        [tblView scrollRectToVisible:textFieldRect animated:NO];
+    }
     
     //[UIView commitAnimations];
     
