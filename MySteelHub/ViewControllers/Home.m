@@ -669,38 +669,45 @@
         
         selectedDiameterTextfield.text = selectedDiameter;
         
+        
+        
         // getting indexpath from selected button
         CGPoint center= selectedDiameterTextfield.center;
         CGPoint rootViewPoint = [selectedDiameterTextfield.superview convertPoint:center toView:tblView];
         NSIndexPath *indexPath = [tblView indexPathForRowAtPoint:rootViewPoint];
-        
-        HomeQuantityCell *cell = [tblView cellForRowAtIndexPath:indexPath];
-        [cell.txtQuantity becomeFirstResponder];
-        
         [[arrayTblDict objectAtIndex:indexPath.row] setValue:selectedDiameter forKey:@"size"];
         
         selectedDiameter = @"";
+        [tblView reloadData];
+        
+        
+        
+        HomeQuantityCell *cell = [tblView cellForRowAtIndexPath:indexPath];
+        [cell.txtQuantity becomeFirstResponder];
     }
     
     pickerGradeRequiredView.hidden = YES;
     if(selectedGradeRequired.length>0)
     {
         //[btnGradeRequired setTitle:[NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired] forState:UIControlStateNormal];
+        [tblView reloadData];
     }
     
     pickerTaxView.hidden = YES;
     if(selectedTax.length>0)
     {
         //[btnPreferedTax setTitle:[NSString stringWithFormat:@"Prefered Tax : %@",selectedTax] forState:UIControlStateNormal];
+        [tblView reloadData];
     }
     
     pickerViewState.hidden = YES;
     if(selectedState.length>0)
     {
         //txtFieldState.text = [selectedState capitalizedString];
+        [tblView reloadData];
     }
     
-    [tblView reloadData];
+    
 }
 
 - (CGFloat)getLabelHeight:(UIButton *)btn
@@ -1369,7 +1376,7 @@
         {
             HomeQuantityCell *cell = [tblView cellForRowAtIndexPath:indexPath];
 
-            if(cell.txtQuantity.tag == 786)
+            if(cell.txtQuantity == textField)
             {
                 [[arrayTblDict objectAtIndex:indexPath.row] setValue:textField.text forKey:@"quantity"];
             }
@@ -1456,7 +1463,7 @@
             {
                 if(textField.tag == 777)
                 {
-                    [self.view endEditing:YES];
+                    //[self.view endEditing:YES];
                     
                     pickerToolBarView.hidden = NO;
                     [self.view bringSubviewToFront:pickerToolBarView];
