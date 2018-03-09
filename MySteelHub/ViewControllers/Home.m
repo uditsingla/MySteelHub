@@ -295,10 +295,17 @@
     [model_manager.requirementManager getTaxTypes:^(NSDictionary *json, NSError *error) {
         if(model_manager.requirementManager.arrayTaxTypes.count>0)
         {
+            
             arrayTaxes = [NSMutableArray arrayWithArray:model_manager.requirementManager.arrayTaxTypes];
             UIPickerView *pickerView = [pickerTaxView viewWithTag:555];
             [pickerView reloadAllComponents];
             
+            if(arrayTaxes.count > 0)
+            {
+                selectedTax = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"type"]];
+                selectedTaxID = [NSString stringWithFormat:@"%@",[[arrayTaxes objectAtIndex: 0] valueForKey:@"id"]];
+                [tblView reloadData];
+            }
         }
     }];
     
@@ -330,6 +337,7 @@
     {
         [self updateRequirementDetails];
     }
+    
 }
 
 -(void)updateRequirementDetails
@@ -900,6 +908,10 @@
 
             
             cell.lblGraderequired.text = [NSString stringWithFormat:@"Grade Required : %@",selectedGradeRequired];
+            
+
+            
+            
             cell.lblPreferedTax.text = [NSString stringWithFormat:@"Prefered Tax : %@",selectedTax];
             cell.txtDeliveryCity.text = [NSString stringWithFormat:@"Delivery City : %@",[newRequirement.city capitalizedString]];
             cell.lblDeliveryState.text = [NSString stringWithFormat:@"State : %@",[selectedState capitalizedString]];
