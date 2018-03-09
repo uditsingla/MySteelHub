@@ -119,7 +119,7 @@
     {
         [SVProgressHUD show];
         
-        dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
+        dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",@"buyer",@"role",  [[NSUserDefaults standardUserDefaults] stringForKey:@"DeviceToken"],@"device_token",nil];
         
         //dictLoginParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:txtEmail.text,@"email",txtPassword.text,@"password", @"ios",@"device_type",  @"1234567890",@"device_token",nil];
         

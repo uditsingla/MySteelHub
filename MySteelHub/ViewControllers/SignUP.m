@@ -32,9 +32,11 @@
 
 -(void)viewWillAppear:(BOOL)animated{
 }
+
 -(void)viewWillDisappear:(BOOL)animated{
     
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -247,9 +249,11 @@
     
     NSDictionary *info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height, 0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(20,0, kbSize.height+20, 0);
     _scrollView.contentInset = contentInsets;
     _scrollView.scrollIndicatorInsets = contentInsets;
+    
+
     
     
 }
@@ -313,6 +317,7 @@
     return YES;
 }
 
+
 -(void)textFieldDidBeginEditing:(UITextField *)textField
 {
     
@@ -320,6 +325,7 @@
     {
         [textField resignFirstResponder];
     }
+
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
