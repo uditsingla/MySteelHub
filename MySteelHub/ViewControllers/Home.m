@@ -126,6 +126,14 @@
     
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil ];
     
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isAccepted == %@", @YES];
+    NSArray *filteredArray = [_selectedRequirement.arrayConversations filteredArrayUsingPredicate:predicate];
+    
+    if(filteredArray.count>0) {
+        isAccepted = YES;
+        [tblView reloadData];
+    }
+    
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -1189,6 +1197,8 @@
                             ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isAccepted = YES;
                             
                              ((Conversation*)([_selectedRequirement.arrayConversations objectAtIndex:indexPath.row])).isBuyerRead = true;
+                            
+                            isAccepted = YES;
                             
                             [tblView reloadData];
                             
