@@ -63,7 +63,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fS1-be-JVl" id="j1c-uz-KOG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="V7E-Rr-dnU">
@@ -1989,11 +1989,11 @@
                                             <outlet property="typeRequired" destination="usP-cg-g0P" id="nkZ-LN-WFb"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AdressInfoCell" rowHeight="185" id="EJf-2O-aGO" customClass="AdressInfoCell">
-                                        <rect key="frame" x="0.0" y="433" width="375" height="185"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AdressInfoCell" rowHeight="160" id="EJf-2O-aGO" customClass="AdressInfoCell">
+                                        <rect key="frame" x="0.0" y="433" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EJf-2O-aGO" id="Vab-QU-Ihu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="184.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLi-uR-tjp">
@@ -2008,56 +2008,46 @@
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Al-cA-RyE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Al-cA-RyE">
                                                     <rect key="frame" x="14" y="71" width="347" height="18"/>
                                                     <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51s-Uy-7ot">
-                                                    <rect key="frame" x="14" y="100" width="347" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
-                                                    <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KIA-OP-bjk">
-                                                    <rect key="frame" x="14" y="129" width="347" height="18"/>
+                                                    <rect key="frame" x="14" y="99" width="347" height="18"/>
                                                     <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t43-7b-Sqq">
-                                                    <rect key="frame" x="14" y="158" width="347" height="18"/>
+                                                    <rect key="frame" x="14" y="128" width="347" height="18"/>
                                                     <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="t43-7b-Sqq" secondAttribute="bottom" constant="8.5" id="47X-Dd-jFQ"/>
                                                 <constraint firstItem="KIA-OP-bjk" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="6gq-tn-9fP"/>
-                                                <constraint firstItem="51s-Uy-7ot" firstAttribute="top" secondItem="8Al-cA-RyE" secondAttribute="bottom" constant="11" id="B3t-1P-YCa"/>
+                                                <constraint firstItem="KIA-OP-bjk" firstAttribute="top" secondItem="8Al-cA-RyE" secondAttribute="bottom" constant="10" id="Acw-dD-kMC"/>
                                                 <constraint firstItem="8Al-cA-RyE" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="CdL-sh-YB8"/>
                                                 <constraint firstAttribute="trailing" secondItem="QLi-uR-tjp" secondAttribute="trailing" constant="14" id="Fa9-2Y-bh0"/>
                                                 <constraint firstItem="QLi-uR-tjp" firstAttribute="top" secondItem="Vab-QU-Ihu" secondAttribute="top" constant="10" id="JS8-Pb-V4o"/>
-                                                <constraint firstItem="t43-7b-Sqq" firstAttribute="top" secondItem="KIA-OP-bjk" secondAttribute="bottom" constant="11" id="Ntk-Im-M4X"/>
-                                                <constraint firstItem="t43-7b-Sqq" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="O62-3K-3rs"/>
-                                                <constraint firstItem="51s-Uy-7ot" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="V8F-CQ-rsc"/>
-                                                <constraint firstAttribute="trailing" secondItem="51s-Uy-7ot" secondAttribute="trailing" constant="14" id="WBw-OO-1DJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="t43-7b-Sqq" secondAttribute="bottom" constant="13.5" id="Tw1-8o-IWT"/>
                                                 <constraint firstAttribute="trailing" secondItem="bkI-ix-jfD" secondAttribute="trailing" constant="14" id="WwI-PG-mVL"/>
-                                                <constraint firstItem="KIA-OP-bjk" firstAttribute="top" secondItem="51s-Uy-7ot" secondAttribute="bottom" constant="11" id="haH-JE-hdu"/>
+                                                <constraint firstItem="t43-7b-Sqq" firstAttribute="top" secondItem="KIA-OP-bjk" secondAttribute="bottom" constant="11" id="YXG-n0-Cow"/>
+                                                <constraint firstItem="t43-7b-Sqq" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="ZaC-yA-qUC"/>
+                                                <constraint firstAttribute="trailing" secondItem="t43-7b-Sqq" secondAttribute="trailing" constant="14" id="gdA-DM-hMF"/>
                                                 <constraint firstItem="QLi-uR-tjp" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="hlH-gp-sfb"/>
                                                 <constraint firstItem="bkI-ix-jfD" firstAttribute="top" secondItem="QLi-uR-tjp" secondAttribute="bottom" constant="14" id="j7x-5b-jWD"/>
                                                 <constraint firstItem="8Al-cA-RyE" firstAttribute="top" secondItem="bkI-ix-jfD" secondAttribute="bottom" constant="11" id="qZY-na-jE9"/>
                                                 <constraint firstAttribute="trailing" secondItem="KIA-OP-bjk" secondAttribute="trailing" constant="14" id="rSE-4m-KYO"/>
-                                                <constraint firstAttribute="trailing" secondItem="t43-7b-Sqq" secondAttribute="trailing" constant="14" id="sj5-it-Qld"/>
                                                 <constraint firstItem="bkI-ix-jfD" firstAttribute="leading" secondItem="Vab-QU-Ihu" secondAttribute="leading" constant="14" id="vjr-CK-sZv"/>
                                                 <constraint firstAttribute="trailing" secondItem="8Al-cA-RyE" secondAttribute="trailing" constant="14" id="wX6-sz-1et"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="lblAddress1" destination="8Al-cA-RyE" id="INd-E8-0Wa"/>
-                                            <outlet property="lblAddress2" destination="51s-Uy-7ot" id="LGo-3a-JIc"/>
                                             <outlet property="lblAddressType" destination="QLi-uR-tjp" id="QCm-Fc-hmB"/>
                                             <outlet property="lblArea" destination="KIA-OP-bjk" id="KFe-T6-wjH"/>
                                             <outlet property="lblContact" destination="t43-7b-Sqq" id="LXg-6A-4mj"/>
@@ -2065,7 +2055,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FinalAmountCell" rowHeight="74" id="uHB-3q-okr" customClass="FinalAmountCell">
-                                        <rect key="frame" x="0.0" y="618" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="593" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uHB-3q-okr" id="hv2-Vg-APy">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>

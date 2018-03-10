@@ -211,7 +211,14 @@
             cell.lblAddressType.text = [NSString stringWithFormat:@"%@ Address",[selectedOrder.addressBilling.addressType capitalizedString]];
             cell.lblName.text = [NSString stringWithFormat:@"Name : %@",[selectedOrder.addressBilling.firmName capitalizedString]];
             cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@",[selectedOrder.addressBilling.address1 capitalizedString]];
-            cell.lblAddress2.text = [selectedOrder.addressBilling.address2 capitalizedString];
+            
+            if(selectedOrder.addressBilling.address2.length > 0)
+            {
+                
+                cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@, %@",[selectedOrder.addressBilling.address1 capitalizedString],[selectedOrder.addressBilling.address2 capitalizedString]];
+            }
+
+            
             cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.addressBilling.city,selectedOrder.addressBilling.state] capitalizedString];
             cell.lblContact.text = [NSString stringWithFormat:@"M : %@, L : %@",selectedOrder.addressBilling.mobile,selectedOrder.addressBilling.landLine];
         }
@@ -220,7 +227,12 @@
             cell.lblAddressType.text = [NSString stringWithFormat:@"%@ Address",[selectedOrder.addressShipping.addressType capitalizedString]];
             cell.lblName.text = [NSString stringWithFormat:@"Name : %@",[selectedOrder.addressShipping.firmName capitalizedString]];
             cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@",[selectedOrder.addressShipping.address1 capitalizedString]];
-            cell.lblAddress2.text = [selectedOrder.addressShipping.address2 capitalizedString];
+            
+            if(selectedOrder.addressShipping.address2.length > 0)
+            {
+                cell.lblAddress1.text = [NSString stringWithFormat:@"Address : %@, %@",[selectedOrder.addressShipping.address1 capitalizedString],[selectedOrder.addressShipping.address2 capitalizedString]];
+            }
+
             cell.lblArea.text = [[NSString stringWithFormat:@"City : %@, State : %@",selectedOrder.req.city,selectedOrder.req.state] capitalizedString];
             
             
@@ -304,7 +316,7 @@
             break;
             
         case 2:
-            return 210;
+            return 155;
             break;
             
         case 3:

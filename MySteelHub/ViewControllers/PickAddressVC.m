@@ -101,6 +101,12 @@
     
     segControl.tintColor = kBlueColor;
     //----------------------------------------------------------
+    
+    _tblViewBilling.rowHeight = UITableViewAutomaticDimension;
+    _tblViewBilling.estimatedRowHeight = 98;
+    
+    _tblViewShipping.rowHeight = UITableViewAutomaticDimension;
+    _tblViewShipping.estimatedRowHeight = 98;
 
 }
 
@@ -132,7 +138,11 @@
         cell.lblName.text = selectedAddress.firmName.uppercaseString;
         cell.lblName.font = fontRalewayBold14;
         cell.lblAddressLine1.text = selectedAddress.address1;
-        cell.lblAddressLine2.text = selectedAddress.address2;
+        
+        if(selectedAddress.address2.length > 0)
+        {
+            cell.lblAddressLine1.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.address1, selectedAddress.address2];
+        }
         cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
         cell.lblContactInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.mobile,selectedAddress.landLine];
 
@@ -162,7 +172,11 @@
         cell.lblName.text = selectedAddress.firmName.uppercaseString;
         cell.lblName.font = fontRalewayBold14;
         cell.lblAddressLine1.text = selectedAddress.address1;
-        cell.lblAddressLine2.text = selectedAddress.address2;
+        
+        if(selectedAddress.address2.length > 0)
+        {
+            cell.lblAddressLine1.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.address1, selectedAddress.address2];
+        }
         cell.lblAreaInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.city,selectedAddress.state];
         cell.lblContactInfo.text = [NSString stringWithFormat:@"%@, %@",selectedAddress.mobile,selectedAddress.landLine];
         [cell.imgTick setImage:[UIImage imageNamed:@"checkSingle.png"]];
@@ -227,6 +241,13 @@
     }
     
 }
+
+
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//
+//}
+
 
 -(BOOL)validateAddress:(NSString *)addressType
 {

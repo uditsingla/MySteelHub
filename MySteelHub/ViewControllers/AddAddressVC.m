@@ -405,6 +405,33 @@
     return YES;
 }
 
+- (BOOL)textField:(UITextField *)textField
+shouldChangeCharactersInRange:(NSRange)range
+replacementString:(NSString *)string {
+    
+    NSString *resultText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    if (textField == _txtFieldCity)
+    {
+        return resultText.length <= 35;
+    }
+    else if (textField == _txtFieldZipCode)
+    {
+        return resultText.length <= 6;
+    }
+    else if (textField == _txtFieldContact)
+    {
+        return resultText.length <= 10;
+    }
+    else if(textField == _txtFieldLandline)
+    {
+        return resultText.length <= 12;
+    }
+
+    return true;
+}
+
+
 - (void)doneClicked:(id)sender
 {
     NSLog(@"Done Clicked.");
