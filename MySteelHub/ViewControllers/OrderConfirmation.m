@@ -7,6 +7,8 @@
 //
 
 #import "OrderConfirmation.h"
+#import "OrderI.h"
+#import "PickAddressVC.h"
 
 @interface OrderConfirmation ()
 @property (weak, nonatomic) IBOutlet UITableView *tableOrderDescription;
@@ -143,6 +145,8 @@
                  selectedConversation.isBuyerRead = true;
                  
                  _btnAccept.hidden = YES;
+                 
+                 [self pushToAddressScreen:[json valueForKey:@"order_id"] seller:selectedConversation.sellerID];
              }
              else
              {
@@ -151,6 +155,21 @@
          }];
     }
 }
+
+-(void)pushToAddressScreen:(NSString*)orderID seller:(NSString *)sellerId
+{
+    OrderI *order = [OrderI new];
+    order.orderID = orderID;
+    order.sellerID = sellerId;
+    order.req = selectedRequirement;
+    
+    PickAddressVC *viewcontroller = [shippingStoryboard instantiateViewControllerWithIdentifier: @"pickAddress"];
+    UINavigationController *navigationController = self.menuContainerViewController.centerViewController;
+    viewcontroller.isFromMenu = NO;
+    viewcontroller.selectedOrder = order;
+    [navigationController pushViewController:viewcontroller animated:NO];
+}
+
 
 -(void)showAlert:(NSString *)errorMsg
 {
