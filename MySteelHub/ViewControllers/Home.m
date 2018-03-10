@@ -691,7 +691,8 @@
         
         
         HomeQuantityCell *cell = [tblView cellForRowAtIndexPath:indexPath];
-        [cell.txtQuantity becomeFirstResponder];
+        [cell.txtQuantity performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0];
+
     }
     
     pickerGradeRequiredView.hidden = YES;
