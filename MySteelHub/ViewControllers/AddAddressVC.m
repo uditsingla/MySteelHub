@@ -381,6 +381,7 @@
 {
     if(textField==_txtFieldState)
     {
+        [textField resignFirstResponder];
         [self.view endEditing:YES];
         
         pickerViewState.hidden = NO;
@@ -392,6 +393,8 @@
         UIPickerView *pickerView = [pickerViewState viewWithTag:777];
         
         [pickerView selectRow:0 inComponent:0 animated:NO];
+        
+        return NO;
         
     }
     else
