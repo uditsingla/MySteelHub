@@ -63,7 +63,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fS1-be-JVl" id="j1c-uz-KOG">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="46"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="V7E-Rr-dnU">
@@ -474,8 +474,8 @@
                                                         <outletCollection property="gestureRecognizers" destination="uoS-dV-AnT" appends="YES" id="DIQ-KY-iYV"/>
                                                     </connections>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Rmh-Qn-BVF">
-                                                    <rect key="frame" x="14" y="264" width="346" height="19"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rmh-Qn-BVF">
+                                                    <rect key="frame" x="14" y="264" width="346" height="18"/>
                                                     <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -537,7 +537,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="WUW-5M-OuU" secondAttribute="trailing" constant="21" id="TPs-GA-JUS"/>
                                                 <constraint firstAttribute="trailing" secondItem="gSI-UI-x3m" secondAttribute="trailing" constant="15" id="UWa-Ua-pdU"/>
                                                 <constraint firstItem="fAT-3z-DcN" firstAttribute="top" secondItem="qTq-Gj-CCn" secondAttribute="top" constant="8" id="Uk1-hK-NdK"/>
-                                                <constraint firstItem="8rt-w3-N1g" firstAttribute="top" secondItem="Rmh-Qn-BVF" secondAttribute="bottom" constant="11" id="Wna-4V-O2p"/>
+                                                <constraint firstItem="8rt-w3-N1g" firstAttribute="top" secondItem="Rmh-Qn-BVF" secondAttribute="bottom" constant="12" id="Wna-4V-O2p"/>
                                                 <constraint firstAttribute="trailing" secondItem="Rmh-Qn-BVF" secondAttribute="trailing" constant="15" id="XL5-BY-TmP"/>
                                                 <constraint firstItem="3kp-eK-i74" firstAttribute="top" secondItem="ZvA-tG-vLu" secondAttribute="bottom" constant="11" id="YuI-qL-ciB"/>
                                                 <constraint firstItem="cJ7-lK-AP8" firstAttribute="top" secondItem="G4d-vW-4Ap" secondAttribute="bottom" constant="11" id="bdy-g1-bYy"/>
@@ -1475,7 +1475,7 @@
                                                     <rect key="frame" x="5" y="5" width="365" height="70"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" tag="111" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Data Found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXs-Wt-Lhf" userLabel="chd">
-                                                            <rect key="frame" x="115.5" y="23.5" width="136" height="23.5"/>
+                                                            <rect key="frame" x="115" y="23.5" width="136" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="20"/>
                                                             <color key="textColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

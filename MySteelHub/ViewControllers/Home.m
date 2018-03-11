@@ -1652,6 +1652,7 @@
 */
 
 #pragma mark Keyboard
+/*
 -(void)showKeyboard:(NSNotification*)notification
 {
     NSLog(@"Keyboard shown");
@@ -1733,6 +1734,7 @@
     //[UIView commitAnimations];
     
 }
+*/
 
 
 
