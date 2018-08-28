@@ -150,6 +150,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    NSLog(@"User ID : %@",model_manager.profileManager.owner.userID);
+    
     model_manager.requirementManager.requirementDetailDelegate = self;
     
     isLoadMoreClicked = false;
@@ -1822,13 +1824,14 @@
         
         [model_manager.requirementManager postRequirement:newRequirement completion:^(NSDictionary *json, NSError *error) {
             [SVProgressHUD dismiss];
-            if(json)
+            if([[json valueForKey:@"status"] intValue] == 200)
             {
                 [self.navigationController popViewControllerAnimated:YES];
             }
             else
             {
-                [self showAlert:@"Some error occured. Please try again"];
+                NSString *strMsg = [[[json valueForKey:@"msg"] firstObject] capitalizedString];
+                [self showAlert:strMsg] ;
             }
         }];
     }

@@ -32,11 +32,16 @@
 -(void)postRequirement:(RequirementI *)requirement completion:(void(^)(NSDictionary *json, NSError *error))completionBlock
 {
     //create dictParam with requirement object
-    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",requirement.requiredByDate,@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",requirement.taxType,@"tax_type",nil];
-
+//    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",requirement.requiredByDate,@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",requirement.taxType,@"tax_type",nil];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:requirement.userID,@"user_id",  requirement.arraySpecifications,@"specification",requirement.gradeRequired,@"grade_required",[NSNumber numberWithBool:requirement.isPhysical],@"physical",[NSNumber numberWithBool: requirement.isChemical],@"chemical",[NSNumber numberWithBool:requirement.isTestCertificateRequired],@"test_certificate_required",requirement.length,@"length",requirement.type,@"type",requirement.arrayPreferedBrands,@"preffered_brands",@"20/04/2018",@"required_by_date",requirement.budget,@"budget",requirement.city,@"city",requirement.state,@"state",requirement.taxType,@"tax_type",nil];
+    
+    
+    
+    NSLog(@"Requirement Data : %@",dictParams);
     
     [RequestManager asynchronousRequestWithPath:@"buyer/post" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
-        NSLog(@"Here comes the json %@",json);
+        NSLog(@"Json response of Post Requirment : %@",json);
         if (statusCode==200) {
             
             if([[[json valueForKey:@"data"] firstObject] valueForKey:@"requirement_id"])
@@ -52,7 +57,7 @@
         }
         else{
             if(completionBlock)
-                completionBlock(nil,nil);
+                completionBlock(json,nil);
             //show error
         }
         
@@ -65,6 +70,7 @@
     //create dictParam with requirement object
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[[NSUserDefaults standardUserDefaults] valueForKey:@"userID"],@"user_id",nil];
     
+    NSLog(@"Dict : %@",dictParams);
     
     [RequestManager asynchronousRequestWithPath:@"posted/requirements" requestType:RequestTypePOST params:dictParams timeOut:60 includeHeaders:YES onCompletion:^(long statusCode, NSDictionary *json) {
         NSLog(@"Here comes the json %@",json);
@@ -177,7 +183,7 @@
         }
         else{
             if(completionBlock)
-                completionBlock(nil,nil);
+                completionBlock(json,nil);
             //show error
         }
         
